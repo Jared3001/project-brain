@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}What changed, Project Kilby{% endblock %}
+{% macro cite(f) -%}
+<a class="chip" href="{{ url_for('source', doc_id=f.doc_id, page_no=f.page_no, q=f.quote) }}#q" title="{{ f.doc.title }}">{{ f.chip }}</a>
+{%- endmacro %}
+{% block body %}
+<p><a href="{{ url_for('card') }}">&larr; Record</a></p>
+<header class="top">
+  <h1>What changed</h1>
+  <p>Every value that moved between filings of the same source, newest first. A change is dated by the first document that shows the new value; the old value's last appearance bounds when it happened.</p>
+  <div class="meta"><span>{{ events|length }} changes</span></div>
+</header>
+{% for e in events %}
+<section class="field">
+  <div>
+    <div class="label">{{ e.date|month }}</div>
+    <div class="basis">{{ e.field }}</div>
+  </div>
+  <div>
+    {% if e.subject %}<div class="basis">{{ e.subject }}</div>{% endif %}
+    {% for label, old, new in e.diffs %}
+    <div class="value"><span class="v">{% if label %}{{ label }}: {% endif %}{% if old is not none %}<span class="was">{{ old }}</span> &rarr; {% endif %}{{ new }}</span></div>
+    {% endfor %}
+    <div class="basis">
+      {% if e.old %}Last shown {{ e.last_old|month }}{{ cite(e.old) }} &middot; {% endif %}first shown{{ cite(e.new.first) }}
+    </div>
+    {% if e.basis and not e.subject %}<div class="basis">{{ e.basis }}</div>{% endif %}
+  </div>
+</section>
+{% endfor %}
+{% endblock %}

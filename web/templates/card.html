@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% macro cite(f) -%}
+<a class="chip" href="{{ url_for('source', doc_id=f.doc_id, page_no=f.page_no, q=f.quote) }}#q"
+   title="{{ f.doc.title }}">{{ f.chip }}</a>
+{%- endmacro %}
+{% block body %}
+<header class="top">
+  <h1>Kilby Power Plant</h1>
+  <p>Energy Forge One LLC, Reeves County, Texas. What the public record says, page by page.</p>
+  <div class="meta">
+    <span>{{ n_docs }} documents, {{ n_pages }} pages</span>
+    <span>Latest filing {{ latest|month }}</span>
+    <span><a href="{{ url_for('changes') }}">What changed</a></span>
+    <span>{{ counts.found }} found, {{ counts.conflict }} in conflict{% if counts.not_found %}, {{ counts.not_found }} not found{% endif %}</span>
+  </div>
+</header>
+
+{% for title, rows in groups %}
+<h2>{{ title }}</h2>
+{% for rec, f in rows %}
+<section class="field">
+  <div>
+    <div class="label">{{ rec.label }}</div>
+    <span class="status {{ rec.status }}">{{ rec.status.replace('_', ' ') }}</span>
+  </div>
+  <div>
+    {% for c in f.current %}
+    <div class="value">
+      <span class="v">{{ c.display }}</span>{{ cite(c) }}
+      {% if c.basis %}<div class="basis">{{ c.basis }}{% if c.since and c.since != c.as_of %} &middot; since {{ c.since|month }}{% else %} &middot; {{ c.as_of|month }}{% endif %}</div>{% endif %}
+    </div>
+    {% else %}
+    <div class="value basis">No quotable statement in the sources searched.</div>
+    {% endfor %}
+    {% if rec.status == 'conflict' %}<p class="note">Sources disagree and none is picked: {{ rec.note }}</p>{% endif %}
+    {% if f.history %}
+    <details>
+      <summary>{{ f.history|length }} earlier value{{ 's' if f.history|length != 1 }}</summary>
+      <ul>
+      {% for h in f.history %}
+        <li><span class="was">{{ h.display }}</span>
+          ({% if h.since == h.until %}{{ h.since|month }}{% else %}{{ h.since|month }} to {{ h.until|month }}{% endif %}){{ cite(h) }}
+          {% if h.basis %}<div class="basis">{{ h.basis }}</div>{% endif %}</li>
+      {% endfor %}
+      </ul>
+    </details>
+    {% endif %}
+  </div>
+</section>
+{% endfor %}
+{% endfor %}
+
+<footer>
+  Every value links to the page it was read from, and its quote is checked against that page before it is shown.
+  Values are extracted by anchored rules, not generated. Sources that disagree stay in conflict.
+</footer>
+{% endblock %}

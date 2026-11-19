@@ -53,7 +53,8 @@ Part 3 never appears in any report.
 ## Conflicts across sources (record card `conflict` cases)
 
 - **Capacity:** 2.67 GW (Chevron release and most press); "nearly 3 gigawatts" (Semafor); ERCOT gas rows total 2,377 MW (2,707 MW with the battery); 2,595 MW / 17 turbines in the Oct 2025 application and 2,869 MW / 46 turbines after the 12/22/2025 update (both verified in `tceq/application/`); GEM wiki (Apr 2026 snapshot) shows CC1 987 MW + GT1-15 1,608 MW = 2,595 MW, so GEM was still on the original application.
-- **CO2:** 11,564,704.59 tons CO2e per year (TCEQ plain language summary) vs "more than 13 million tons" (EIP, as quoted by TechCrunch).
+- **CO2 (resolved 11/19):** 11,564,704.59 tons CO2e per year in the plain language summary is the original 17 turbine application. TCEQ's RBLC summary of the updated project (`tceq-application-2026-tc` p. 32) gives "GHG as CO2e 13,890,275.01", which agrees with EIP's "more than 13 million tons" (as quoted by TechCrunch). This is a change between filings, not a conflict.
+- **Permit timing:** the RBLC form (p. 30, dated April 10, 2026) gives "Technically Complete Date 4/15/2026" and "Estimated Final Issuance Date 10/15/2026". The 10/30/2026 pending list snapshot still shows the application as pending, so the permit was not issued by that estimate.
 
 ## Disambiguation traps (refusal / wrong project questions)
 

@@ -34,10 +34,6 @@ fields:
     item: {model: string, count: integer, cycle: "combined|simple", unit_mw: number}
     sources: [permit_application]
     supersede_within: [permit_application]
-  technology:
-    label: Technology
-    type: string
-    sources: [permit_application, queue_report, company_release]
   battery_storage_mw:
     label: Battery storage
     type: number

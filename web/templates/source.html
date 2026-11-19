@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ doc.title }}, {{ page.locator }}{% endblock %}
+{% block body %}
+<p><a href="{{ url_for('card') }}">&larr; Record</a></p>
+<div class="src-head">
+  <div class="basis">{{ kind }} &middot; tier {{ doc.tier }} &middot; {{ doc.publisher }} &middot; {{ doc.published|month }}</div>
+  <h1>{{ doc.title }}</h1>
+  <div>{{ page.locator }} of {{ doc.n_pages }} &middot; <a href="{{ original }}" rel="noopener" target="_blank">Open the original</a>{% if page.ocr %} &middot; text read by OCR{% endif %}</div>
+</div>
+
+{% if quote %}
+<div class="quote">{{ quote }}</div>
+{% endif %}
+
+{% if redistributable %}
+  {% if quote and not found %}<p class="note">The quote was not located on this page.</p>{% endif %}
+  <pre class="page">{{ body }}</pre>
+{% else %}
+  <p class="basis">Full text of press and third party analysis is not reproduced here. The quoted line is shown above; read the rest at the original.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Project Kilby record{% endblock %}</title>
+<style>
+:root {
+  --bg: #fbfaf7; --panel: #ffffff; --ink: #1c1b19; --muted: #6b6760; --rule: #e4e0d8;
+  --accent: #1f4e79; --mark: #fff1a8;
+  --found: #2f6b3a; --found-bg: #e7f1e8;
+  --conflict: #9a4a00; --conflict-bg: #fbeedd;
+  --missing: #6b6760; --missing-bg: #efede8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161514; --panel: #1f1e1c; --ink: #ece9e3; --muted: #a29d94; --rule: #34322e;
+    --accent: #8db8e0; --mark: #5a4b00;
+    --found: #8fd19b; --found-bg: #1f3323;
+    --conflict: #f0b46e; --conflict-bg: #3a2a16;
+    --missing: #a29d94; --missing-bg: #2a2926;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums; }
+a { color: var(--accent); }
+.wrap { max-width: 980px; margin: 0 auto; padding: 32px 16px 64px; }
+header.top { border-bottom: 2px solid var(--ink); padding-bottom: 14px; margin-bottom: 8px; }
+header.top h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
+header.top p { margin: 0; color: var(--muted); }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--muted); font-size: 13px; margin: 10px 0 0; }
+h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+  margin: 34px 0 6px; font-weight: 600; }
+.field { display: grid; grid-template-columns: 200px 1fr; gap: 4px 20px; padding: 14px 0;
+  border-top: 1px solid var(--rule); }
+.label { font-weight: 600; }
+.status { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; padding: 1px 7px; border-radius: 3px; margin-top: 4px; }
+.status.found { color: var(--found); background: var(--found-bg); }
+.status.conflict { color: var(--conflict); background: var(--conflict-bg); }
+.status.not_found, .status.not_extracted { color: var(--missing); background: var(--missing-bg); }
+.value { margin: 0 0 8px; }
+.value:last-child { margin-bottom: 0; }
+.v { font-size: 17px; }
+.basis { color: var(--muted); font-size: 13px; }
+.chip { font-size: 12px; text-decoration: none; border: 1px solid var(--rule); border-radius: 3px;
+  padding: 0 6px; margin-left: 6px; white-space: nowrap; background: var(--panel); }
+.chip:hover { border-color: var(--accent); }
+.tier { color: var(--muted); font-size: 11px; margin-left: 4px; }
+.note { font-size: 13px; color: var(--conflict); margin: 6px 0 0; }
+details { margin-top: 8px; font-size: 13px; }
+summary { cursor: pointer; color: var(--muted); }
+details ul { margin: 6px 0 0; padding-left: 18px; }
+details li { margin: 3px 0; }
+.was { text-decoration: line-through; text-decoration-color: var(--muted); }
+.src-head { border-bottom: 1px solid var(--rule); padding-bottom: 12px; margin-bottom: 16px; }
+.src-head h1 { font-size: 20px; margin: 8px 0 4px; }
+.quote { border-left: 3px solid var(--accent); padding: 4px 12px; margin: 12px 0; background: var(--panel); }
+pre.page { white-space: pre-wrap; word-wrap: break-word; font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: var(--panel); border: 1px solid var(--rule); padding: 16px; border-radius: 4px; }
+mark { background: var(--mark); color: inherit; padding: 1px 0; }
+footer { margin-top: 48px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule); padding-top: 12px; }
+@media (max-width: 640px) {
+  .field { grid-template-columns: 1fr; }
+  .chip { white-space: normal; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+{% block body %}{% endblock %}
+</div>
+</body>
+</html>
