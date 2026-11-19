@@ -163,8 +163,8 @@ FIELD_WORDS = {
     "nox_controls": {"nox", "controls", "scr", "catalyst", "pollution"},
     "water_source": {"water", "groundwater", "brackish"},
 }
-PER_DOC = {"queue_report": 2, "status_snapshot": 1}
-PER_FIELD = 3   # near duplicate monthly files: one page each, two files max
+PER_DOC = {"queue_report": 2, "status_snapshot": 1}   # near duplicate monthly files: few pages each
+PER_FIELD = 5   # record guided pages per field, so one loosely matching field cannot fill the prompt
 MAX_SAME_KIND = {"queue_report": 2, "status_snapshot": 2}
 
 
@@ -210,14 +210,16 @@ def retrieve(question: str, k: int = K_PAGES) -> list[Hit]:
                 JOIN pages p ON p.doc_id = f.doc_id AND p.page_no = f.page_no
                 WHERE f.field IN ({','.join('?' * len(fields))})""", fields).fetchall()
 
-        field_score = {f: len(terms & FIELD_WORDS[f]) for f in fields}
+        # a word that points at one field says more than one shared by several
+        spread = {w: sum(1 for ws in FIELD_WORDS.values() if w in ws) for w in terms}
+        field_score = {f: sum(1 / spread[w] for w in terms & FIELD_WORDS[f]) for f in fields}
 
         def rank(r):
             words = set(re.findall(r"[a-z0-9]+", r[8].lower()))
             newest_first = -int(r[4].replace("-", "") or 0)
-            # facts echoing the question, then the best matching field, then current before
-            # history, regulatory first, newest first
-            return (-len(terms & words), -field_score[r[10]], r[10], r[9] != "current", r[3], newest_first)
+            # best matching field first; within it, facts echoing the question, regulatory
+            # sources, current before earlier values, newest first
+            return (-field_score[r[10]], r[10], -len(terms & words), r[3], r[9] != "current", newest_first)
         rows.sort(key=rank)
         per_field: dict[str, int] = {}
         for doc_id, page_no, locator, tier, as_of, title, published, text, display, role, fld, *_ in rows:

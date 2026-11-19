@@ -85,3 +85,9 @@ def test_capacity_change_question_gets_both_capacity_filings():
     hits = retrieve("How did the permit application's capacity change between the original filing and the update?")
     keys = {(h.doc_id, h.page_no) for h in hits}
     assert ("tceq-application-2025-10", 48) in keys and ("tceq-application-2026-tc", 30) in keys
+
+
+@pytest.mark.skipif(not DB_PATH.exists(), reason="run ingest and record first")
+def test_disagreement_question_keeps_company_and_press_figures():
+    docs = {h.doc_id for h in retrieve("Why do the capacity numbers disagree?")}
+    assert "chevron-release-2026-06-22" in docs and "tceq-application-2025-10" in docs
