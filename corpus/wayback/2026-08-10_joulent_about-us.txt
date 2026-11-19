@@ -1,0 +1,141 @@
+Data Center Power Systems for AI Infrastructure | Joulent
+About Us  Power Stack  Contact
+Home  About Us  Power Stack  Contact
+LinkedIn
+Delivering essential energy at the speed and scale of American innovation
+ABOUT US
+Joulent is a new energy company built to deliver firm baseload power and reliability at essential scale and velocity.
+We enable leading-edge industrial infrastructure through the development of large-scale, cost-advantaged baseload power solutions.
+As a first-mover pioneer in the space, we have the scalable equipment, underlying technology and specialized expertise to fuel the innovations that will help reindustrialize the United States.
+TEAM
+Chris James
+Founder and Chief Executive Officer
+Brian Boland
+Executive Vice President, Chief Financial Officer & Head of Strategy
+Jeff Van Heel
+Chief Infrastructure Officer
+Adam Taylor
+Chief Development Officer
+Adil Ahmed
+Chief Information Officer
+Chris Wissel-Tyson
+Head/SVP of Growth and Strategy
+Jake Appleton
+Head of Talent and Strategic Initiatives
+Akshat Patel
+Head of Energy Software & Optimization
+Noah Tulsky
+VP, Corporate Development and Partnerships
+Elliot Rueb
+VP, Infrastructure - Procurement
+Sandy Suresh
+VP, Machine Learning
+Paulo Leal
+VP, Commercial
+Nicole Abbatemarco Hall
+Controller
+Maciek Lukawski
+Chief of Staff
+Alireza Atrvash
+Director, Infrastructure - Electrical
+Rob Morettin
+Director, Finance
+Dan Kelly
+Director, Construction
+Stephen Kwok
+Director, Infrastructure - Mechanical Engineering
+Amy Spillane
+Director, Human Resources
+Antonio Prieto
+Senior Associate, Finance
+Sam Royce
+Sr. Associate, Finance
+Chris Amoruso
+Sr. Manager, Project Development
+Alan McGinnis
+Technical Program Manager
+Adil Ahmed
+Chief Information Officer
+Adil Ahmed leads technology and data for Joulent. He brings 20+ years of digital transformation and AI governance experience in regulated industrial environments including energy, aviation, and oilfield services. At Bristow Group, he built compliance, risk, analytics, and ERP platforms serving safety-critical operations at global scale. Prior to Bristow, Adil held program leadership and platform architecture roles at Baker Hughes and Enron, where he drove enterprise applications delivery across the global oilfield services organization. Adil serves as Board Advisor to Imperial College's Startup Fellowship and is a regular panelist on CIO and data governance at industry summits. He holds an MBA and BBA in Management Information Systems from the University of Houston.
+Sam Royce
+Sr. Associate, Finance
+Sam Royce is an investment professional focused on power and energy infrastructure. He joined Joulent from Brookfield, where he was a Senior Associate on the Energy investment team. There, he worked on transactions across renewable, thermal, energy storage and nuclear power platforms. He began his career in the Power & Utilities group at Barclays. Sam holds a Bachelor of Science from Cornell University.
+Alan McGinnis
+Technical Program Manager
+Alan McGinnis is a technical program leader with experience spanning nuclear operations, industrial energy infrastructure, and advanced manufacturing. As a nuclear-trained submarine officer in the U.S. Navy, he operated and led teams responsible for a naval nuclear propulsion plant. At ExxonMobil, as a Project Engineer, he delivered capital projects across the company’s petrochemical refining portfolio. At Redwood Materials, as one of the company’s earliest Technical Program Managers, he led the design, construction, and commissioning of a large-scale greenfield hydrometallurgical and mechanical separation facility, the company’s first-of-its-kind processing plant, as Redwood scaled from roughly 100 to over 1,000 employees. He later served as Senior Manager of Engineering and Operations Finance, building a financial fluency he applies directly to capital planning, cost forecasting, and resource allocation on large infrastructure programs. Alan holds a B.S. in Mechanical Engineering from the University of Missouri, an M.S. in Architectural Engineering from the University of Kansas, and an MBA from Duke University’s Fuqua School of Business. He continues to serve as an officer in the U.S. Navy Reserve.
+Paulo Leal
+VP, Commercial
+Paulo Leal is a global commercial leader with more than 15 years building and scaling revenue organizations at the intersection of energy infrastructure, data center capacity, and frontier AI. He has driven growth across enterprise, Hyperscaler, deep-tech, and industrial AI markets, with a track record of standing up founding commercial functions, architecting global go-to-market frameworks, and forging the strategic partnerships that anchor hyper-growth technology platforms. Earlier in his career, Paulo led complex enterprise sales and market expansion across the data center and storage sectors, managing large-scale infrastructure portfolios before pivoting to the commercialization of frontier artificial intelligence products. He is known for translating sophisticated technical architecture into commercial scale, taking revenue operations from early-stage deployment through to institutional exit velocity, and accelerating enterprise adoption of the technologies redefining how compute and power converge.
+Sandy Suresh
+VP, Machine Learning
+Sandy Suresh is a technology executive whose career spans energy markets, management consulting, capital markets, and consumer-scale AI. He earned his PhD at the University of Michigan's Ross School of Business, where his dissertation applied big data methods to model the U.S. electric grid for long-horizon capital-investment policy — work published in Management Science and IEEE journals. At McKinsey & Co.’s Advanced Analytics practice, he led CEO-sponsored Opex transformations delivering step-change gains for Fortune 500 industrials. He went on to lead data-science and machine learning teams at Citadel Securities, Meta, and PayPal — building industry leading causal inference and quant systems. He is now VP of Machine Learning at Joulent.
+Chris Amoruso
+Sr. Manager, Project Development
+Chris is a Sr. Manager of Project Development at Joulent, bringing a decade of commercial and engineering experience across energy infrastructure. He previously held roles at Calpine, leading origination and commercial structuring for gas-fired power and carbon capture projects, and negotiating CO₂ transportation and sequestration contracts with major infrastructure partners. Chris began his career in commercial and engineering roles at NorTex Midstream Partners, managing natural gas storage assets through the company's exit to Williams. He holds an MBA from Rice University and a B.S. in Petroleum Engineering from Texas A&M University.
+Stephen Kwok
+Director, Infrastructure - Mechanical Engineering
+Stephen is a mechanical engineering leader with three decades of experience spanning data centers, central utility plants, industrial facilities, biotech and pharmaceutical labs, and battery manufacturing facilities. As Principal Mechanical Engineer at Fluidstack, he led AI/GPU compute infrastructure design. At AWS, he developed 20 MW waste heat recovery concepts for liquid-cooled data centers. At Redwood Materials, he engineered mechanical infrastructure for first-of-a-kind lithium cell sorting, hydrometallurgy, and copper foil production facilities. At Tesla, as Manager of Mechanical Design – Infrastructure, he was Engineer of Record for Gigafactory Nevada's chiller yard and 12 million square feet of manufacturing space, leading mechanical infrastructure design for EV manufacturing facilities and Gigafactory concepts in China, Germany, and Texas.
+Akshat Patel
+Head of Energy Software & Optimization
+Akshat is an engineering executive with more than a decade of experience in autonomous driving and industrial automation. His expertise spans building world-class engineering teams and leading the design, development, and deployment of production-grade systems to market. As the CTO/CEO at SafeAI, Akshat led the development of autonomous driving software and fleet automation for heavy industry. As CTO/co-founder at Udelv, he delivered three generations of autonomous delivery vehicles, deployed for public-road deliveries with clients such as Walmart. Prior to Udelv, he managed novel perception sensors development at Apple Special Projects – enabling advanced sensing solutions for perception algorithms, was an early team member on the Tesla Autopilot team, delivered UPS engineering solutions at Eaton Power, power systems control automation at Caterpillar, and manufacturing automation controls at General Motors.
+Maciek Lukawski
+Chief of Staff
+Maciek Lukawski has more than fifteen years of experience across the energy sector.He previously served as Chief Strategy Officer at Amogy, where he led commercialization, strategy, and financing activities, helping the company advance its first deployments in stationary power applications.Earlier in his career at ExxonMobil, he led valuation and transaction work for major upstream asset divestments.He holds a Ph.D. in Chemical Engineering from Cornell University, and master’s degrees from the University of Iceland and AGH University of Science and Technology.
+Nicole Abbatemarco Hall
+Controller
+Nicole is the Controller at Joulent, bringing over 15 years of experience in financial services across finance, operations, and treasury. Most recently, she was at Engine No. 1, where she managed the firm’s core financial, treasury and operational functions. Prior to that, Nicole spent nearly six years at Gamut Capital, a startup private equity firm, supporting a broad range of functions across finance and investor relations. Earlier in her career, she was a global credit broker at ICAP, managing trading operations and client relationships for the Emerging Markets and U.S. Corporate Fixed Income repo desk in New York. Nicole graduated summa cum laude from Monmouth University with a B.A. in Communication.
+Amy Spillane
+Director, Human Resources
+Amy is responsible for talent and human resources. She has over 20 years of experience in human resources, with particular focus on the financial services industry. Amy has been instrumental in building and growing teams for asset management and wealth management firms, both in-house and as a consultant.
+Before joining Joulent, Amy spent 10 years at BlackRock and its predecessor, Barclays Global Investors (BGI). While there, she supported various sales, product and corporate functions, as well as spearheaded early efforts to staff several high-growth startup ventures within the organization.
+Dan Kelly
+Director, Construction
+Dan is a construction and engineering leader with over a decade of experience in taking battery technologies from the glovebox to gigafactory-scale production by developing concepts, scaling technologies, and executing on-site construction. As a Director with Panasonic, he was responsible for installing and commissioning multi-billion-dollar, mission-critical manufacturing equipment as well as leading the on-site construction between Panasonic’s Kansas and Nevada manufacturing locations. Prior to Panasonic, he worked with multiple start-ups leading the strategy and development of novel battery technologies including solid-state electrolytes, Lithium metal, and Lithium-ion. Dan has a BS of Chemical Engineering and an M.B.A. from Northeastern University.
+Alireza Atrvash
+Director, Infrastructure - Electrical
+Alireza is an executive leader in engineering, manufacturing, and construction with more than 25 years of experience delivering hyperscale industrial projects and scaling operations across startup and global manufacturing environments. As a global leader at AESC, he leads cross-functional teams developing and delivering U.S. energy storage and EV gigafactories across multiple states, driving execution from site selection through start-of-production while coordinating with utility, government, and technology partners. Previously, he spent seven years at Tesla leading factory construction and manufacturing systems for autonomous electric vehicles and energy products, supporting the company's mission to accelerate the transition to sustainable energy. A proven people leader who has managed multidisciplinary organizations of more than 150 professionals across multiple geographies, he is recognized for building high-performing teams, optimizing complex engineering systems, and delivering capital-intensive projects under aggressive timelines.
+Elliot Rueb
+VP, Infrastructure - Procurement
+Elliot Rueb is an executive leader in procurement and supply chain with more than 15 years of experience scaling capital-intensive EV manufacturing and aviation fuel facilities across North America and Europe. He excels at building global sourcing organizations, instituting governance frameworks, and negotiating complex commercial agreements, with a proven track record of scaling operations, mitigating risk, and driving significant cost savings. He spent five years at Tesla developing Global Supply Chain for Gigafactory construction across the US and Europe, built the supply chain for a first-of-a-kind sustainable aviation fuel plant, and began his career at Peter Kiewit Sons', one of the largest EPC firms in North America, supporting major civil construction programs.
+Antonio Prieto
+Senior Associate, Finance
+Antonio Prieto is a Senior Associate on the Joulent Finance Team, where he supports corporate and project-level forecasting, capital raising initiatives, and financing strategies. Prior to joining Joulent, he was a Senior Associate at Engine No. 1 and before that was a Senior Associate at Energy Capital Partners, investing across thermal power, renewables, and energy transition infrastructure. Antonio began his career at Bank of America and holds a BS in Finance from NYU Stern.
+Rob Morettin
+Director, Finance
+Robert is a member of the Finance team at Joulent and serves as the functional lead for all finance activities supporting a GW+ scale project development in West Texas. Prior to joining Joulent, Robert worked in investment banking at TD Securities, where he led the execution of M&A and project finance transactions across North America in the energy infrastructure sector, with a primary focus on power and utilities. Robert holds a BASc in Mechanical Engineering from the University of Toronto and is a CFA Charterholder.
+Jake Appleton
+Head of Talent and Strategic Initiatives
+Jake oversees the identification, evaluation, and onboarding of the human talent required to drive Joulent's growth.  Jake also supports Joulent's expansion efforts through engagement with state and local government officials in prospective areas of new development. Prior to joining Joulent, Jake led Engine No. 1’s operating team, partnering with portfolio companies to drive value creation through operational improvements. Previously, Jake spent 21 years as an Operations Officer with the Central Intelligence Agency serving in southern and eastern Africa, South Asia and Latin America. Prior to his government service, Jake was an Analyst with Advanced Technology Ventures (ATV), an early-stage venture capital firm based in Boston and Palo Alto. Jake received a B.A. from Georgetown University, and an M.B.A. from the Tuck School at Dartmouth College.
+Noah Tulsky
+VP, Corporate Development and Partnerships
+Noah builds Joulent's partnership ecosystem - spanning emerging technologies, landowners, data center developers, and customers – and supports capital formation, project finance, and related investing initiatives. Noah has a decade of experience financing and building infrastructure and energy companies. Prior to Joulent, Noah served as an Investment Principal at Engine No. 1. Before Engine No. 1, he was a Partner at Google spin-out Sidewalk Infrastructure Partners leading investments across telecom, clean energy, and closed loop economy and serving as Chief Strategy Officer for a portfolio company. Noah previously worked at Goldman Sachs investing in and financing power, LNG, transportation, and logistics assets.
+Adam Taylor
+Chief Development Officer
+Adam brings 25+ years of experience across the full lifecycle of energy infrastructure development, including direct leadership and construction of over 5 GW of new traditional power generation projects, 2.5 GW of environmental retrofits, and multiple billion-dollar high-voltage transmission and desalination water projects across North America and international markets. Adam’s background spans greenfield development, permitting and interconnection, OEM and EPC contracting, construction execution, and long-term offtake commercialization.
+Chris Wissel-Tyson
+Head/SVP of Growth and Strategy
+Chris is a power infrastructure executive with 18 years of experience developing, operating, and scaling energy assets across the United States. Has led the development of more than 15 GW of gas, energy storage, and renewable projects, including senior leadership roles at BrightNight and Doosan Gridtech, with hands-on execution across the full project lifecycle. Instrumental in founding and scaling three IPPs, building platform-level portfolios and repeatable development strategies.
+Jeff Van Heel
+Chief Infrastructure Officer
+Jeff van Heel is an engineering and infrastructure executive with more than thirty years of experience delivering multi-billion-dollar construction programs. As Director of Infrastructure Engineering at Tesla, he led construction of four Gigafactories across Nevada, China, Germany, and Texas — each completed for production in under two years, with a documented 58% reduction in capital expenditure. He was recruited by Panasonic to take command of their troubled $4.8 billion De Soto, Kansas battery facility — the largest in the world — stabilizing the program and driving it to first production in June 2025. Earlier, as VP of Engineering at Redwood Materials, he helped secure a $2 billion DOE loan commitment. He spent over two decades at Intel leading worldwide engineering programs.
+Brian Boland
+Executive Vice President, Chief Financial Officer & Head of Strategy
+Brian has over 15 years of investing and operating experience across the energy value chain and related infrastructure. Before joining Engine No. 1, Brian was Group Chief Financial Officer of BrightNight Power where he served on its executive team and was responsible for BrightNight’s global financial operations, capital markets and investment activities. Before BrightNight, Brian was a Managing Director at Global Infrastructure Partners and EIG Global Energy Partners where he was Co-head of Infrastructure. Previously, Brian worked at Credit Suisse in the Global Energy and Leveraged Finance groups based in New York.
+Chris James
+Founder and Chief Executive Officer
+Before founding Engine No. 1, Chris spent more than 30 years investing in and building businesses across industries undergoing fundamental transformation. Chris founded Partner Fund Management, originally part of Andor Capital Management which he also co-founded. Chris served as a member of the Management Committee of Pequot Capital Management and founded multiple companies based in the natural resources industry, including White Oak Resources, Pin Oak Mt. Airy, Pin Oak Corpus Christi (co-founded) and Greenfield Holdings.
+Strategic Partners
+Natural gas and capital projects expertise
+Gas turbine and electrical supply chain
+Large and complex capital projects
+in the news
+July 1, 2026
+Joulent
+Joulent Secures $1.75B Strategic Investment from National Grid to Accelerate Growth as Technology-Driven Energy Company Powering American Innovation
+June 22, 2026
+Joulent
+Joulent Launches to Deliver Multi-Gigawatt Power Solutions for American Innovation
+Contact
+LinkedIn
+Copyright ©  2025 . Joulent Inc. All rights reserved.
+Terms of Use  Privacy Policy

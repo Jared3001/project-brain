@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+data/*.db
+# Large primary sources are fetched by scripts/fetch_corpus.py, not committed
+corpus/tceq/application/
+corpus/ercot/*.xlsx
+# Not redistributed: full text of press articles and third party analysis.
+# The app links out to these; see corpus/MANIFEST.md.
+corpus/press/
+corpus/analysis/
+corpus/wayback/*gem-wiki*

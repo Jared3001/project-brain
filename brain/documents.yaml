@@ -1,0 +1,205 @@
+# Document registry: every source the brain may cite.
+#
+# tier: 1 primary regulatory, 2 company statement, 3 press, 4 third party analysis.
+# The answer layer prefers lower tier numbers and says when it falls back.
+# Files left out on purpose are listed under `excluded` with the reason.
+
+documents:
+  # ---- Tier 1: TCEQ air permit 181895 / PSDTX1684 / GHGPSDTX260 ----
+  - id: tceq-application-2025-10
+    title: "TCEQ air permit application, Kilby Power Plant (as filed, administratively complete)"
+    path: corpus/tceq/application/2025-10-17_admin-complete/1-399548-ac.pdf
+    kind: permit_application
+    tier: 1
+    publisher: TCEQ / Energy Forge One LLC
+    published: 2025-10-17
+    url: https://www.tceq.texas.gov/assets/public/permitting/air/reports/applications/399548-ac.pdf
+  - id: tceq-application-2026-tc
+    title: "TCEQ permit file at technical completeness: application, 12/22/2025 update, draft permit, correspondence"
+    path: corpus/tceq/application/2026-08_technically-complete/1-399548-tc.pdf
+    kind: permit_application
+    tier: 1
+    publisher: TCEQ / Energy Forge One LLC
+    published: 2026-08-06
+    url: https://www.tceq.texas.gov/assets/public/permitting/air/reports/applications/399548-tc.pdf
+    notes: "Date is the first pending list snapshot showing Technically Complete; the file holds documents from 10/2025 to mid 2026."
+  - id: tceq-pls
+    title: "TCEQ plain language summary, permit 181895"
+    path: corpus/tceq/2025-10-17_tceq_181895_plain-language-summary.pdf
+    kind: permit_notice
+    tier: 1
+    publisher: TCEQ
+    published: 2025-10-17
+    url: https://www.tceq.texas.gov/downloads/permitting/air/bilingual/pending-permit-notices/181895-pls-english.pdf
+    notes: "Undated document; filed under the application date."
+  - id: tceq-nori
+    title: "TCEQ notice of receipt of application and intent to obtain air permit (NORI)"
+    path: corpus/tceq/2025-10-17_tceq_181895_nori.pdf
+    kind: permit_notice
+    tier: 1
+    publisher: TCEQ
+    published: 2025-10-17
+    url: https://www.tceq.texas.gov/downloads/permitting/air/bilingual/pending-permit-notices/181895-nori-english.pdf
+  - id: tceq-napd
+    title: "TCEQ notice of application and preliminary decision (NAPD)"
+    path: corpus/tceq/2026-04-15_tceq_181895_napd.pdf
+    kind: permit_notice
+    tier: 1
+    publisher: TCEQ
+    published: 2026-04-15
+    url: https://www.tceq.texas.gov/downloads/permitting/air/bilingual/pending-permit-notices/181895-napd-english.pdf
+  - id: tceq-meeting-notice
+    title: "TCEQ notice of public meeting, June 10, 2026"
+    path: corpus/tceq/2026-06-10_tceq_181895_public-meeting-notice.pdf
+    kind: permit_notice
+    tier: 1
+    publisher: TCEQ
+    published: 2026-06-10
+    url: https://www.tceq.texas.gov/downloads/agency/decisions/hearings/notices/2026/2026-06-10-energy-forge-one-llc-psdtx1684-ghgpsdtx260-pm.pdf
+  - id: tceq-meeting-page
+    title: "TCEQ public meeting page, Energy Forge One LLC"
+    path: corpus/tceq/2026-06-10_tceq_181895_public-meeting-page.txt
+    kind: permit_notice
+    tier: 1
+    publisher: TCEQ
+    published: 2026-06-10
+    url: https://www.tceq.texas.gov/agency/decisions/hearings/events/public-meeting-energy-forge-one-llc-181895-psdtx1684-and-ghgpsdtx260
+
+  # ---- Tier 1: generated from structured sources (see brain/ingest.py) ----
+  - id_prefix: ercot-gis
+    glob: corpus/ercot/*_ercot_gis_report.xlsx
+    title: "ERCOT Generation Interconnection Status report, {month}"
+    kind: queue_report
+    tier: 1
+    publisher: ERCOT
+    url: https://www.ercot.com/mp/data-products/data-product-details?id=PG7-200-ER
+    notes: "Only rows mentioning Kilby or Energy Forge One are ingested, one page per sheet. Includes the unrelated Haskell County 'Kilby Station' rows on purpose."
+  - id_prefix: tceq-pending
+    glob: corpus/wayback/tceq-pending/tceq-pending_*.html
+    title: "TCEQ pending NSR permit list (Wayback Machine snapshot), {date}"
+    kind: status_snapshot
+    tier: 1
+    publisher: TCEQ via Internet Archive
+    url: https://www.tceq.texas.gov/assets/public/permitting/air/reports/applications/nsr-pending-permits.html
+
+  # ---- Tier 2: company statements ----
+  - id: chevron-release-2026-06-22
+    title: "Chevron: Chevron signs 20-year power agreement with Microsoft for West Texas data center"
+    path: corpus/wayback/2026-06-22_chevron-newsroom_microsoft-ppa.txt
+    kind: company_release
+    tier: 2
+    publisher: Chevron
+    published: 2026-06-22
+    url: https://www.chevron.com/newsroom/2026/q2/chevron-signs-20-year-power-agreement-with-microsoft-for-west-texas-data-center
+  - id: joulent-release-national-grid
+    title: "Joulent: Joulent secures $1.75B strategic investment from National Grid"
+    path: corpus/wayback/2026-07-19_joulent_in-the-news_strategic-investment.txt
+    kind: company_release
+    tier: 2
+    publisher: Joulent
+    published: 2026-07-01
+    url: https://www.joulent.com/in-the-news/strategic-investment
+    notes: "Dateline July 1, 2026; captured by the Wayback Machine 7/19/2026."
+  - id: joulent-about
+    title: "Joulent: About Us"
+    path: corpus/wayback/2026-08-10_joulent_about-us.txt
+    kind: company_release
+    tier: 2
+    publisher: Joulent
+    published: 2026-08-10
+    url: https://www.joulent.com/about-us
+  - id: joulent-power-stack
+    title: "Joulent: Power Stack"
+    path: corpus/wayback/2026-08-10_joulent_power-stack.txt
+    kind: company_release
+    tier: 2
+    publisher: Joulent
+    published: 2026-08-10
+    url: https://www.joulent.com/power-stack
+
+  # ---- Tier 3: press ----
+  - id: techcrunch-2026-06-22
+    title: "TechCrunch: Microsoft and Chevron plan one of the largest gas-powered data center projects in US"
+    path: corpus/press/2026-06-22_techcrunch_microsoft-chevron.txt
+    kind: press
+    tier: 3
+    publisher: TechCrunch
+    published: 2026-06-22
+    url: https://techcrunch.com/2026/06/22/microsoft-and-chevron-plan-one-of-the-largest-gas-powered-data-center-projects-in-us
+  - id: eenews-2026-06
+    title: "E&E News: Chevron inks deal to power Microsoft data center in Texas"
+    path: corpus/press/2026-06_eenews_chevron-microsoft.txt
+    kind: press
+    tier: 3
+    publisher: E&E News
+    published: 2026-06-22
+    url: https://www.eenews.net/articles/chevron-inks-deal-to-power-microsoft-data-center-in-texas/
+  - id: semafor-2026-10-01
+    title: "Semafor: Texas politics could delay investment decision for huge Chevron data center"
+    path: corpus/press/2026-10-01_semafor_kilby-fid.txt
+    kind: press
+    tier: 3
+    publisher: Semafor
+    published: 2026-10-01
+    url: https://www.semafor.com/article/10/01/2026/texas-politics-could-delay-investment-decision-for-huge-chevron-data-center
+  - id: latitude-national-grid-joulent
+    title: "Latitude Media: Inside National Grid's $1.75 billion bet on Joulent"
+    path: corpus/press/2026_latitude_national-grid-joulent.txt
+    kind: press
+    tier: 3
+    publisher: Latitude Media
+    published: 2026-07-10
+    url: https://www.latitudemedia.com/news/inside-national-grids-1-75-billion-bet-on-joulent/
+  - id: powereng-national-grid-joulent
+    title: "Power Engineering: National Grid Ventures doles out $1.75bn for a stake in Joulent"
+    path: corpus/press/2026_power-eng_national-grid-joulent.txt
+    kind: press
+    tier: 3
+    publisher: Power Engineering
+    published: 2026-07-08
+    url: https://www.power-eng.com/?p=136247
+  - id: energycapital-joulent-launch
+    title: "Energy Capital HTX: Joulent launches to power AI data centers"
+    path: corpus/press/2026_energycapital_joulent-launch.txt
+    kind: press
+    tier: 3
+    publisher: Energy Capital HTX
+    published: 2026-07-01
+    url: https://energycapitalhtx.com/joulent-launches-data-centers
+
+  # ---- Tier 4: third party analysis ----
+  - id: frontier-grid-2026-07-28
+    title: "Frontier Grid: Project Kilby fuel-backed power readiness brief"
+    path: corpus/analysis/2026-07-28_frontier-grid_kilby-readiness.pdf
+    kind: analysis
+    tier: 4
+    publisher: Frontier Grid
+    published: 2026-07-28
+    url: https://www.frontiergrid.us/reports/frontier-grid-project-kilby-fuel-backed-power-readiness-2026-07-28.pdf
+  - id: gem-wiki-2026-04
+    title: "Global Energy Monitor wiki: Kilby power plant (snapshot)"
+    path: corpus/wayback/2026-04-16_gem-wiki_kilby.txt
+    kind: analysis
+    tier: 4
+    publisher: Global Energy Monitor via Internet Archive
+    published: 2026-04-16
+    url: https://www.gem.wiki/Kilby_power_plant
+  - id: compute-atlas
+    title: "Compute Atlas: Kilby Power Plant"
+    path: corpus/analysis/compute-atlas_kilby.txt
+    kind: analysis
+    tier: 4
+    publisher: Compute Atlas
+    published: 2026-11-19
+    url: https://www.compute-atlas.com/facilities/kilby-power-plant-energy-forge-one-reeves-county-tx
+    notes: "Retrieval date; page is undated."
+
+excluded:
+  - path: corpus/press/2026_energy-pedia_chevron-microsoft.txt
+    reason: "Syndicated copy of the Chevron release; would double count the same claim."
+  - path: corpus/wayback/2026-06-22_businesswire_chevron-microsoft-ppa.txt
+    reason: "Same Chevron release as the newsroom copy."
+  - path: corpus/ercot/kilby_rows_by_month.csv
+    reason: "Derived from the GIS reports, which are ingested directly."
+  - path: corpus/tceq/application/*/*.xlsx
+    reason: "Emissions workbooks; not needed for v1 questions. Candidate for the record extractor later."

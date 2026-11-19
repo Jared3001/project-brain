@@ -1,0 +1,46 @@
+report_date,sheet,INR,Project Name,GIM Study Phase,Projected COD,Capacity (MW),Fuel,Technology
+2025-11-03,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Started, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2025-12-01,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Started, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2025-12-01,Project Details - Large Gen,28INR0459,Kilby1 Part 4 Large Block Simple Cycle,"SS Started, FIS Started, No IA",2028-04-20 00:00:00,950,GAS,GT
+2026-01-02,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Started, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2026-01-02,Project Details - Large Gen,28INR0459,Kilby1 Part 4 Large Block Simple Cycle,"SS Started, FIS Started, No IA",2028-04-20 00:00:00,950,GAS,GT
+2026-02-02,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Completed, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2026-02-02,Project Details - Large Gen,28INR0457,Kilby1 Part 2 Tier1 BESS,"SS Started, FIS Started, No IA",2028-01-21 00:00:00,560,OTH,BA
+2026-02-02,Project Details - Large Gen,28INR0459,Kilby1 Part 4 Large Block Simple Cycle,"SS Started, FIS Started, No IA",2028-04-20 00:00:00,950,GAS,GT
+2026-03-04,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Completed, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2026-03-04,Project Details - Large Gen,28INR0457,Kilby1 Part 2 Tier1 BESS,"SS Started, FIS Started, No IA",2028-01-21 00:00:00,560,OTH,BA
+2026-03-04,Project Details - Large Gen,28INR0459,Kilby1 Part 4 Large Block Simple Cycle,"SS Completed, FIS Started, No IA",2028-04-20 00:00:00,950,GAS,GT
+2026-03-04,Project Details - Large Gen,29INR0199,Kilby1 Part 6 Large Block Combined Cycle,"SS Started, FIS Started, No IA",2029-07-19 00:00:00,1056,GAS,CC
+2026-04-02,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Completed, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2026-04-02,Project Details - Large Gen,28INR0457,Kilby1 Part 2 Tier1 BESS,"SS Completed, FIS Started, No IA",2028-01-21 00:00:00,560,OTH,BA
+2026-04-02,Project Details - Large Gen,28INR0459,Kilby1 Part 4 Large Block Simple Cycle,"SS Completed, FIS Started, No IA",2028-04-20 00:00:00,950,GAS,GT
+2026-04-02,Project Details - Large Gen,29INR0199,Kilby1 Part 6 Large Block Combined Cycle,"SS Started, FIS Started, No IA",2029-07-19 00:00:00,1056,GAS,CC
+2026-05-01,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Completed, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2026-05-01,Project Details - Large Gen,28INR0457,Kilby1 Part 2 Tier1 BESS,"SS Completed, FIS Started, No IA",2028-01-21 00:00:00,560,OTH,BA
+2026-05-01,Project Details - Large Gen,28INR0459,Kilby1 Part 4 Large Block Simple Cycle,"SS Completed, FIS Started, No IA",2028-04-20 00:00:00,950,GAS,GT
+2026-05-01,Project Details - Large Gen,29INR0199,Kilby1 Part 6 Large Block Combined Cycle,"SS Started, FIS Started, No IA",2029-07-19 00:00:00,1056,GAS,CC
+2026-06-01,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Completed, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2026-06-01,Project Details - Large Gen,28INR0457,Kilby1 Part 2 Tier1 BESS,"SS Completed, FIS Started, No IA",2028-01-21 00:00:00,560,OTH,BA
+2026-06-01,Project Details - Large Gen,28INR0459,Kilby1 Part 4 Large Block Simple Cycle,"SS Completed, FIS Started, No IA",2028-04-20 00:00:00,950,GAS,GT
+2026-06-01,Project Details - Large Gen,29INR0199,Kilby1 Part 6 Large Block Combined Cycle,"SS Completed, FIS Started, No IA",2029-07-19 00:00:00,1056,GAS,CC
+2026-07-01,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Completed, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2026-07-01,Project Details - Large Gen,28INR0457,Kilby1 Part 2 Tier1 BESS,"SS Completed, FIS Started, No IA",2028-01-21 00:00:00,560,OTH,BA
+2026-07-01,Project Details - Large Gen,28INR0459,Kilby1 Part 4 Large Block Simple Cycle,"SS Completed, FIS Started, No IA",2028-04-20 00:00:00,950,GAS,GT
+2026-07-01,Project Details - Large Gen,29INR0199,Kilby1 Part 6 Large Block Combined Cycle,"SS Completed, FIS Started, No IA",2029-07-19 00:00:00,1056,GAS,CC
+2026-08-03,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Completed, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2026-08-03,Project Details - Large Gen,28INR0457,Kilby1 Part 2 Tier1 BESS,"SS Completed, FIS Started, No IA",2028-01-21 00:00:00,330,OTH,BA
+2026-08-03,Project Details - Large Gen,28INR0459,Kilby1 Part 4 Large Block Simple Cycle,"SS Completed, FIS Started, No IA",2028-04-20 00:00:00,950,GAS,GT
+2026-08-03,Project Details - Large Gen,29INR0199,Kilby1 Part 6 Large Block Combined Cycle,"SS Completed, FIS Started, No IA",2029-07-19 00:00:00,1056,GAS,CC
+2026-08-03,Cancellation Update,28INR0460,Kilby1 Part 5 Solar,,,,Solar,
+2026-09-01,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Completed, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2026-09-01,Project Details - Large Gen,28INR0457,Kilby1 Part 2 Tier1 BESS,"SS Completed, FIS Started, No IA",2028-01-21 00:00:00,330,OTH,BA
+2026-09-01,Project Details - Large Gen,28INR0459,Kilby1 Part 4 Large Block Simple Cycle,"SS Completed, FIS Started, No IA",2028-04-20 00:00:00,950,GAS,GT
+2026-09-01,Project Details - Large Gen,29INR0199,Kilby1 Part 6 Large Block Combined Cycle,"SS Completed, FIS Started, No IA",2029-07-19 00:00:00,1056,GAS,CC
+2026-10-01,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Completed, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2026-10-01,Project Details - Large Gen,28INR0457,Kilby1 Part 2 Tier1 BESS,"SS Completed, FIS Started, No IA",2028-01-21 00:00:00,330,OTH,BA
+2026-10-01,Project Details - Large Gen,28INR0459,Kilby1 Part 4 Large Block Simple Cycle,"SS Completed, FIS Started, No IA",2028-04-20 00:00:00,950,GAS,GT
+2026-10-01,Project Details - Large Gen,29INR0199,Kilby1 Part 6 Large Block Combined Cycle,"SS Completed, FIS Started, No IA",2029-07-19 00:00:00,1056,GAS,GT
+2026-11-02,Project Details - Large Gen,27INR0572,Kilby1 Part 1 Small Block Simple Cycle,"SS Completed, FIS Started, No IA",2027-11-04 00:00:00,371,GAS,GT
+2026-11-02,Project Details - Large Gen,28INR0457,Kilby1 Part 2 Tier1 BESS,"SS Completed, FIS Started, No IA",2028-01-21 00:00:00,330,OTH,BA
+2026-11-02,Project Details - Large Gen,28INR0459,Kilby1 Part 4 Large Block Simple Cycle,"SS Completed, FIS Started, No IA",2028-04-20 00:00:00,950,GAS,GT
+2026-11-02,Project Details - Large Gen,29INR0199,Kilby1 Part 6 Large Block Combined Cycle,"SS Completed, FIS Started, No IA",2029-07-19 00:00:00,1056,GAS,GT

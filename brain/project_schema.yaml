@@ -1,0 +1,126 @@
+# The project record: the facts the brain keeps for Project Kilby.
+#
+# Every fact the record shows carries: value, document id, page, verbatim quote,
+# as_of date (the document's published date), and status:
+#   found      one value, quoted from a page
+#   conflict   two or more sources disagree; all values kept, none picked silently
+#   not_found  searched the listed source kinds, nothing quotable
+#
+# Rules:
+#   - Never infer a number. A value must appear verbatim in its quote.
+#   - Tier decides display order, never which value is "true". Conflicts stay conflicts.
+#   - A later filing from the same source supersedes an earlier one (that is a
+#     change, recorded in the snapshot diff), not a conflict.
+
+project:
+  name: Kilby Power Plant (Project Kilby)
+  developer_of_record: Energy Forge One LLC
+  tceq_regulated_entity: RN112304498
+  tceq_customer: CN606441046
+  tceq_permits: ["181895", "PSDTX1684", "GHGPSDTX260"]
+
+fields:
+  # ---- What it is ----
+  capacity_mw:
+    label: Generating capacity
+    type: number
+    unit: MW
+    sources: [permit_application, company_release, queue_report, press]
+    supersede_within: [permit_application, queue_report]
+    notes: "Expect conflict: 2.67 GW (Chevron), 2,595 then 2,869 MW (TCEQ), ERCOT rows sum differently. Keep basis (nominal net at site conditions, nameplate, queue MW) with each value."
+  turbine_fleet:
+    label: Turbines (model x count)
+    type: list
+    item: {model: string, count: integer, cycle: "combined|simple", unit_mw: number}
+    sources: [permit_application]
+    supersede_within: [permit_application]
+  technology:
+    label: Technology
+    type: string
+    sources: [permit_application, queue_report, company_release]
+  battery_storage_mw:
+    label: Battery storage
+    type: number
+    unit: MW
+    sources: [queue_report]
+    supersede_within: [queue_report]
+
+  # ---- Who ----
+  developer:
+    label: Developer / permit applicant
+    type: string
+    sources: [permit_application, permit_notice, company_release]
+  sponsors:
+    label: Sponsors / partners
+    type: list
+    item: {name: string, role: string}
+    sources: [company_release, press]
+  offtaker:
+    label: Offtaker
+    type: string
+    sources: [company_release, press]
+  ppa_term_years:
+    label: PPA term
+    type: number
+    unit: years
+    sources: [company_release, press]
+  turbine_suppliers:
+    label: Turbine suppliers
+    type: list
+    sources: [permit_application, company_release]
+
+  # ---- Where ----
+  location:
+    label: Location
+    type: string
+    sources: [permit_notice, permit_application]
+  interconnection_point:
+    label: Interconnection point
+    type: string
+    sources: [queue_report]
+  queue_entries:
+    label: ERCOT queue entries
+    type: list
+    item: {inr: string, name: string, mw: number, fuel: string, technology: string, projected_cod: date, study_phase: string}
+    sources: [queue_report]
+    supersede_within: [queue_report]
+
+  # ---- When ----
+  first_power:
+    label: First power / COD
+    type: string
+    sources: [company_release, queue_report, press]
+    notes: "Company says 2028; queue CODs are per part. Show both with their basis."
+  fid_status:
+    label: Final investment decision
+    type: string
+    sources: [company_release, press]
+    notes: "As of the corpus: expected by end of 2026, not reported as taken. A good not_found / 'not yet' case."
+
+  # ---- Permits ----
+  air_permit_status:
+    label: Air permit status
+    type: string
+    sources: [status_snapshot, permit_notice]
+    supersede_within: [status_snapshot]
+  permit_milestones:
+    label: Permit milestones
+    type: list
+    item: {date: date, event: string}
+    sources: [permit_notice, permit_application, status_snapshot]
+
+  # ---- Environmental ----
+  co2e_tpy:
+    label: CO2e emissions
+    type: number
+    unit: tons per year
+    sources: [permit_notice, permit_application, press]
+    notes: "Expect conflict: TCEQ summary 11,564,704.59 vs EIP 'more than 13 million' via TechCrunch."
+  nox_controls:
+    label: Emission controls
+    type: string
+    sources: [permit_notice, permit_application, company_release]
+  water_source:
+    label: Water source
+    type: string
+    sources: [company_release, permit_application]
