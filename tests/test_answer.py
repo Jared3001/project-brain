@@ -58,3 +58,23 @@ def test_retrieval_caps_monthly_reports_and_finds_the_filings():
     ercot = {h.doc_id for h in hits if h.doc_id.startswith("ercot-gis-")}
     assert len(ercot) <= 2
     assert any(h.doc_id == "tceq-application-2026-tc" and h.page_no in (30, 681) for h in hits)
+
+
+def test_dates_match_across_formats():
+    page = Hit("d", "t", 1, "2026-08-06", 1, "p. 1", 0.0, "", "These turbines were added on December 22, 2025.")
+    ok = {"status": "answered", "not_found_note": "", "sentences": [
+        {"text": "They were added on 12/22/2025.", "citations": [{"page_id": "P1", "quote": "These turbines were added"}]}]}
+    assert verify(ok, {"P1": page})[2] == []
+    bad = {"status": "answered", "not_found_note": "", "sentences": [
+        {"text": "They were added on 12/23/2025.", "citations": [{"page_id": "P1", "quote": "These turbines were added"}]}]}
+    assert any("2025-12-23" in p for p in verify(bad, {"P1": page})[2])
+
+
+@pytest.mark.skipif(not DB_PATH.exists(), reason="run ingest and record first")
+@pytest.mark.parametrize("question,doc,locator", [
+    ("How has the size of the battery storage portion changed in the ERCOT queue?", "ercot-gis-2026-06", "Large Gen"),
+    ("What happened to the solar part of the Kilby queue entries?", "ercot-gis-2026-07", "Cancellation"),
+    ("On what date did TCEQ estimate the application would be technically complete?", "tceq-application-2026-tc", "p. 30"),
+])
+def test_retrieval_regressions_from_the_baseline_eval(question, doc, locator):
+    assert any(h.doc_id == doc and locator in h.locator for h in retrieve(question))

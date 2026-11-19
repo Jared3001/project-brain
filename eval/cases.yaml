@@ -1,0 +1,227 @@
+# Project Brain eval set, written 2026-11-19 before any tuning.
+#
+# kind: answerable | change | unanswerable
+#   facts: every inner list must have at least one alternative present in the
+#          answer text (case and comma insensitive)
+#   docs:  document id prefixes a supporting citation may come from
+#   absent: (unanswerable only) terms checked absent from the corpus, so the
+#           "not in the documents" label is verified, not assumed
+#   trap:  what makes the case hard
+
+cases:
+  # ---------- answerable: what the record says ----------
+  - id: a01-capacity-permit
+    kind: answerable
+    question: What generating capacity does the TCEQ permit file give for the Kilby plant?
+    facts: [["2,869"]]
+    docs: [tceq-application-2026-tc]
+    trap: Earlier 2,595 and 2,476 MW figures are on other pages of the same file.
+  - id: a02-capacity-original
+    kind: answerable
+    question: What capacity did the original October 2025 permit application state?
+    facts: [["2,595"]]
+    docs: [tceq-application]
+  - id: a03-capacity-chevron
+    kind: answerable
+    question: What capacity did Chevron announce for Project Kilby?
+    facts: [["2.67"]]
+    docs: [chevron-release, techcrunch, eenews, powereng, latitude, energycapital, joulent-release]
+  - id: a04-turbine-count
+    kind: answerable
+    question: How many turbines are in the updated permit application?
+    facts: [["46"]]
+    docs: [tceq-application-2026-tc]
+  - id: a05-t130-purpose
+    kind: answerable
+    question: Why were the Solar Titan 130 turbines added?
+    facts: [["29"], ["early phase", "early-phase"]]
+    docs: [tceq-application-2026-tc]
+  - id: a06-7ha-rating
+    kind: answerable
+    question: What is the net output of each GE 7HA.02 combined-cycle turbine?
+    facts: [["555.7"]]
+    docs: [tceq-application]
+    trap: The 600 MW figure in an older summary on the same file.
+  - id: a07-ppa-term
+    kind: answerable
+    question: How long is the power purchase agreement?
+    facts: [["20"]]
+    docs: [chevron-release, techcrunch, eenews, powereng, latitude, energycapital, joulent-release]
+  - id: a08-offtaker
+    kind: answerable
+    question: Who will buy the plant's power?
+    facts: [["Microsoft"]]
+    docs: [chevron-release, techcrunch, eenews, powereng, latitude, energycapital, joulent-release, semafor]
+  - id: a09-applicant
+    kind: answerable
+    question: Which company applied for the air permit?
+    facts: [["Energy Forge One"]]
+    docs: [tceq-]
+  - id: a10-county
+    kind: answerable
+    question: Which Texas county is the plant in?
+    facts: [["Reeves"]]
+    docs: [tceq-, chevron-release, ercot-gis, semafor]
+  - id: a11-substation
+    kind: answerable
+    question: Which substation does the project connect to in the ERCOT queue?
+    facts: [["Solstice"]]
+    docs: [ercot-gis]
+    trap: The unrelated Kilby Station / Kilby Switching Station in Haskell County.
+  - id: a12-battery-now
+    kind: answerable
+    question: How large is the battery storage portion in the latest ERCOT report?
+    facts: [["330"]]
+    docs: [ercot-gis-2026-10, ercot-gis-2026-09, ercot-gis-2026-08, ercot-gis-2026-07]
+    trap: 560 MW in earlier reports; Quantum Storage at 321.75 MW is a different project.
+  - id: a13-part1-cod
+    kind: answerable
+    question: What is the projected commercial operation date for Kilby1 Part 1?
+    facts: [["2027-11-04", "November 4, 2027"]]
+    docs: [ercot-gis]
+  - id: a14-first-power
+    kind: answerable
+    question: When does Chevron expect first power?
+    facts: [["2028"]]
+    docs: [chevron-release, techcrunch, eenews, powereng, latitude, energycapital, joulent-release, semafor]
+  - id: a15-fid-timing
+    kind: answerable
+    question: When does Chevron expect to make its final investment decision?
+    facts: [["end of 2026", "2026"]]
+    docs: [chevron-release, semafor, techcrunch, eenews, powereng]
+  - id: a16-co2e-updated
+    kind: answerable
+    question: What annual CO2e emissions does TCEQ list for the updated 46 turbine project?
+    facts: [["13,890,275"]]
+    docs: [tceq-application-2026-tc]
+    trap: 11,564,704.59 in the plain language summary is the original project.
+  - id: a17-co2e-pls
+    kind: answerable
+    question: What CO2 equivalent total does the plain language summary list?
+    facts: [["11,564,704"]]
+    docs: [tceq-pls, tceq-application]
+  - id: a18-nox-controls
+    kind: answerable
+    question: How will NOx emissions be controlled?
+    facts: [["selective catalytic reduction", "SCR"]]
+    docs: [tceq-, chevron-release]
+  - id: a19-water
+    kind: answerable
+    question: What water source will the plant use?
+    facts: [["brackish"]]
+    docs: [chevron-release]
+  - id: a20-filed-date
+    kind: answerable
+    question: When was the air permit application submitted to TCEQ?
+    facts: [["October 17, 2025", "10/17/2025", "2025-10-17"]]
+    docs: [tceq-]
+  - id: a21-public-meeting
+    kind: answerable
+    question: When and where was the TCEQ public meeting on the permit held?
+    facts: [["June 10, 2026"], ["Pecos"]]
+    docs: [tceq-meeting]
+  - id: a22-permit-number
+    kind: answerable
+    question: What is the state air quality permit number?
+    facts: [["181895"]]
+    docs: [tceq-]
+  - id: a23-suppliers
+    kind: answerable
+    question: Who supplies the turbines?
+    facts: [["GE Vernova", "General Electric", "GE 7HA"], ["Solar Turbines", "Solar Titan", "Caterpillar"]]
+    docs: [chevron-release, tceq-application, techcrunch, eenews]
+  - id: a24-national-grid
+    kind: answerable
+    question: How much did National Grid invest in Joulent, and for what stake?
+    facts: [["1.75"], ["35"]]
+    docs: [joulent-release, powereng, latitude]
+  - id: a25-final-issuance-estimate
+    kind: answerable
+    question: When did TCEQ estimate the permit would be issued?
+    facts: [["10/15/2026", "October 15, 2026"]]
+    docs: [tceq-application-2026-tc]
+  - id: a26-technically-complete
+    kind: answerable
+    question: On what date did TCEQ estimate the application would be technically complete?
+    facts: [["4/15/2026", "April 15, 2026"]]
+    docs: [tceq-application-2026-tc]
+
+  # ---------- change over time ----------
+  - id: c01-battery-change
+    kind: change
+    question: How has the size of the battery storage portion changed in the ERCOT queue?
+    facts: [["560"], ["330"]]
+    docs: [ercot-gis]
+  - id: c02-capacity-change
+    kind: change
+    question: How did the permit application's capacity change between the original filing and the update?
+    facts: [["2,595"], ["2,869"]]
+    docs: [tceq-application]
+  - id: c03-turbine-change
+    kind: change
+    question: How did the number of turbines change between the original application and the update?
+    facts: [["17"], ["46"]]
+    docs: [tceq-application]
+  - id: c04-permit-status
+    kind: change
+    question: How has the air permit application's status on TCEQ's pending list changed?
+    facts: [["Administrative"], ["Technically"]]
+    docs: [tceq-pending, tceq-application-2026-tc]
+  - id: c05-solar-fate
+    kind: change
+    question: What happened to the solar part of the Kilby queue entries?
+    facts: [["cancel"]]
+    docs: [ercot-gis]
+  - id: c06-part6-technology
+    kind: change
+    question: Did the technology listed for Kilby1 Part 6 change in the ERCOT reports?
+    facts: [["CC", "combined"], ["GT", "gas turbine", "simple"]]
+    docs: [ercot-gis]
+
+  # ---------- unanswerable: the right answer is "not in the documents" ----------
+  - id: u01-turbine-cost
+    kind: unanswerable
+    question: How much did the GE Vernova turbines cost?
+    absent: ["turbine cost", "turbine price"]
+  - id: u02-epc-contractor
+    kind: unanswerable
+    question: Which company is the EPC contractor for the plant?
+    absent: ["EPC contractor is", "selected as EPC"]
+    trap: The permit file mentions "the EPC agreement" and carbon capture EPC costs, but never names a contractor.
+  - id: u03-construction-cost
+    kind: unanswerable
+    question: What is the total construction cost of the Kilby power plant?
+    absent: ["construction cost", "total cost of the project"]
+    trap: "$10 billion in tax revenue and $407 million carbon capture EPC costs are on nearby pages."
+  - id: u04-ppa-price
+    kind: unanswerable
+    question: What price per MWh will Microsoft pay under the PPA?
+    absent: ["per megawatt-hour", "PPA price"]
+    trap: The permit file has $/MWh figures for carbon capture economics.
+  - id: u05-acreage
+    kind: unanswerable
+    question: How many acres is the Kilby site?
+    absent: ["acre"]
+  - id: u06-lcoe
+    kind: unanswerable
+    question: What is the plant's levelized cost of electricity?
+    absent: ["levelized", "LCOE"]
+  - id: u07-mercuria
+    kind: unanswerable
+    question: How many megawatts is the Pecos Power Plant that Mercuria is building with a Texas Energy Fund loan?
+    absent: ["Mercuria", "Texas Energy Fund"]
+    trap: Same county, different project.
+  - id: u08-engine-no1-price
+    kind: unanswerable
+    question: How much did Chevron pay Engine No. 1 for its share of Project Kilby?
+    absent: ["paid Engine No. 1", "acquired Engine No. 1"]
+    trap: National Grid's $1.75 billion for 35% of Joulent is a different transaction.
+  - id: u09-dc-contractor
+    kind: unanswerable
+    question: Who is the general contractor building Microsoft's data center in Pecos?
+    absent: ["general contractor"]
+  - id: u10-revenue
+    kind: unanswerable
+    question: How much annual revenue will the plant earn from Microsoft?
+    absent: ["annual revenue", "revenue from Microsoft"]
+    trap: "Chevron's release mentions $10 billion in state and local tax revenue and mid-teen returns."

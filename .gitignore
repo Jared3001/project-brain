@@ -13,3 +13,8 @@ corpus/wayback/*gem-wiki*
 
 # Secrets
 .env
+
+# Eval output: keep results and summaries, not bulk or derived files
+.claude/hillclimb/**/traces/
+.claude/hillclimb/**/report.html
+.claude/hillclimb/**/trajectory/

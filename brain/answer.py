@@ -157,12 +157,13 @@ FIELD_WORDS = {
     "first_power": {"cod", "first", "online", "operation", "operational", "when"},
     "fid_status": {"fid", "investment", "decision"},
     "air_permit_status": {"permit", "status", "tceq", "approved", "issued"},
-    "permit_milestones": {"permit", "milestones", "timeline", "filed", "meeting", "deficiency"},
+    "permit_milestones": {"permit", "milestones", "timeline", "filed", "meeting", "deficiency", "complete",
+                          "completeness", "technically", "issuance", "issued", "estimate", "estimated"},
     "co2e_tpy": {"co2", "co2e", "carbon", "emissions", "greenhouse", "ghg"},
     "nox_controls": {"nox", "controls", "scr", "catalyst", "pollution"},
     "water_source": {"water", "groundwater", "brackish"},
 }
-PER_DOC = {"queue_report": 1, "status_snapshot": 1}   # near duplicate monthly files: one page each, two files max
+PER_DOC = {"queue_report": 2, "status_snapshot": 1}   # near duplicate monthly files: one page each, two files max
 MAX_SAME_KIND = {"queue_report": 2, "status_snapshot": 2}
 
 
@@ -201,12 +202,23 @@ def retrieve(question: str, k: int = K_PAGES) -> list[Hit]:
     fields = [f for f, words in FIELD_WORDS.items() if terms & words]
     if fields:
         rows = con.execute(
-            f"""SELECT DISTINCT f.doc_id, f.page_no, f.locator, f.tier, f.as_of, d.title, d.published, p.text
+            f"""SELECT f.doc_id, f.page_no, f.locator, f.tier, f.as_of, d.title, d.published, p.text,
+                       f.display, f.role, f.field,
+                       coalesce(f.first_doc_id, f.doc_id), coalesce(f.first_page_no, f.page_no)
                 FROM facts f JOIN documents d ON d.id = f.doc_id
                 JOIN pages p ON p.doc_id = f.doc_id AND p.page_no = f.page_no
-                WHERE f.field IN ({','.join('?' * len(fields))})
-                ORDER BY f.tier, f.as_of DESC""", fields).fetchall()
-        for doc_id, page_no, locator, tier, as_of, title, published, text in rows:
+                WHERE f.field IN ({','.join('?' * len(fields))})""", fields).fetchall()
+
+        field_score = {f: len(terms & FIELD_WORDS[f]) for f in fields}
+
+        def rank(r):
+            words = set(re.findall(r"[a-z0-9]+", r[8].lower()))
+            newest_first = -int(r[4].replace("-", "") or 0)
+            # facts echoing the question, then the best matching field, then current before
+            # history, regulatory first, newest first
+            return (-len(terms & words), -field_score[r[10]], r[10], r[9] != "current", r[3], newest_first)
+        rows.sort(key=rank)
+        for doc_id, page_no, locator, tier, as_of, title, published, text, *_ in rows:
             if len(picked) >= k - 2:
                 break   # leave room for full text hits
             add(Hit(doc_id, title, tier, published, page_no, locator, 0.0, "", text))
@@ -216,6 +228,31 @@ def retrieve(question: str, k: int = K_PAGES) -> list[Hit]:
             break
         add(h)
     return picked
+
+
+MONTHS = {m: i for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july",
+                                       "august", "september", "october", "november", "december"], start=1)}
+DATE_RX = re.compile(
+    r"(?P<mdy>\b(?P<m1>\d{1,2})/(?P<d1>\d{1,2})/(?P<y1>\d{4})\b)"
+    r"|(?P<iso>\b(?P<y2>\d{4})-(?P<m2>\d{2})-(?P<d2>\d{2})\b)"
+    r"|(?P<long>\b(?P<mn>" + "|".join(MONTHS) + r")\s+(?P<d3>\d{1,2}),?\s+(?P<y3>\d{4})\b)",
+    re.I,
+)
+
+
+def dates(text: str) -> tuple[set[str], set[str]]:
+    """Canonical YYYY-MM-DD dates in text, plus the number tokens those dates account for."""
+    found, tokens = set(), set()
+    for m in DATE_RX.finditer(text):
+        if m["mdy"]:
+            y, mo, d = m["y1"], int(m["m1"]), int(m["d1"])
+        elif m["iso"]:
+            y, mo, d = m["y2"], int(m["m2"]), int(m["d2"])
+        else:
+            y, mo, d = m["y3"], MONTHS[m["mn"].lower()], int(m["d3"])
+        found.add(f"{y}-{mo:02d}-{d:02d}")
+        tokens |= numbers(m.group(0))
+    return found, tokens
 
 
 def build_prompt(question: str, hits: list[Hit]) -> tuple[str, dict[str, Hit]]:
@@ -268,7 +305,11 @@ def verify(parsed: dict, ids: dict[str, Hit]) -> tuple[list[dict], list[Citation
             allowed |= numbers(h.text) | numbers(h.published.replace("-", " "))
             allowed |= {str(int(x)) for x in h.published.split("-")}   # 2026-06-22 -> 2026, 6, 22
         plain = {a.replace(",", "") for a in allowed}
-        for n in numbers(s["text"]):
+        page_dates = set().union(*(dates(h.text)[0] | {h.published} for h in cited_pages)) if cited_pages else set()
+        sent_dates, date_tokens = dates(s["text"])
+        for d in sent_dates - page_dates:
+            problems.append(f"sentence {si}: date {d} is not on its cited pages")
+        for n in numbers(s["text"]) - (date_tokens if sent_dates <= page_dates else set()):
             if n not in allowed and n.replace(",", "") not in plain:
                 problems.append(f"sentence {si}: number {n} is not on its cited pages")
         sentences.append({"text": s["text"], "cites": cites})
