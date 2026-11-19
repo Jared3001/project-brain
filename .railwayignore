@@ -1,0 +1,13 @@
+# Deployed with `railway up --no-gitignore` so the prebuilt index ships.
+# Everything below stays local.
+.env
+.venv/
+.git/
+**/__pycache__/
+corpus/
+.claude/
+tests/
+eval/
+scripts/
+data/*.tmp
+*.pyc

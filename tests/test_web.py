@@ -44,3 +44,28 @@ def test_private_emails_are_masked_and_agency_ones_kept():
     assert sub("To: someone@gmail.com") == "To: [email withheld]"
     assert sub("Huy.Pham@tceq.texas.gov") == "Huy.Pham@tceq.texas.gov"
     assert sub("a.person@consultingfirm.com") == "[email withheld]@consultingfirm.com"
+
+
+def test_daily_cap_blocks_new_questions(monkeypatch):
+    import web.app as w
+    monkeypatch.setattr(w, "_cached", lambda q: None)
+    monkeypatch.setattr(w, "_spent_today", lambda: 99.0)
+    called = []
+    monkeypatch.setattr("brain.answer.ask", lambda q: called.append(q))
+    with w.app.test_request_context("/ask"):
+        w._recent.clear()
+        a = w.guarded_ask("A brand new question?")
+    assert a.status == "error" and "budget" in a.note and not called
+
+
+def test_hourly_limit_per_visitor(monkeypatch):
+    import web.app as w
+    monkeypatch.setattr(w, "_cached", lambda q: None)
+    monkeypatch.setattr(w, "_spent_today", lambda: 0.0)
+    monkeypatch.setattr("brain.answer.ask", lambda q: w.__dict__.get("Answer", None) or q)
+    with w.app.test_request_context("/ask", headers={"X-Forwarded-For": "203.0.113.9"}):
+        w._recent.clear()
+        for _ in range(w.PER_IP_PER_HOUR):
+            w.guarded_ask("q")
+        a = w.guarded_ask("q")
+    assert a.status == "error" and "hourly" in a.note

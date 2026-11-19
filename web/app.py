@@ -7,8 +7,10 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sqlite3
+import time
 from collections import defaultdict
 from pathlib import Path
 
@@ -147,11 +149,84 @@ SAMPLE_QUESTIONS = [
 ]
 
 
+DAILY_CAP_USD = float(os.environ.get("DAILY_CAP_USD", "3"))
+PER_IP_PER_HOUR = int(os.environ.get("PER_IP_PER_HOUR", "12"))
+CACHE_DAYS = 7
+_recent: dict[str, list[float]] = defaultdict(list)
+
+
+def _client_ip() -> str:
+    fwd = request.headers.get("X-Forwarded-For", "")
+    return fwd.split(",")[0].strip() if fwd else (request.remote_addr or "?")
+
+
+def _cached(q: str):
+    """Reuse an answer to the same question from the last week, at no cost."""
+    from brain.answer import LOG_DB, Answer, Citation
+    if not LOG_DB.exists():
+        return None
+    con = sqlite3.connect(LOG_DB)
+    rows = con.execute(
+        """SELECT answer_json FROM questions
+           WHERE lower(trim(question)) = lower(trim(?)) AND status IN ('answered', 'not_in_documents')
+             AND asked_at >= datetime('now', ?) ORDER BY asked_at DESC LIMIT 5""",
+        (q, f"-{CACHE_DAYS} days")).fetchall()
+    con.close()
+    from dataclasses import fields
+    a_fields = {f.name for f in fields(Answer)}
+    c_fields = {f.name for f in fields(Citation)}
+    for (raw,) in rows:
+        try:
+            d = json.loads(raw)
+            cites = []
+            for c in d.get("citations", []):
+                if "quotes" not in c and "quote" in c:   # rows logged before citations were grouped by page
+                    c["quotes"] = [c.pop("quote")]
+                cites.append(Citation(**{k: v for k, v in c.items() if k in c_fields}))
+            d = {k: v for k, v in d.items() if k in a_fields}
+            d["citations"] = cites
+            a = Answer(**d)
+        except (TypeError, ValueError, KeyError):
+            continue   # an older log shape this code can't rebuild: ask fresh instead
+        a.cost_usd = 0.0
+        return a
+    return None
+
+
+def _spent_today() -> float:
+    from brain.answer import LOG_DB
+    if not LOG_DB.exists():
+        return 0.0
+    con = sqlite3.connect(LOG_DB)
+    try:
+        v = con.execute("SELECT coalesce(sum(cost_usd), 0) FROM questions WHERE asked_at >= date('now')").fetchone()[0]
+    finally:
+        con.close()
+    return float(v)
+
+
+def guarded_ask(q: str):
+    """The public Ask path: cache, per visitor limit, daily budget, then the model."""
+    from brain.answer import Answer, ask
+    hit = _cached(q)
+    if hit:
+        hit.note = (hit.note + " " if hit.note else "") + "(Answered earlier; shown from cache.)"
+        return hit
+    now = time.time()
+    ip = _client_ip()
+    _recent[ip] = [t for t in _recent[ip] if now - t < 3600]
+    if len(_recent[ip]) >= PER_IP_PER_HOUR:
+        return Answer(q, "error", note="That's the hourly limit for this demo. Try the sample questions, which are cached.")
+    if _spent_today() >= DAILY_CAP_USD:
+        return Answer(q, "error", note="Today's demo budget is used up. The sample questions still work from cache.")
+    _recent[ip].append(now)
+    return ask(q)
+
+
 @app.route("/ask")
 def ask_view():
-    from brain.answer import ask
     q = (request.args.get("q") or "").strip()[:300]
-    answer = ask(q) if q else None
+    answer = guarded_ask(q) if q else None
     first = answer.citations[0] if answer and answer.citations else None
     return render_template("ask.html", q=q, a=answer, first=first, samples=SAMPLE_QUESTIONS)
 
@@ -233,6 +308,11 @@ def source(doc_id: str, page_no: int):
                            embed=request.args.get("embed") == "1",
                            redistributable=redistributable, original=original,
                            kind=KIND_LABEL.get(doc["kind"], doc["kind"]))
+
+
+@app.route("/healthz")
+def healthz():
+    return {"ok": True, "pages": db().execute("SELECT count(*) FROM pages").fetchone()[0]}
 
 
 if __name__ == "__main__":
