@@ -38,8 +38,8 @@ CASES = ROOT / "eval" / "cases.yaml"
 OUT = ROOT / ".claude" / "hillclimb" / "answer"
 
 
-def load_cases() -> list[dict]:
-    return yaml.safe_load(CASES.read_text())["cases"]
+def load_cases(path: Path | None = None) -> list[dict]:
+    return yaml.safe_load((path or CASES).read_text())["cases"]
 
 
 def flat(s: str) -> str:
@@ -113,10 +113,10 @@ def summarize(rows: list[dict]) -> dict:
 
 # ---------- checks that cost nothing ----------
 
-def check_labels() -> int:
+def check_labels(path: Path | None = None) -> int:
     con = sqlite3.connect(DB_PATH)
     problems = 0
-    for c in load_cases():
+    for c in load_cases(path):
         if c["kind"] == "unanswerable":
             for term in c.get("absent", []):
                 n = con.execute("SELECT count(*) FROM pages WHERE text LIKE ?", (f"%{term}%",)).fetchone()[0]
@@ -136,17 +136,17 @@ def check_labels() -> int:
             if not found:
                 print(f"{c['id']}: no page in {c['docs']} contains any of {g}")
                 problems += 1
-    cases = load_cases()
+    cases = load_cases(path)
     kinds = {k: sum(1 for c in cases if c["kind"] == k) for k in ("answerable", "change", "unanswerable")}
     print(f"{len(cases)} cases {kinds}; {problems} label problems")
     return problems
 
 
-def selftest() -> int:
+def selftest(path: Path | None = None) -> int:
     """Oracle answers must score 100%, null answers 0%."""
     con = sqlite3.connect(DB_PATH)
     bad = 0
-    for c in load_cases():
+    for c in load_cases(path):
         if c["kind"] == "unanswerable":
             ok = grade(c, Answer(c["question"], "not_in_documents"), con)["declined"] == 1.0
             null = grade(c, Answer(c["question"], "answered", sentences=[{"text": "It is 42.", "cites": []}]), con)["declined"] == 0.0
@@ -210,17 +210,20 @@ def main() -> int:
     ap.add_argument("--only", default="")
     ap.add_argument("--variant", default="baseline")
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--set", default="tuning", choices=["tuning", "heldout"],
+                    help="heldout runs eval/heldout.yaml into .claude/hillclimb/answer-heldout/")
     args = ap.parse_args()
+    path = ROOT / "eval" / "heldout.yaml" if args.set == "heldout" else CASES
     if args.check:
-        return 1 if check_labels() else 0
+        return 1 if check_labels(path) else 0
     if args.selftest:
-        return 1 if selftest() else 0
+        return 1 if selftest(path) else 0
 
-    cases = load_cases()
+    cases = load_cases(path)
     if args.only:
         wanted = [w.strip() for w in args.only.split(",")]
         cases = [c for c in cases if any(c["id"].startswith(w) for w in wanted)]
-    out = OUT / args.variant
+    out = (OUT.parent / "answer-heldout" if args.set == "heldout" else OUT) / args.variant
     (out / "traces").mkdir(parents=True, exist_ok=True)
     done = set()
     results = out / "results.jsonl"

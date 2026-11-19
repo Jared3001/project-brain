@@ -1,0 +1,112 @@
+# Held-out eval set, written 2026-11-19 after the v2 run.
+#
+# Never used to choose a fix. These cases test facts and phrasings the tuning
+# set does not cover, so their score is the honest one for the current code.
+# Same format and grading as cases.yaml. Do not edit these to make a run pass;
+# if a label is wrong, fix it and say so in the commit.
+
+cases:
+  - id: h01-t350-rating
+    kind: answerable
+    question: What is the net output of each Solar Titan 350 turbine?
+    facts: [["31.1"]]
+    docs: [tceq-application-2026-tc]
+  - id: h02-7ha-simple-rating
+    kind: answerable
+    question: What is each simple-cycle GE 7HA.02 turbine rated at?
+    facts: [["330.3"]]
+    docs: [tceq-application-2026-tc]
+    trap: The combined-cycle units are 555.7 MW.
+  - id: h03-early-phase-total
+    kind: answerable
+    question: Roughly how much output do the early-phase turbines provide in total?
+    facts: [["393"]]
+    docs: [tceq-application-2026-tc]
+  - id: h04-applicant-address
+    kind: answerable
+    question: What address does Energy Forge One give in the permit notices?
+    facts: [["1500 Louisiana"]]
+    docs: [tceq-]
+  - id: h05-regional-office
+    kind: answerable
+    question: Which TCEQ regional office has a copy of the application?
+    facts: [["Midland"]]
+    docs: [tceq-]
+  - id: h06-library
+    kind: answerable
+    question: Where in Pecos can residents read the application?
+    facts: [["Reeves County Library"]]
+    docs: [tceq-]
+  - id: h07-psd-number
+    kind: answerable
+    question: What is the Prevention of Significant Deterioration permit number?
+    facts: [["PSDTX1684"]]
+    docs: [tceq-]
+  - id: h08-ghg-number
+    kind: answerable
+    question: What is the greenhouse gas permit number for Kilby?
+    facts: [["GHGPSDTX260"]]
+    docs: [tceq-]
+  - id: h09-part6-inr
+    kind: answerable
+    question: What INR number does ERCOT give the large block combined cycle part of Kilby?
+    facts: [["29INR0199"]]
+    docs: [ercot-gis]
+  - id: h10-part4-mw
+    kind: answerable
+    question: How many megawatts is Kilby1 Part 4 in the ERCOT queue?
+    facts: [["950"]]
+    docs: [ercot-gis]
+  - id: h11-chevron-exec
+    kind: answerable
+    question: Which Chevron executive is quoted in the Microsoft announcement?
+    facts: [["Gustavson"]]
+    docs: [chevron-release, eenews]
+  - id: h12-microsoft-exec
+    kind: answerable
+    question: Who at Microsoft is quoted about the Chevron agreement?
+    facts: [["Noelle Walsh", "Walsh"]]
+    docs: [chevron-release]
+  - id: h13-target-returns
+    kind: answerable
+    question: What returns is Chevron targeting on the project?
+    facts: [["mid-teen"]]
+    docs: [chevron-release]
+  - id: h14-nox-tpy
+    kind: answerable
+    question: How many tons per year of NOx does the plain language summary propose?
+    facts: [["886.34"]]
+    docs: [tceq-pls, tceq-application]
+  - id: h15-class-i-area
+    kind: answerable
+    question: Which Class I area is closest to the plant?
+    facts: [["Carlsbad Caverns"]]
+    docs: [tceq-application]
+  - id: h16-solar-cancel-date
+    kind: change
+    question: On what date was the Kilby solar queue entry cancelled?
+    facts: [["2026-07-06", "July 6, 2026"]]
+    docs: [ercot-gis]
+  - id: h17-part4-cod
+    kind: change
+    question: What projected commercial operation date has ERCOT listed for Kilby1 Part 4, and has it moved?
+    facts: [["2028-04-20", "April 20, 2028"]]
+    docs: [ercot-gis]
+  - id: h18-heat-rate
+    kind: unanswerable
+    question: What is the plant's heat rate in Btu per kWh?
+    absent: ["Btu/kWh", "Btu per kWh"]
+  - id: h19-construction-workforce
+    kind: unanswerable
+    question: How many construction workers will be on site at peak?
+    absent: ["peak construction", "construction workers"]
+    trap: Chevron's release mentions supporting almost 2,000 jobs, which is not a construction headcount.
+  - id: h20-insurance
+    kind: unanswerable
+    question: What insurance coverage does the project carry?
+    absent: ["insurance"]
+  - id: h21-debt-rate
+    kind: unanswerable
+    question: What interest rate is the project's debt financed at?
+    absent: ["project debt", "loan interest"]
+    trap: The permit file uses a discount rate in its carbon capture cost analysis.
