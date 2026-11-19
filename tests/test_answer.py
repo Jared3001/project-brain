@@ -78,3 +78,10 @@ def test_dates_match_across_formats():
 ])
 def test_retrieval_regressions_from_the_baseline_eval(question, doc, locator):
     assert any(h.doc_id == doc and locator in h.locator for h in retrieve(question))
+
+
+@pytest.mark.skipif(not DB_PATH.exists(), reason="run ingest and record first")
+def test_capacity_change_question_gets_both_capacity_filings():
+    hits = retrieve("How did the permit application's capacity change between the original filing and the update?")
+    keys = {(h.doc_id, h.page_no) for h in hits}
+    assert ("tceq-application-2025-10", 48) in keys and ("tceq-application-2026-tc", 30) in keys

@@ -1,0 +1,26 @@
+{
+  "answer_accuracy": {
+    "value": 0.90625,
+    "n": 32,
+    "ci95": 0.10099287374302704
+  },
+  "citation_accuracy": {
+    "value": 0.9666666666666667,
+    "n": 30,
+    "ci95": 0.0642352159096781
+  },
+  "refusal_recall": {
+    "value": 1.0,
+    "n": 10,
+    "ci95": 0.0
+  },
+  "false_refusal_rate": {
+    "value": 0.0625,
+    "n": 32,
+    "ci95": 0.08387001661797856
+  },
+  "cost_usd_total": 1.9141,
+  "cost_usd_per_question": 0.0456,
+  "latency_s_median": 4.8,
+  "wall_clock_s": 54.5
+}

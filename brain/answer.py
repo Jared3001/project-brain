@@ -163,7 +163,8 @@ FIELD_WORDS = {
     "nox_controls": {"nox", "controls", "scr", "catalyst", "pollution"},
     "water_source": {"water", "groundwater", "brackish"},
 }
-PER_DOC = {"queue_report": 2, "status_snapshot": 1}   # near duplicate monthly files: one page each, two files max
+PER_DOC = {"queue_report": 2, "status_snapshot": 1}
+PER_FIELD = 3   # near duplicate monthly files: one page each, two files max
 MAX_SAME_KIND = {"queue_report": 2, "status_snapshot": 2}
 
 
@@ -218,10 +219,14 @@ def retrieve(question: str, k: int = K_PAGES) -> list[Hit]:
             # history, regulatory first, newest first
             return (-len(terms & words), -field_score[r[10]], r[10], r[9] != "current", r[3], newest_first)
         rows.sort(key=rank)
-        for doc_id, page_no, locator, tier, as_of, title, published, text, *_ in rows:
+        per_field: dict[str, int] = {}
+        for doc_id, page_no, locator, tier, as_of, title, published, text, display, role, fld, *_ in rows:
             if len(picked) >= k - 2:
                 break   # leave room for full text hits
-            add(Hit(doc_id, title, tier, published, page_no, locator, 0.0, "", text))
+            if per_field.get(fld, 0) >= PER_FIELD:
+                continue  # one loosely matching field must not crowd out the others
+            if add(Hit(doc_id, title, tier, published, page_no, locator, 0.0, "", text)):
+                per_field[fld] = per_field.get(fld, 0) + 1
     con.close()
     for h in search(question, k=60):
         if len(picked) >= k:
