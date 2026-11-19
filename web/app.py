@@ -139,6 +139,23 @@ def changes_from(rows: list[dict]) -> list[dict]:
     return out
 
 
+SAMPLE_QUESTIONS = [
+    "Why do the capacity numbers disagree?",
+    "How big is the battery and has it changed?",
+    "When is first power expected?",
+    "How much did the GE Vernova turbines cost?",
+]
+
+
+@app.route("/ask")
+def ask_view():
+    from brain.answer import ask
+    q = (request.args.get("q") or "").strip()[:300]
+    answer = ask(q) if q else None
+    first = answer.citations[0] if answer and answer.citations else None
+    return render_template("ask.html", q=q, a=answer, first=first, samples=SAMPLE_QUESTIONS)
+
+
 @app.route("/changes")
 def changes():
     con = db()
@@ -213,6 +230,7 @@ def source(doc_id: str, page_no: int):
     body, found = highlight(text, quote) if redistributable else (None, None)
     original = doc["url"] + (f"#page={page_no}" if doc["path"].endswith(".pdf") else "")
     return render_template("source.html", doc=doc, page=page, quote=quote, body=body, found=found,
+                           embed=request.args.get("embed") == "1",
                            redistributable=redistributable, original=original,
                            kind=KIND_LABEL.get(doc["kind"], doc["kind"]))
 

@@ -10,3 +10,6 @@ corpus/ercot/*.xlsx
 corpus/press/
 corpus/analysis/
 corpus/wayback/*gem-wiki*
+
+# Secrets
+.env

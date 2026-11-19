@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Ask, Project Kilby{% endblock %}
+{% block wrapclass %} wide{% endblock %}
+{% block body %}
+<p><a href="{{ url_for('card') }}">&larr; Record</a> &middot; <a href="{{ url_for('changes') }}">What changed</a></p>
+<header class="top">
+  <h1>Ask the Kilby record</h1>
+  <p>Answers come only from the filings and releases in the corpus. Every number is checked against the page it cites; if the check fails, the answer is withheld.</p>
+</header>
+<form class="ask-form" action="{{ url_for('ask_view') }}" method="get">
+  <input name="q" value="{{ q }}" placeholder="When is first power expected?" autocomplete="off" aria-label="Question">
+  <button type="submit">Ask</button>
+</form>
+<div class="samples">{% for s in samples %}<a href="{{ url_for('ask_view', q=s) }}">{{ s }}</a>{% endfor %}</div>
+
+{% if a %}
+<div class="panes">
+  <div class="answer">
+    {% if a.status == 'answered' %}
+      {% for s in a.sentences %}
+      <p>{{ s.text }}{% for n in s.cites %}{% set c = a.citations[n-1] %}<a class="cite" target="src" data-n="{{ n }}"
+         href="{{ url_for('source', doc_id=c.doc_id, page_no=c.page_no, q=c.quote, embed=1) }}#q">{{ n }}</a>{% endfor %}</p>
+      {% endfor %}
+      <ol class="sources">
+      {% for c in a.citations %}
+        <li><a class="cite" target="src" data-n="{{ c.n }}" href="{{ url_for('source', doc_id=c.doc_id, page_no=c.page_no, q=c.quote, embed=1) }}#q">{{ c.n }}</a>
+          <span class="tierlab">T{{ c.tier }}</span> {{ c.title }}, {{ c.locator }}{% if c.quotes|length > 1 %} <span class="tierlab">&middot; {{ c.quotes|length }} quotes</span>{% endif %}</li>
+      {% endfor %}
+      </ol>
+    {% elif a.status == 'not_in_documents' %}
+      <p class="held"><strong>Not in the documents.</strong> {{ a.note }}</p>
+    {% elif a.status == 'withheld' %}
+      <p class="held"><strong>Answer withheld.</strong> {{ a.note }}</p>
+      <ul class="basis">{% for p in a.problems %}<li>{{ p }}</li>{% endfor %}</ul>
+    {% else %}
+      <p class="held">{{ a.note }}</p>
+    {% endif %}
+    {% if a.status != 'answered' %}
+      <p class="basis" style="margin-top:12px">Searched:</p>
+      <ul class="basis">{% for s in a.searched %}<li>{{ s.title }}, {{ s.locator }}</li>{% endfor %}</ul>
+    {% endif %}
+    <div class="checked">
+      {% if a.status == 'answered' %}{{ a.citations|map(attribute='quotes')|map('length')|sum }} quotes found on {{ a.citations|length }} pages, every number checked &middot; {% endif %}
+      {{ a.model }} &middot; ${{ '%.3f'|format(a.cost_usd) }}
+    </div>
+  </div>
+  <div>
+    {% if first %}
+    <iframe class="src" name="src" title="Cited page"
+      src="{{ url_for('source', doc_id=first.doc_id, page_no=first.page_no, q=first.quote, embed=1) }}#q"></iframe>
+    {% endif %}
+  </div>
+</div>
+<script>
+document.querySelectorAll('a.cite').forEach(function (el) {
+  el.addEventListener('click', function () {
+    document.querySelectorAll('a.cite').forEach(function (o) { o.classList.toggle('on', o.dataset.n === el.dataset.n); });
+  });
+});
+</script>
+{% endif %}
+{% endblock %}

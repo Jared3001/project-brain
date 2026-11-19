@@ -10,6 +10,7 @@
   <div class="meta">
     <span>{{ n_docs }} documents, {{ n_pages }} pages</span>
     <span>Latest filing {{ latest|month }}</span>
+    <span><a href="{{ url_for('ask_view') }}">Ask</a></span>
     <span><a href="{{ url_for('changes') }}">What changed</a></span>
     <span>{{ counts.found }} found, {{ counts.conflict }} in conflict{% if counts.not_found %}, {{ counts.not_found }} not found{% endif %}</span>
   </div>
