@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Eval, Project Kilby{% endblock %}
+{% block body %}
+<p><a href="{{ url_for('card') }}">&larr; Record</a> &middot; <a href="{{ url_for('ask_view') }}">Ask</a> &middot; <a href="{{ url_for('changes') }}">What changed</a></p>
+<header class="top">
+  <h1>How well it answers</h1>
+  <p>Every question below was run through the same Ask path as the live page and graded in code: no model grades another model. The three scores are kept apart and never averaged, because a system can look accurate by refusing too much, or look helpful by guessing.</p>
+</header>
+
+<h2>Held out: 21 questions written after tuning</h2>
+<div class="scores">
+  {% for name, m, help in heldout.rows %}
+  <div class="score">
+    <div class="n">{{ pct(m.value) }}</div>
+    <div class="label">{{ name }}</div>
+    <div class="basis">{{ (m.value * m.n)|round|int if m.value is not none else 0 }} of {{ m.n }} &middot; {{ help }}</div>
+  </div>
+  {% endfor %}
+</div>
+<p class="basis">Committed before they ran and never used to choose a fix. Mostly single fact lookups, easier than the tuning set; with 17 answerable questions, a perfect score still leaves a 95% lower bound of about 82%.</p>
+
+<h2>Every run</h2>
+<div class="tablewrap">
+<table class="runs">
+  <thead><tr><th>Run</th><th>Questions</th><th>Answer</th><th>Citation</th><th>Refusals</th><th>False refusals</th><th>Cost / question</th></tr></thead>
+  <tbody>
+  {% for r in runs %}
+  <tr>
+    <td><strong>{{ r.label }}</strong><div class="basis">{{ r.note }}</div></td>
+    <td>{{ r.cases|length }} {{ 'held out' if r.split == 'heldout' else 'tuning' }}</td>
+    {% for name, m, help in r.rows %}<td>{{ pct(m.value) }}{% if m.ci95 %}<div class="basis">&plusmn;{{ (m.ci95 * 100)|round|int }}</div>{% endif %}</td>{% endfor %}
+    <td>${{ '%.3f'|format(r.summary.cost_usd_per_question) }}<div class="basis">median {{ r.summary.latency_s_median }}s</div></td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+<ul class="basis caveats">
+  <li>v1 and v2 fixed problems found by reading the tuning set's failures, so their scores on that set are optimistic. The held out run is the honest number for the current code.</li>
+  <li>One run per question: differences of a few points between runs are within the model's run to run variation.</li>
+  <li>"Withheld" means a draft cited a quote or number that was not on its page, so the code refused to show it. It counts as declined, never as correct.</li>
+  <li>All eval runs together cost ${{ '%.2f'|format(total_cost) }} at Claude Opus 5.5 prices.</li>
+</ul>
+
+<h2>Every question</h2>
+<p class="basis">Latest run for each question: v2 for the tuning set, the held out run for the rest. Expected facts are what the grader looks for; any listed alternative counts.</p>
+{% for c in table %}
+<details class="case">
+  <summary>
+    <span class="verdict {{ c.verdict }}">{{ c.verdict }}</span>
+    <span class="q">{{ c.question }}</span>
+    <span class="tierlab">{{ c.kind }}{% if c.split == 'heldout' %} &middot; held out{% endif %}</span>
+  </summary>
+  <div class="case-body">
+    <div class="basis">Expected: {{ c.expect }}{% if c.trap %} &middot; Trap: {{ c.trap }}{% endif %}</div>
+    <p>{{ c.answer or '(no answer text)' }}</p>
+    <div class="basis">
+      {% for label, g in c.history %}{{ label }}: {% if g.get('answer_correct') %}correct{% elif c.kind == 'unanswerable' and g.get('declined') %}declined{% elif g.get('declined') %}declined{% else %}wrong{% endif %}{% if not loop.last %} &middot; {% endif %}{% endfor %}
+      &middot; ${{ '%.3f'|format(c.cost_usd) }} &middot; <a href="{{ url_for('ask_view', q=c.question) }}">Ask it live</a>
+    </div>
+  </div>
+</details>
+{% endfor %}
+{% endblock %}

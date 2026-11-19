@@ -1,0 +1,2188 @@
+{
+ "cases": {
+  "a01-capacity-permit": {
+   "id": "a01-capacity-permit",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "What generating capacity does the TCEQ permit file give for the Kilby plant?",
+   "expect": "2,869",
+   "trap": "Earlier 2,595 and 2,476 MW figures are on other pages of the same file."
+  },
+  "a02-capacity-original": {
+   "id": "a02-capacity-original",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "What capacity did the original October 2025 permit application state?",
+   "expect": "2,595",
+   "trap": ""
+  },
+  "a03-capacity-chevron": {
+   "id": "a03-capacity-chevron",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "What capacity did Chevron announce for Project Kilby?",
+   "expect": "2.67",
+   "trap": ""
+  },
+  "a04-turbine-count": {
+   "id": "a04-turbine-count",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "How many turbines are in the updated permit application?",
+   "expect": "46",
+   "trap": ""
+  },
+  "a05-t130-purpose": {
+   "id": "a05-t130-purpose",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "Why were the Solar Titan 130 turbines added?",
+   "expect": "29 and early phase / early-phase",
+   "trap": ""
+  },
+  "a06-7ha-rating": {
+   "id": "a06-7ha-rating",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "What is the net output of each GE 7HA.02 combined-cycle turbine?",
+   "expect": "555.7",
+   "trap": "The 600 MW figure in an older summary on the same file."
+  },
+  "a07-ppa-term": {
+   "id": "a07-ppa-term",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "How long is the power purchase agreement?",
+   "expect": "20",
+   "trap": ""
+  },
+  "a08-offtaker": {
+   "id": "a08-offtaker",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "Who will buy the plant's power?",
+   "expect": "Microsoft",
+   "trap": ""
+  },
+  "a09-applicant": {
+   "id": "a09-applicant",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "Which company applied for the air permit?",
+   "expect": "Energy Forge One",
+   "trap": ""
+  },
+  "a10-county": {
+   "id": "a10-county",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "Which Texas county is the plant in?",
+   "expect": "Reeves",
+   "trap": ""
+  },
+  "a11-substation": {
+   "id": "a11-substation",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "Which substation does the project connect to in the ERCOT queue?",
+   "expect": "Solstice",
+   "trap": "The unrelated Kilby Station / Kilby Switching Station in Haskell County."
+  },
+  "a12-battery-now": {
+   "id": "a12-battery-now",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "How large is the battery storage portion in the latest ERCOT report?",
+   "expect": "330",
+   "trap": "560 MW in earlier reports; Quantum Storage at 321.75 MW is a different project."
+  },
+  "a13-part1-cod": {
+   "id": "a13-part1-cod",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "What is the projected commercial operation date for Kilby1 Part 1?",
+   "expect": "2027-11-04 / November 4, 2027",
+   "trap": ""
+  },
+  "a14-first-power": {
+   "id": "a14-first-power",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "When does Chevron expect first power?",
+   "expect": "2028",
+   "trap": ""
+  },
+  "a15-fid-timing": {
+   "id": "a15-fid-timing",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "When does Chevron expect to make its final investment decision?",
+   "expect": "end of 2026 / 2026",
+   "trap": ""
+  },
+  "a16-co2e-updated": {
+   "id": "a16-co2e-updated",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "What annual CO2e emissions does TCEQ list for the updated 46 turbine project?",
+   "expect": "13,890,275",
+   "trap": "11,564,704.59 in the plain language summary is the original project."
+  },
+  "a17-co2e-pls": {
+   "id": "a17-co2e-pls",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "What CO2 equivalent total does the plain language summary list?",
+   "expect": "11,564,704",
+   "trap": ""
+  },
+  "a18-nox-controls": {
+   "id": "a18-nox-controls",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "How will NOx emissions be controlled?",
+   "expect": "selective catalytic reduction / SCR",
+   "trap": ""
+  },
+  "a19-water": {
+   "id": "a19-water",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "What water source will the plant use?",
+   "expect": "brackish",
+   "trap": ""
+  },
+  "a20-filed-date": {
+   "id": "a20-filed-date",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "When was the air permit application submitted to TCEQ?",
+   "expect": "October 17, 2025 / 10/17/2025 / 2025-10-17",
+   "trap": ""
+  },
+  "a21-public-meeting": {
+   "id": "a21-public-meeting",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "When and where was the TCEQ public meeting on the permit held?",
+   "expect": "June 10, 2026 and Pecos",
+   "trap": ""
+  },
+  "a22-permit-number": {
+   "id": "a22-permit-number",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "What is the state air quality permit number?",
+   "expect": "181895",
+   "trap": ""
+  },
+  "a23-suppliers": {
+   "id": "a23-suppliers",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "Who supplies the turbines?",
+   "expect": "GE Vernova / General Electric / GE 7HA and Solar Turbines / Solar Titan / Caterpillar",
+   "trap": ""
+  },
+  "a24-national-grid": {
+   "id": "a24-national-grid",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "How much did National Grid invest in Joulent, and for what stake?",
+   "expect": "1.75 and 35",
+   "trap": ""
+  },
+  "a25-final-issuance-estimate": {
+   "id": "a25-final-issuance-estimate",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "When did TCEQ estimate the permit would be issued?",
+   "expect": "10/15/2026 / October 15, 2026",
+   "trap": ""
+  },
+  "a26-technically-complete": {
+   "id": "a26-technically-complete",
+   "kind": "answerable",
+   "split": "tuning",
+   "question": "On what date did TCEQ estimate the application would be technically complete?",
+   "expect": "4/15/2026 / April 15, 2026",
+   "trap": ""
+  },
+  "c01-battery-change": {
+   "id": "c01-battery-change",
+   "kind": "change",
+   "split": "tuning",
+   "question": "How has the size of the battery storage portion changed in the ERCOT queue?",
+   "expect": "560 and 330",
+   "trap": ""
+  },
+  "c02-capacity-change": {
+   "id": "c02-capacity-change",
+   "kind": "change",
+   "split": "tuning",
+   "question": "How did the permit application's capacity change between the original filing and the update?",
+   "expect": "2,595 and 2,869",
+   "trap": ""
+  },
+  "c03-turbine-change": {
+   "id": "c03-turbine-change",
+   "kind": "change",
+   "split": "tuning",
+   "question": "How did the number of turbines change between the original application and the update?",
+   "expect": "17 and 46",
+   "trap": ""
+  },
+  "c04-permit-status": {
+   "id": "c04-permit-status",
+   "kind": "change",
+   "split": "tuning",
+   "question": "How has the air permit application's status on TCEQ's pending list changed?",
+   "expect": "Administrative and Technically",
+   "trap": ""
+  },
+  "c05-solar-fate": {
+   "id": "c05-solar-fate",
+   "kind": "change",
+   "split": "tuning",
+   "question": "What happened to the solar part of the Kilby queue entries?",
+   "expect": "cancel",
+   "trap": ""
+  },
+  "c06-part6-technology": {
+   "id": "c06-part6-technology",
+   "kind": "change",
+   "split": "tuning",
+   "question": "Did the technology listed for Kilby1 Part 6 change in the ERCOT reports?",
+   "expect": "CC / combined and GT / gas turbine / simple",
+   "trap": ""
+  },
+  "u01-turbine-cost": {
+   "id": "u01-turbine-cost",
+   "kind": "unanswerable",
+   "split": "tuning",
+   "question": "How much did the GE Vernova turbines cost?",
+   "expect": "not in the documents",
+   "trap": ""
+  },
+  "u02-epc-contractor": {
+   "id": "u02-epc-contractor",
+   "kind": "unanswerable",
+   "split": "tuning",
+   "question": "Which company is the EPC contractor for the plant?",
+   "expect": "not in the documents",
+   "trap": "The permit file mentions \"the EPC agreement\" and carbon capture EPC costs, but never names a contractor."
+  },
+  "u03-construction-cost": {
+   "id": "u03-construction-cost",
+   "kind": "unanswerable",
+   "split": "tuning",
+   "question": "What is the total construction cost of the Kilby power plant?",
+   "expect": "not in the documents",
+   "trap": "$10 billion in tax revenue and $407 million carbon capture EPC costs are on nearby pages."
+  },
+  "u04-ppa-price": {
+   "id": "u04-ppa-price",
+   "kind": "unanswerable",
+   "split": "tuning",
+   "question": "What price per MWh will Microsoft pay under the PPA?",
+   "expect": "not in the documents",
+   "trap": "The permit file has $/MWh figures for carbon capture economics."
+  },
+  "u05-acreage": {
+   "id": "u05-acreage",
+   "kind": "unanswerable",
+   "split": "tuning",
+   "question": "How many acres is the Kilby site?",
+   "expect": "not in the documents",
+   "trap": ""
+  },
+  "u06-lcoe": {
+   "id": "u06-lcoe",
+   "kind": "unanswerable",
+   "split": "tuning",
+   "question": "What is the plant's levelized cost of electricity?",
+   "expect": "not in the documents",
+   "trap": ""
+  },
+  "u07-mercuria": {
+   "id": "u07-mercuria",
+   "kind": "unanswerable",
+   "split": "tuning",
+   "question": "How many megawatts is the Pecos Power Plant that Mercuria is building with a Texas Energy Fund loan?",
+   "expect": "not in the documents",
+   "trap": "Same county, different project."
+  },
+  "u08-engine-no1-price": {
+   "id": "u08-engine-no1-price",
+   "kind": "unanswerable",
+   "split": "tuning",
+   "question": "How much did Chevron pay Engine No. 1 for its share of Project Kilby?",
+   "expect": "not in the documents",
+   "trap": "National Grid's $1.75 billion for 35% of Joulent is a different transaction."
+  },
+  "u09-dc-contractor": {
+   "id": "u09-dc-contractor",
+   "kind": "unanswerable",
+   "split": "tuning",
+   "question": "Who is the general contractor building Microsoft's data center in Pecos?",
+   "expect": "not in the documents",
+   "trap": ""
+  },
+  "u10-revenue": {
+   "id": "u10-revenue",
+   "kind": "unanswerable",
+   "split": "tuning",
+   "question": "How much annual revenue will the plant earn from Microsoft?",
+   "expect": "not in the documents",
+   "trap": "Chevron's release mentions $10 billion in state and local tax revenue and mid-teen returns."
+  },
+  "h01-t350-rating": {
+   "id": "h01-t350-rating",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "What is the net output of each Solar Titan 350 turbine?",
+   "expect": "31.1",
+   "trap": ""
+  },
+  "h02-7ha-simple-rating": {
+   "id": "h02-7ha-simple-rating",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "What is each simple-cycle GE 7HA.02 turbine rated at?",
+   "expect": "330.3",
+   "trap": "The combined-cycle units are 555.7 MW."
+  },
+  "h03-early-phase-total": {
+   "id": "h03-early-phase-total",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "Roughly how much output do the early-phase turbines provide in total?",
+   "expect": "393",
+   "trap": ""
+  },
+  "h04-applicant-address": {
+   "id": "h04-applicant-address",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "What address does Energy Forge One give in the permit notices?",
+   "expect": "1500 Louisiana",
+   "trap": ""
+  },
+  "h05-regional-office": {
+   "id": "h05-regional-office",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "Which TCEQ regional office has a copy of the application?",
+   "expect": "Midland",
+   "trap": ""
+  },
+  "h06-library": {
+   "id": "h06-library",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "Where in Pecos can residents read the application?",
+   "expect": "Reeves County Library",
+   "trap": ""
+  },
+  "h07-psd-number": {
+   "id": "h07-psd-number",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "What is the Prevention of Significant Deterioration permit number?",
+   "expect": "PSDTX1684",
+   "trap": ""
+  },
+  "h08-ghg-number": {
+   "id": "h08-ghg-number",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "What is the greenhouse gas permit number for Kilby?",
+   "expect": "GHGPSDTX260",
+   "trap": ""
+  },
+  "h09-part6-inr": {
+   "id": "h09-part6-inr",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "What INR number does ERCOT give the large block combined cycle part of Kilby?",
+   "expect": "29INR0199",
+   "trap": ""
+  },
+  "h10-part4-mw": {
+   "id": "h10-part4-mw",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "How many megawatts is Kilby1 Part 4 in the ERCOT queue?",
+   "expect": "950",
+   "trap": ""
+  },
+  "h11-chevron-exec": {
+   "id": "h11-chevron-exec",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "Which Chevron executive is quoted in the Microsoft announcement?",
+   "expect": "Gustavson",
+   "trap": ""
+  },
+  "h12-microsoft-exec": {
+   "id": "h12-microsoft-exec",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "Who at Microsoft is quoted about the Chevron agreement?",
+   "expect": "Noelle Walsh / Walsh",
+   "trap": ""
+  },
+  "h13-target-returns": {
+   "id": "h13-target-returns",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "What returns is Chevron targeting on the project?",
+   "expect": "mid-teen",
+   "trap": ""
+  },
+  "h14-nox-tpy": {
+   "id": "h14-nox-tpy",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "How many tons per year of NOx does the plain language summary propose?",
+   "expect": "886.34",
+   "trap": ""
+  },
+  "h15-class-i-area": {
+   "id": "h15-class-i-area",
+   "kind": "answerable",
+   "split": "heldout",
+   "question": "Which Class I area is closest to the plant?",
+   "expect": "Carlsbad Caverns",
+   "trap": ""
+  },
+  "h16-solar-cancel-date": {
+   "id": "h16-solar-cancel-date",
+   "kind": "change",
+   "split": "heldout",
+   "question": "On what date was the Kilby solar queue entry cancelled?",
+   "expect": "2026-07-06 / July 6, 2026",
+   "trap": ""
+  },
+  "h17-part4-cod": {
+   "id": "h17-part4-cod",
+   "kind": "change",
+   "split": "heldout",
+   "question": "What projected commercial operation date has ERCOT listed for Kilby1 Part 4, and has it moved?",
+   "expect": "2028-04-20 / April 20, 2028",
+   "trap": ""
+  },
+  "h18-heat-rate": {
+   "id": "h18-heat-rate",
+   "kind": "unanswerable",
+   "split": "heldout",
+   "question": "What is the plant's heat rate in Btu per kWh?",
+   "expect": "not in the documents",
+   "trap": ""
+  },
+  "h19-construction-workforce": {
+   "id": "h19-construction-workforce",
+   "kind": "unanswerable",
+   "split": "heldout",
+   "question": "How many construction workers will be on site at peak?",
+   "expect": "not in the documents",
+   "trap": "Chevron's release mentions supporting almost 2,000 jobs, which is not a construction headcount."
+  },
+  "h20-insurance": {
+   "id": "h20-insurance",
+   "kind": "unanswerable",
+   "split": "heldout",
+   "question": "What insurance coverage does the project carry?",
+   "expect": "not in the documents",
+   "trap": ""
+  },
+  "h21-debt-rate": {
+   "id": "h21-debt-rate",
+   "kind": "unanswerable",
+   "split": "heldout",
+   "question": "What interest rate is the project's debt financed at?",
+   "expect": "not in the documents",
+   "trap": "The permit file uses a discount rate in its carbon capture cost analysis."
+  }
+ },
+ "runs": [
+  {
+   "id": "answer/baseline",
+   "label": "Baseline",
+   "split": "tuning",
+   "note": "Before any tuning.",
+   "summary": {
+    "answer_accuracy": {
+     "value": 0.8125,
+     "n": 32,
+     "ci95": 0.13523633826564516
+    },
+    "citation_accuracy": {
+     "value": 0.9642857142857143,
+     "n": 28,
+     "ci95": 0.06873863542433759
+    },
+    "refusal_recall": {
+     "value": 1.0,
+     "n": 10,
+     "ci95": 0.0
+    },
+    "false_refusal_rate": {
+     "value": 0.125,
+     "n": 32,
+     "ci95": 0.11458825746995195
+    },
+    "cost_usd_total": 1.9316,
+    "cost_usd_per_question": 0.046,
+    "latency_s_median": 4.4,
+    "wall_clock_s": 53.5
+   },
+   "cases": {
+    "a04-turbine-count": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0494,
+     "latency_s": 4.8,
+     "answer": "The updated application covers 46 natural gas-fired turbines: two combined cycle turbines and 44 simple cycle turbines.[1] These are 2 GE 7HA.02 combined-cycle turbines, 3 GE 7HA.02 simple-cycle turbines, 12 Solar Titan 350 simple-cycle turbines and 29 Solar Titan 130 simple-cycle turbines.[1] The original application filed in October 2025 proposed 17 combustion turbines.[2] The 29 Solar T130 turbines were added in an update on December 22, 2025, to supply 'early phase power' and are not intended to stay onsite long-term.[1][3]"
+    },
+    "a02-capacity-original": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04482,
+     "latency_s": 5.6,
+     "answer": "The original application filed in October 2025 stated that the Kilby site's nominal power generation capacity would be approximately 2,595 megawatts (MW).[1] That original application covered two combined-cycle turbines and fifteen simple-cycle turbines, along with other equipment.[1] The figure changed later: in the December 22, 2025 response to a deficiency notice, the company gave 2,476 MW at defined site conditions for those turbines and proposed adding 29 early-phase turbines of approximately 393 MW.[2] TCEQ's later review summary, dated April 10, 2026, lists the plant's capacity as approximately 2,869 MW.[3]"
+    },
+    "a03-capacity-chevron": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05318,
+     "latency_s": 6.8,
+     "answer": "Chevron announced that Project Kilby is expected to deliver approximately 2.67 gigawatts of capacity, built through a phased, modular approach that allows incremental expansion over time.[1] Chevron said most of that generation will come from large GE Vernova turbines, with additional capacity from Solar Turbines.[1] This figure differs from the state air permit file, which puts the plant's nominal capacity at approximately 2,869 megawatts across 46 turbines.[2] The permit figure has also changed over time: the October 2025 application stated approximately 2,595 MW, and 29 turbines were added in a December 22, 2025 update.[3][2] One analysis treats 2.67 GW as the commercial project scale and 2.869 GW as the permit envelope.[4]"
+    },
+    "a01-capacity-permit": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05279,
+     "latency_s": 7.8,
+     "answer": "The most recent figure in the TCEQ permit file puts the Kilby Power Plant's nominal generating capacity at approximately 2,869 megawatts (MW), measured at site conditions of 59\u00b0F, 60% relative humidity and 2,850 feet elevation.[1] That figure covers 46 turbines, including 29 Solar Titan 130 units that were added in a December 22, 2025 update to supply 'early phase power.'[1] The original application, filed in October 2025, gave a lower capacity of approximately 2,595 MW.[2] In its December 22, 2025 response to TCEQ, the company restated the output of the original turbines as 2,476 MW at site conditions and said the 29 added early-phase turbines would provide approximately 393 MW.[3] A company press release from Joulent (not part of the permit file) gives a different figure of approximately 2.67 gigawatts.[4]"
+    },
+    "a06-7ha-rating": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05382,
+     "latency_s": 4.2,
+     "answer": "Each of the two GE 7HA.02 combined-cycle turbines at the Kilby Power Plant has a net output of 555.7 MW.[1][2] The same figure appears in Energy Forge One's December 22, 2025 response to TCEQ, which gives it at site conditions of 59\u00b0F inlet air temperature, 60% relative humidity, and 2,850 feet elevation.[3]"
+    },
+    "a05-t130-purpose": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05228,
+     "latency_s": 5.2,
+     "answer": "According to the TCEQ permit file, the 29 Solar Titan 130 simple-cycle turbines are proposed to supply 'early phase power' to meet customer needs and are not intended to stay onsite long-term.[1] They were added to the project scope in an update to the application on December 22, 2025; the original October 2025 application listed only 17 turbines (2 combined-cycle GE 7HA.02, 3 simple-cycle GE 7HA.02 and 12 Solar Titan 350).[1][2] An analyst brief (tier 4) likewise describes the roughly 393 MW Titan 130 fleet as temporary early power and a bridge fleet that can protect the schedule, but says it needs a hard replacement milestone.[3][4]"
+    },
+    "a07-ppa-term": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0338,
+     "latency_s": 3.7,
+     "answer": "The power purchase agreement for Project Kilby runs for 20 years, under which Energy Forge One LLC, a Chevron subsidiary, will supply dedicated electricity to a Microsoft-operated data center.[1] Chevron announced the agreement on June 22, 2026.[1] Other sources, including Joulent and press coverage, consistently describe the same 20-year term.[2][3]"
+    },
+    "a08-offtaker": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03344,
+     "latency_s": 4.3,
+     "answer": "Microsoft will buy the power from Project Kilby under a 20-year power purchase agreement.[1][2] The plant will provide dedicated electricity to a Microsoft-operated data center that is co-located with the facility in West Texas.[1] The agreement is with Energy Forge One, a Chevron subsidiary, and the plant is expected to deliver about 2.67 gigawatts.[3]"
+    },
+    "a10-county": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03748,
+     "latency_s": 3.5,
+     "answer": "The Kilby Power Plant is in Reeves County, Texas, near Pecos, according to the TCEQ notice of application for its air quality permits.[1] The applicant's air dispersion modeling protocol likewise compares the Project Kilby site's area to Reeves County when justifying its choice of monitors.[2]"
+    },
+    "a09-applicant": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04436,
+     "latency_s": 4.2,
+     "answer": "Energy Forge One LLC applied to the Texas Commission on Environmental Quality for the Kilby air permits, numbered 181895, PSDTX1684 and GHGPSDTX260.[1][2] The application was submitted to the TCEQ on October 17, 2025.[1] The TCEQ's summary form describes the request as an air construction permit for a greenfield natural gas-fired turbine power plant near Pecos, Reeves County, Texas.[3]"
+    },
+    "a11-substation": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04708,
+     "latency_s": 5.1,
+     "answer": "In the ERCOT interconnection queue, the Energy Forge One LLC (Kilby1) projects in Reeves County list their point of interconnection as the Solstice Substation at 345 kV.[1] This same POI appears for all four Kilby1 entries (Parts 1, 2, 4 and 6) in both the August 2026 and October 2026 reports.[2][1] The \"Kilby Station\" and \"Kilby Switching Station\" entries in the same reports belong to the unrelated Quantum Solar and Quantum Storage projects in Haskell County, not to Project Kilby.[1]"
+    },
+    "a13-part1-cod": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04542,
+     "latency_s": 3.7,
+     "answer": "ERCOT's October 2026 interconnection status report lists a projected commercial operation date of 2027-11-04 for Kilby1 Part 1 Small Block Simple Cycle (INR 27INR0572).[1] That project is a 371 MW gas turbine project by Energy Forge One LLC in Reeves County, and the report shows it had no interconnection agreement yet (\"SS Completed, FIS Started, No IA\").[1]"
+    },
+    "a12-battery-now": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05141,
+     "latency_s": 5.9,
+     "answer": "In the October 2026 ERCOT interconnection report, the battery storage portion of Project Kilby is listed as \"Kilby1 Part 2 Tier1 BESS\" with a capacity of 330 MW.[1] It is filed by Energy Forge One LLC in Reeves County, with a projected commercial operation date of 2028-01-21.[1] The earlier August 2026 report showed the same 330 MW figure.[2] The \"Quantum Storage\" battery in the same report is a separate project in Haskell County at the unrelated Kilby Switching Station, not part of Project Kilby.[1]"
+    },
+    "a14-first-power": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03757,
+     "latency_s": 4.4,
+     "answer": "Chevron says first power delivery from Project Kilby is anticipated in 2028.[1] That timing held as of October 2026: even though Chevron's final investment decision could slip to 2027 because of a moratorium on new data center permits, Chevron's vice president for power solutions said Kilby is still on track to produce first electrons by 2028.[2] Partner and press sources give the same target of first power by 2028.[3] ERCOT's October 2026 interconnection report lists a projected commercial operation date of 2027-11-04 for the first Kilby gas block, Part 1.[4]"
+    },
+    "a15-fid-timing": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03458,
+     "latency_s": 5.2,
+     "answer": "In its June 22, 2026 announcement, Chevron said its Final Investment Decision (FID) on Kilby was expected by the end of 2026, subject to the completion of other necessary conditions.[1][2] National Grid's July 2026 description of the project also gave a final investment decision expected in 2026.[3][4] However, Semafor reported on October 1, 2026 that the decision could be pushed to 2027 after Gov. Greg Abbott imposed a moratorium on new data center permits, citing Chevron's vice president for power solutions, Daniel Droog.[5] Droog said Kilby was still on track to produce its first electrons by 2028.[5]"
+    },
+    "a16-co2e-updated": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04839,
+     "latency_s": 6.3,
+     "answer": "In the TCEQ permit file at technical completeness, the proposed allowable emission rate for greenhouse gases is 13,890,275.01 tons per year as CO2e, including 13,871,124.49 tons per year of CO2.[1] That same file describes the project as 46 turbines, after 29 Solar Titan 130 turbines were added in an update on December 22, 2025.[2] For comparison, the original plain language summary, filed with the 17-turbine application in October 2025, listed 11,564,704.59 tons per year of CO2 equivalent.[3][4]"
+    },
+    "a17-co2e-pls": {
+     "status": "withheld",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.0433,
+     "latency_s": 6.1,
+     "answer": "A draft answer failed the page check, so it is not shown."
+    },
+    "a19-water": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04274,
+     "latency_s": 4.1,
+     "answer": "Chevron says the Kilby plant plans to use non-potable, brackish groundwater rather than freshwater for power plant operations.[1] Chevron also says it is working on ways to reuse produced water from oil and gas operations.[1] An independent analysis likewise describes closed-loop campus cooling and nonpotable or brackish sources as proposed, but notes that initial fill, construction water and water rights still need confirmation.[2]"
+    },
+    "a20-filed-date": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0395,
+     "latency_s": 3.7,
+     "answer": "Energy Forge One LLC submitted the Kilby air permit application (Permit 181895, PSDTX1684 and GHGPSDTX260) to TCEQ on October 17, 2025.[1] TCEQ's pending permit list shows the same date, 10/17/2025, for the Kilby application.[2][3] The application was later updated on December 22, 2025, when 29 turbines were added to the project scope.[4]"
+    },
+    "a21-public-meeting": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04971,
+     "latency_s": 4.1,
+     "answer": "The TCEQ public meeting on the Kilby permit application was scheduled for Wednesday, June 10, 2026 at 7:00 PM.[1] The venue was the Reeves County Civic Center, 1500 S Cedar Street, Pecos, Texas 79772.[1] The meeting was to have two parts, an Informal Discussion Period and a Formal Comment Period, and the notice announcing it was issued on May 5, 2026.[1] The provided pages are the meeting notice itself, so they show when and where the meeting was scheduled but do not confirm that it actually took place as planned.[1]"
+    },
+    "a18-nox-controls": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.06538,
+     "latency_s": 10.1,
+     "answer": "NOx from the proposed natural gas turbines will be controlled by selective catalytic reduction (SCR), while an oxidation catalyst handles CO and VOC.[1] SCR uses ammonia as a reducing agent to convert NOx to water and nitrogen, and the ammonia injection rate is controlled to avoid both too little NOx reduction and unwanted ammonia slip.[2] For the combined-cycle 7HA turbines, the proposed ammonia slip limit is 5 ppmvd at 15% O2.[2] The simple-cycle turbine NOx analysis also lists Dry Low-NOx (DLN) burners, which are built into the turbine design and are proposed to be used together with SCR.[3] An alternative, the EMx/SCONOx catalytic absorption system, was rejected as technically infeasible for large turbines.[3]"
+    },
+    "a22-permit-number": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0426,
+     "latency_s": 4.0,
+     "answer": "The state air quality permit number for Project Kilby is 181895, which Energy Forge One LLC applied for alongside federal PSD permit PSDTX1684 and greenhouse gas PSD permit GHGPSDTX260.[1] The application was submitted to the TCEQ on October 17, 2025.[1] The same three numbers appear on the TCEQ pending permit list for the Kilby site.[2]"
+    },
+    "a24-national-grid": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0407,
+     "latency_s": 3.9,
+     "answer": "National Grid, through its National Grid Ventures arm, agreed to invest $1.75 billion in Joulent, which Joulent described as a strategic minority investment.[1] Press reports say the investment bought a 35% stake in Joulent.[2][3] Joulent's own announcement, dated July 1, 2026, does not state the stake percentage.[1]"
+    },
+    "a26-technically-complete": {
+     "status": "not_in_documents",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.04461,
+     "latency_s": 4.5,
+     "answer": "The pages do not show any date on which TCEQ estimated the application would be technically complete. The TCEQ pending permit list shows the Kilby application (181895, GHGPSDTX260, PSDTX1684) with a date of 10/17/2025. Its status was 'Administrative Complete Application' in the 2026-04-10 snapshot and 'Technically Complete Application' in the 2026-10-30 snapshot. The permit file at technical completeness is dated 2026-08-06. None of these pages gives a projected or estimated completion date."
+    },
+    "a23-suppliers": {
+     "status": "withheld",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.05925,
+     "latency_s": 8.6,
+     "answer": "A draft answer failed the page check, so it is not shown."
+    },
+    "a25-final-issuance-estimate": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05478,
+     "latency_s": 7.2,
+     "answer": "A TCEQ RBLC summary form for the Kilby Power Plant, dated April 10, 2026 and prepared by reviewer Huy Pham, gives an estimated final issuance date of 10/15/2026.[1] The same form estimated the PN2 and technically complete date as 4/15/2026.[1] A later snapshot of TCEQ's pending permit list still shows the Kilby application with the status \"Technically Complete Application.\"[2]"
+    },
+    "c01-battery-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 0.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0571,
+     "latency_s": 6.6,
+     "answer": "Between the two ERCOT interconnection reports provided, the size of Project Kilby's battery storage entry did not change: it was listed at 330 MW in the August 2026 report.[1] The October 2026 report shows the same battery entry, Kilby1 Part 2 Tier1 BESS, still at 330 MW, with the same projected commercial operation date of 2028-01-21.[2] The \"Quantum Storage\" battery project in the same reports, at 321.75 MW, is a separate Haskell County project at the unrelated Kilby Switching Station, not part of Project Kilby.[2]"
+    },
+    "c03-turbine-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05158,
+     "latency_s": 5.3,
+     "answer": "The original application, dated October 2025, proposed 17 combustion turbines: 2 GE 7HA.02 combined-cycle turbines, 3 GE 7HA.02 simple-cycle turbines and 12 Solar Titan 350 simple-cycle turbines.[1] In the update to the application, Energy Forge One proposed adding 29 simple cycle turbines to supply approximately 393 MW of early phase power to meet customer needs.[2] The TCEQ review summary states that these 29 Solar T130 turbines were added on December 22, 2025, and that they are not intended to stay onsite long-term.[3] After the update, the project consists of 46 turbines: 2 combined cycle turbines and 44 simple cycle turbines.[3]"
+    },
+    "c02-capacity-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05159,
+     "latency_s": 8.1,
+     "answer": "The original application, dated October 2025, put the Kilby site's nominal capacity at approximately 2,595 MW, from two combined-cycle and fifteen simple-cycle natural gas turbines.[1] In its December 22, 2025 response to TCEQ's deficiency notice, the company restated the output of those original turbines as 2,476 MW at defined site conditions, which differs from the 2,595 MW in the original filing.[2] The same update proposed adding 29 simple-cycle turbines for early-phase power, with a nominal net output of approximately 393 MW.[2] TCEQ's April 10, 2026 review summary describes the updated project as 46 turbines with a nominal capacity of approximately 2,869 MW. It notes that the 29 Solar T130 turbines were added in the December 22, 2025 update.[3]"
+    },
+    "c04-permit-status": {
+     "status": "withheld",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.05102,
+     "latency_s": 6.2,
+     "answer": "A draft answer failed the page check, so it is not shown."
+    },
+    "u01-turbine-cost": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03826,
+     "latency_s": 3.4,
+     "answer": "The provided pages do not state how much the GE Vernova turbines cost. They describe the turbine models (GE 7HA.02 units) and note that Engine No. 1's founder procured four gigawatts of GE Vernova gas turbines, but they give no purchase price. The only dollar figures are National Grid Ventures' $1.75 billion investment in Joulent and a headline link mentioning a '$7B Texas power plant,' and neither is a turbine cost."
+    },
+    "c06-part6-technology": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05124,
+     "latency_s": 5.1,
+     "answer": "Yes, the technology code listed for Kilby1 Part 6 Large Block Combined Cycle (INR 29INR0199) differs between the two ERCOT reports.[1][2] In the August 2026 report (published 2026-09-01), the technology was listed as CC.[1] In the October 2026 report (published 2026-11-02), the technology was listed as GT.[2] Other listed details for this project, such as the 1056 MW capacity and the 2029-07-19 projected COD, are the same in both reports, and the pages do not explain why the technology code changed.[2][1]"
+    },
+    "u02-epc-contractor": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.04348,
+     "latency_s": 4.2,
+     "answer": "The provided pages do not name the EPC contractor for the Kilby Power Plant. The permit application only refers generically to 'the Engineering, Procurement, and Construction (EPC) contractor', which will run the commissioning phase before handing control to EFO. A Latitude Media article (published 2026-07-10) reports that Joulent hadn't announced its EPC contractor for Kilby yet and was finalizing a contract with 'a brand name'."
+    },
+    "u05-acreage": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03933,
+     "latency_s": 2.4,
+     "answer": "The provided pages do not state the acreage of the Kilby site. They give its location in Reeves County, about 20 miles south of Pecos, and note that the area map shows 3,000 feet from the property line, but no acreage figure appears."
+    },
+    "u03-construction-cost": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.04022,
+     "latency_s": 4.3,
+     "answer": "None of the provided pages states the total construction cost of the Kilby power plant. The TCEQ file (P1) estimates a project total cost for carbon capture of 11972 $Million, but that figure is for a hypothetical carbon capture system, not for building the plant. The press page (P5) includes a related-article headline, 'Chevron eyes $7B Texas power plant for Microsoft data center campus', but it is only a link title and does not itself state a cost for Project Kilby."
+    },
+    "u04-ppa-price": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03184,
+     "latency_s": 3.0,
+     "answer": "The provided pages describe a 20-year power purchase agreement between Energy Forge One LLC (Chevron) and Microsoft for about 2.67 GW. None of them disclose the price per MWh Microsoft will pay. Chevron says only that the project is targeting mid-teen returns. The Frontier Grid brief models fuel commodity price cases per MMBtu, which are analytical assumptions and not PPA terms."
+    },
+    "c05-solar-fate": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 0.0,
+      "citation_correct": 0.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.07948,
+     "latency_s": 11.4,
+     "answer": "None of the Project Kilby queue entries filed by Energy Forge One LLC in Reeves County is a solar project; the entries are gas turbine and battery storage blocks.[1] The solar entry that mentions \"Kilby\" is Quantum Solar, a separate Haskell County project by IP QUANTUM II, LLC that connects at Kilby Station, so it is not part of Project Kilby.[1] For that unrelated Quantum Solar project, the projected commercial operation date was 2026-09-01 in the August 2026 report and 2026-11-30 in the October 2026 report.[2][1] In Project Kilby's air permit file, \"Solar\" refers to Solar Titan 350 gas-fired combustion turbines, not solar power.[3]"
+    },
+    "u07-mercuria": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03912,
+     "latency_s": 1.7,
+     "answer": "The provided pages do not mention a Pecos Power Plant built by Mercuria or a Texas Energy Fund loan. They cover only Project Kilby (Energy Forge One LLC, Chevron), which is a different project, so its megawatt figures cannot be used to answer this question."
+    },
+    "u06-lcoe": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.05998,
+     "latency_s": 3.1,
+     "answer": "None of the provided pages gives a levelized cost of electricity for the Kilby Power Plant. The pages do include a cost estimate for carbon capture: a final figure of $194/ton of CO2 removed, along with capital and operating costs for capture trains. They also say Chevron's Permian gas gives the project a cost advantage. However, no per-MWh cost of electricity is stated."
+    },
+    "u08-engine-no1-price": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03157,
+     "latency_s": 3.7,
+     "answer": "The provided pages do not say that Chevron paid Engine No. 1 anything for a share of Project Kilby. They describe Kilby as a collaboration and a 50-50 joint venture between Chevron and Joulent, which spun out of Engine No. 1. The only investment figure given is a separate deal: National Grid Ventures' $1.75 billion investment in Joulent for a 35% stake in that company. None of the pages give a price paid by Chevron."
+    },
+    "u10-revenue": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03177,
+     "latency_s": 2.6,
+     "answer": "The provided pages do not state how much annual revenue Project Kilby will earn from Microsoft. They describe a 20-year power purchase agreement with Microsoft for about 2.67 gigawatts and say the project is \"targeting mid-teen returns,\" but they give no dollar figure for annual revenue or for the contract price."
+    },
+    "u09-dc-contractor": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03165,
+     "latency_s": 3.6,
+     "answer": "The provided pages do not name a general contractor for Microsoft's Pecos data center. They only discuss the power plant's EPC contractor. Latitude Media (July 10, 2026) says Joulent had not yet announced the EPC contractor for Kilby but was finalizing a contract with \"a brand name.\" National Grid, as cited in the Frontier Grid brief, says EPC capacity is reserved. Neither source identifies a contractor for the data center itself."
+    }
+   }
+  },
+  {
+   "id": "answer/v1",
+   "label": "v1",
+   "split": "tuning",
+   "note": "Retrieval and date check fixes found by reading the baseline failures",
+   "summary": {
+    "answer_accuracy": {
+     "value": 0.90625,
+     "n": 32,
+     "ci95": 0.10099287374302704
+    },
+    "citation_accuracy": {
+     "value": 0.9666666666666667,
+     "n": 30,
+     "ci95": 0.0642352159096781
+    },
+    "refusal_recall": {
+     "value": 1.0,
+     "n": 10,
+     "ci95": 0.0
+    },
+    "false_refusal_rate": {
+     "value": 0.0625,
+     "n": 32,
+     "ci95": 0.08387001661797856
+    },
+    "cost_usd_total": 1.9141,
+    "cost_usd_per_question": 0.0456,
+    "latency_s_median": 4.8,
+    "wall_clock_s": 54.5
+   },
+   "cases": {
+    "a03-capacity-chevron": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0531,
+     "latency_s": 7.1,
+     "answer": "Chevron announced on June 22, 2026 that Project Kilby is expected to deliver approximately 2.67 gigawatts of capacity, built in phases through a modular approach that allows incremental expansion over time.[1] According to Chevron, most of that generation will come from large GE Vernova turbines, with additional capacity from Solar Turbines, a Caterpillar subsidiary.[1] The figure in the state air permit file is different: the TCEQ review describes a nominal capacity of approximately 2,869 MW across 46 turbines, up from 2,595 MW in the October 2025 application.[2][3] An analyst brief treats these as separate measures: about 2.67 GW is the commercial project scale, and 2.869 GW is the permit envelope.[4][5]"
+    },
+    "a01-capacity-permit": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04414,
+     "latency_s": 7.1,
+     "answer": "The TCEQ's project summary, dated April 10, 2026, says the Kilby Power Plant's nominal generating capacity will be approximately 2,869 megawatts (MW) at site conditions of 59\u00b0F, 60% relative humidity and 2,850 feet elevation.[1] Earlier figures in the file were different: the original application gave a total nominal net output of 2,595 MW.[2] In its December 22, 2025 response to the TCEQ, Energy Forge One restated the output as 2,476 MW and proposed adding 29 early-phase turbines with a nominal net output of approximately 393 MW.[2] Company announcements outside the permit file give a different figure of approximately 2.67 gigawatts.[3]"
+    },
+    "a04-turbine-count": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05598,
+     "latency_s": 7.2,
+     "answer": "The updated permit application covers 46 combustion turbines: two natural gas-fired combined cycle turbines and 44 natural gas-fired simple cycle turbines.[1] By model, these are 2 GE 7HA.02 combined-cycle turbines, 3 GE 7HA.02 simple-cycle turbines, 12 Solar Titan 350 simple-cycle turbines, and 29 Solar Titan 130 simple-cycle turbines.[1] The original application filed in October 2025 proposed 17 combustion turbines.[2] The 29 Solar T130 turbines were added in an update to the application on December 22, 2025, and are meant to supply early phase power rather than stay onsite long-term.[1]"
+    },
+    "a02-capacity-original": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05431,
+     "latency_s": 10.2,
+     "answer": "The original application, submitted to TCEQ on October 17, 2025, stated in its Executive Summary that the combustion turbines could generate a total nominal net output of 2,595 megawatts (MW) at site conditions.[1][2] TCEQ's December 9, 2025 deficiency notice asked the company to define those site conditions, and in its December 22, 2025 response the company gave a nominal net output of 2,476 MW at 59\u00b0F, 60% relative humidity, 2,850 feet elevation and 13.25 psi.[2] The same response added 29 early-phase simple cycle turbines of approximately 393 MW.[2] Later figures differ: TCEQ's review describes the plant at approximately 2,869 MW, while Chevron's June 22, 2026 announcement says approximately 2.67 gigawatts.[3][4]"
+    },
+    "a07-ppa-term": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03386,
+     "latency_s": 3.7,
+     "answer": "The power purchase agreement for Project Kilby runs for 20 years, under which Energy Forge One LLC, a Chevron subsidiary, will provide dedicated electricity to a Microsoft-operated data center.[1] Chevron announced the agreement on June 22, 2026.[1] Other sources, including Joulent and press coverage, describe the same 20-year term with no disagreement.[2][3]"
+    },
+    "a06-7ha-rating": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05416,
+     "latency_s": 4.5,
+     "answer": "Each of the two GE 7HA.02 combined-cycle turbines at the Kilby Power Plant has a net output of 555.7 MW.[1][2] The same figure appears in Energy Forge One's December 22, 2025 response to TCEQ, which gives it at site conditions of 59\u00b0F inlet air temperature, 60% relative humidity, 2,850 feet elevation and 13.25 psi atmospheric pressure.[3]"
+    },
+    "a05-t130-purpose": {
+     "status": "withheld",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.05124,
+     "latency_s": 5.1,
+     "answer": "A draft answer failed the page check, so it is not shown."
+    },
+    "a08-offtaker": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03304,
+     "latency_s": 4.2,
+     "answer": "Microsoft will buy the plant's power to serve a Microsoft-operated data center in West Texas.[1] The sale is under a 20-year power purchase agreement.[1][2] Joulent describes the same arrangement, saying Kilby will deliver approximately 2.67 gigawatts to a Microsoft-operated data center campus.[3]"
+    },
+    "a10-county": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03652,
+     "latency_s": 2.9,
+     "answer": "The Kilby Power Plant is in Reeves County, Texas, near Pecos.[1] The TCEQ notice says the application by Energy Forge One LLC would authorize construction of the Kilby Power Plant at that site.[1]"
+    },
+    "a09-applicant": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04486,
+     "latency_s": 4.6,
+     "answer": "Energy Forge One LLC applied to the Texas Commission on Environmental Quality for the air permits for the Kilby power plant (Permit 181895, PSD Permit PSDTX1684, and GHG PSD Permit GHGPSDTX260).[1] The application was submitted to the TCEQ on October 17, 2025.[1] TCEQ's permit review summary likewise names Energy Forge One LLC (EFO) as the applicant for a greenfield natural gas-fired turbine power plant near Pecos, Reeves County, Texas.[2]"
+    },
+    "a13-part1-cod": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0509,
+     "latency_s": 4.8,
+     "answer": "ERCOT's interconnection status reports list a projected commercial operation date of 2027-11-04 for Kilby1 Part 1 Small Block Simple Cycle (INR 27INR0572), a 371 MW gas turbine project of Energy Forge One LLC in Reeves County.[1] The same 2027-11-04 date appears in both the July 2026 and October 2026 reports, so it did not change between them.[2][1] As of the October 2026 report, the project had completed its screening study and started its facilities study, but it had no interconnection agreement.[1]"
+    },
+    "a14-first-power": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03969,
+     "latency_s": 5.2,
+     "answer": "Chevron says first power delivery from Project Kilby is anticipated in 2028.[1] In an October 2026 interview, Chevron's Daniel Droog said Kilby was still on track to produce its first electrons by 2028, even though the final investment decision could slip to 2027 because of a moratorium on new data center permits.[2] National Grid's investment announcement gives the same target, saying the project is targeting first power delivery by 2028.[3] ERCOT's October 2026 interconnection report lists an earlier projected commercial operation date of 2027-11-04 for the first Kilby block, a 371 MW simple cycle unit.[4]"
+    },
+    "a12-battery-now": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05319,
+     "latency_s": 6.5,
+     "answer": "In the October 2026 ERCOT interconnection status report, the battery storage portion of Project Kilby is listed as \"Kilby1 Part 2 Tier1 BESS\" (INR 28INR0457) with a capacity of 330 MW.[1] It is filed by Energy Forge One LLC in Reeves County, with a projected commercial operation date of 2028-01-21, and its study phase is \"SS Completed, FIS Started, No IA.\"[1] The August 2026 report showed the same 330 MW figure.[2] The 321.75 MW \"Quantum Storage\" battery in the same report belongs to a separate Haskell County project at Kilby Switching Station, not Project Kilby.[1]"
+    },
+    "a11-substation": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05742,
+     "latency_s": 9.7,
+     "answer": "In ERCOT's October interconnection status report, all four Energy Forge One LLC \"Kilby1\" entries in Reeves County list the #60404 Solstice Substation at 345 kV as the point of interconnection.[1] The earlier May report differs for Kilby1 Part 1 (Small Block Simple Cycle), which was listed as a double tap of the 345kV Parker (1436) - Benbrook (1873 & 1869) circuit rather than Solstice.[2] In that May report, the other Kilby1 parts were already listed at the #60404 Solstice Substation 345 kV.[2] The \"60089 Kilby Station 345kV\" that appears in the same reports belongs to the unrelated Quantum Solar and Quantum Storage projects in Haskell County, not to Project Kilby.[1]"
+    },
+    "a15-fid-timing": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0345,
+     "latency_s": 5.7,
+     "answer": "In its June 22, 2026 announcement, Chevron said its Final Investment Decision (FID) on Project Kilby was expected by the end of 2026, subject to completing other necessary conditions.[1] In July 2026, National Grid's investment coverage and an analysis brief also described FID as expected in 2026.[2][3] A later Semafor report dated October 1, 2026 says the decision could slip to 2027 after Gov. Greg Abbott imposed a moratorium on new data center permits.[4] Semafor attributes this to Daniel Droog, Chevron's vice president for power solutions, who also said Kilby is still on track to produce its first electrons by 2028.[4]"
+    },
+    "a16-co2e-updated": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04298,
+     "latency_s": 4.7,
+     "answer": "For the updated 46-turbine Kilby Power Plant, TCEQ's RBLC summary form (dated April 10, 2026) lists proposed allowable greenhouse gas emissions of 13,890,275.01 tons per year as CO2e.[1][2] That same table lists CO2 alone at 13,871,124.49 tons per year.[2] This total is higher than the original plain language summary from October 2025, which listed 11,564,704.59 tons per year of CO2 equivalent, before 29 Solar T130 turbines were added in the December 22, 2025 update.[3][1]"
+    },
+    "a17-co2e-pls": {
+     "status": "withheld",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.04234,
+     "latency_s": 6.0,
+     "answer": "A draft answer failed the page check, so it is not shown."
+    },
+    "a18-nox-controls": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05746,
+     "latency_s": 6.6,
+     "answer": "According to TCEQ's plain language summary, the Kilby plant's natural gas turbines will use selective catalytic reduction (SCR) to control NOx, with an oxidation catalyst for CO and VOC.[1] SCR uses ammonia as a reducing agent to turn NOx into water and nitrogen, and the ammonia injection rate is controlled to avoid both insufficient NOx reduction and unwanted ammonia slip.[2] The application's BACT analysis for the simple-cycle turbines also lists dry low-NOx (DLN) burners, which lower flame temperatures and are built into the turbine design, as used together with SCR.[3] The same analysis rejected the EMx/SCONOx catalytic absorption system as technically infeasible for large turbines, partly because it would need hydrogen for catalyst regeneration.[3] Proposed NOx limits changed between filings: 886.34 tons per year in the October 2025 summary versus 1,086.58 tons per year in the later"
+    },
+    "a20-filed-date": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03968,
+     "latency_s": 3.5,
+     "answer": "Energy Forge One LLC submitted the air permit application for the Kilby plant (permits 181895, PSDTX1684 and GHGPSDTX260) to TCEQ on October 17, 2025.[1] TCEQ's pending permit list shows the same date, 10/17/2025, for the Kilby application.[2][3] The application was later updated on December 22, 2025, when 29 simple-cycle turbines were added to the project scope.[4]"
+    },
+    "a19-water": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04264,
+     "latency_s": 4.1,
+     "answer": "According to Chevron, the Kilby plant plans to use non-potable, brackish groundwater rather than freshwater for power plant operations.[1] Chevron also says it is working on ways to reuse produced water from oil and gas operations.[1] An analyst brief similarly describes closed-loop campus cooling and nonpotable or brackish sources as proposed, but notes that initial fill, construction water and water rights still require confirmation.[2]"
+    },
+    "a21-public-meeting": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04941,
+     "latency_s": 5.2,
+     "answer": "The TCEQ public meeting on the Kilby Power Plant air permit application was scheduled for Wednesday, June 10, 2026 at 7:00 PM.[1] It was to be held at the Reeves County Civic Center, 1500 S Cedar Street, Pecos, Texas 79772.[1] The notice announcing the meeting was issued on May 5, 2026, and the meeting was to have two parts: an Informal Discussion Period and a Formal Comment Period.[1] The provided pages give the scheduled date and location but do not confirm that the meeting actually took place as planned.[1]"
+    },
+    "a22-permit-number": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0453,
+     "latency_s": 4.9,
+     "answer": "The state air quality permit number for the Kilby Power Plant is 181895, which Energy Forge One LLC applied for alongside federal Prevention of Significant Deterioration permit PSDTX1684 and greenhouse gas PSD permit GHGPSDTX260.[1] The TCEQ pending permit list shows the same three numbers, with an application date of 10/17/2025.[2] Note that one TCEQ summary form lists the greenhouse gas number as \"GHGPSDTX260181895\", which appears to run two numbers together; other filings give it as GHGPSDTX260.[3][4]"
+    },
+    "a24-national-grid": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04108,
+     "latency_s": 4.5,
+     "answer": "National Grid, through its National Grid Ventures arm, agreed to invest $1.75 billion in Joulent, according to Joulent's July 1, 2026 announcement, which describes it as a strategic minority investment.[1] Press reports say the $1.75 billion bought a 35% stake in Joulent.[2][3] Joulent is developing Project Kilby through a 50-50 joint venture with Chevron.[3]"
+    },
+    "a23-suppliers": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05907,
+     "latency_s": 8.2,
+     "answer": "The permit file lists turbines from two makers: GE 7HA.02 units and Solar Titan units.[1] Five of the turbines are GE 7HA.02 models: 2 run in combined-cycle mode and 3 run in simple-cycle mode.[1] The rest are Solar models: 12 Solar Titan 350 units and 29 Solar Titan 130 units, all simple-cycle.[1] The original October 2025 application listed only 17 turbines (the GE units and the 12 Solar T350s), and the 29 Solar T130 units were added in an update on December 22, 2025.[2][1] The pages identify these turbines by model name but do not describe any purchase or supply contract with either manufacturer.[3]"
+    },
+    "a25-final-issuance-estimate": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04844,
+     "latency_s": 5.0,
+     "answer": "TCEQ's RBLC summary form for the Kilby Power Plant, dated April 10, 2026, gives an estimated final issuance date of 10/15/2026.[1] The same form estimated that the technically complete date would be 4/15/2026.[1] A TCEQ pending permit list snapshot from 2026-10-30 still showed the Kilby application with the status \"Technically Complete Application\" rather than issued.[2]"
+    },
+    "a26-technically-complete": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0485,
+     "latency_s": 3.9,
+     "answer": "TCEQ's RBLC summary form for Project Kilby, dated April 10, 2026, gave an estimated technically complete date of 4/15/2026.[1] The same form estimated final issuance for 10/15/2026.[1] TCEQ's pending permit list showed the Kilby application as \"Administrative Complete Application\" in an April 10, 2026 snapshot and as \"Technically Complete Application\" in an October 30, 2026 snapshot.[2][3]"
+    },
+    "c04-permit-status": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04826,
+     "latency_s": 4.8,
+     "answer": "In TCEQ's pending permit list snapshot of 2026-04-10, the Kilby application (permits 181895, GHGPSDTX260, PSDTX1684) was listed as an \"Administrative Complete Application.\"[1] By the 2026-10-30 snapshot, the same row showed the status as a \"Technically Complete Application.\"[2] Both snapshots show the same application date of 10/17/2025, which matches the October 17, 2025 submission date in TCEQ's notice of receipt.[2][1][3] A technical completeness status does not mean final approval: an analyst brief from 2026-07-28 notes the permit is advanced but not equivalent to final authorization.[4]"
+    },
+    "c02-capacity-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 0.0,
+      "citation_correct": 0.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03932,
+     "latency_s": 5.8,
+     "answer": "The air permit application for the Kilby Power Plant was submitted to the TCEQ on October 17, 2025.[1]"
+    },
+    "c03-turbine-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05326,
+     "latency_s": 5.9,
+     "answer": "The original application, dated October 2025, proposed 17 combustion turbines: 2 GE 7HA.02 combined-cycle turbines, 3 GE 7HA.02 simple-cycle turbines and 12 Solar Titan 350 simple-cycle turbines.[1] In the update to the application, Energy Forge One proposed adding 29 simple-cycle turbines to supply approximately 393 MW of early phase power to meet customer needs.[2] TCEQ's April 10, 2026 summary identifies the added units as Solar Titan 130 turbines that were added on December 22, 2025 and are not intended to remain onsite long-term.[3] After the update, the project scope listed 46 turbines: 2 combined-cycle turbines and 44 simple-cycle turbines, with a nominal capacity of approximately 2,869 MW.[3]"
+    },
+    "c01-battery-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.06074,
+     "latency_s": 9.5,
+     "answer": "The battery storage portion of Project Kilby is listed in the ERCOT queue as \"Kilby1 Part 2 Tier1 BESS\" (INR 28INR0457), with Energy Forge One LLC as the interconnecting entity.[1] In the June 2026 ERCOT report, this battery project was listed at 560 MW.[2] In the October 2026 ERCOT report, the same project was listed at 330 MW, so its listed size went down between the two reports.[1] Its projected commercial operation date stayed at 2028-01-21 in both reports.[1][2] The \"Quantum Storage\" battery project in the same reports is a separate Haskell County project at Kilby Switching Station, not part of Project Kilby.[1]"
+    },
+    "u02-epc-contractor": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03988,
+     "latency_s": 2.8,
+     "answer": "The provided pages do not name the EPC contractor for the Kilby Power Plant. A July 10, 2026 Latitude Media article (tier 3) reports that Joulent \"hasn\u2019t announced the EPC contractor for its Kilby project yet\" and was finalizing a contract with \"a brand name.\" The TCEQ filings mention an EPC contractor only in general terms, for example its role during the commissioning phase, and do not name a company."
+    },
+    "u01-turbine-cost": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03728,
+     "latency_s": 3.2,
+     "answer": "The provided pages do not give a cost for the GE Vernova turbines. They say GE Vernova will supply most of Kilby's generation and that Engine No. 1's Chris James had procured four gigawatts of GE Vernova gas turbines two years before early 2025. The only dollar figure is National Grid Ventures' $1.75 billion investment for a 35% stake in Joulent, which is not a turbine price."
+    },
+    "c06-part6-technology": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05016,
+     "latency_s": 5.1,
+     "answer": "Yes, the technology listed for Kilby1 Part 6 Large Block Combined Cycle (INR 29INR0199) differs between the two ERCOT reports.[1][2] The August 2026 report (published 2026-09-01) listed the technology as CC.[1] The October 2026 report (published 2026-11-02) listed it as GT, even though the project name still says \"Combined Cycle.\"[2] Other listed details for this project, such as the 1056 MW capacity and the 2029-07-19 projected COD, are the same in both reports.[2][1]"
+    },
+    "u04-ppa-price": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.0319,
+     "latency_s": 3.0,
+     "answer": "The provided pages describe a 20-year power purchase agreement between Energy Forge One LLC (Chevron) and Microsoft for about 2.67 GW, but none of them disclose the price per MWh Microsoft will pay. The Frontier Grid brief models gas commodity price cases in $/MMBtu, but these are analytical assumptions about fuel cost, not PPA pricing, and it lists PPA terms as unknown."
+    },
+    "c05-solar-fate": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0652,
+     "latency_s": 8.2,
+     "answer": "The solar piece of Project Kilby, listed as \"Kilby1 Part 5 Solar\" (INR 28INR0460) in Reeves County, was cancelled in the ERCOT interconnection queue on 2026-07-06.[1] That cancelled solar entry was sized at 500 MW.[1] In the October 2026 ERCOT report, the remaining Energy Forge One LLC Kilby1 entries are Part 1 (gas simple cycle), Part 2 (battery storage), Part 4 (gas simple cycle) and Part 6 (gas combined cycle), with no solar part listed.[2] The \"Quantum Solar\" project on the same report connects at a Kilby Station in Haskell County and is a different developer's project, not part of Project Kilby.[2]"
+    },
+    "u05-acreage": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03941,
+     "latency_s": 2.4,
+     "answer": "The provided pages do not state the acreage of the Kilby site. They give its location in Reeves County, about 20 miles (32.3 km) south of Pecos, and say the area map shows 3,000 feet from the property line, but no site size in acres."
+    },
+    "u03-construction-cost": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.04144,
+     "latency_s": 4.7,
+     "answer": "The provided pages do not state a total construction cost for the Kilby power plant. The TCEQ file (P1) gives only a hypothetical carbon capture cost estimate (11972 $Million for capture), which is not the plant's construction cost. One press page (P5) only lists a related-article headline, 'Chevron eyes $7B Texas power plant for Microsoft data center campus,' without any supporting article text, so it cannot be relied on as a stated figure for Project Kilby."
+    },
+    "u06-lcoe": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.0596,
+     "latency_s": 2.6,
+     "answer": "The provided pages do not state a levelized cost of electricity for the Kilby Power Plant. They include a carbon capture cost analysis (for example, a final estimate of $194/ton of CO2 removed using 2024 numbers) and capacity figures (about 2.67 gigawatts), but no levelized cost of electricity."
+    },
+    "u07-mercuria": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03992,
+     "latency_s": 2.7,
+     "answer": "The provided pages do not mention a Pecos Power Plant built by Mercuria or a Texas Energy Fund loan. They only cover Project Kilby (Energy Forge One LLC / Chevron) near Pecos, Reeves County. Its permit file gives a capacity of approximately 2,869 MW, and Chevron describes it as approximately 2.67 gigawatts, but that is a different project."
+    },
+    "u08-engine-no1-price": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03111,
+     "latency_s": 3.4,
+     "answer": "None of the provided pages says what Chevron paid Engine No. 1 for a share of Project Kilby. The pages describe Kilby as a 50-50 joint venture between Joulent (spun out of Engine No. 1) and Chevron, but they give no payment terms. The only investment figure is National Grid Ventures' $1.75 billion for a 35% stake in Joulent, which is a different transaction."
+    },
+    "u09-dc-contractor": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03083,
+     "latency_s": 3.3,
+     "answer": "The provided pages do not name a general contractor for Microsoft's Pecos data center campus. They only discuss the EPC contractor for the Kilby power plant, which Joulent had not yet announced (it said it was finalizing a contract with \"a brand name\"). That is a different contract from the data center's construction."
+    },
+    "u10-revenue": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03197,
+     "latency_s": 2.6,
+     "answer": "The provided pages do not state how much annual revenue the Kilby plant will earn from Microsoft. They describe a 20-year power purchase agreement for about 2.67 gigawatts and say the project is targeting mid-teen returns. They also mention more than $10 billion in expected state and local tax revenue. None of them gives a contract price or annual revenue figure."
+    }
+   }
+  },
+  {
+   "id": "answer/v2",
+   "label": "v2",
+   "split": "tuning",
+   "note": "Record guided retrieval weighted by field specificity, five pages per field",
+   "summary": {
+    "answer_accuracy": {
+     "value": 0.9375,
+     "n": 32,
+     "ci95": 0.08387001661797856
+    },
+    "citation_accuracy": {
+     "value": 0.967741935483871,
+     "n": 31,
+     "ci95": 0.06219767603886519
+    },
+    "refusal_recall": {
+     "value": 1.0,
+     "n": 10,
+     "ci95": 0.0
+    },
+    "false_refusal_rate": {
+     "value": 0.03125,
+     "n": 32,
+     "ci95": 0.06028537278540293
+    },
+    "cost_usd_total": 1.9248,
+    "cost_usd_per_question": 0.0458,
+    "latency_s_median": 4.5,
+    "wall_clock_s": 53.3
+   },
+   "cases": {
+    "a01-capacity-permit": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 0.0,
+      "citation_correct": 0.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03934,
+     "latency_s": 4.3,
+     "answer": "The original application filed in October 2025 put the Kilby site's nominal power generation capacity at approximately 2,595 megawatts.[1]"
+    },
+    "a04-turbine-count": {
+     "status": "withheld",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.05272,
+     "latency_s": 6.1,
+     "answer": "A draft answer failed the page check, so it is not shown."
+    },
+    "a02-capacity-original": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04475,
+     "latency_s": 6.2,
+     "answer": "The original permit application, dated October 2025, stated that the Kilby site's nominal power generation capacity would be approximately 2,595 megawatts (MW).[1] That original application covered two combined-cycle and fifteen simple-cycle natural gas-fired combustion turbines.[1] In its December 22, 2025 response to a TCEQ deficiency notice, the company restated the output of those turbines as 2,476 MW at defined site conditions and proposed adding 29 early-phase turbines of approximately 393 MW.[2] Later figures differ again: the TCEQ summary dated April 10, 2026 gives approximately 2,869 MW, and Chevron's June 22, 2026 announcement says approximately 2.67 gigawatts.[3][4]"
+    },
+    "a03-capacity-chevron": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0536,
+     "latency_s": 6.6,
+     "answer": "Chevron announced that Project Kilby is expected to deliver approximately 2.67 gigawatts of capacity, built through a phased, modular approach that allows expansion over time.[1] Chevron said most of that generation will come from large GE Vernova turbines, with additional capacity from Solar Turbines.[1] This announced figure differs from the TCEQ permit file, which lists a nominal capacity of approximately 2,869 megawatts across 46 turbines.[2] The permit figures also changed over time: the October 2025 application stated approximately 2,595 megawatts, and the December 22, 2025 update stated 2,476 MW plus about 393 MW from 29 added early-phase turbines.[3][4] An analyst brief treats these as separate measures: about 2.67 GW as the commercial project scale and 2.869 GW as the permit envelope.[5]"
+    },
+    "a05-t130-purpose": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05148,
+     "latency_s": 5.1,
+     "answer": "According to the TCEQ permit file, the 29 Solar Titan 130 simple-cycle turbines were proposed to supply \"early phase power\" to meet customer needs and are not intended to stay onsite long-term.[1] They were added to the project scope in an update to the application on December 22, 2025; the original October 2025 application listed only 17 turbines and no Titan 130 units.[1][2] An analyst brief likewise describes the roughly 393 MW Titan 130 fleet as temporary early power that can protect the schedule, though it notes this \"bridge fleet\" needs a hard replacement milestone.[3][4]"
+    },
+    "a07-ppa-term": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03416,
+     "latency_s": 3.7,
+     "answer": "The power purchase agreement between Energy Forge One LLC, a Chevron subsidiary, and Microsoft runs for 20 years.[1] Chevron announced the agreement on June 22, 2026.[1] Joulent, press coverage and a later analysis brief all describe the same 20-year term, and none of the pages gives a different length.[2][3][4]"
+    },
+    "a06-7ha-rating": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05372,
+     "latency_s": 4.0,
+     "answer": "Each of the two GE 7HA.02 combined-cycle turbines at the Kilby Power Plant has a net output of 555.7 MW.[1][2] The same figure appears in the company's December 22, 2025 response to TCEQ, which gives it at site conditions of 59\u00b0F inlet air temperature, 60% relative humidity, and 2,850 feet elevation.[3]"
+    },
+    "a08-offtaker": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03362,
+     "latency_s": 4.1,
+     "answer": "Microsoft will buy the plant's power: Chevron's subsidiary Energy Forge One LLC signed an agreement with Microsoft to provide dedicated electricity to a Microsoft-operated data center under a 20-year power purchase agreement.[1] The plant is expected to deliver about 2.67 gigawatts to support a Microsoft-operated data center campus.[2] Press coverage agrees that Microsoft will buy power from the plant for 20 years.[3]"
+    },
+    "a09-applicant": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04478,
+     "latency_s": 4.5,
+     "answer": "Energy Forge One LLC applied to the Texas Commission on Environmental Quality (TCEQ) for the air permit for Project Kilby, covering Permit 181895, PSD Permit PSDTX1684, and GHG PSD Permit GHGPSDTX260.[1] The application was submitted to the TCEQ on October 17, 2025.[1] TCEQ's review documents describe Energy Forge One LLC (EFO) as having submitted an air construction permit application for a greenfield natural gas-fired turbine power plant near Pecos, Reeves County, Texas.[2]"
+    },
+    "a10-county": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03734,
+     "latency_s": 4.0,
+     "answer": "The Kilby Power Plant is in Reeves County, Texas, near Pecos.[1] The application's modeling protocol also compares emissions near the Project site with those in Reeves County, and an analysis brief lists the project's location as Reeves County, Texas.[2][3]"
+    },
+    "a12-battery-now": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05251,
+     "latency_s": 6.3,
+     "answer": "In the October 2026 ERCOT interconnection status report, Project Kilby's battery storage portion, \"Kilby1 Part 2 Tier1 BESS\" (INR 28INR0457, Energy Forge One LLC, Reeves County), is listed at 330 MW.[1] This is smaller than the earlier June 2026 ERCOT report, which listed the same battery project at 560 MW.[2] Both reports show the same projected commercial operation date of 2028-01-21 for the battery.[1][2] The \"Quantum Storage\" battery project in the same reports is a separate Haskell County project at the Kilby Switching Station and is not part of Project Kilby.[1]"
+    },
+    "a13-part1-cod": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0503,
+     "latency_s": 4.4,
+     "answer": "ERCOT's interconnection status reports list a projected commercial operation date of 2027-11-04 for Kilby1 Part 1 Small Block Simple Cycle (INR 27INR0572), a 371 MW gas turbine project by Energy Forge One LLC in Reeves County.[1] The date was the same in both the July 2026 and October 2026 reports.[2][1] The project had not yet signed an interconnection agreement, with its facilities study started.[1]"
+    },
+    "a14-first-power": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03845,
+     "latency_s": 4.9,
+     "answer": "Chevron's June 22, 2026 announcement said first power delivery from Project Kilby is anticipated in 2028.[1][2] In an October 2026 interview, Chevron's Daniel Droog said Kilby is still on track to produce its first electrons by 2028, even though the final investment decision could slip to 2027.[3] Other sources also cite a 2028 target for first power, and ERCOT's October 2026 report lists a projected COD of 2027-11-04 for the first gas block, Kilby1 Part 1.[4][5]"
+    },
+    "a11-substation": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0591,
+     "latency_s": 10.3,
+     "answer": "In ERCOT's October 2026 interconnection report, every Energy Forge One LLC Kilby1 entry in Reeves County lists its point of interconnection as the Solstice Substation (#60404) at 345 kV.[1] The earlier May 2026 report listed Solstice Substation for Parts 2, 4 and 6.[2] That May 2026 report showed a different connection for Kilby1 Part 1, a double tap on the 345kV Parker (1436) to Benbrook (1873 & 1869) double-circuit line.[2] The \"Kilby Station 345kV\" (60089) in the same reports belongs to the unrelated Quantum Solar and Quantum Storage projects in Haskell County, not Project Kilby.[1]"
+    },
+    "a15-fid-timing": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03392,
+     "latency_s": 4.6,
+     "answer": "In its June 22, 2026 announcement, Chevron said it expected its Final Investment Decision (FID) on Kilby by the end of 2026, subject to the completion of other necessary conditions.[1][2] National Grid's July 2026 coverage likewise described a final investment decision as expected in 2026.[3] However, a Semafor report published October 1, 2026 said the decision could be pushed to 2027 because of a moratorium on new data center permits imposed by Gov. Greg Abbott, according to Chevron's vice president for power solutions, Daniel Droog.[4] Droog also said Kilby remains on track to produce its first electrons by 2028.[4]"
+    },
+    "a16-co2e-updated": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04612,
+     "latency_s": 5.5,
+     "answer": "In the permit file at technical completeness, TCEQ lists proposed allowable greenhouse gas emissions of 13,890,275.01 tons per year as CO2e, including 13,871,124.49 tons per year of CO2.[1] That same TCEQ file describes the project as 46 turbines, with 29 Solar T130 turbines added in an application update on December 22, 2025.[2] This figure is higher than TCEQ's earlier plain language summary for the original application, which listed 11,564,704.59 tons per year of CO2 equivalent.[3]"
+    },
+    "a17-co2e-pls": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04406,
+     "latency_s": 6.0,
+     "answer": "The plain language summary for permit 181895 lists a CO2 equivalent total of 11,564,704.59 tons per year for all the facilities at the Kilby site.[1] The same figure appears in the summary included with the application as filed (published 2025-10-17), and in the Spanish-language version.[2][3] The summary states that its figures may change during technical review.[1] The later permit file at technical completeness (published 2026-08-06) includes the summary with that same figure but elsewhere lists a higher proposed allowable rate of 13,890,275.01 tpy for GHG as CO2e.[4][5]"
+    },
+    "a19-water": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04274,
+     "latency_s": 4.2,
+     "answer": "Chevron says the Kilby plant plans to use non-potable, brackish groundwater rather than freshwater for power plant operations.[1] Chevron also says it is working on ways to reuse produced water from oil and gas operations.[1] An analyst brief similarly describes closed-loop campus cooling and nonpotable or brackish sources as proposed. It notes that initial fill, construction water and water rights still require confirmation.[2]"
+    },
+    "a20-filed-date": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03972,
+     "latency_s": 3.3,
+     "answer": "Energy Forge One LLC submitted the air permit application for the Kilby Power Plant to the TCEQ on October 17, 2025.[1] TCEQ's pending permit list shows the same date, 10/17/2025, for the Kilby application (permits 181895, GHGPSDTX260, PSDTX1684).[2][3] The application was later updated on December 22, 2025, when 29 Solar T130 turbines were added to the project scope.[4]"
+    },
+    "a18-nox-controls": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05822,
+     "latency_s": 7.0,
+     "answer": "According to the TCEQ plain language summary, Project Kilby's natural gas turbines will use selective catalytic reduction (SCR) to control NOx, with an oxidation catalyst for CO and VOC.[1] SCR uses ammonia (NH3) as a reducing agent to convert NOx to water and nitrogen, and the ammonia injection rate is controlled to avoid both too little NOx reduction and excess ammonia slip.[2] For the simple-cycle turbines, the application's BACT analysis also lists Dry Low-NOx (DLN) burners, which lower flame temperatures and are built into the turbine design, to be used together with SCR.[3] The application rejected the EMx/SCONOx catalytic absorption system as technically infeasible for large turbines, citing pressure drops and the cost and danger of using hydrogen for catalyst regeneration.[3] Proposed NOx emissions rose from 886.34 tons per year in the October 2025 summary to 1,086.58 tons per ye"
+    },
+    "a21-public-meeting": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04913,
+     "latency_s": 4.4,
+     "answer": "The TCEQ notice scheduled the public meeting on the Kilby permit application for Wednesday, June 10, 2026 at 7:00 PM.[1] The meeting location was the Reeves County Civic Center, 1500 S Cedar Street, Pecos, Texas 79772.[1] The notice was issued on May 5, 2026, and the meeting was to have an Informal Discussion Period and a Formal Comment Period.[1] The pages show the meeting as scheduled in the notice; they do not confirm that it actually took place as planned.[1]"
+    },
+    "a22-permit-number": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04404,
+     "latency_s": 4.5,
+     "answer": "The state air quality permit number for the Kilby Power Plant is 181895, which Energy Forge One LLC applied for alongside federal PSD permit PSDTX1684 and greenhouse gas PSD permit GHGPSDTX260.[1] The TCEQ pending permit list shows the same numbers for the Kilby site, with an application date of 10/17/2025.[2] That list described the application as administratively complete in the 2026-04-10 snapshot and technically complete in the 2026-10-30 snapshot.[3][2]"
+    },
+    "a24-national-grid": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0408,
+     "latency_s": 4.0,
+     "answer": "National Grid, through its National Grid Ventures arm, agreed to invest $1.75 billion in Joulent, which Joulent described as a strategic minority investment.[1] Press reports say the investment bought a 35% stake in Joulent.[2][3] Joulent's own July 1, 2026 announcement does not state the percentage, only that it is a minority investment.[1]"
+    },
+    "a26-technically-complete": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05124,
+     "latency_s": 4.7,
+     "answer": "On an RBLC summary form dated April 10, 2026, TCEQ reviewer Huy Pham gave an estimated PN2 and technically complete date of 4/15/2026 for the Kilby Power Plant application.[1] The same form estimated final issuance for 10/15/2026.[1] TCEQ's pending permit list still showed the application as administratively complete in an April 10, 2026 snapshot, and as technically complete in an October 30, 2026 snapshot.[2][3]"
+    },
+    "a25-final-issuance-estimate": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05298,
+     "latency_s": 6.4,
+     "answer": "A TCEQ RBLC summary form for Project Kilby, dated April 10, 2026 and prepared by reviewer HPHAM, gave an estimated final issuance date of 10/15/2026.[1] The same form estimated the technically complete date as 4/15/2026.[1] A later snapshot of TCEQ's pending permit list, dated 2026-10-30, still showed the Kilby application with the status \"Technically Complete Application\" rather than as issued.[2]"
+    },
+    "a23-suppliers": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.06353,
+     "latency_s": 10.0,
+     "answer": "The permit filings name two turbine makers for Project Kilby: GE, with its 7HA.02 model, and Solar, with its Titan 350 and Titan 130 models.[1] The October 2025 application covered 17 turbines: 2 GE 7HA.02 combined-cycle units, 3 GE 7HA.02 simple-cycle units and 12 Solar Titan 350 simple-cycle units.[2] An update on December 22, 2025 added 29 Solar Titan 130 turbines for 'early phase power', bringing the total to 46.[1] The technical review in the same file lists those 29 units only as simple cycle turbines and does not name their maker.[3] These pages identify equipment makers and models only; they do not describe any supply or purchase contract.[4]"
+    },
+    "c01-battery-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0584,
+     "latency_s": 6.9,
+     "answer": "The battery storage entry for Project Kilby in the ERCOT queue is \"Kilby1 Part 2 Tier1 BESS\" (INR 28INR0457), filed by Energy Forge One LLC in Reeves County.[1] In ERCOT's June 2026 interconnection status report, published 2026-07-01, this battery project was listed at 560 MW.[2] In the October 2026 report, published 2026-11-02, the same project was listed at 330 MW, so its listed capacity went down between the two reports.[1] Other details stayed the same in both reports: the projected commercial operation date was 2028-01-21, and the project was still at \"SS Completed, FIS Started, No IA\".[2][1] The Quantum Storage battery project in the same reports belongs to a different developer in Haskell County at the Kilby Switching Station, so it is not part of Project Kilby.[1]"
+    },
+    "c03-turbine-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05214,
+     "latency_s": 5.6,
+     "answer": "The original application filed in October 2025 proposed 17 combustion turbines: 2 GE 7HA.02 combined-cycle turbines, 3 GE 7HA.02 simple-cycle turbines, and 12 Solar Titan 350 simple-cycle turbines.[1] In an update to the application on December 22, 2025, Energy Forge One added 29 Solar Titan 130 simple-cycle turbines to supply \"early phase power\" to meet customer needs.[2][3] After the update, the project scope lists 46 turbines, with 2 running in combined-cycle mode and 44 in simple-cycle mode.[2] The 29 added turbines are not intended to stay onsite long-term, and they will have the same controls and emission limits as the Solar T350 turbines.[2][3]"
+    },
+    "c04-permit-status": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0482,
+     "latency_s": 4.6,
+     "answer": "On TCEQ's pending NSR permit list, the Kilby row (permits 181895, GHGPSDTX260, PSDTX1684) shows a received date of 10/17/2025 in both snapshots provided.[1][2] In the snapshot dated 2026-04-10, the application's status was listed as administratively complete.[1] By the snapshot dated 2026-10-30, the status had changed to technically complete.[2] For context, TCEQ's reviewer form had estimated a technically complete date of 4/15/2026 and a final issuance date of 10/15/2026, but the pending list in the later snapshot still shows the application as pending rather than issued.[3]"
+    },
+    "c02-capacity-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05156,
+     "latency_s": 8.9,
+     "answer": "The original application, dated October 2025, gave the Kilby site a nominal power generation capacity of approximately 2,595 MW, with two combined-cycle and fifteen simple-cycle turbines.[1] In its December 22, 2025 response to TCEQ, the developer restated the output of those original turbines as a total nominal net output of 2,476 MW, defined at site conditions of 59\u00b0F, 60% relative humidity, and 2,850 feet elevation.[2] The same update added 29 simple-cycle turbines to supply early phase power, with a nominal net output of approximately 393 MW.[2] TCEQ's project scope summary, dated April 10, 2026, lists the plant at approximately 2,869 MW with 46 turbines in total, noting that the 29 Solar T130 turbines were added in the December 22, 2025 update.[3] Chevron's June 22, 2026 announcement instead describes the project as approximately 2.67 gigawatts, which differs from the permit file's "
+    },
+    "u01-turbine-cost": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03892,
+     "latency_s": 3.9,
+     "answer": "The provided pages do not give a cost for the GE Vernova turbines. They describe the turbine models and outputs, mention that Engine No. 1's founder procured four gigawatts of GE Vernova gas turbines, and say critical equipment including GE Vernova turbines was secured. None of them states a price. A related-article headline mentions a \"$7B Texas power plant,\" but that refers to the plant, not the turbines."
+    },
+    "c06-part6-technology": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0516,
+     "latency_s": 5.2,
+     "answer": "Yes, the technology listed for Kilby1 Part 6 Large Block Combined Cycle (INR 29INR0199) differs between the two ERCOT interconnection status reports.[1][2] The August 2026 report, published 2026-09-01, lists the technology as CC (combined cycle).[1] The October 2026 report, published 2026-11-02, lists it as GT instead, while the capacity of 1056 MW and the projected COD of 2029-07-19 stay the same.[2] The reports do not explain the change, and the project name still describes it as a combined cycle.[2]"
+    },
+    "c05-solar-fate": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.06566,
+     "latency_s": 8.2,
+     "answer": "The solar piece of Project Kilby, listed as \"Kilby1 Part 5 Solar\" (INR 28INR0460) in Reeves County, was cancelled in the ERCOT interconnection queue with a cancel date of 2026-07-06.[1] That cancelled solar entry was sized at 500 MW.[1] The October 2026 ERCOT report still lists other Energy Forge One LLC Kilby1 entries, including Part 1 gas simple cycle, Part 2 battery storage, Part 4 gas simple cycle and Part 6 gas combined cycle, but no Part 5 solar.[2] The \"Quantum Solar\" project in that report is a separate Haskell County project connecting at a \"Kilby Station\" and is not part of Project Kilby, and the \"Solar T350\" units in the air permit are gas-fired combustion turbines, not solar generation.[2][3]"
+    },
+    "u02-epc-contractor": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.04058,
+     "latency_s": 3.2,
+     "answer": "The provided pages do not name the EPC contractor for Project Kilby. A Latitude Media article published 2026-07-10 says Joulent \"hasn't announced the EPC contractor for its Kilby project yet\" and was finalizing a contract with \"a brand name.\" The TCEQ filings mention an EPC contractor only in general terms, in connection with the commissioning phase, and do not identify a company. The Frontier Grid brief (2026-07-28) describes equipment and EPC as \"advanced by company statement\" but also names no contractor."
+    },
+    "u05-acreage": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03939,
+     "latency_s": 2.5,
+     "answer": "The provided pages do not state the site's acreage. They give its location in Reeves County, about 20 miles (32.3 km) south of Pecos, along with driving directions and a list of planned emission sources. None of them gives the size of the site in acres."
+    },
+    "u04-ppa-price": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.0322,
+     "latency_s": 3.1,
+     "answer": "The pages describe a 20-year power purchase agreement between Energy Forge One LLC (Chevron) and Microsoft for about 2.67 GW, but none of them state the price per MWh Microsoft will pay. Chevron says only that the project is 'targeting mid-teen returns.' The Frontier Grid brief gives its own gas fuel-price assumptions ($3, $6 and $10/MMBtu), but these are analytical model inputs, not PPA contract terms."
+    },
+    "u06-lcoe": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.05978,
+     "latency_s": 2.5,
+     "answer": "The provided pages do not give a levelized cost of electricity for the Kilby Power Plant. They include a carbon capture cost analysis (for example, a final estimate of $194/ton of CO2 removed using 2024 numbers) and Chevron's statement that it can deliver power 'at a competitive cost,' but no levelized cost of electricity figure."
+    },
+    "u03-construction-cost": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.04004,
+     "latency_s": 4.2,
+     "answer": "The provided pages do not state a total construction cost for the Kilby power plant. The TCEQ file gives a hypothetical carbon capture cost estimate ($11972 million for capture), which is part of the emissions-control analysis and not the plant's construction cost. The Energy Capital HTX page only includes a linked headline, 'Chevron eyes $7B Texas power plant for Microsoft data center campus', with no article text confirming that figure is Project Kilby's construction cost."
+    },
+    "u07-mercuria": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.0397,
+     "latency_s": 1.9,
+     "answer": "The provided pages do not mention Mercuria, a Pecos Power Plant built by Mercuria, or a Texas Energy Fund loan. They cover only Project Kilby (Energy Forge One LLC near Pecos, Reeves County), which is a different project. Its permitted capacity of approximately 2,869 MW should not be attributed to any Mercuria plant."
+    },
+    "u10-revenue": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03149,
+     "latency_s": 2.4,
+     "answer": "The provided pages do not state the annual revenue the Kilby plant will earn from Microsoft. They describe a 20-year power purchase agreement for about 2.67 gigawatts, and Chevron says the project is targeting mid-teen returns. No contract price or revenue figure is given."
+    },
+    "u08-engine-no1-price": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03081,
+     "latency_s": 3.1,
+     "answer": "The provided pages do not say how much Chevron paid Engine No. 1 for any share of Project Kilby. They describe Kilby as a 50-50 joint venture between Chevron and Joulent, which spun out of Engine No. 1. The only investment figure given is National Grid Ventures' $1.75 billion for a 35% stake in Joulent, and that is not a payment by Chevron."
+    },
+    "u09-dc-contractor": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03195,
+     "latency_s": 3.6,
+     "answer": "The provided pages do not name a general contractor for Microsoft's Pecos data center. They only discuss the power plant's EPC contractor: Latitude Media (July 10, 2026) reports that Joulent had not yet announced the EPC contractor for Kilby but was finalizing a contract with 'a brand name.' A Frontier Grid brief says National Grid describes EPC capacity as reserved. Neither identifies a contractor for the data center itself."
+    }
+   }
+  },
+  {
+   "id": "answer-heldout/baseline",
+   "label": "Held out",
+   "split": "heldout",
+   "note": "21 new questions written after v2 and committed before they ran.",
+   "summary": {
+    "answer_accuracy": {
+     "value": 1.0,
+     "n": 17,
+     "ci95": 0.0
+    },
+    "citation_accuracy": {
+     "value": 1.0,
+     "n": 17,
+     "ci95": 0.0
+    },
+    "refusal_recall": {
+     "value": 1.0,
+     "n": 4,
+     "ci95": 0.0
+    },
+    "false_refusal_rate": {
+     "value": 0.0,
+     "n": 17,
+     "ci95": 0.0
+    },
+    "cost_usd_total": 0.8808,
+    "cost_usd_per_question": 0.0419,
+    "latency_s_median": 4.3,
+    "wall_clock_s": 24.0
+   },
+   "cases": {
+    "h02-7ha-simple-rating": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04906,
+     "latency_s": 4.2,
+     "answer": "The Kilby Power Plant includes three GE 7HA.02 simple-cycle turbines, and each one is rated at a net output of 330.3 MW.[1][2] These simple-cycle units are proposed to run 8,760 hours per year as base load units and will not be connected to the grid.[2]"
+    },
+    "h01-t350-rating": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05233,
+     "latency_s": 5.0,
+     "answer": "Each of the 12 Solar Titan 350 (T350) simple-cycle turbines at the Kilby Power Plant has a net output of 31.1 MW, according to TCEQ's technical review.[1][2] The company's December 22, 2025 response to TCEQ gives the same figure, saying each has an output of 31.1 MW.[3] The figure is stated for site conditions of 59\u00b0F inlet air temperature, 60% relative humidity, 2,850 feet elevation and 13.25 psi atmospheric pressure.[3]"
+    },
+    "h03-early-phase-total": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05348,
+     "latency_s": 5.3,
+     "answer": "The 29 early-phase simple-cycle turbines have a total nominal net output of approximately 393 MW, measured at 59\u00b0F inlet air temperature, 60% relative humidity, and 3,000 feet elevation.[1][2] They are Solar Titan 130 units, each with a net output of 13.55 MW.[3] They were added to the project during the December 22, 2025 application update and are meant to supply early-phase power to meet customer needs, not to stay onsite long-term.[3]"
+    },
+    "h04-applicant-address": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0518,
+     "latency_s": 7.4,
+     "answer": "The application's contact sheet, which is meant to accompany all notices, lists Energy Forge One's address as 1500 Louisiana St, Houston, TX 77002-7308.[1] The same sheet names Srimonto Ghosh, Vice President, at that address and at (713) 372-3518 as both the main contact to be shown on the permit and the person responsible for publishing notice.[1] The later permit file at technical completeness repeats the same contact sheet with the same Houston address.[2] The June 10, 2026 public meeting notice tells readers to contact Energy Forge One \"at the address stated above\" or to call Brian Kane, Permitting Lead, at (713) 920-4177, but the address itself is not on the notice page provided.[3]"
+    },
+    "h05-regional-office": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03506,
+     "latency_s": 3.9,
+     "answer": "The TCEQ Midland regional office has a copy of the Kilby Power Plant application, which is available there for viewing and copying, along with the TCEQ central office and the Reeves County Library.[1] The application's notification list calls for hard copies to go to the Air Section Manager at the Midland Regional Office, 10 Desta Drive, Suite 350E, Midland, Texas.[2] TCEQ correspondence dated December 8, 2025 was also copied to the Air Section Manager, Region 7 - Midland.[3]"
+    },
+    "h06-library": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05496,
+     "latency_s": 4.6,
+     "answer": "According to TCEQ correspondence in the permit file, residents can view the available documents for this permit application at the Reeves County Library, 315 South Oak Street, Pecos, Reeves County, Texas.[1] The TCEQ engineer, Huy Pham, noted that the library should have internet access where people can download and view the PDF files.[2] He gave this advice on Feb 19, 2026, in reply to a resident who had trouble opening the PDFs on an iPad.[3]"
+    },
+    "h07-psd-number": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04309,
+     "latency_s": 4.5,
+     "answer": "The Prevention of Significant Deterioration (PSD) permit number for the Kilby Power Plant is PSDTX1684.[1][2] There is also a separate Greenhouse Gas PSD permit, numbered GHGPSDTX260, alongside the main air quality permit 181895.[1][2] All three permit numbers appear together on TCEQ's pending permit list for Energy Forge One LLC's Kilby application.[3]"
+    },
+    "h08-ghg-number": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03934,
+     "latency_s": 4.0,
+     "answer": "The greenhouse gas permit number for the Kilby Power Plant is GHGPSDTX260, issued alongside air permit 181895 and PSD permit PSDTX1684.[1][2] TCEQ's pending permit list shows the same three numbers for Energy Forge One LLC's Kilby application.[3] One TCEQ summary form lists the number as \"GHGPSDTX260181895,\" which looks like GHGPSDTX260 run together with 181895 rather than a different permit number.[4]"
+    },
+    "h09-part6-inr": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05016,
+     "latency_s": 5.6,
+     "answer": "ERCOT lists the large block combined cycle part of Kilby as INR 29INR0199, named \"Kilby1 Part 6 Large Block Combined Cycle,\" with Energy Forge One LLC as the interconnecting entity in Reeves County.[1][2] Both the August 2026 and October 2026 ERCOT reports show it at 1056 MW with a projected COD of 2029-07-19.[1][2] The two reports differ on the technology code: the August 2026 report lists it as CC, while the October 2026 report lists it as GT.[2][1]"
+    },
+    "h11-chevron-exec": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03522,
+     "latency_s": 4.3,
+     "answer": "Chevron's announcement of its power agreement with Microsoft quotes Jeff Gustavson, Chevron's president of New Energies.[1] In that release, Gustavson said Chevron is uniquely positioned to deliver power to customers with certainty, speed and at a competitive cost, leveraging Permian natural gas.[1] E&E News reported the same quote and attributed it to Gustavson.[2]"
+    },
+    "h12-microsoft-exec": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0309,
+     "latency_s": 3.5,
+     "answer": "Noelle Walsh, Microsoft president of Cloud Operations + Innovation, is quoted in Chevron's announcement of the agreement.[1] She said the agreement with Chevron helps ensure Microsoft will have dedicated, large-scale power to support the evolution and reliability of advanced compute.[1] She also said that through the partnership, Microsoft is delighted to grow with and become a deeper part of the West Texas community.[1]"
+    },
+    "h10-part4-mw": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05696,
+     "latency_s": 5.6,
+     "answer": "Kilby1 Part 4 Large Block Simple Cycle (INR 28INR0457 is a different part; Part 4 is INR 28INR0459), interconnected by Energy Forge One LLC in Reeves County, is listed in the ERCOT queue at 950 MW in the October 2026 report.[1] The January 2026 ERCOT report showed the same 950 MW capacity for this project, so the figure did not change between the two reports.[2] Both reports list it as a gas turbine project with a projected commercial operation date of 2028-04-20.[1][2]"
+    },
+    "h13-target-returns": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03216,
+     "latency_s": 3.9,
+     "answer": "Chevron says Project Kilby is targeting mid-teen returns.[1] Chevron also says the project is expected to generate diversified cash flow that does not depend on oil and gas price cycles, which it says supports resilient shareholder returns.[1] This target comes from Chevron's own June 22, 2026 press release (a company source), which also states that these statements are forward-looking and not guarantees of future performance.[2][3]"
+    },
+    "h14-nox-tpy": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.02842,
+     "latency_s": 4.0,
+     "answer": "The plain language summary for permit 181895 proposes 886.34 tons per year of NOx for all facilities at the Kilby site combined.[1] The same figure appears in the summary filed with the application and in the later permit file at technical completeness.[2][3] The summary says the turbines' NOx will be controlled by selective catalytic reduction, and it notes that the figures may change during TCEQ's technical review.[1]"
+    },
+    "h16-solar-cancel-date": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0541,
+     "latency_s": 3.9,
+     "answer": "ERCOT's July 2026 interconnection status report lists the Kilby1 Part 5 Solar queue entry (INR 28INR0460, 500 MW, Reeves County) with a cancel date of 2026-07-06.[1] The Quantum Solar project that connects at Kilby Station is in Haskell County and is a separate, unrelated project, not part of Project Kilby.[2]"
+    },
+    "h15-class-i-area": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03408,
+     "latency_s": 4.3,
+     "answer": "The closest Class I area to the Kilby Power Plant is Carlsbad Caverns National Park, about 150 km to the northwest of the project.[1] The other two Class I areas within 300 km are Guadalupe Mountains National Park at 153 km to the northwest and Big Bend National Park at 160 km to the south.[2] The application states that no PSD Class I areas lie within 100 km of the site.[1]"
+    },
+    "h19-construction-workforce": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03206,
+     "latency_s": 2.4,
+     "answer": "None of the provided pages state the number of construction workers expected on site at peak. The pages cover the TCEQ permit notice, dispersion modeling protocol, fuel-supply readiness analysis, and staff biographies, but give no construction workforce figures."
+    },
+    "h20-insurance": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.01183,
+     "latency_s": 2.5,
+     "answer": "The provided pages do not describe any insurance coverage for Project Kilby. They cover the 2.67-gigawatt plant announcement, the 20-year power purchase agreement, turbine suppliers, estimated emissions, and gas-supply and pipeline-capacity questions, but say nothing about insurance."
+    },
+    "h17-part4-cod": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04906,
+     "latency_s": 5.1,
+     "answer": "ERCOT lists a projected commercial operation date of 2028-04-20 for Kilby1 Part 4 Large Block Simple Cycle (INR 28INR0459), a 950 MW gas project by Energy Forge One LLC in Reeves County.[1] The date has not moved between the two reports provided: the January 2026 report (published 2026-02-02) also showed 2028-04-20, as does the October 2026 report (published 2026-11-02).[2][1] What did change between the reports is the study status: Part 4's screening study moved from started to completed, with completion dated 2026-02-04.[2][1]"
+    },
+    "h18-heat-rate": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.05664,
+     "latency_s": 5.5,
+     "answer": "The provided pages do not state a heat rate in Btu per kWh for the Kilby Power Plant as a whole. The closest figures cover only parts of the project or are assumptions. A Caterpillar G3520 engine data sheet (P1) lists genset fuel consumption in Btu/ekW-hr, and Table 29 (P2) ties that engine model to units BSGEN1-BSGEN2. These are individual engine specifications, not the plant's heat rate. The Frontier Grid brief (P7, tier 4 analysis) uses heat rates of 7.0, 8.0 and 9.5 MMBtu/MWh, but only as scenarios for estimating fuel demand, not as a disclosed plant value."
+    },
+    "h21-debt-rate": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03009,
+     "latency_s": 2.6,
+     "answer": "The provided pages do not state an interest rate for any Project Kilby debt. One press page (Latitude Media) says only that lining up project financing is among the last steps before breaking ground, and that it \"shouldn't be too hard given the 20-year PPA with Microsoft is already in place.\" No financing terms, lenders, or rates are given."
+    }
+   }
+  }
+ ]
+}

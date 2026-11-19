@@ -310,6 +310,45 @@ def source(doc_id: str, page_no: int):
                            kind=KIND_LABEL.get(doc["kind"], doc["kind"]))
 
 
+EVAL_PATH = Path(__file__).resolve().parent.parent / "data" / "eval.json"
+
+
+def _pct(x):
+    return "n/a" if x is None else f"{int(x * 100 + 0.5)}%"   # round half up: 12.5% shows as 13%
+
+
+@app.route("/eval")
+def eval_view():
+    data = json.loads(EVAL_PATH.read_text())
+    runs = data["runs"]
+    for r in runs:
+        s = r["summary"]
+        r["rows"] = [
+            ("Answer accuracy", s["answer_accuracy"], "answerable and change questions where every expected fact is in the answer"),
+            ("Citation accuracy", s["citation_accuracy"], "answered questions with a citation to an allowed document whose page holds the fact"),
+            ("Refusals", s["refusal_recall"], "questions the documents can't answer that were declined"),
+            ("False refusals", s["false_refusal_rate"], "answerable questions that were declined or withheld (lower is better)"),
+        ]
+    heldout = next(r for r in runs if r["split"] == "heldout")
+    latest_tuning = [r for r in runs if r["split"] == "tuning"][-1]
+    table = []
+    for cid, c in data["cases"].items():
+        run = heldout if c["split"] == "heldout" else latest_tuning
+        res = run["cases"].get(cid)
+        if not res:
+            continue
+        g = res["grade"]
+        if c["kind"] == "unanswerable":
+            verdict = "pass" if g.get("declined") else "fail"
+        else:
+            verdict = "pass" if g.get("answer_correct") and g.get("citation_correct") else (
+                "declined" if g.get("declined") else "fail")
+        history = [(r["label"], r["cases"].get(cid, {}).get("grade", {})) for r in runs if r["split"] == c["split"]]
+        table.append({**c, **res, "verdict": verdict, "run": run["label"], "history": history})
+    total_cost = sum(r["summary"]["cost_usd_total"] for r in runs)
+    return render_template("eval.html", runs=runs, heldout=heldout, table=table, pct=_pct, total_cost=total_cost)
+
+
 @app.route("/healthz")
 def healthz():
     return {"ok": True, "pages": db().execute("SELECT count(*) FROM pages").fetchone()[0]}
