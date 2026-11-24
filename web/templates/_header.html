@@ -1,0 +1,44 @@
+{% macro srclink(src) -%}{% if src %}{{ url_for('source', doc_id=src.doc_id, page_no=src.page_no, q=src.quote) }}#q{% endif %}{%- endmacro %}
+{% macro project_header(ph) %}
+<section class="ph">
+  <div class="phcards">
+    {% for c in ph.cards %}
+    {% set href = url_for(c.link) if c.link else srclink(c.src) %}
+    <a class="phcard {{ c.tone }}" {% if href %}href="{{ href }}"{% endif %}>
+      <span class="l">{{ c.label }}</span>
+      <span class="v">{{ c.value }}</span>
+      <span class="s">{{ c.sub }}</span>
+    </a>
+    {% endfor %}
+  </div>
+  {% if ph.recent %}
+  <div class="phrecent">
+    <span class="tag">Latest changes</span>
+    {% for r in ph.recent %}
+    <a href="{{ srclink(r.src) }}"><b>{{ r.date }}</b> {{ r.field }}{% if r.subject %} ({{ r.subject.split(' Kilby1 ')[-1] }}){% endif %}:
+      {% if r.old is not none %}{{ r.label ~ ' ' if r.label }}{{ r.old }} &rarr; {% endif %}{{ r.new }}</a>{% if not loop.last %}<span class="dotsep">&middot;</span>{% endif %}
+    {% endfor %}
+    <a class="more" href="{{ url_for('changes') }}">All changes &rarr;</a>
+  </div>
+  {% endif %}
+  <div class="tracks">
+    {% for name, steps in ph.tracks %}
+    <div class="track">
+      <div class="tname">{{ name }}</div>
+      <ol class="stepper">
+        {% for s in steps %}
+        <li class="{{ s.state }}">
+          {% if s.src %}<a href="{{ srclink(s.src) }}">{% endif %}
+          <span class="dot"></span>
+          <span class="sl">{{ s.label }}</span>
+          <span class="sw">{{ s.when }}</span>
+          {% if s.note %}<span class="sn">{{ s.note }}</span>{% endif %}
+          {% if s.src %}</a>{% endif %}
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endmacro %}

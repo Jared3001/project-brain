@@ -390,6 +390,53 @@ def history(number: int) -> list[dict]:
     return rows
 
 
+def change_summary(old: str, new: str, limit: int = 3) -> list[str]:
+    """Short, literal descriptions of what changed between two texts, read from the word diff.
+
+    "44 -> 46", "added: every 12-hour shift". Long rewrites are counted, not quoted.
+    """
+    a, b = old.split(), new.split()
+    parts, long_edits = [], 0
+    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
+        if op == "equal":
+            continue
+        o, n = " ".join(a[i1:i2]), " ".join(b[j1:j2])
+        if max(i2 - i1, j2 - j1) > 12:
+            long_edits += 1
+        elif op == "replace":
+            parts.append(f"{o} \u2192 {n}")
+        elif op == "insert":
+            parts.append(f"added \u201c{n}\u201d")
+        else:
+            parts.append(f"removed \u201c{o}\u201d")
+    out = parts[:limit]
+    rest = len(parts) - len(out) + long_edits
+    if rest:
+        out.append(f"{rest} longer edit{'s' if rest != 1 else ''}")
+    return out
+
+
+def story(number: int) -> dict:
+    """The condition read top to bottom: first draft, each ask and reply in the redlines, the final text."""
+    first_v, last_v = first(), latest()
+    a, b = first_v.conditions.get(number), last_v.conditions.get(number)
+    steps = []
+    if a:
+        steps.append({"kind": "draft", "label": f"First draft ({first_v.label.split(',')[0]})", "date": first_v.thread_date,
+                      "page_no": a.page_no, "text": a.text, "same_as_final": bool(b and a.text == b.text)})
+    for t in sorted(threads_for(number), key=lambda t: (t.version.thread_date or dt.date.min, t.root.page_no)):
+        steps.append({"kind": "ask", "who": t.root.author, "org": t.root.org, "text": t.root.text, "date": t.version.thread_date,
+                      "version": t.version.label, "page_no": t.root.page_no, "outcome": t.outcome})
+        for r in t.replies:
+            steps.append({"kind": "reply", "who": r.author, "org": r.org, "text": r.text, "date": t.version.thread_date,
+                          "version": t.version.label, "page_no": r.page_no, "outcome": t.outcome})
+    if b:
+        steps.append({"kind": "final", "label": f"Latest draft ({last_v.label.split(',')[0]})", "date": last_v.thread_date,
+                      "page_no": b.page_no, "text": b.text})
+    summary = change_summary(a.text, b.text) if a and b and a.text != b.text else []
+    return {"steps": steps, "summary": summary, "changed": bool(summary)}
+
+
 def changed_numbers() -> dict[int, int]:
     """Condition number -> how many times its text changed across the drafts."""
     return {n: (1 if net_change(n)["status"] in ("changed", "added") else 0) for n in latest().conditions}

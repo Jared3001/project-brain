@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "_header.html" import project_header %}
 {% block title %}Project Brain, Kilby{% endblock %}
 {% block wrapclass %} wide{% endblock %}
 {% set COV = {'good': 'Well covered by the public record', 'partial': 'Partly covered', 'internal': 'Mostly needs internal documents'} %}
@@ -12,6 +13,8 @@
     <button type="submit">Ask</button>
   </form>
 </header>
+
+{{ project_header(ph) }}
 
 {% if alerts or due %}
 <section class="sec">

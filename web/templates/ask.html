@@ -17,12 +17,13 @@
   <div class="answer">
     {% if a.status == 'answered' %}
       {% for s in a.sentences %}
-      <p>{{ s.text }}{% for n in s.cites %}{% set c = a.citations[n-1] %}<a class="cite" target="src" data-n="{{ n }}"
+      <p>{{ s.text }}{% for n in s.cites %}{% set c = a.citations[n-1] %}<a class="cite" target="src" data-n="{{ n }}" data-title="{{ c.title }}, {{ c.locator }}" data-tier="T{{ c.tier }}"
+         data-quote="{{ c.quotes|join(' … ') }}"
          href="{{ url_for('source', doc_id=c.doc_id, page_no=c.page_no, q=c.quote, embed=1) }}#q">{{ n }}</a>{% endfor %}</p>
       {% endfor %}
       <ol class="sources">
       {% for c in a.citations %}
-        <li><a class="cite" target="src" data-n="{{ c.n }}" href="{{ url_for('source', doc_id=c.doc_id, page_no=c.page_no, q=c.quote, embed=1) }}#q">{{ c.n }}</a>
+        <li><a class="cite" target="src" data-n="{{ c.n }}" data-title="{{ c.title }}, {{ c.locator }}" data-tier="T{{ c.tier }}" data-quote="{{ c.quotes|join(' … ') }}" href="{{ url_for('source', doc_id=c.doc_id, page_no=c.page_no, q=c.quote, embed=1) }}#q">{{ c.n }}</a>
           <span class="tierlab">T{{ c.tier }}</span> {{ c.title }}, {{ c.locator }}{% if c.quotes|length > 1 %} <span class="tierlab">&middot; {{ c.quotes|length }} quotes</span>{% endif %}</li>
       {% endfor %}
       </ol>
@@ -38,6 +39,13 @@
       <p class="basis" style="margin-top:12px">Searched:</p>
       <ul class="basis">{% for s in a.searched %}<li>{{ s.title }}, {{ s.locator }}</li>{% endfor %}</ul>
     {% endif %}
+    {% if a.status == 'answered' and a.searched %}
+    {% set docs_read = a.searched|map(attribute='title')|unique|list %}
+    <details class="readline">
+      <summary>Read {{ a.searched|length }} page{{ 's' if a.searched|length != 1 }} from {{ docs_read|length }} document{{ 's' if docs_read|length != 1 }}; cited {{ a.citations|length }}</summary>
+      <ul class="basis">{% for sp in a.searched %}<li>{{ sp.title }}, {{ sp.locator }}{% if a.citations|selectattr('doc_id', 'equalto', sp.doc_id)|selectattr('page_no', 'equalto', sp.page_no)|list %} <strong>&middot; cited</strong>{% endif %}</li>{% endfor %}</ul>
+    </details>
+    {% endif %}
     <div class="checked">
       {% if a.status == 'answered' %}{{ a.citations|map(attribute='quotes')|map('length')|sum }} quotes found on {{ a.citations|length }} pages, every number checked &middot; {% endif %}
       {{ a.model }} &middot; ${{ '%.3f'|format(a.cost_usd) }}
@@ -50,7 +58,30 @@
     {% endif %}
   </div>
 </div>
+<div id="pop" class="pop" role="tooltip" hidden></div>
 <script>
+(function () {
+  var pop = document.getElementById('pop');
+  function show(el) {
+    if (!el.dataset.quote) return;
+    pop.innerHTML = '';
+    var t = document.createElement('div'); t.className = 'pt'; t.textContent = el.dataset.title + '  ' + (el.dataset.tier || '');
+    var q = document.createElement('div'); q.className = 'pq'; q.textContent = '\u201c' + el.dataset.quote + '\u201d';
+    var h = document.createElement('div'); h.className = 'ph2'; h.textContent = 'Click to open the page with this quote highlighted';
+    pop.appendChild(t); pop.appendChild(q); pop.appendChild(h);
+    pop.hidden = false;
+    var r = el.getBoundingClientRect();
+    var left = Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - pop.offsetWidth - 12);
+    pop.style.left = Math.max(window.scrollX + 8, left) + 'px';
+    pop.style.top = (window.scrollY + r.bottom + 6) + 'px';
+  }
+  document.querySelectorAll('a.cite').forEach(function (el) {
+    el.addEventListener('mouseenter', function () { show(el); });
+    el.addEventListener('focus', function () { show(el); });
+    el.addEventListener('mouseleave', function () { pop.hidden = true; });
+    el.addEventListener('blur', function () { pop.hidden = true; });
+  });
+})();
 document.querySelectorAll('a.cite').forEach(function (el) {
   el.addEventListener('click', function () {
     document.querySelectorAll('a.cite').forEach(function (o) { o.classList.toggle('on', o.dataset.n === el.dataset.n); });

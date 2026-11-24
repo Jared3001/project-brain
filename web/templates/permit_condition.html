@@ -1,7 +1,6 @@
 {% extends "base.html" %}
-{% from "_macros.html" import pcite, outcome, thread_msgs %}
+{% from "_macros.html" import pcite, outcome %}
 {% block title %}Special Condition {{ c.number }}, draft permit 181895{% endblock %}
-{% block wrapclass %} wide{% endblock %}
 {% block body %}
 <p class="mini"><a href="{{ url_for('permit_index') }}">Draft permit</a>{% if c.section %} &middot; {{ c.section }}{% endif %}
   &middot; {% if prev %}<a href="{{ url_for('permit_condition', number=prev) }}">&larr; SC {{ prev }}</a>{% endif %}
@@ -12,43 +11,56 @@
   <p class="lede">{{ c.summary }}</p>
   <div class="meta">
     <span>{{ latest.label }} {{ pcite(doc_id, c.page_no, lead(c.text), 'p. ' ~ c.page_no) }}</span>
-    {% if net.status == 'changed' %}<span class="pill changed">changed since {{ first.label.split(',')[0] }}</span>{% elif net.status == 'same' %}<span>Unchanged since {{ first.label }}</span>{% endif %}
     {% for t in threads %}{{ outcome(t) }}{% endfor %}
   </div>
+  {% if story.summary %}
+  <div class="chg"><span class="k">Changed since {{ first.label.split(',')[0] }}</span>{% for x in story.summary %}<span class="c">{{ x }}</span>{% endfor %}</div>
+  {% elif net.status == 'same' %}
+  <div class="chg"><span class="k">Unchanged</span><span class="mini">Same text in every clean draft, {{ first.label.split(',')[1].strip() }} to {{ latest.label.split(',')[1].strip() }}.</span></div>
+  {% endif %}
 </header>
 
-<div class="two" style="margin-top:20px">
-  <div>
-    <h2>Current text</h2>
-    <div class="card condtext">{{ c.text }}</div>
-    {% if net.status == 'changed' %}
-    <h2>What changed since TCEQ's first draft</h2>
-    <p class="mini" style="margin-top:0">{{ first.label }} against {{ latest.label }}, word by word: <del>removed</del> <ins>added</ins>.</p>
-    <div class="card diff">{{ net.diff }}</div>
-    {% endif %}
-  </div>
-  <div>
-    <h2>Negotiation</h2>
-    {% if threads %}
-    <div class="card">
-      {% for t in threads %}
-      <div class="thread" style="grid-template-columns:1fr">
-        <div>{{ outcome(t) }}</div>
-        <div>{{ thread_msgs(t, doc_id) }}</div>
-      </div>
-      {% endfor %}
-    </div>
+<section class="sec" style="margin-top:22px">
+  <h2>How this condition got here</h2>
+  <p class="sub">Read top to bottom: TCEQ's first draft, each margin comment in the redlines (the applicant's ask, TCEQ's reply), then the latest draft. Which condition a comment belongs to is inferred from its page and wording.</p>
+  <ol class="strip">
+  {% for s in story.steps %}
+    {% if s.kind == 'draft' %}
+    <li class="draft"><span class="ico">1</span>
+      <div class="hd"><b>{{ s.label }}</b><span class="mini">{{ s.date.strftime('%b %-d, %Y') if s.date }} &middot; TCEQ</span>{{ pcite(doc_id, s.page_no, lead(s.text), 'p. ' ~ s.page_no) }}</div>
+      {% if s.same_as_final %}<div class="body mini">Same text as the latest draft, shown at the bottom.</div>
+      {% else %}<details><summary>Show the first draft text</summary><div class="body condtext">{{ s.text }}</div></details>{% endif %}
+    </li>
+    {% elif s.kind == 'ask' %}
+    <li class="ask"><span class="ico">?</span>
+      <div class="hd"><b>{{ s.who }}</b><span class="mini">{{ s.org }} &middot; margin comment in {{ s.version }}</span>{{ pcite(doc_id, s.page_no, s.text.split()[:8]|join(' '), 'p. ' ~ s.page_no) }}</div>
+      <div class="body">{{ s.text }}</div>
+    </li>
+    {% elif s.kind == 'reply' %}
+    <li class="reply"><span class="ico">&#8617;</span>
+      <div class="hd"><b>{{ s.who }}</b><span class="mini">{{ s.org }} &middot; reply</span><span class="pill {{ s.outcome }}">{{ {'accepted': 'accepted', 'countered': 'countered', 'open': 'no reply'}[s.outcome] }}</span>{{ pcite(doc_id, s.page_no, s.text.split()[:6]|join(' '), 'p. ' ~ s.page_no) }}</div>
+      <div class="body">{{ s.text }}</div>
+    </li>
     {% else %}
-    <p class="mini">No margin comments in the redlines were matched to this condition.</p>
+    <li class="final"><span class="ico">&#10003;</span>
+      <div class="hd"><b>{{ s.label }}</b><span class="mini">{{ s.date.strftime('%b %-d, %Y') if s.date }}</span>{{ pcite(doc_id, s.page_no, lead(s.text), 'p. ' ~ s.page_no) }}</div>
+      <div class="body condtext">{{ s.text }}</div>
+      {% if net.status == 'changed' %}<details><summary>Show the word by word changes since the first draft</summary><div class="body diff" style="margin-top:6px">{{ net.diff }}</div></details>{% endif %}
+    </li>
     {% endif %}
-    <h2>Across the clean drafts</h2>
-    <ul class="timeline card" style="padding:8px 16px">
-      {% for r in history %}
-      <li><span>{{ r.version.label.split(',')[0] }}</span>
-        <span>{{ {'first': 'First appears', 'same': 'No change', 'changed': 'Text changed', 'removed': 'Removed'}[r.status] }}
-          {% if r.cond %}&middot; {{ pcite(doc_id, r.cond.page_no, lead(r.cond.text), 'p. ' ~ r.cond.page_no) }}{% endif %}</span></li>
-      {% endfor %}
-    </ul>
-  </div>
-</div>
+  {% endfor %}
+  </ol>
+  {% if not threads %}<p class="mini">No margin comments in the redlines were matched to this condition.</p>{% endif %}
+</section>
+
+<section class="sec">
+  <h2>Across the clean drafts</h2>
+  <ul class="timeline card" style="padding:8px 16px">
+    {% for r in history %}
+    <li><span>{{ r.version.label.split(',')[0] }}</span>
+      <span>{{ {'first': 'First appears', 'same': 'No change', 'changed': 'Text changed', 'removed': 'Removed'}[r.status] }}
+        {% if r.cond %}&middot; {{ pcite(doc_id, r.cond.page_no, lead(r.cond.text), 'p. ' ~ r.cond.page_no) }}{% endif %}</span></li>
+    {% endfor %}
+  </ul>
+</section>
 {% endblock %}

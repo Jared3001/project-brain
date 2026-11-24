@@ -114,6 +114,132 @@ LANES = [
 ]
 
 
+def _change_events() -> list[dict]:
+    """The same dated transitions the What changed page lists, newest first."""
+    con = db()
+    docs = {r["id"]: r for r in con.execute("SELECT * FROM documents")}
+    labels = dict(con.execute("SELECT field, label FROM record"))
+    by_field = defaultdict(list)
+    for f in con.execute("SELECT * FROM facts"):
+        f = dict(f)
+        f["value"] = json.loads(f["value"])
+        f["doc"] = docs[f["doc_id"]]
+        f["chip"] = chip(f["doc"], f["locator"])
+        f["first"] = {"doc_id": f["first_doc_id"], "page_no": f["first_page_no"], "quote": f["first_quote"],
+                      "doc": docs[f["first_doc_id"]], "chip": chip(docs[f["first_doc_id"]], f["first_locator"])}
+        by_field[f["field"]].append(f)
+    events = []
+    for field_name, rows in by_field.items():
+        if field_name == "battery_storage_mw":
+            continue
+        for e in changes_from(rows):
+            e["field"] = labels.get(field_name, field_name)
+            events.append(e)
+    return sorted(events, key=lambda e: e["date"], reverse=True)
+
+
+def _fact(field_name: str, pick=None) -> dict | None:
+    rows = [dict(r) for r in db().execute("SELECT * FROM facts WHERE field=? AND role='current' ORDER BY as_of", (field_name,))]
+    if pick:
+        rows = [r for r in rows if pick(r)]
+    return rows[-1] if rows else None
+
+
+def _fact_in(doc_id: str) -> dict | None:
+    """A verified fact read from this document, so a link to it can highlight a real quote."""
+    r = db().execute("SELECT * FROM facts WHERE doc_id=? ORDER BY role='current' DESC, as_of DESC LIMIT 1", (doc_id,)).fetchone()
+    return dict(r) if r else None
+
+
+def _src(f: dict | None) -> dict | None:
+    return {"doc_id": f["doc_id"], "page_no": f["page_no"], "quote": f["quote"]} if f else None
+
+
+def project_header() -> dict:
+    """Stat cards, milestone tracks and the latest changes, every item tied to the page it came from."""
+    import datetime as dt
+    from brain import commitments as M
+    today = dt.date.today()
+    con = db()
+    items = {i.key: i for i in M.dated(today)}
+    status = _fact("air_permit_status")
+    cap = _fact("capacity_mw", lambda r: r["tier"] == 1)
+    cap_rec = con.execute("SELECT status FROM record WHERE field='capacity_mw'").fetchone()
+    queue = [(json.loads(r["value"]), dict(r)) for r in con.execute(
+        "SELECT * FROM facts WHERE field='queue_entries' AND role='current'")]
+    active = sorted([(v, r) for v, r in queue if v.get("status") != "cancelled" and v.get("projected_cod")],
+                    key=lambda x: x[0]["projected_cod"])
+    first_v, first_r = active[0] if active else (None, None)
+    latest_doc = con.execute("SELECT id, title, published, kind FROM documents WHERE tier=1 ORDER BY published DESC LIMIT 1").fetchone()
+    events = _change_events()
+
+    def fmt(iso):
+        return dt.date.fromisoformat(iso[:10]).strftime("%b %-d, %Y")
+
+    cards = [
+        {"label": "Air permit", "value": status["display"].replace(" Application", "") if status else "unknown",
+         "sub": f"TCEQ pending list, {fmt(status['as_of'])}" if status else "", "src": _src(status), "tone": "accent"},
+        {"label": "Capacity in the permit", "value": cap["display"] if cap else "unknown",
+         "sub": "sources disagree" if cap_rec and cap_rec["status"] == "conflict" else "", "src": _src(cap),
+         "tone": "conflict" if cap_rec and cap_rec["status"] == "conflict" else "", "link": "consistency"},
+        {"label": "Earliest projected COD", "value": fmt(first_v["projected_cod"]) if first_v else "unknown",
+         "sub": f"{first_v['name'].replace('Kilby1 ', '')}, {first_v['mw']} MW" if first_v else "", "src": _src(first_r)},
+        {"label": "Latest filing", "value": fmt(latest_doc["published"]) if latest_doc else "",
+         "sub": KIND_LABEL.get(latest_doc["kind"], "") if latest_doc else "",
+         "src": _src(_fact_in(latest_doc["id"])) if latest_doc else None},
+        {"label": "Changes in the filings", "value": str(len(events)), "sub": f"latest {fmt(events[0]['date'])}" if events else "",
+         "src": None, "link": "changes"},
+    ]
+
+    def step(label, when, state, src=None, note=""):
+        return {"label": label, "when": when, "state": state, "src": src, "note": note}
+
+    napd = con.execute("SELECT id, published FROM documents WHERE id='tceq-napd'").fetchone()
+    meeting = items.get(next((k for k in items if "Public meeting" in items[k].label), ""), None)
+    filed = next((i for i in items.values() if "Application filed" in i.label), None)
+    issuance = next((i for i in items.values() if "final issuance" in i.label.lower()), None)
+    tc = status and "technically complete" in status["display"].lower()
+    permit = [
+        step("Application filed", fmt(filed.date.isoformat()) if filed else "", "done",
+             {"doc_id": filed.doc_id, "page_no": filed.page_no, "quote": filed.quote} if filed else None),
+        step("Draft permit noticed", fmt(napd["published"]) if napd else "", "done" if napd else "todo",
+             {"doc_id": "tceq-napd", "page_no": 1, "quote": "PRELIMINARY DECISION"} if napd else None),
+        step("Public meeting", fmt(meeting.date.isoformat()) if meeting else "", "done" if meeting else "todo",
+             {"doc_id": meeting.doc_id, "page_no": meeting.page_no, "quote": meeting.quote} if meeting else None),
+        step("Technically complete", f"shown {fmt(status['since'] or status['as_of'])}" if tc else "", "done" if tc else "todo", _src(status)),
+        step("Final issuance", f"est. {fmt(issuance.date.isoformat())}" if issuance else "", "late" if issuance and issuance.status == "past_due" else "current",
+             {"doc_id": issuance.doc_id, "page_no": issuance.page_no, "quote": issuance.quote} if issuance else None,
+             "past the TCEQ estimate" if issuance and issuance.status == "past_due" else ""),
+    ]
+    phase = (first_v or {}).get("study_phase") or ""
+    ercot = [
+        step("In the queue", f"{len(active)} active parts", "done", _src(first_r)),
+        step("Screening study", "completed" if "SS Completed" in phase else "", "done" if "SS Completed" in phase else "current", _src(first_r)),
+        step("Full interconnection study", "started" if "FIS Started" in phase else "", "current" if "FIS Started" in phase else "todo", _src(first_r)),
+        step("Interconnection agreement", "none yet" if "No IA" in phase else "", "todo", _src(first_r)),
+        step("First COD", fmt(first_v["projected_cod"]) if first_v else "", "todo", _src(first_r), "projected"),
+    ]
+    ppa = _fact("ppa_term_years")
+    fid = items.get("fid")
+    fp = items.get("first_power")
+    project = [
+        step("Microsoft PPA signed", fmt(ppa["as_of"]) if ppa else "", "done" if ppa else "todo", _src(ppa)),
+        step("Final investment decision", "target end of 2026" if fid else "", "risk" if fid and fid.status == "at_risk" else "current",
+             {"doc_id": fid.doc_id, "page_no": fid.page_no, "quote": fid.quote} if fid else None,
+             "a later report says it could slip" if fid and fid.status == "at_risk" else ""),
+        step("Construction", "", "todo"),
+        step("First power", f"target {fp.date.year}" if fp else "", "todo",
+             {"doc_id": fp.doc_id, "page_no": fp.page_no, "quote": fp.quote} if fp else None),
+    ]
+    recent = []
+    for e in events[:3]:
+        label, old, new = e["diffs"][0]
+        recent.append({"date": fmt(e["date"]), "field": e["field"], "subject": e["subject"], "label": label,
+                       "old": old, "new": new, "src": e["new"]["first"]})
+    return {"cards": cards, "tracks": [("Air permit", permit), ("ERCOT interconnection", ercot), ("Project", project)],
+            "recent": recent}
+
+
 @app.route("/")
 def home():
     con = db()
@@ -126,7 +252,8 @@ def home():
     items = M.dated(dt.date.today())
     alerts = [f for f in fs if f.verdict in ("disagree", "tension")][:3]
     due = [i for i in items if i.status in ("past_due", "at_risk")]
-    return render_template("home.html", lanes=LANES, n_docs=n_docs, n_pages=run["n_pages"], alerts=alerts, due=due)
+    return render_template("home.html", lanes=LANES, n_docs=n_docs, n_pages=run["n_pages"], alerts=alerts, due=due,
+                           ph=project_header())
 
 
 @app.route("/record")
@@ -150,7 +277,7 @@ def card():
     run = con.execute("SELECT * FROM ingest_runs ORDER BY ran_at DESC LIMIT 1").fetchone()
     latest = con.execute("SELECT max(published) FROM documents WHERE tier = 1").fetchone()[0]
     return render_template("card.html", groups=groups, counts=counts, n_docs=len(docs),
-                           n_pages=run["n_pages"], latest=latest)
+                           n_pages=run["n_pages"], latest=latest, ph=project_header())
 
 
 QUEUE_KEYS = [("mw", "MW"), ("study_phase", "study phase"), ("technology", "technology"),
@@ -496,6 +623,7 @@ def permit_condition(number: int):
     nums = sorted(latest.conditions)
     i = nums.index(number)
     return render_template("permit_condition.html", c=cond, latest=latest, first=P.first(), net=P.net_change(number),
+                           story=P.story(number),
                            history=P.history(number), threads=P.threads_for(number), doc_id=P.DOC_ID, lead=_lead_quote,
                            topic_label=P.topic_label, prev=nums[i - 1] if i else None, next=nums[i + 1] if i + 1 < len(nums) else None)
 
@@ -514,8 +642,50 @@ def consistency():
     counts = defaultdict(int)
     for f in fs:
         counts[f.verdict] += 1
-    return render_template("consistency.html", findings=fs, counts=counts, locs=locs, misses=misses,
+    grid = _consistency_grid(fs)
+    return render_template("consistency.html", findings=fs, counts=counts, locs=locs, misses=misses, grid=grid,
                            n_sources=len({c.doc_id for c in found}), n_claims=len(found))
+
+
+GRID_SHORT = {  # short cell text for category claims
+    "not_connected_initially": "Off grid at first", "behind_meter": "Behind the meter", "direct_to_customer": "Direct to Microsoft",
+    "grid_two_way": "To and from the grid", "ercot_queue": "Grid requests filed", "chevron_wholly_owned": "Wholly owned by Chevron",
+    "jv_50_50": "50/50 with Chevron", "brackish": "Brackish groundwater", "chevron_econ": "$10B+ tax, ~2,000 jobs",
+}
+
+
+def _consistency_grid(fs) -> dict:
+    """Sources as rows, topics as columns. A cell is colored against the topic's most common value."""
+    from collections import Counter
+    from brain import claims as C
+    party_order = {"Regulatory filing": 0, "ERCOT queue": 1, "Company": 2, "Press": 3, "Analysis": 4}
+    sources: dict[str, dict] = {}
+    cols = []
+    for f in sorted(fs, key=lambda f: list(C_TOPIC_ORDER).index(f.topic) if f.topic in C_TOPIC_ORDER else 99):
+        common = Counter(c.value for c in f.claims if not c.note.startswith(("upper bound", "a floor"))).most_common(1)
+        majority = common[0][0] if common else None
+        cols.append({"topic": f.topic, "label": f.label, "verdict": f.verdict})
+        for c in f.claims:
+            row = sources.setdefault(c.source, {"source": c.source, "party": c.party, "cells": {}})
+            if f.verdict in ("consistent", "single"):
+                tone = "agree" if f.verdict == "consistent" else ""
+            elif f.topic == "ownership":
+                tone = "earlier" if c.value != majority else "agree"
+            elif f.topic == "grid":   # grouped by meaning: off grid wordings agree with each other
+                tone = "agree" if c.value in C.GRID_ISLAND else "differ"
+            elif c.value == majority:
+                tone = "agree"
+            else:
+                tone = "differ"
+            text = GRID_SHORT.get(c.value, c.display) if isinstance(c.value, str) else c.display
+            if f.topic == "first_power" and c.extra.get("date"):
+                text = c.display.replace(", projected COD", "")
+            row["cells"].setdefault(f.topic, []).append({"text": text, "tone": tone, "date": c.date, "c": c})
+    rows = sorted(sources.values(), key=lambda r: (party_order.get(r["party"], 9), -len(r["cells"]), r["source"]))
+    return {"cols": cols, "rows": rows}
+
+
+C_TOPIC_ORDER = ["capacity", "first_power", "grid", "ownership", "co2", "water", "economy"]
 
 
 @app.route("/commitments")

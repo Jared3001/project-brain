@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "_header.html" import project_header %}
 {% macro cite(f) -%}
 <a class="chip" href="{{ url_for('source', doc_id=f.doc_id, page_no=f.page_no, q=f.quote) }}#q"
    title="{{ f.doc.title }}">{{ f.chip }}</a>
@@ -13,6 +14,8 @@
     <span>{{ counts.found }} found, {{ counts.conflict }} in conflict{% if counts.not_found %}, {{ counts.not_found }} not found{% endif %}</span>
   </div>
 </header>
+
+{{ project_header(ph) }}
 
 {% for title, rows in groups %}
 <h2>{{ title }}</h2>

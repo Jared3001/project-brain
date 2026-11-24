@@ -15,6 +15,29 @@
   </div>
 </header>
 
+<section class="sec">
+  <h2>Every source against every topic</h2>
+  <p class="sub">Rows are sources, columns are topics. Each cell is what that source says, colored against the figure most sources give for that topic. Click a cell to open the page it came from, or a column title for the detail below.</p>
+  <div class="card tablewrap" style="padding:0">
+    <table class="grid">
+      <thead><tr><th style="left:0;z-index:3">Source</th>
+        {% for col in grid.cols %}<th><a href="#{{ col.topic }}">{{ col.label }}</a><span class="pill {{ col.verdict }}">{{ VERDICT[col.verdict] }}</span></th>{% endfor %}</tr></thead>
+      <tbody>
+      {% for r in grid.rows %}
+        <tr><th>{{ r.source }}<span class="party">{{ r.party }}</span></th>
+          {% for col in grid.cols %}{% set cells = r.cells.get(col.topic) %}
+          {% if cells %}<td class="{{ cells[0].tone }}">{% for x in cells %}<a href="{{ url_for('source', doc_id=x.c.doc_id, page_no=x.c.page_no, q=x.c.quote) }}#q" title="&ldquo;{{ x.c.quote|truncate(140) }}&rdquo;">{{ x.text }}<span class="d">{{ x.date|month }}</span></a>{% endfor %}</td>
+          {% else %}<td class="empty">&middot;</td>{% endif %}
+          {% endfor %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="legend"><span><i style="background:var(--found-bg)"></i>matches most sources</span><span><i style="background:var(--del-bg)"></i>differs</span><span><i style="background:var(--conflict-bg)"></i>earlier statement, later superseded</span><span>&middot; not stated by this source</span></div>
+</section>
+
+<h2 style="margin-top:36px">Each topic in detail</h2>
 {% for f in findings %}
 <section class="sec finding" id="{{ f.topic }}">
   <div class="head">
