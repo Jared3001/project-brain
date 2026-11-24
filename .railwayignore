@@ -11,3 +11,5 @@ eval/
 scripts/
 data/*.tmp
 *.pyc
+data/watch/*.db
+data/watch/.row.html

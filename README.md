@@ -8,7 +8,13 @@ The test case is Project Kilby, a gas plant near Pecos, Texas, planned to power 
 
 ## What it does
 
-- **Record card** (`/`): the project's key facts (capacity, turbines, battery, queue entries, permits, emissions), each with its page, quote and status. Sources that disagree are shown as a conflict, never resolved silently.
+- **Home** (`/`): pick a role (EPC, permitting, interconnection, communications and legal, commercial, operations) and see the pages and questions that serve it, how well the public record covers it, and what it would connect next. A "needs attention" strip pulls the worst findings from the pages below.
+- **EPC and permitting** (`/epc`): what the draft air permit binds the plant to. The 46 turbines it authorizes, the NOx, CO and ammonia limits by unit group, startup and shutdown minutes, the ramp threshold and fuel sulfur limits, each opening its page.
+- **Draft permit** (`/permit`, `/permit/<n>`): the permit file holds six copies of the draft special conditions traded between TCEQ and the applicant from March 10 to April 13, 2026. Each of the 40 conditions shows its current text, a word level diff against TCEQ's first draft, and the negotiation from the redline margin comments (the applicant's ask, TCEQ's reply).
+- **Consistency check** (`/consistency`): what the filings, the ERCOT queue, Chevron, Joulent, the press and analysts each say about capacity, first power, grid connection, ownership, emissions, water and economic impact, with a verdict from plain rules. Capacity and first power disagree; ownership changed over time.
+- **Deadlines** (`/commitments`): dated milestones with a status computed against today (the October 15 issuance estimate has passed; the end of 2026 FID is at risk per a later report), and the 14 clocks the draft permit starts at startup, at a test, at a leak, or on a schedule.
+- **Watcher** (`/watch`): a scheduled agent that checks ERCOT and TCEQ for new filings, rebuilds the record in a copy, and writes a digest of what moved.
+- **Record card** (`/record`): the project's key facts (capacity, turbines, battery, queue entries, permits, emissions), each with its page, quote and status. Sources that disagree are shown as a conflict, never resolved silently.
 - **What changed** (`/changes`): every value that moved between filings of the same source, dated and cited on both sides. For example, the battery was cut from 560 to 330 MW between the June and July 2026 ERCOT reports.
 - **Ask** (`/ask`): a plain English question gets a few sentences, each citing pages by number. The cited page opens beside the answer with the quote highlighted.
 - **Eval** (`/eval`): the test set, every run, and every question's answer.
@@ -29,10 +35,26 @@ Graded in code, no model grading another model. The scores are reported separate
 | Baseline | 42 tuning | 81% | 96% | 10/10 | 13% | $0.046 |
 | After fixes (v2) | 42 tuning | 94% | 97% | 10/10 | 3% | $0.046 |
 | Held out | 21 new | 17/17 | 17/17 | 4/4 | 0/17 | $0.042 |
+| v3 (after the lens changes) | 42 tuning | 97% | 100% | 9/10 | 3% | $0.045 |
+| Lens baseline | 18 lens | 50% | 80% | 2/2 | 38% | $0.052 |
+| Lens v2 | 18 lens | 94% | 100% | 2/2 | 6% | $0.049 |
+| Lens held out | 6 new | 5/5 | 5/5 | 1/1 | 0/5 | $0.045 |
 
 - The fixes in v2 came from reading the tuning set's failures, so 94% is optimistic. The held out questions were written afterwards and committed before they ran; they are the honest number, though mostly single fact lookups.
 - Every question the documents can't answer was declined in every run, including the decoys: carbon capture cost per MWh in the permit file, $10 billion in tax revenue, a different plant in the same county.
 - One run per question, so differences of a few points between runs are noise.
+- The lens set covers the permit, consistency and deadlines pages. Its baseline failed because full text search never reached the latest draft's condition pages; the fix routes permit questions to the best matching conditions and change questions to the redline page that explains them. In v3 one decoy (construction cost) was answered with a hedged, unconfirmed $7B headline; retrieval for it did not change, so it is run to run variation, but it counts against the score.
+
+## The watcher
+
+```bash
+.venv/bin/python -m brain.watch                    # check ERCOT and TCEQ, download anything new, write a digest
+.venv/bin/python -m brain.watch --dry-run          # check only
+.venv/bin/python -m brain.watch --replay 2026-07-15 --narrate   # what a run that day would have reported
+.venv/bin/python -m brain.watch --promote data/watch/candidate.db
+```
+
+It never writes `data/brain.db`: new documents go into a copy, the record is re-extracted there, and the digest compares the copy with the live record (values that moved, consistency verdicts and deadline statuses that changed). A person promotes the reviewed copy. The optional written summary is one model call with a $0.15 cap, kept only if every number in it appears in the diff. Every run is logged to `data/watch/runs.jsonl`.
 
 ## Design choices
 
@@ -60,7 +82,9 @@ echo "ANTHROPIC_API_KEY=..." > .env           # only needed for Ask and the eval
 ## Layout
 
 ```
-brain/      registry, ingest, record extraction, search, answer
+brain/      registry, ingest, record extraction, search, answer,
+            permit (draft conditions and negotiation), claims (consistency),
+            commitments (deadlines), watch (the watcher agent)
 web/        Flask app and templates
 eval/       test sets (cases.yaml, heldout.yaml), grader and runner, export for /eval
 corpus/     the primary sources that can be redistributed, plus MANIFEST.md
