@@ -131,6 +131,14 @@ def norm(s: str) -> str:
 NUM = re.compile(r"(?<![\w.])\d[\d,]*(?:\.\d+)?")
 
 
+MODEL_CODE = re.compile(r"\b[A-Z]{1,3}(\d{2,4})\b")
+
+
+def model_numbers(text: str) -> set[str]:
+    """Digits inside equipment model codes on a page ("T350" lets a sentence say "Titan 350")."""
+    return {m for m in MODEL_CODE.findall(text)}
+
+
 def numbers(text: str) -> set[str]:
     """Numbers as written, minus trailing punctuation; single digits are ignored (counts like 'two' vs '2' noise)."""
     out = set()
@@ -163,6 +171,77 @@ FIELD_WORDS = {
     "nox_controls": {"nox", "controls", "scr", "catalyst", "pollution"},
     "water_source": {"water", "groundwater", "brackish"},
 }
+# Words that point a question at the draft permit's special conditions.
+PERMIT_WORDS = {"permit", "draft", "condition", "conditions", "limit", "limits", "ppmvd", "nox", "co", "ammonia",
+                "nh3", "slip", "startup", "startups", "shutdown", "shutdowns", "sulfur", "fuel", "sampling", "sampled",
+                "stack", "notice", "notify", "leak", "leaks", "leaking", "repair", "repaired", "avo", "ramp", "rata",
+                "cems", "monitor", "audit", "opacity", "transitional", "concentration", "mss", "commissioning"}
+CHANGE_WORDS = {"change", "changed", "changes", "negotiation", "negotiated", "why", "proposed", "propose",
+                "comment", "comments", "redline", "accepted", "from"}
+PERMIT_PAGES = 4   # condition and negotiation pages at most, so the permit cannot fill the prompt
+# question words that say nothing about which condition is meant
+PERMIT_NOISE = {"draft", "permit", "last", "long", "under", "much", "must", "quickly", "before", "after", "apply",
+                "applies", "often", "soon", "maximum", "minutes", "many", "tell", "told", "ahead", "required"}
+
+
+def permit_hits(question: str, terms: set[str]) -> list[Hit]:
+    """Pages of the latest clean draft's best matching conditions, and of matching negotiation comments.
+
+    The special conditions are parsed by brain.permit; a condition is scored by the
+    distinctive words it shares with the question (rarer across the 40 conditions
+    counts more). Change questions also pull the redline page whose margin comment
+    thread best matches, since that is where a change is explained.
+    """
+    # "permit" alone is too broad (capacity and status questions mention it); ask for a word that
+    # names something the special conditions govern, the phrase "draft permit", or a condition
+    specific = PERMIT_WORDS - {"permit", "draft", "condition", "conditions", "limit", "limits", "notice"}
+    if not (terms & specific or {"draft", "permit"} <= terms or terms & {"condition", "conditions"} or {"44", "46"} <= terms):
+        return []
+    from brain import permit as P
+    v = P.latest()
+    q = P._tokens(question) - PERMIT_NOISE
+    df: dict[str, int] = {}
+    toks = {n: P._tokens(c.text) for n, c in v.conditions.items()}
+    for ts in toks.values():
+        for w in ts:
+            df[w] = df.get(w, 0) + 1
+    score = {n: sum(1 / df[w] for w in q & ts) for n, ts in toks.items()}
+    ranked = [n for n in sorted(score, key=lambda n: -score[n]) if score[n] > 0][:2]
+    con = sqlite3.connect(DB_PATH)
+    pages: list[tuple[str, int]] = []
+    for n in ranked:
+        c = v.conditions[n]
+        span = con.execute("SELECT page_no, text FROM pages WHERE doc_id=? AND page_no BETWEEN ? AND ?",
+                           (P.DOC_ID, c.page_no, c.last_page)).fetchall()
+        # within a long condition, the pages that share the most question words
+        best = sorted(span, key=lambda r: (-len(q & P._tokens(r[1])), r[0]))[:2]
+        pages += [(P.DOC_ID, p) for p, _ in sorted(best)]
+    if terms & CHANGE_WORDS:
+        # the redline pages whose margin comments discuss the best matching condition, then the
+        # thread whose own words match best; comments often name a number, not the topic
+        thread_pages: list[int] = []
+        for t in P.threads():
+            if ranked and ranked[0] in t.conditions:
+                thread_pages.append(t.root.page_no)
+        best, best_s = None, 0.0
+        for t in P.threads():
+            tt = P._tokens(" ".join([t.root.text] + [r.text for r in t.replies]))
+            sc = len(q & tt)
+            if sc > best_s:
+                best, best_s = t, sc
+        if best and best_s >= 1:
+            thread_pages.insert(0, best.root.page_no)
+        pages = [(P.DOC_ID, p) for p in list(dict.fromkeys(thread_pages))[:2]] + pages
+    out = []
+    for doc_id, page_no in dict.fromkeys(pages):
+        r = con.execute("""SELECT d.title, d.tier, d.published, p.locator, p.text FROM pages p JOIN documents d ON d.id = p.doc_id
+                           WHERE p.doc_id=? AND p.page_no=?""", (doc_id, page_no)).fetchone()
+        if r:
+            out.append(Hit(doc_id, r[0], r[1], r[2], page_no, r[3], 0.0, "", r[4]))
+    con.close()
+    return out[:PERMIT_PAGES]
+
+
 PER_DOC = {"queue_report": 2, "status_snapshot": 1}   # near duplicate monthly files: few pages each
 PER_FIELD = 5   # record guided pages per field, so one loosely matching field cannot fill the prompt
 MAX_SAME_KIND = {"queue_report": 2, "status_snapshot": 2}
@@ -171,6 +250,8 @@ MAX_SAME_KIND = {"queue_report": 2, "status_snapshot": 2}
 def retrieve(question: str, k: int = K_PAGES) -> list[Hit]:
     """Record guided first, then full text, with near duplicates capped.
 
+    0. Questions about the draft permit get the pages of its best matching
+       special conditions, and change questions the redline page that explains it.
     1. Fields whose words match the question contribute the pages their facts
        were read from (already verified on the record card).
     2. bm25 fills the rest, at most PER_DOC pages per monthly report and
@@ -183,10 +264,14 @@ def retrieve(question: str, k: int = K_PAGES) -> list[Hit]:
     picked: list[Hit] = []
     seen: set[tuple[str, int]] = set()
 
-    def add(h: Hit) -> bool:
+    def add(h: Hit, force: bool = False) -> bool:
         key = (h.doc_id, h.page_no)
         if key in seen:
             return False
+        if force:
+            seen.add(key)
+            picked.append(h)
+            return True
         kind = kinds.get(h.doc_id, "")
         same_doc = sum(1 for p in picked if p.doc_id == h.doc_id)
         same_kind_docs = {p.doc_id for p in picked if kinds.get(p.doc_id) == kind}
@@ -199,6 +284,9 @@ def retrieve(question: str, k: int = K_PAGES) -> list[Hit]:
         seen.add(key)
         picked.append(h)
         return True
+
+    for h in permit_hits(question, terms):
+        add(h, force=True)   # the permit file allows 3 pages per doc; condition pages are exempt
 
     fields = [f for f, words in FIELD_WORDS.items() if terms & words]
     if fields:
@@ -309,7 +397,7 @@ def verify(parsed: dict, ids: dict[str, Hit]) -> tuple[list[dict], list[Citation
         for q in quotes:
             allowed |= numbers(q)
         for h in cited_pages:
-            allowed |= numbers(h.text) | numbers(h.published.replace("-", " "))
+            allowed |= numbers(h.text) | numbers(h.published.replace("-", " ")) | model_numbers(h.text)
             allowed |= {str(int(x)) for x in h.published.split("-")}   # 2026-06-22 -> 2026, 6, 22
         plain = {a.replace(",", "") for a in allowed}
         page_dates = set().union(*(dates(h.text)[0] | {h.published} for h in cited_pages)) if cited_pages else set()

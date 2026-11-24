@@ -1,0 +1,34 @@
+# Lens held-out set, written 2026-11-23 together with eval/lens.yaml and
+# committed before any run. Never used to choose a fix.
+
+cases:
+  - id: lh01-co-simple-7ha
+    kind: answerable
+    question: What CO limit does the draft permit set for the simple cycle 7HA.02 units?
+    facts: [["3.5"]]
+    docs: [tceq-application-2026-tc]
+  - id: lh02-nox-t130
+    kind: answerable
+    question: What is the NOx limit for the Solar Titan 130 turbines?
+    facts: [["2.7"]]
+    docs: [tceq-application-2026-tc]
+  - id: lh03-shutdown
+    kind: answerable
+    question: What is the maximum length of a planned shutdown?
+    facts: [["60"]]
+    docs: [tceq-application-2026-tc]
+  - id: lh04-gas-sampling
+    kind: answerable
+    question: How often must the natural gas fuel be sampled for sulfur?
+    facts: [["6 months", "six months", "every 6"]]
+    docs: [tceq-application-2026-tc]
+  - id: lh05-rata-notice
+    kind: answerable
+    question: How far ahead must TCEQ be told about a relative accuracy test audit?
+    facts: [["30"]]
+    docs: [tceq-application-2026-tc]
+  - id: lh06-heat-rate
+    kind: unanswerable
+    question: What heat rate does GE Vernova guarantee in its turbine supply agreement?
+    absent: ["heat rate guarantee"]
+    trap: Frontier Grid lists guaranteed heat rates as unknown; that is not an answer.

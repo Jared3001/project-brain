@@ -21,6 +21,11 @@ RUNS = [
     ("answer", "v1", "v1", "tuning", None),
     ("answer", "v2", "v2", "tuning", None),
     ("answer-heldout", "baseline", "Held out", "heldout", "21 new questions written after v2 and committed before they ran."),
+    ("answer", "v3", "v3", "tuning", "After permit guided retrieval and the model code number rule, to check for regressions."),
+    ("answer-lens", "baseline", "Lens baseline", "lens", "18 questions the lens pages suggest, before any change for them."),
+    ("answer-lens", "v1", "Lens v1", "lens", "Permit guided retrieval: the latest draft's matching conditions and redline comment pages."),
+    ("answer-lens", "v2", "Lens v2", "lens", "Digits in model codes on a page (T350) may back a sentence's number (Titan 350)."),
+    ("answer-lens-heldout", "v1", "Lens held out", "lens-heldout", "6 lens questions written with the lens set, run once after v2."),
 ]
 
 
@@ -43,7 +48,8 @@ def answer_text(trace: Path) -> str:
 
 def main() -> None:
     cases = {}
-    for name, split in (("cases.yaml", "tuning"), ("heldout.yaml", "heldout")):
+    for name, split in (("cases.yaml", "tuning"), ("heldout.yaml", "heldout"), ("lens.yaml", "lens"),
+                        ("lens-heldout.yaml", "lens-heldout")):
         for c in yaml.safe_load((ROOT / "eval" / name).read_text())["cases"]:
             cases[c["id"]] = {"id": c["id"], "kind": c["kind"], "split": split, "question": c["question"],
                               "expect": " and ".join(" / ".join(g) for g in c.get("facts", [])) or "not in the documents",

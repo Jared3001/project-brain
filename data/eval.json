@@ -503,6 +503,198 @@
    "question": "What interest rate is the project's debt financed at?",
    "expect": "not in the documents",
    "trap": "The permit file uses a discount rate in its carbon capture cost analysis."
+  },
+  "l01-nox-simple-7ha": {
+   "id": "l01-nox-simple-7ha",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "What NOx limit applies to the simple cycle GE 7HA.02 turbines?",
+   "expect": "2.5",
+   "trap": "The combined cycle units are 2.0 ppmvd; the Solar units 2.7."
+  },
+  "l02-nox-combined": {
+   "id": "l02-nox-combined",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "What is the NOx concentration limit for the combined cycle turbines in the draft permit?",
+   "expect": "2.0",
+   "trap": ""
+  },
+  "l03-startup-simple": {
+   "id": "l03-startup-simple",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "How long can a simple cycle startup last under the draft permit?",
+   "expect": "60",
+   "trap": ""
+  },
+  "l04-startup-combined": {
+   "id": "l04-startup-combined",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "How many minutes may a combined cycle startup last under the draft permit?",
+   "expect": "70",
+   "trap": ""
+  },
+  "l05-sulfur-solar": {
+   "id": "l05-sulfur-solar",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "What sulfur limit applies to fuel for the Solar turbines?",
+   "expect": "1.2",
+   "trap": ""
+  },
+  "l06-sulfur-ge": {
+   "id": "l06-sulfur-ge",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "What is the fuel sulfur limit for the GE 7HA.02 turbines?",
+   "expect": "0.5",
+   "trap": ""
+  },
+  "l07-turbines-44-46": {
+   "id": "l07-turbines-44-46",
+   "kind": "change",
+   "split": "lens",
+   "question": "Why did the turbine count in the draft permit change from 44 to 46?",
+   "expect": "44 and 46",
+   "trap": ""
+  },
+  "l08-avo-frequency": {
+   "id": "l08-avo-frequency",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "How often must AVO checks for ammonia leaks be made under the draft permit?",
+   "expect": "12-hour / 12 hour / once per shift / every shift",
+   "trap": "The applicant first proposed daily checks, citing an Entergy permit."
+  },
+  "l09-stack-sampling": {
+   "id": "l09-stack-sampling",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "How soon after initial startup must stack sampling be done?",
+   "expect": "180",
+   "trap": ""
+  },
+  "l10-sampling-notice": {
+   "id": "l10-sampling-notice",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "How much notice must TCEQ's regional office get before stack sampling?",
+   "expect": "45",
+   "trap": ""
+  },
+  "l11-leak-repair": {
+   "id": "l11-leak-repair",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "How quickly must a leaking component be repaired?",
+   "expect": "15",
+   "trap": ""
+  },
+  "l12-nh3-slip": {
+   "id": "l12-nh3-slip",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "What ammonia slip limit applies to the turbines?",
+   "expect": "5.0",
+   "trap": ""
+  },
+  "l13-ramp-threshold": {
+   "id": "l13-ramp-threshold",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "Above what ramp rate does the transitional load provision apply?",
+   "expect": "32",
+   "trap": ""
+  },
+  "l14-nh3-change": {
+   "id": "l14-nh3-change",
+   "kind": "change",
+   "split": "lens",
+   "question": "How did the ammonia limit change during the draft permit negotiation?",
+   "expect": "2.0 and 5.0",
+   "trap": ""
+  },
+  "l15-wholly-owned": {
+   "id": "l15-wholly-owned",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "How did Chevron describe its ownership of Energy Forge One when it announced the Microsoft deal?",
+   "expect": "wholly owned",
+   "trap": ""
+  },
+  "l16-joulent-share": {
+   "id": "l16-joulent-share",
+   "kind": "answerable",
+   "split": "lens",
+   "question": "What ownership interest does Joulent hold in Kilby?",
+   "expect": "50",
+   "trap": ""
+  },
+  "l17-epc-contractor": {
+   "id": "l17-epc-contractor",
+   "kind": "unanswerable",
+   "split": "lens",
+   "question": "Which EPC contractor was selected to build Kilby?",
+   "expect": "not in the documents",
+   "trap": "Sources say EPC capacity is reserved but never name the firm. Kiewit appears only in a Joulent staff bio."
+  },
+  "l18-ppa-lds": {
+   "id": "l18-ppa-lds",
+   "kind": "unanswerable",
+   "split": "lens",
+   "question": "What liquidated damages does the Microsoft PPA set if commercial operation is late?",
+   "expect": "not in the documents",
+   "trap": ""
+  },
+  "lh01-co-simple-7ha": {
+   "id": "lh01-co-simple-7ha",
+   "kind": "answerable",
+   "split": "lens-heldout",
+   "question": "What CO limit does the draft permit set for the simple cycle 7HA.02 units?",
+   "expect": "3.5",
+   "trap": ""
+  },
+  "lh02-nox-t130": {
+   "id": "lh02-nox-t130",
+   "kind": "answerable",
+   "split": "lens-heldout",
+   "question": "What is the NOx limit for the Solar Titan 130 turbines?",
+   "expect": "2.7",
+   "trap": ""
+  },
+  "lh03-shutdown": {
+   "id": "lh03-shutdown",
+   "kind": "answerable",
+   "split": "lens-heldout",
+   "question": "What is the maximum length of a planned shutdown?",
+   "expect": "60",
+   "trap": ""
+  },
+  "lh04-gas-sampling": {
+   "id": "lh04-gas-sampling",
+   "kind": "answerable",
+   "split": "lens-heldout",
+   "question": "How often must the natural gas fuel be sampled for sulfur?",
+   "expect": "6 months / six months / every 6",
+   "trap": ""
+  },
+  "lh05-rata-notice": {
+   "id": "lh05-rata-notice",
+   "kind": "answerable",
+   "split": "lens-heldout",
+   "question": "How far ahead must TCEQ be told about a relative accuracy test audit?",
+   "expect": "30",
+   "trap": ""
+  },
+  "lh06-heat-rate": {
+   "id": "lh06-heat-rate",
+   "kind": "unanswerable",
+   "split": "lens-heldout",
+   "question": "What heat rate does GE Vernova guarantee in its turbine supply agreement?",
+   "expect": "not in the documents",
+   "trap": "Frontier Grid lists guaranteed heat rates as unknown; that is not an answer."
   }
  },
  "runs": [
@@ -613,7 +805,7 @@
      },
      "cost_usd": 0.0338,
      "latency_s": 3.7,
-     "answer": "The power purchase agreement for Project Kilby runs for 20 years, under which Energy Forge One LLC, a Chevron subsidiary, will supply dedicated electricity to a Microsoft-operated data center.[1] Chevron announced the agreement on June 22, 2026.[1] Other sources, including Joulent and press coverage, consistently describe the same 20-year term.[2][3]"
+     "answer": ""
     },
     "a08-offtaker": {
      "status": "answered",
@@ -624,7 +816,7 @@
      },
      "cost_usd": 0.03344,
      "latency_s": 4.3,
-     "answer": "Microsoft will buy the power from Project Kilby under a 20-year power purchase agreement.[1][2] The plant will provide dedicated electricity to a Microsoft-operated data center that is co-located with the facility in West Texas.[1] The agreement is with Energy Forge One, a Chevron subsidiary, and the plant is expected to deliver about 2.67 gigawatts.[3]"
+     "answer": ""
     },
     "a10-county": {
      "status": "answered",
@@ -900,7 +1092,7 @@
      },
      "cost_usd": 0.03933,
      "latency_s": 2.4,
-     "answer": "The provided pages do not state the acreage of the Kilby site. They give its location in Reeves County, about 20 miles south of Pecos, and note that the area map shows 3,000 feet from the property line, but no acreage figure appears."
+     "answer": ""
     },
     "u03-construction-cost": {
      "status": "not_in_documents",
@@ -1019,7 +1211,7 @@
      },
      "cost_usd": 0.0531,
      "latency_s": 7.1,
-     "answer": "Chevron announced on June 22, 2026 that Project Kilby is expected to deliver approximately 2.67 gigawatts of capacity, built in phases through a modular approach that allows incremental expansion over time.[1] According to Chevron, most of that generation will come from large GE Vernova turbines, with additional capacity from Solar Turbines, a Caterpillar subsidiary.[1] The figure in the state air permit file is different: the TCEQ review describes a nominal capacity of approximately 2,869 MW across 46 turbines, up from 2,595 MW in the October 2025 application.[2][3] An analyst brief treats these as separate measures: about 2.67 GW is the commercial project scale, and 2.869 GW is the permit envelope.[4][5]"
+     "answer": ""
     },
     "a01-capacity-permit": {
      "status": "answered",
@@ -1063,7 +1255,7 @@
      },
      "cost_usd": 0.03386,
      "latency_s": 3.7,
-     "answer": "The power purchase agreement for Project Kilby runs for 20 years, under which Energy Forge One LLC, a Chevron subsidiary, will provide dedicated electricity to a Microsoft-operated data center.[1] Chevron announced the agreement on June 22, 2026.[1] Other sources, including Joulent and press coverage, describe the same 20-year term with no disagreement.[2][3]"
+     "answer": ""
     },
     "a06-7ha-rating": {
      "status": "answered",
@@ -1084,7 +1276,7 @@
      },
      "cost_usd": 0.05124,
      "latency_s": 5.1,
-     "answer": "A draft answer failed the page check, so it is not shown."
+     "answer": ""
     },
     "a08-offtaker": {
      "status": "answered",
@@ -1117,7 +1309,7 @@
      },
      "cost_usd": 0.04486,
      "latency_s": 4.6,
-     "answer": "Energy Forge One LLC applied to the Texas Commission on Environmental Quality for the air permits for the Kilby power plant (Permit 181895, PSD Permit PSDTX1684, and GHG PSD Permit GHGPSDTX260).[1] The application was submitted to the TCEQ on October 17, 2025.[1] TCEQ's permit review summary likewise names Energy Forge One LLC (EFO) as the applicant for a greenfield natural gas-fired turbine power plant near Pecos, Reeves County, Texas.[2]"
+     "answer": ""
     },
     "a13-part1-cod": {
      "status": "answered",
@@ -1150,7 +1342,7 @@
      },
      "cost_usd": 0.05319,
      "latency_s": 6.5,
-     "answer": "In the October 2026 ERCOT interconnection status report, the battery storage portion of Project Kilby is listed as \"Kilby1 Part 2 Tier1 BESS\" (INR 28INR0457) with a capacity of 330 MW.[1] It is filed by Energy Forge One LLC in Reeves County, with a projected commercial operation date of 2028-01-21, and its study phase is \"SS Completed, FIS Started, No IA.\"[1] The August 2026 report showed the same 330 MW figure.[2] The 321.75 MW \"Quantum Storage\" battery in the same report belongs to a separate Haskell County project at Kilby Switching Station, not Project Kilby.[1]"
+     "answer": ""
     },
     "a11-substation": {
      "status": "answered",
@@ -1161,7 +1353,7 @@
      },
      "cost_usd": 0.05742,
      "latency_s": 9.7,
-     "answer": "In ERCOT's October interconnection status report, all four Energy Forge One LLC \"Kilby1\" entries in Reeves County list the #60404 Solstice Substation at 345 kV as the point of interconnection.[1] The earlier May report differs for Kilby1 Part 1 (Small Block Simple Cycle), which was listed as a double tap of the 345kV Parker (1436) - Benbrook (1873 & 1869) circuit rather than Solstice.[2] In that May report, the other Kilby1 parts were already listed at the #60404 Solstice Substation 345 kV.[2] The \"60089 Kilby Station 345kV\" that appears in the same reports belongs to the unrelated Quantum Solar and Quantum Storage projects in Haskell County, not to Project Kilby.[1]"
+     "answer": ""
     },
     "a15-fid-timing": {
      "status": "answered",
@@ -1183,7 +1375,7 @@
      },
      "cost_usd": 0.04298,
      "latency_s": 4.7,
-     "answer": "For the updated 46-turbine Kilby Power Plant, TCEQ's RBLC summary form (dated April 10, 2026) lists proposed allowable greenhouse gas emissions of 13,890,275.01 tons per year as CO2e.[1][2] That same table lists CO2 alone at 13,871,124.49 tons per year.[2] This total is higher than the original plain language summary from October 2025, which listed 11,564,704.59 tons per year of CO2 equivalent, before 29 Solar T130 turbines were added in the December 22, 2025 update.[3][1]"
+     "answer": ""
     },
     "a17-co2e-pls": {
      "status": "withheld",
@@ -1204,7 +1396,7 @@
      },
      "cost_usd": 0.05746,
      "latency_s": 6.6,
-     "answer": "According to TCEQ's plain language summary, the Kilby plant's natural gas turbines will use selective catalytic reduction (SCR) to control NOx, with an oxidation catalyst for CO and VOC.[1] SCR uses ammonia as a reducing agent to turn NOx into water and nitrogen, and the ammonia injection rate is controlled to avoid both insufficient NOx reduction and unwanted ammonia slip.[2] The application's BACT analysis for the simple-cycle turbines also lists dry low-NOx (DLN) burners, which lower flame temperatures and are built into the turbine design, as used together with SCR.[3] The same analysis rejected the EMx/SCONOx catalytic absorption system as technically infeasible for large turbines, partly because it would need hydrogen for catalyst regeneration.[3] Proposed NOx limits changed between filings: 886.34 tons per year in the October 2025 summary versus 1,086.58 tons per year in the later"
+     "answer": ""
     },
     "a20-filed-date": {
      "status": "answered",
@@ -1248,7 +1440,7 @@
      },
      "cost_usd": 0.0453,
      "latency_s": 4.9,
-     "answer": "The state air quality permit number for the Kilby Power Plant is 181895, which Energy Forge One LLC applied for alongside federal Prevention of Significant Deterioration permit PSDTX1684 and greenhouse gas PSD permit GHGPSDTX260.[1] The TCEQ pending permit list shows the same three numbers, with an application date of 10/17/2025.[2] Note that one TCEQ summary form lists the greenhouse gas number as \"GHGPSDTX260181895\", which appears to run two numbers together; other filings give it as GHGPSDTX260.[3][4]"
+     "answer": ""
     },
     "a24-national-grid": {
      "status": "answered",
@@ -1270,7 +1462,7 @@
      },
      "cost_usd": 0.05907,
      "latency_s": 8.2,
-     "answer": "The permit file lists turbines from two makers: GE 7HA.02 units and Solar Titan units.[1] Five of the turbines are GE 7HA.02 models: 2 run in combined-cycle mode and 3 run in simple-cycle mode.[1] The rest are Solar models: 12 Solar Titan 350 units and 29 Solar Titan 130 units, all simple-cycle.[1] The original October 2025 application listed only 17 turbines (the GE units and the 12 Solar T350s), and the 29 Solar T130 units were added in an update on December 22, 2025.[2][1] The pages identify these turbines by model name but do not describe any purchase or supply contract with either manufacturer.[3]"
+     "answer": ""
     },
     "a25-final-issuance-estimate": {
      "status": "answered",
@@ -1281,7 +1473,7 @@
      },
      "cost_usd": 0.04844,
      "latency_s": 5.0,
-     "answer": "TCEQ's RBLC summary form for the Kilby Power Plant, dated April 10, 2026, gives an estimated final issuance date of 10/15/2026.[1] The same form estimated that the technically complete date would be 4/15/2026.[1] A TCEQ pending permit list snapshot from 2026-10-30 still showed the Kilby application with the status \"Technically Complete Application\" rather than issued.[2]"
+     "answer": ""
     },
     "a26-technically-complete": {
      "status": "answered",
@@ -1314,7 +1506,7 @@
      },
      "cost_usd": 0.03932,
      "latency_s": 5.8,
-     "answer": "The air permit application for the Kilby Power Plant was submitted to the TCEQ on October 17, 2025.[1]"
+     "answer": ""
     },
     "c03-turbine-change": {
      "status": "answered",
@@ -1345,7 +1537,7 @@
      },
      "cost_usd": 0.03988,
      "latency_s": 2.8,
-     "answer": "The provided pages do not name the EPC contractor for the Kilby Power Plant. A July 10, 2026 Latitude Media article (tier 3) reports that Joulent \"hasn\u2019t announced the EPC contractor for its Kilby project yet\" and was finalizing a contract with \"a brand name.\" The TCEQ filings mention an EPC contractor only in general terms, for example its role during the commissioning phase, and do not name a company."
+     "answer": ""
     },
     "u01-turbine-cost": {
      "status": "not_in_documents",
@@ -1354,7 +1546,7 @@
      },
      "cost_usd": 0.03728,
      "latency_s": 3.2,
-     "answer": "The provided pages do not give a cost for the GE Vernova turbines. They say GE Vernova will supply most of Kilby's generation and that Engine No. 1's Chris James had procured four gigawatts of GE Vernova gas turbines two years before early 2025. The only dollar figure is National Grid Ventures' $1.75 billion investment for a 35% stake in Joulent, which is not a turbine price."
+     "answer": ""
     },
     "c06-part6-technology": {
      "status": "answered",
@@ -1374,7 +1566,7 @@
      },
      "cost_usd": 0.0319,
      "latency_s": 3.0,
-     "answer": "The provided pages describe a 20-year power purchase agreement between Energy Forge One LLC (Chevron) and Microsoft for about 2.67 GW, but none of them disclose the price per MWh Microsoft will pay. The Frontier Grid brief models gas commodity price cases in $/MMBtu, but these are analytical assumptions about fuel cost, not PPA pricing, and it lists PPA terms as unknown."
+     "answer": ""
     },
     "c05-solar-fate": {
      "status": "answered",
@@ -1394,7 +1586,7 @@
      },
      "cost_usd": 0.03941,
      "latency_s": 2.4,
-     "answer": "The provided pages do not state the acreage of the Kilby site. They give its location in Reeves County, about 20 miles (32.3 km) south of Pecos, and say the area map shows 3,000 feet from the property line, but no site size in acres."
+     "answer": ""
     },
     "u03-construction-cost": {
      "status": "not_in_documents",
@@ -1403,7 +1595,7 @@
      },
      "cost_usd": 0.04144,
      "latency_s": 4.7,
-     "answer": "The provided pages do not state a total construction cost for the Kilby power plant. The TCEQ file (P1) gives only a hypothetical carbon capture cost estimate (11972 $Million for capture), which is not the plant's construction cost. One press page (P5) only lists a related-article headline, 'Chevron eyes $7B Texas power plant for Microsoft data center campus,' without any supporting article text, so it cannot be relied on as a stated figure for Project Kilby."
+     "answer": ""
     },
     "u06-lcoe": {
      "status": "not_in_documents",
@@ -1412,7 +1604,7 @@
      },
      "cost_usd": 0.0596,
      "latency_s": 2.6,
-     "answer": "The provided pages do not state a levelized cost of electricity for the Kilby Power Plant. They include a carbon capture cost analysis (for example, a final estimate of $194/ton of CO2 removed using 2024 numbers) and capacity figures (about 2.67 gigawatts), but no levelized cost of electricity."
+     "answer": ""
     },
     "u07-mercuria": {
      "status": "not_in_documents",
@@ -1421,7 +1613,7 @@
      },
      "cost_usd": 0.03992,
      "latency_s": 2.7,
-     "answer": "The provided pages do not mention a Pecos Power Plant built by Mercuria or a Texas Energy Fund loan. They only cover Project Kilby (Energy Forge One LLC / Chevron) near Pecos, Reeves County. Its permit file gives a capacity of approximately 2,869 MW, and Chevron describes it as approximately 2.67 gigawatts, but that is a different project."
+     "answer": ""
     },
     "u08-engine-no1-price": {
      "status": "not_in_documents",
@@ -1430,7 +1622,7 @@
      },
      "cost_usd": 0.03111,
      "latency_s": 3.4,
-     "answer": "None of the provided pages says what Chevron paid Engine No. 1 for a share of Project Kilby. The pages describe Kilby as a 50-50 joint venture between Joulent (spun out of Engine No. 1) and Chevron, but they give no payment terms. The only investment figure is National Grid Ventures' $1.75 billion for a 35% stake in Joulent, which is a different transaction."
+     "answer": ""
     },
     "u09-dc-contractor": {
      "status": "not_in_documents",
@@ -1439,7 +1631,7 @@
      },
      "cost_usd": 0.03083,
      "latency_s": 3.3,
-     "answer": "The provided pages do not name a general contractor for Microsoft's Pecos data center campus. They only discuss the EPC contractor for the Kilby power plant, which Joulent had not yet announced (it said it was finalizing a contract with \"a brand name\"). That is a different contract from the data center's construction."
+     "answer": ""
     },
     "u10-revenue": {
      "status": "not_in_documents",
@@ -1448,7 +1640,7 @@
      },
      "cost_usd": 0.03197,
      "latency_s": 2.6,
-     "answer": "The provided pages do not state how much annual revenue the Kilby plant will earn from Microsoft. They describe a 20-year power purchase agreement for about 2.67 gigawatts and say the project is targeting mid-teen returns. They also mention more than $10 billion in expected state and local tax revenue. None of them gives a contract price or annual revenue figure."
+     "answer": ""
     }
    }
   },
@@ -1493,7 +1685,7 @@
      },
      "cost_usd": 0.03934,
      "latency_s": 4.3,
-     "answer": "The original application filed in October 2025 put the Kilby site's nominal power generation capacity at approximately 2,595 megawatts.[1]"
+     "answer": ""
     },
     "a04-turbine-count": {
      "status": "withheld",
@@ -1503,7 +1695,7 @@
      },
      "cost_usd": 0.05272,
      "latency_s": 6.1,
-     "answer": "A draft answer failed the page check, so it is not shown."
+     "answer": ""
     },
     "a02-capacity-original": {
      "status": "answered",
@@ -1525,7 +1717,7 @@
      },
      "cost_usd": 0.0536,
      "latency_s": 6.6,
-     "answer": "Chevron announced that Project Kilby is expected to deliver approximately 2.67 gigawatts of capacity, built through a phased, modular approach that allows expansion over time.[1] Chevron said most of that generation will come from large GE Vernova turbines, with additional capacity from Solar Turbines.[1] This announced figure differs from the TCEQ permit file, which lists a nominal capacity of approximately 2,869 megawatts across 46 turbines.[2] The permit figures also changed over time: the October 2025 application stated approximately 2,595 megawatts, and the December 22, 2025 update stated 2,476 MW plus about 393 MW from 29 added early-phase turbines.[3][4] An analyst brief treats these as separate measures: about 2.67 GW as the commercial project scale and 2.869 GW as the permit envelope.[5]"
+     "answer": ""
     },
     "a05-t130-purpose": {
      "status": "answered",
@@ -1536,7 +1728,7 @@
      },
      "cost_usd": 0.05148,
      "latency_s": 5.1,
-     "answer": "According to the TCEQ permit file, the 29 Solar Titan 130 simple-cycle turbines were proposed to supply \"early phase power\" to meet customer needs and are not intended to stay onsite long-term.[1] They were added to the project scope in an update to the application on December 22, 2025; the original October 2025 application listed only 17 turbines and no Titan 130 units.[1][2] An analyst brief likewise describes the roughly 393 MW Titan 130 fleet as temporary early power that can protect the schedule, though it notes this \"bridge fleet\" needs a hard replacement milestone.[3][4]"
+     "answer": ""
     },
     "a07-ppa-term": {
      "status": "answered",
@@ -1547,7 +1739,7 @@
      },
      "cost_usd": 0.03416,
      "latency_s": 3.7,
-     "answer": "The power purchase agreement between Energy Forge One LLC, a Chevron subsidiary, and Microsoft runs for 20 years.[1] Chevron announced the agreement on June 22, 2026.[1] Joulent, press coverage and a later analysis brief all describe the same 20-year term, and none of the pages gives a different length.[2][3][4]"
+     "answer": ""
     },
     "a06-7ha-rating": {
      "status": "answered",
@@ -1569,7 +1761,7 @@
      },
      "cost_usd": 0.03362,
      "latency_s": 4.1,
-     "answer": "Microsoft will buy the plant's power: Chevron's subsidiary Energy Forge One LLC signed an agreement with Microsoft to provide dedicated electricity to a Microsoft-operated data center under a 20-year power purchase agreement.[1] The plant is expected to deliver about 2.67 gigawatts to support a Microsoft-operated data center campus.[2] Press coverage agrees that Microsoft will buy power from the plant for 20 years.[3]"
+     "answer": ""
     },
     "a09-applicant": {
      "status": "answered",
@@ -1580,7 +1772,7 @@
      },
      "cost_usd": 0.04478,
      "latency_s": 4.5,
-     "answer": "Energy Forge One LLC applied to the Texas Commission on Environmental Quality (TCEQ) for the air permit for Project Kilby, covering Permit 181895, PSD Permit PSDTX1684, and GHG PSD Permit GHGPSDTX260.[1] The application was submitted to the TCEQ on October 17, 2025.[1] TCEQ's review documents describe Energy Forge One LLC (EFO) as having submitted an air construction permit application for a greenfield natural gas-fired turbine power plant near Pecos, Reeves County, Texas.[2]"
+     "answer": ""
     },
     "a10-county": {
      "status": "answered",
@@ -1591,7 +1783,7 @@
      },
      "cost_usd": 0.03734,
      "latency_s": 4.0,
-     "answer": "The Kilby Power Plant is in Reeves County, Texas, near Pecos.[1] The application's modeling protocol also compares emissions near the Project site with those in Reeves County, and an analysis brief lists the project's location as Reeves County, Texas.[2][3]"
+     "answer": ""
     },
     "a12-battery-now": {
      "status": "answered",
@@ -1657,7 +1849,7 @@
      },
      "cost_usd": 0.04612,
      "latency_s": 5.5,
-     "answer": "In the permit file at technical completeness, TCEQ lists proposed allowable greenhouse gas emissions of 13,890,275.01 tons per year as CO2e, including 13,871,124.49 tons per year of CO2.[1] That same TCEQ file describes the project as 46 turbines, with 29 Solar T130 turbines added in an application update on December 22, 2025.[2] This figure is higher than TCEQ's earlier plain language summary for the original application, which listed 11,564,704.59 tons per year of CO2 equivalent.[3]"
+     "answer": ""
     },
     "a17-co2e-pls": {
      "status": "answered",
@@ -1679,7 +1871,7 @@
      },
      "cost_usd": 0.04274,
      "latency_s": 4.2,
-     "answer": "Chevron says the Kilby plant plans to use non-potable, brackish groundwater rather than freshwater for power plant operations.[1] Chevron also says it is working on ways to reuse produced water from oil and gas operations.[1] An analyst brief similarly describes closed-loop campus cooling and nonpotable or brackish sources as proposed. It notes that initial fill, construction water and water rights still require confirmation.[2]"
+     "answer": ""
     },
     "a20-filed-date": {
      "status": "answered",
@@ -1701,7 +1893,7 @@
      },
      "cost_usd": 0.05822,
      "latency_s": 7.0,
-     "answer": "According to the TCEQ plain language summary, Project Kilby's natural gas turbines will use selective catalytic reduction (SCR) to control NOx, with an oxidation catalyst for CO and VOC.[1] SCR uses ammonia (NH3) as a reducing agent to convert NOx to water and nitrogen, and the ammonia injection rate is controlled to avoid both too little NOx reduction and excess ammonia slip.[2] For the simple-cycle turbines, the application's BACT analysis also lists Dry Low-NOx (DLN) burners, which lower flame temperatures and are built into the turbine design, to be used together with SCR.[3] The application rejected the EMx/SCONOx catalytic absorption system as technically infeasible for large turbines, citing pressure drops and the cost and danger of using hydrogen for catalyst regeneration.[3] Proposed NOx emissions rose from 886.34 tons per year in the October 2025 summary to 1,086.58 tons per ye"
+     "answer": ""
     },
     "a21-public-meeting": {
      "status": "answered",
@@ -1712,7 +1904,7 @@
      },
      "cost_usd": 0.04913,
      "latency_s": 4.4,
-     "answer": "The TCEQ notice scheduled the public meeting on the Kilby permit application for Wednesday, June 10, 2026 at 7:00 PM.[1] The meeting location was the Reeves County Civic Center, 1500 S Cedar Street, Pecos, Texas 79772.[1] The notice was issued on May 5, 2026, and the meeting was to have an Informal Discussion Period and a Formal Comment Period.[1] The pages show the meeting as scheduled in the notice; they do not confirm that it actually took place as planned.[1]"
+     "answer": ""
     },
     "a22-permit-number": {
      "status": "answered",
@@ -1723,7 +1915,7 @@
      },
      "cost_usd": 0.04404,
      "latency_s": 4.5,
-     "answer": "The state air quality permit number for the Kilby Power Plant is 181895, which Energy Forge One LLC applied for alongside federal PSD permit PSDTX1684 and greenhouse gas PSD permit GHGPSDTX260.[1] The TCEQ pending permit list shows the same numbers for the Kilby site, with an application date of 10/17/2025.[2] That list described the application as administratively complete in the 2026-04-10 snapshot and technically complete in the 2026-10-30 snapshot.[3][2]"
+     "answer": ""
     },
     "a24-national-grid": {
      "status": "answered",
@@ -1734,7 +1926,7 @@
      },
      "cost_usd": 0.0408,
      "latency_s": 4.0,
-     "answer": "National Grid, through its National Grid Ventures arm, agreed to invest $1.75 billion in Joulent, which Joulent described as a strategic minority investment.[1] Press reports say the investment bought a 35% stake in Joulent.[2][3] Joulent's own July 1, 2026 announcement does not state the percentage, only that it is a minority investment.[1]"
+     "answer": ""
     },
     "a26-technically-complete": {
      "status": "answered",
@@ -1745,7 +1937,7 @@
      },
      "cost_usd": 0.05124,
      "latency_s": 4.7,
-     "answer": "On an RBLC summary form dated April 10, 2026, TCEQ reviewer Huy Pham gave an estimated PN2 and technically complete date of 4/15/2026 for the Kilby Power Plant application.[1] The same form estimated final issuance for 10/15/2026.[1] TCEQ's pending permit list still showed the application as administratively complete in an April 10, 2026 snapshot, and as technically complete in an October 30, 2026 snapshot.[2][3]"
+     "answer": ""
     },
     "a25-final-issuance-estimate": {
      "status": "answered",
@@ -1756,7 +1948,7 @@
      },
      "cost_usd": 0.05298,
      "latency_s": 6.4,
-     "answer": "A TCEQ RBLC summary form for Project Kilby, dated April 10, 2026 and prepared by reviewer HPHAM, gave an estimated final issuance date of 10/15/2026.[1] The same form estimated the technically complete date as 4/15/2026.[1] A later snapshot of TCEQ's pending permit list, dated 2026-10-30, still showed the Kilby application with the status \"Technically Complete Application\" rather than as issued.[2]"
+     "answer": ""
     },
     "a23-suppliers": {
      "status": "answered",
@@ -1767,7 +1959,7 @@
      },
      "cost_usd": 0.06353,
      "latency_s": 10.0,
-     "answer": "The permit filings name two turbine makers for Project Kilby: GE, with its 7HA.02 model, and Solar, with its Titan 350 and Titan 130 models.[1] The October 2025 application covered 17 turbines: 2 GE 7HA.02 combined-cycle units, 3 GE 7HA.02 simple-cycle units and 12 Solar Titan 350 simple-cycle units.[2] An update on December 22, 2025 added 29 Solar Titan 130 turbines for 'early phase power', bringing the total to 46.[1] The technical review in the same file lists those 29 units only as simple cycle turbines and does not name their maker.[3] These pages identify equipment makers and models only; they do not describe any supply or purchase contract.[4]"
+     "answer": ""
     },
     "c01-battery-change": {
      "status": "answered",
@@ -1789,7 +1981,7 @@
      },
      "cost_usd": 0.05214,
      "latency_s": 5.6,
-     "answer": "The original application filed in October 2025 proposed 17 combustion turbines: 2 GE 7HA.02 combined-cycle turbines, 3 GE 7HA.02 simple-cycle turbines, and 12 Solar Titan 350 simple-cycle turbines.[1] In an update to the application on December 22, 2025, Energy Forge One added 29 Solar Titan 130 simple-cycle turbines to supply \"early phase power\" to meet customer needs.[2][3] After the update, the project scope lists 46 turbines, with 2 running in combined-cycle mode and 44 in simple-cycle mode.[2] The 29 added turbines are not intended to stay onsite long-term, and they will have the same controls and emission limits as the Solar T350 turbines.[2][3]"
+     "answer": ""
     },
     "c04-permit-status": {
      "status": "answered",
@@ -1800,7 +1992,7 @@
      },
      "cost_usd": 0.0482,
      "latency_s": 4.6,
-     "answer": "On TCEQ's pending NSR permit list, the Kilby row (permits 181895, GHGPSDTX260, PSDTX1684) shows a received date of 10/17/2025 in both snapshots provided.[1][2] In the snapshot dated 2026-04-10, the application's status was listed as administratively complete.[1] By the snapshot dated 2026-10-30, the status had changed to technically complete.[2] For context, TCEQ's reviewer form had estimated a technically complete date of 4/15/2026 and a final issuance date of 10/15/2026, but the pending list in the later snapshot still shows the application as pending rather than issued.[3]"
+     "answer": ""
     },
     "c02-capacity-change": {
      "status": "answered",
@@ -1811,7 +2003,7 @@
      },
      "cost_usd": 0.05156,
      "latency_s": 8.9,
-     "answer": "The original application, dated October 2025, gave the Kilby site a nominal power generation capacity of approximately 2,595 MW, with two combined-cycle and fifteen simple-cycle turbines.[1] In its December 22, 2025 response to TCEQ, the developer restated the output of those original turbines as a total nominal net output of 2,476 MW, defined at site conditions of 59\u00b0F, 60% relative humidity, and 2,850 feet elevation.[2] The same update added 29 simple-cycle turbines to supply early phase power, with a nominal net output of approximately 393 MW.[2] TCEQ's project scope summary, dated April 10, 2026, lists the plant at approximately 2,869 MW with 46 turbines in total, noting that the 29 Solar T130 turbines were added in the December 22, 2025 update.[3] Chevron's June 22, 2026 announcement instead describes the project as approximately 2.67 gigawatts, which differs from the permit file's "
+     "answer": ""
     },
     "u01-turbine-cost": {
      "status": "not_in_documents",
@@ -1831,7 +2023,7 @@
      },
      "cost_usd": 0.0516,
      "latency_s": 5.2,
-     "answer": "Yes, the technology listed for Kilby1 Part 6 Large Block Combined Cycle (INR 29INR0199) differs between the two ERCOT interconnection status reports.[1][2] The August 2026 report, published 2026-09-01, lists the technology as CC (combined cycle).[1] The October 2026 report, published 2026-11-02, lists it as GT instead, while the capacity of 1056 MW and the projected COD of 2029-07-19 stay the same.[2] The reports do not explain the change, and the project name still describes it as a combined cycle.[2]"
+     "answer": ""
     },
     "c05-solar-fate": {
      "status": "answered",
@@ -1905,7 +2097,7 @@
      },
      "cost_usd": 0.03149,
      "latency_s": 2.4,
-     "answer": "The provided pages do not state the annual revenue the Kilby plant will earn from Microsoft. They describe a 20-year power purchase agreement for about 2.67 gigawatts, and Chevron says the project is targeting mid-teen returns. No contract price or revenue figure is given."
+     "answer": ""
     },
     "u08-engine-no1-price": {
      "status": "not_in_documents",
@@ -2012,7 +2204,7 @@
      },
      "cost_usd": 0.03506,
      "latency_s": 3.9,
-     "answer": "The TCEQ Midland regional office has a copy of the Kilby Power Plant application, which is available there for viewing and copying, along with the TCEQ central office and the Reeves County Library.[1] The application's notification list calls for hard copies to go to the Air Section Manager at the Midland Regional Office, 10 Desta Drive, Suite 350E, Midland, Texas.[2] TCEQ correspondence dated December 8, 2025 was also copied to the Air Section Manager, Region 7 - Midland.[3]"
+     "answer": ""
     },
     "h06-library": {
      "status": "answered",
@@ -2181,6 +2373,1255 @@
      "cost_usd": 0.03009,
      "latency_s": 2.6,
      "answer": "The provided pages do not state an interest rate for any Project Kilby debt. One press page (Latitude Media) says only that lining up project financing is among the last steps before breaking ground, and that it \"shouldn't be too hard given the 20-year PPA with Microsoft is already in place.\" No financing terms, lenders, or rates are given."
+    }
+   }
+  },
+  {
+   "id": "answer/v3",
+   "label": "v3",
+   "split": "tuning",
+   "note": "After permit guided retrieval and the model code number rule, to check for regressions.",
+   "summary": {
+    "answer_accuracy": {
+     "value": 0.96875,
+     "n": 32,
+     "ci95": 0.06028537278540293
+    },
+    "citation_accuracy": {
+     "value": 1.0,
+     "n": 31,
+     "ci95": 0.0
+    },
+    "refusal_recall": {
+     "value": 0.9,
+     "n": 10,
+     "ci95": 0.1859419264179007
+    },
+    "false_refusal_rate": {
+     "value": 0.03125,
+     "n": 32,
+     "ci95": 0.06028537278540293
+    },
+    "cost_usd_total": 1.9051,
+    "cost_usd_per_question": 0.0454,
+    "latency_s_median": 5.4,
+    "wall_clock_s": 41.1
+   },
+   "cases": {
+    "a02-capacity-original": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03463,
+     "latency_s": 2.9,
+     "answer": "The original permit application, dated October 2025, stated that the Kilby site's nominal power generation capacity would be approximately 2,595 megawatts (MW).[1]"
+    },
+    "a06-7ha-rating": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05634,
+     "latency_s": 5.1,
+     "answer": "Each of the two GE 7HA.02 combined-cycle turbines at the Kilby Power Plant has a net output of 555.7 MW, according to the TCEQ permit file.[1][2] The same figure appears in Energy Forge One's December 22, 2025 response to TCEQ, which gives it at site conditions of 59\u00b0F inlet air temperature, 60% relative humidity and 2,850 feet elevation.[3] Each of these turbines works with a heat recovery steam generator, duct burners and a steam turbine generator in a 2 x 2 x 2 configuration.[2]"
+    },
+    "a05-t130-purpose": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05206,
+     "latency_s": 5.3,
+     "answer": "According to the TCEQ permit file, the 29 Solar Titan 130 simple-cycle turbines were proposed to supply 'early phase power' to meet customer needs and are not intended to stay onsite long-term.[1] They were added to the project scope in an update to the application on December 22, 2025; the original October 2025 application proposed only 17 turbines, none of them Titan 130s.[1][2] An industry analysis likewise describes the roughly 393 MW Titan 130 fleet as temporary early power and a bridge that can protect the schedule, with the company targeting first power in 2028.[3][4][5]"
+    },
+    "a03-capacity-chevron": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05062,
+     "latency_s": 5.4,
+     "answer": "Chevron announced that Project Kilby is expected to deliver approximately 2.67 gigawatts of capacity, built through a phased, modular approach.[1] Chevron said most of the generation will come from large GE Vernova turbines, with additional capacity from Solar Turbines.[1] This figure differs from the permit filings: the TCEQ summary gives a nominal capacity of approximately 2,869 MW across 46 turbines, while the original October 2025 application stated approximately 2,595 MW.[2][3] One analysis treats these as separate measures, calling 2.67 GW the commercial project scale and 2.869 GW the permit envelope.[4]"
+    },
+    "a01-capacity-permit": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0461,
+     "latency_s": 5.8,
+     "answer": "The original application filed in October 2025 gave the Kilby site's nominal power generation capacity as approximately 2,595 megawatts (MW).[1] In a December 22, 2025 response to TCEQ, Energy Forge One restated the turbines' total nominal net output as 2,476 MW at site conditions, and proposed adding 29 simple cycle turbines for early phase power with a nominal net output of approximately 393 MW.[2] The TCEQ reviewer's summary form dated April 10, 2026, which covers 46 turbines including the 29 added on December 22, 2025, gives a nominal capacity of approximately 2,869 MW.[3] The company announcements by Chevron and Joulent describe Project Kilby differently, as approximately 2.67 gigawatts of capacity.[4][5]"
+    },
+    "a04-turbine-count": {
+     "status": "withheld",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.05364,
+     "latency_s": 6.2,
+     "answer": "A draft answer failed the page check, so it is not shown."
+    },
+    "a07-ppa-term": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03398,
+     "latency_s": 3.7,
+     "answer": "Project Kilby's power purchase agreement with Microsoft runs for 20 years.[1] Chevron announced on June 22, 2026 that its subsidiary Energy Forge One LLC had signed the agreement with Microsoft.[1] Joulent, press coverage and an analysis brief all describe the same 20-year term.[2][3][4]"
+    },
+    "a10-county": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03584,
+     "latency_s": 2.6,
+     "answer": "The Kilby Power Plant is located in Reeves County, Texas, near Pecos.[1] An independent analysis brief also lists the project's location as Reeves County, Texas.[2]"
+    },
+    "a09-applicant": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04434,
+     "latency_s": 4.2,
+     "answer": "Energy Forge One LLC applied to the Texas Commission on Environmental Quality (TCEQ) for the Kilby air permits, numbered 181895, PSDTX1684 and GHGPSDTX260.[1] The application was submitted to the TCEQ on October 17, 2025.[1] TCEQ's review summary describes it as an air construction permit application from Energy Forge One LLC (EFO) for a greenfield natural gas-fired turbine power plant near Pecos, Reeves County, Texas.[2]"
+    },
+    "a08-offtaker": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0335,
+     "latency_s": 5.1,
+     "answer": "Microsoft will buy the power from the Kilby plant, which will provide dedicated electricity to a Microsoft-operated data center in West Texas.[1] The purchase is set out in a 20-year power purchase agreement.[2][3] The deal is between Microsoft and Energy Forge One, a Chevron subsidiary.[4]"
+    },
+    "a13-part1-cod": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05038,
+     "latency_s": 4.9,
+     "answer": "ERCOT's interconnection status reports list a projected commercial operation date of 2027-11-04 for Kilby1 Part 1 Small Block Simple Cycle, a 371 MW gas turbine project by Energy Forge One LLC in Reeves County.[1] The date is the same in the July 2026 report and the October 2026 report.[2][1] As of the October 2026 report, the project had completed its screening study and started its facilities study, but had no interconnection agreement.[1]"
+    },
+    "a12-battery-now": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05009,
+     "latency_s": 5.4,
+     "answer": "In the latest ERCOT interconnection status report provided (October 2026, published 2026-11-02), the Kilby1 Part 2 Tier1 BESS battery storage project by Energy Forge One LLC is listed at 330 MW.[1] This is smaller than the June 2026 ERCOT report, which listed the same battery project at 560 MW.[2] In both reports, the battery project connects at the Solstice Substation in Reeves County and has a projected commercial operation date of 2028-01-21.[1] The Quantum Storage battery project at 321.75 MW is in Haskell County and connects at the unrelated Kilby Switching Station, so it is not part of Project Kilby.[1]"
+    },
+    "a14-first-power": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04039,
+     "latency_s": 5.6,
+     "answer": "Chevron says first power delivery from Project Kilby is anticipated in 2028.[1] That timing is linked to Chevron's Final Investment Decision, which Chevron said in June 2026 was expected by the end of 2026, subject to other conditions.[1] In October 2026, Chevron's Daniel Droog said the investment decision could slip to 2027 because of a state moratorium on new data center permits, but that Kilby was still on track to produce its first electrons by 2028.[2] The ERCOT interconnection report lists the earliest Kilby1 gas block with a projected commercial operation date of 2027-11-04, and the larger blocks later.[3]"
+    },
+    "a11-substation": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05642,
+     "latency_s": 8.8,
+     "answer": "In ERCOT's latest interconnection status report (October 2026), all four Energy Forge One LLC Kilby1 entries in Reeves County list the #60404 Solstice Substation 345 kV as their point of interconnection.[1] In the earlier May 2026 report, three of the Kilby1 parts already listed the Solstice Substation.[2] However, the May 2026 report listed Kilby1 Part 1 (Small Block Simple Cycle) at a different point: a double tap of the 345kV Parker (1436) to Benbrook (1873 & 1869) double-circuit line.[2] The \"Kilby Station\" and \"Kilby Switching Station\" entries in the same reports belong to the unrelated Quantum Solar and Quantum Storage projects in Haskell County, not Project Kilby.[1]"
+    },
+    "a15-fid-timing": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03426,
+     "latency_s": 6.0,
+     "answer": "In its June 22, 2026 announcement, Chevron said its final investment decision (FID) on Kilby was expected by the end of 2026, subject to completing other necessary conditions.[1][2] National Grid's July 2026 coverage and the Frontier Grid analysis also put FID in 2026.[3][4] However, Semafor reported on 2026-10-01 that Chevron's vice president for power solutions, Daniel Droog, said the decision could be pushed to 2027 after Gov. Greg Abbott imposed a moratorium on new data center permits.[5] Even so, Droog said Kilby remained on track for first power by 2028.[5]"
+    },
+    "a16-co2e-updated": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04794,
+     "latency_s": 6.5,
+     "answer": "In the TCEQ permit file at technical completeness, the proposed allowable greenhouse gas emissions for Project Kilby are 13,890,275.01 tons per year as CO2e.[1] That file covers the 46-turbine scope, which includes 29 Solar T130 turbines added in an update on December 22, 2025.[2] The same table lists CO2 alone at 13,871,124.49 tons per year.[1] For comparison, TCEQ's plain language summary of the original application, published before that update, listed a lower CO2 equivalent total of 11,564,704.59 tons per year.[3]"
+    },
+    "a17-co2e-pls": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0437,
+     "latency_s": 6.0,
+     "answer": "The plain language summary for permit 181895 lists a CO2 equivalent total of 11,564,704.59 tons per year for all facilities at the Kilby site.[1] The same figure appears in the summary as filed in the application, published 2025-10-17, including the Spanish version.[2][3] The summary itself notes that its figures may change during technical review.[1] A later emissions summary table in the TCEQ permit file at technical completeness lists a higher value, 13,890,275.01 tons per year of GHG as CO2e.[4]"
+    },
+    "a20-filed-date": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03982,
+     "latency_s": 3.6,
+     "answer": "Energy Forge One LLC submitted the air permit application for the Kilby plant to TCEQ on October 17, 2025.[1] TCEQ's pending permit list shows the same date, 10/17/2025, for the Kilby application (permit numbers 181895, GHGPSDTX260, PSDTX1684).[2][3] The application was later updated on December 22, 2025, when 29 Solar T130 simple-cycle turbines were added to the project scope.[4]"
+    },
+    "a19-water": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04276,
+     "latency_s": 5.5,
+     "answer": "Chevron says the Kilby plant plans to use non-potable, brackish groundwater rather than freshwater for power plant operations.[1] Chevron also says it is working on ways to reuse produced water from oil and gas operations.[1] An analyst brief likewise describes closed-loop campus cooling and nonpotable or brackish sources as proposed, but notes that initial fill water, construction water and water rights still require confirmation.[2]"
+    },
+    "a21-public-meeting": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04917,
+     "latency_s": 3.9,
+     "answer": "The TCEQ notice scheduled the public meeting on the Kilby permit application for Wednesday, June 10, 2026 at 7:00 PM.[1] The meeting location was the Reeves County Civic Center, 1500 S Cedar Street, Pecos, Texas 79772.[1] The meeting was to have two parts, an Informal Discussion Period and a Formal Comment Period, and the notice was issued on May 5, 2026.[1] The pages provided show only the announced schedule and do not confirm that the meeting actually took place as planned.[1]"
+    },
+    "a22-permit-number": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04372,
+     "latency_s": 4.1,
+     "answer": "The state air quality permit number for the Kilby Power Plant is 181895, which Energy Forge One LLC applied for alongside federal permits PSDTX1684 (Prevention of Significant Deterioration) and GHGPSDTX260 (greenhouse gas).[1] The application was submitted to TCEQ on October 17, 2025.[1] The same three permit numbers appear on TCEQ's pending permit list, which showed the application as technically complete in the October 30, 2026 snapshot.[2]"
+    },
+    "a18-nox-controls": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05804,
+     "latency_s": 10.8,
+     "answer": "NOx from the proposed natural gas turbines will be controlled by selective catalytic reduction (SCR).[1] In the application's BACT analysis for the simple-cycle turbines, dry low-NOx burners, which are built into the turbine design, are proposed for use together with SCR.[2] The same analysis rejected the EMx/SCONOx catalytic absorption system as technically infeasible for large turbines.[2] The SCR uses ammonia to convert NOx to water and nitrogen, and the ammonia injection is optimized to limit unreacted ammonia slip to a proposed 5 ppmvd at 15% O2 for the combined-cycle 7HA turbines.[3]"
+    },
+    "a26-technically-complete": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04832,
+     "latency_s": 3.5,
+     "answer": "TCEQ's RBLC summary form for the Kilby Power Plant, dated April 10, 2026, gives an estimated PN2 and technically complete date of 4/15/2026.[1] The same form estimates a final issuance date of 10/15/2026.[1] TCEQ's pending permit list showed the application as administratively complete in an April 10, 2026 snapshot and as technically complete in an October 30, 2026 snapshot.[2][3]"
+    },
+    "a24-national-grid": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04164,
+     "latency_s": 5.9,
+     "answer": "National Grid, through its National Grid Ventures arm, agreed to invest $1.75 billion in Joulent.[1] Joulent's own announcement calls it a strategic minority investment and does not give a percentage, but press reports say the money bought a 35% stake in the company.[2][3] Joulent announced the deal on July 1, 2026; it is developing Project Kilby through a 50-50 joint venture with Chevron.[1][3]"
+    },
+    "c01-battery-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0541,
+     "latency_s": 4.5,
+     "answer": "In ERCOT's interconnection queue, the battery storage piece of Project Kilby is listed as \"Kilby1 Part 2 Tier1 BESS\" (INR 28INR0457), filed by Energy Forge One LLC in Reeves County.[1] In the June 2026 ERCOT status report (published 2026-07-01), its capacity was listed as 560 MW.[1] In the October 2026 report (published 2026-11-02), the same project was listed at 330 MW, so the battery portion shrank between the two reports.[2] Its other details stayed the same in both reports, including a projected commercial operation date of 2028-01-21 and a study phase of \"SS Completed, FIS Started, No IA.\"[2][1]"
+    },
+    "a23-suppliers": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.06009,
+     "latency_s": 8.8,
+     "answer": "The permit file names two turbine makers for Project Kilby: GE, for its 7HA.02 units, and Solar, for its Titan 350 and Titan 130 units.[1] The October 2025 application listed 17 turbines: 2 GE 7HA.02 combined-cycle units, 3 GE 7HA.02 simple-cycle units and 12 Solar Titan 350 simple-cycle units.[2] An update on December 22, 2025 added 29 Solar Titan 130 simple-cycle turbines for 'early phase power', bringing the total to 46 turbines.[1] The technical review page lists these 29 added units only as \"simple cycle turbines\" and does not name their make.[3] The application says the turbine vendor provided exhaust emission data, but none of the pages name the supplier or describe any supply contract beyond these turbine models.[4]"
+    },
+    "a25-final-issuance-estimate": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04876,
+     "latency_s": 7.3,
+     "answer": "In its RACT/BACT/LAER Clearinghouse summary form for the Kilby Power Plant, dated April 10, 2026, TCEQ listed an estimated final issuance date of 10/15/2026.[1] The same form estimated that the application would be technically complete by 4/15/2026.[1] A TCEQ pending permit list snapshot from 2026-10-30 still showed the Kilby application as \"Technically Complete Application\", not as an issued permit.[2]"
+    },
+    "c03-turbine-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0513,
+     "latency_s": 5.2,
+     "answer": "The original application, dated October 2025, proposed 17 combustion turbines: 2 GE 7HA.02 combined-cycle turbines, 3 GE 7HA.02 simple-cycle turbines and 12 Solar Titan 350 simple-cycle turbines.[1] In an update to the application on December 22, 2025, 29 Solar T130 simple-cycle turbines were added to supply 'early phase power' to meet customer needs.[2] According to the update, these turbines would supply approximately 393 MW of early phase power and would have the same controls and outlet emission limits as the Solar T350 turbines.[3] After the update, the project scope listed 46 turbines: two combined-cycle and 44 simple-cycle units, with the 29 T130 turbines not intended to be onsite long-term.[2]"
+    },
+    "c04-permit-status": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04892,
+     "latency_s": 4.6,
+     "answer": "The Kilby application (permits 181895, GHGPSDTX260 and PSDTX1684) is listed on TCEQ's pending permit list with a date of 10/17/2025, which matches the October 17, 2025 submission date in TCEQ's notice of receipt.[1][2] In a snapshot of the list taken on 2026-04-10, the application's status was shown as \"Administrative Complete Application.\"[1] By a later snapshot taken on 2026-10-30, the status had changed to \"Technically Complete Application.\"[3] A July 28, 2026 analyst brief also described the application as technically complete, but noted that this is not the same as final authorization.[4]"
+    },
+    "u01-turbine-cost": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03776,
+     "latency_s": 3.3,
+     "answer": "The provided pages do not state what the GE Vernova turbines cost. They identify the turbine models (GE 7HA.02 units) and note that Engine No. 1's founder procured four gigawatts of GE Vernova turbines, but they give no purchase price. One press page links to a headline about a \"$7B Texas power plant,\" but that is not a turbine cost."
+    },
+    "c02-capacity-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05128,
+     "latency_s": 9.6,
+     "answer": "The original application, dated October 2025, described the Kilby site's nominal power generation capacity as approximately 2,595 megawatts, with two combined-cycle and fifteen simple-cycle turbines.[1] In the December 22, 2025 response to TCEQ, the company restated the original turbines' total nominal net output as 2,476 MW at defined site conditions (59\u00b0F, 60% relative humidity, 2,850 feet elevation).[2] The same update added 29 simple-cycle turbines for early phase power, with a nominal net output of approximately 393 MW.[2] TCEQ's later review summary, dated April 10, 2026, describes 46 turbines with a nominal capacity of approximately 2,869 MW, and notes that the 29 Solar T130 turbines were added in the December 22, 2025 update.[3] Chevron's June 22, 2026 announcement gives a different figure, saying Kilby is expected to deliver approximately 2.67 gigawatts.[4]"
+    },
+    "u04-ppa-price": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03208,
+     "latency_s": 3.0,
+     "answer": "The pages confirm a 20-year power purchase agreement between Energy Forge One LLC (Chevron) and Microsoft for about 2.67 GW, but none of them give the price per MWh Microsoft will pay. Chevron says only that the project is targeting mid-teen returns. The Frontier Grid brief models fuel price cases in $/MMBtu, which is a gas cost and not the PPA price, and it lists PPA terms among the items still unknown."
+    },
+    "u02-epc-contractor": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.04022,
+     "latency_s": 6.0,
+     "answer": "The provided pages do not name the plant's EPC contractor. A Latitude Media article published 2026-07-10 says Joulent had not yet announced the EPC contractor for its Kilby project and was finalizing a contract with \"a brand name.\" The TCEQ permit pages refer to an EPC contractor only in general terms, in describing the commissioning phase. A Frontier Grid brief (tier 4) describes equipment and EPC as \"Advanced by company statement\" but does not name a company."
+    },
+    "c05-solar-fate": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05934,
+     "latency_s": 9.1,
+     "answer": "The solar part of Project Kilby's ERCOT queue entries, listed as \"Kilby1 Part 5 Solar\" (INR 28INR0460), was cancelled.[1] ERCOT's July 2026 status report shows this 500 MW solar project in Reeves County with a cancel date of 2026-07-06.[1] In the October 2026 report, the remaining Energy Forge One LLC Kilby1 entries are gas turbine and battery storage projects, such as \"Kilby1 Part 2 Tier1 BESS\" and \"Kilby1 Part 6 Large Block Combined Cycle\"; no solar part is listed among them.[2] The \"Quantum Solar\" project in that report connects at a Kilby Station in Haskell County and is not part of Project Kilby.[2]"
+    },
+    "c06-part6-technology": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05058,
+     "latency_s": 8.3,
+     "answer": "Yes, the technology code for Kilby1 Part 6 (INR 29INR0199) differs between the two ERCOT reports.[1][2] The August 2026 report, published 2026-09-01, listed its technology as CC (combined cycle).[1] The October 2026 report, published 2026-11-02, listed it as GT, even though the project name still says \"Combined Cycle.\"[2] Other details for this entry stayed the same in both reports, including the 1056 MW capacity and the projected COD of 2029-07-19.[2][1]"
+    },
+    "u06-lcoe": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.05946,
+     "latency_s": 2.6,
+     "answer": "The provided pages do not give a levelized cost of electricity for the Kilby Power Plant. They include a carbon capture cost analysis (for example, an estimate of $194/ton of CO2 removed) and capacity figures (about 2.67 gigawatts), but no cost per unit of electricity generated."
+    },
+    "u10-revenue": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03239,
+     "latency_s": 2.5,
+     "answer": "The provided pages do not state how much annual revenue the Kilby plant will earn from Microsoft. They describe a 20-year power purchase agreement for about 2.67 gigawatts and say the project is 'targeting mid-teen returns,' but they give no revenue figure or power price."
+    },
+    "u08-engine-no1-price": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03163,
+     "latency_s": 3.7,
+     "answer": "None of the provided pages say what Chevron paid Engine No. 1, if anything, for its share of Project Kilby. The pages describe Kilby as a 50-50 joint venture between Chevron and Joulent, which was spun out of Engine No. 1. The only investment figure given is National Grid Ventures' $1.75 billion for a 35% stake in Joulent. That is a separate transaction, not a Chevron payment."
+    },
+    "u05-acreage": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03953,
+     "latency_s": 6.3,
+     "answer": "The provided pages do not state the acreage of the Kilby site. They give its location in Reeves County, about 20 miles south of Pecos, with driving directions. They also say the area map shows 3,000 feet from the site's property line. None of them gives a site size in acres."
+    },
+    "u09-dc-contractor": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03153,
+     "latency_s": 3.9,
+     "answer": "The provided pages do not name a general contractor for Microsoft's Pecos data center. They only discuss the EPC contractor for the Kilby power plant. Latitude Media (July 10, 2026) reported that Joulent had not yet announced that contractor but was finalizing a contract with \"a brand name.\" A Frontier Grid brief says National Grid stated that EPC capacity is reserved. Neither source identifies a contractor for the data center itself."
+    },
+    "u07-mercuria": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.04048,
+     "latency_s": 6.0,
+     "answer": "The provided pages do not mention a Pecos Power Plant built by Mercuria or any Texas Energy Fund loan. They cover only Project Kilby (Energy Forge One LLC, a Chevron subsidiary) near Pecos, Reeves County. Kilby's capacity appears as approximately 2,869 MW in the TCEQ permit file and approximately 2.67 gigawatts in Chevron's announcement, but that is a different project and should not be attributed to Mercuria."
+    },
+    "u03-construction-cost": {
+     "status": "answered",
+     "grade": {
+      "declined": 0.0
+     },
+     "cost_usd": 0.04796,
+     "latency_s": 12.3,
+     "answer": "None of the provided pages directly states a total construction cost for the Kilby power plant; the only figure is in the title of a related-article link on an Energy Capital HTX page, which refers to a \"$7B\" plant.[1] That $7B figure comes from a link title on a press page, not from a regulatory filing or company statement, so it should be treated as unconfirmed.[1] The TCEQ permit file has a cost of 11972 $Million, but that figure is not the plant's construction cost: it is the estimated cost of adding carbon capture, which the developer used to argue that carbon capture is not cost-effective.[2][3]"
+    }
+   }
+  },
+  {
+   "id": "answer-lens/baseline",
+   "label": "Lens baseline",
+   "split": "lens",
+   "note": "18 questions the lens pages suggest, before any change for them.",
+   "summary": {
+    "answer_accuracy": {
+     "value": 0.5,
+     "n": 16,
+     "ci95": 0.245
+    },
+    "citation_accuracy": {
+     "value": 0.8,
+     "n": 10,
+     "ci95": 0.2479225685572009
+    },
+    "refusal_recall": {
+     "value": 1.0,
+     "n": 2,
+     "ci95": 0.0
+    },
+    "false_refusal_rate": {
+     "value": 0.375,
+     "n": 16,
+     "ci95": 0.23722022995520428
+    },
+    "cost_usd_total": 0.9362,
+    "cost_usd_per_question": 0.052,
+    "latency_s_median": 5.8,
+    "wall_clock_s": 31.1
+   },
+   "cases": {
+    "l03-startup-simple": {
+     "status": "not_in_documents",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.04534,
+     "latency_s": 4.0,
+     "answer": "The provided pages do not state how long a simple-cycle startup may last under the draft permit. The December 22, 2025 deficiency response mentions startup and shutdown only in arguing that vendor emission guarantees do not apply during those periods, and it gives no duration limit. The draft permit's startup conditions are not among the pages provided."
+    },
+    "l04-startup-combined": {
+     "status": "not_in_documents",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.04748,
+     "latency_s": 4.2,
+     "answer": "The provided pages do not state a maximum startup duration for the combined-cycle turbines under the draft permit. Page P7 mentions a 60-minute limit, but it applies to transitional load operation (ramp rates above 32 MW per minute), not to startups. The 60-minute figure on P7 and P8 is only used in emission calculations for startup and shutdown events shorter than an hour."
+    },
+    "l02-nox-combined": {
+     "status": "not_in_documents",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.05986,
+     "latency_s": 5.8,
+     "answer": "The provided pages do not show the draft permit's NOx limit for the Kilby combined-cycle turbines. The BACT analysis table (P7, P8) lists the TCEQ Tier I BACT requirement for combined-cycle turbines as 2.0 ppmvd at 15% O2 on a 24-hour average. That is a general agency benchmark, not the limit written into Project Kilby's draft permit. The 2 and 3 PPMVD values in the same table come from other projects' RBLC entries (Alaska Gasline, Lansing, Southwestern Public Service, C4GT), not from Project Kilby. P1 and P2 say only that the turbines will use selective catalytic reduction for NOx, and they give no concentration limit."
+    },
+    "l01-nox-simple-7ha": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.06356,
+     "latency_s": 9.2,
+     "answer": "The proposed BACT NOx limit for the simple-cycle GE 7HA.02 turbines is 2.5 ppmvd@15% O2, compared with 2 ppmvd@15% O2 for the combined-cycle units.[1][2] The federal performance standard cited for these turbines changed between filings, though the BACT limit stayed the same.[2] The October 2025 application said the 7HA.02 turbines were subject to an NSPS Subpart KKKK NOx standard of 15 ppmvd@15% O2.[1] A later supplement in the permit file (published 2026-08-06) instead applies Subpart KKKKa, which sets a high-load NOx standard of 5 ppmvd@15% O2 when the turbines run above 70 percent of base load.[2] Both documents say the federal standard is above the 2.5 BACT limit, and compliance will be shown with a continuous emissions monitoring system (CEMS), using selective catalytic reduction for NOx control.[2][3]"
+    },
+    "l05-sulfur-solar": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.06711,
+     "latency_s": 11.2,
+     "answer": "For the Solar T130 turbines, the TCEQ technical review limits the turbines to firing natural gas with an SO2 emission limit of 0.0034 lb/MMBtu, which it says equals a fuel sulfur content of 1.2 gr/100 scf.[1] The October 2025 application, written when the Solar T350 units were the only Solar turbines in the project, proposed a fuel sulfur BACT limit for the simple-cycle turbines of 5 gr/100 scf on an hourly basis and 1 gr/100 scf on an annual basis.[2][3] That 5 and 1 gr/100 scf limit matches TCEQ's Tier I BACT for pipeline quality natural gas, so the 1.2 gr/100 scf figure in the later technical review is not the same number as the application's annual 1 gr/100 scf limit.[1] The technical review page for the Solar T350 turbines says only that sulfur emissions are based on the sulfur content of the fuel supplied to the site, and it gives no number.[4]"
+    },
+    "l07-turbines-44-46": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05772,
+     "latency_s": 9.4,
+     "answer": "The pages do not show a change from 44 to 46; the 44 figure counts only the simple-cycle turbines, which together with the two combined-cycle turbines make up the 46 turbines.[1] The original application, dated October 2025, proposed 17 combustion turbines: 2 GE 7HA.02 combined-cycle units, 3 GE 7HA.02 simple-cycle units and 12 Solar Titan 350 simple-cycle units.[2] The count grew because 29 Solar Titan 130 simple-cycle turbines were added in an update to the application on December 22, 2025.[1] Energy Forge One said these 29 turbines would supply early phase power to meet customer needs, and they are not intended to stay onsite long-term.[3][1]"
+    },
+    "l08-avo-frequency": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05892,
+     "latency_s": 8.0,
+     "answer": "The draft permit's condition for piping, valves, pumps and compressors in contact with ammonia requires audio, olfactory and visual (AVO) leak checks at least once every 12-hour shift, with at least eight hours between checks.[1] The same sentence ends with the words \"once every four hours,\" which appears to be leftover wording from a marked-up draft, so the text was still being edited.[1] Reviewer comments on that page show the company asked for daily checks or once per shift, and TCEQ agreed to once per 12-hour shift with a minimum of 8 hours between checks.[1] The company then proposed removing the eight-hour interval requirement, and the pages do not show how that request was resolved.[1]"
+    },
+    "l06-sulfur-ge": {
+     "status": "withheld",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.08448,
+     "latency_s": 13.7,
+     "answer": "A draft answer failed the page check, so it is not shown."
+    },
+    "l09-stack-sampling": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04918,
+     "latency_s": 5.2,
+     "answer": "Under the draft permit's special conditions, stack sampling must occur within 60 days after the turbine (CTG) or auxiliary boiler reaches its maximum operating rate, but no later than 180 days after initial start-up of the unit.[1][2] The TCEQ Executive Director may also require sampling at other times, and requests for more time go to the appropriate regional office.[1] The regional office must be notified at least 45 days before sampling.[1] In its original application, Energy Forge One proposed similar timing: performance testing within 180 days after startup, or on completion of the required stack sampling, whichever comes sooner.[3]"
+    },
+    "l10-sampling-notice": {
+     "status": "not_in_documents",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.03741,
+     "latency_s": 6.0,
+     "answer": "The provided pages do not state how much advance notice the TCEQ regional office must get before stack sampling. The draft permit's special conditions (Permit Numbers 181895, PSDTX1684, and GHGPSDTX260) refer to 'the test notice specified in paragraph A,' but paragraph A, which would set the notice period, is not among the pages provided. The pages do cover related timing: sampling must occur within 60 days of reaching the maximum operating rate and no later than 180 days after initial start-up, and final sampling reports are due within 60 days after sampling is completed."
+    },
+    "l11-leak-repair": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 0.0,
+      "citation_correct": 0.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04739,
+     "latency_s": 6.5,
+     "answer": "The draft permit does not set a fixed number of days for repairing a leak from the SF6 circuit breakers; it says action must be taken \"as soon as practicable\" after the leak is detected.[1] Plant personnel must take one or more listed actions, including locating and isolating the leak if necessary, or starting repair or replacement of the leaking component.[1] If an immediate repair is not possible, a leak collection or containment system may be used to control the leak until the repair or replacement is made.[1] Separately, the breakers must be guaranteed to leak no more than 0.5% by weight per year, and they must have an alarm that alerts the control room when pressure falls below normal.[1]"
+    },
+    "l14-nh3-change": {
+     "status": "not_in_documents",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.04459,
+     "latency_s": 3.0,
+     "answer": "The provided pages do not show any ammonia emission limit for Project Kilby, or any change to one during draft permit negotiations. They only mention ammonia in passing: the draft permit's planned maintenance table lists NH3 emissions from turbine stacks and maintenance activities, and the application describes ammonia injection for the SCR systems. No ammonia limit values, revisions or negotiation correspondence appear."
+    },
+    "l13-ramp-threshold": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05382,
+     "latency_s": 4.7,
+     "answer": "Under the draft permit's special conditions for Project Kilby, transitional load operations are defined as a combustion turbine ramp rate greater than 32 MW per minute, with each event not to exceed 60 minutes.[1] This matches what Energy Forge One requested based on turbine manufacturer information, namely excluding emissions during transitional load operations above 32 MW per minute.[2] The 5 MW per minute threshold that appears in the file comes from other permits (the Entergy permits and GW Ranch) that were cited as precedents, not from Project Kilby's own condition.[2][1]"
+    },
+    "l15-wholly-owned": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03417,
+     "latency_s": 4.1,
+     "answer": "In its June 22, 2026 announcement, Chevron described Energy Forge One LLC as a wholly owned subsidiary that had signed the power agreement with Microsoft.[1] The same release said Chevron and Engine No. 1 had been collaborating on the development, known as Project Kilby.[1] Press coverage described the project itself, rather than Energy Forge One, as a 50-50 joint venture between Joulent and Chevron.[2]"
+    },
+    "l16-joulent-share": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03522,
+     "latency_s": 5.4,
+     "answer": "Joulent has formalized a 50% ownership interest in Kilby, which it describes as its first project.[1] Joulent says it formalized this stake in connection with a $1.75 billion strategic minority investment from National Grid, announced July 1, 2026.[1][2] Press coverage describes Project Kilby as a joint venture between Chevron and Joulent.[3] Chevron's own June 22, 2026 announcement does not mention Joulent; it names Energy Forge One LLC, a wholly owned Chevron subsidiary, as the party to the Microsoft agreement and says Chevron and Engine No. 1 collaborated on the project.[4]"
+    },
+    "l17-epc-contractor": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.04371,
+     "latency_s": 4.9,
+     "answer": "None of the provided pages name the EPC contractor selected to build Kilby. A Latitude Media article (P1, published 2026-07-10) says Joulent had not yet announced the EPC contractor and was finalizing a contract with \"a brand name.\" A Frontier Grid brief (P8) reports that National Grid states EPC capacity is reserved. The TCEQ permit pages refer to the EPC contractor only generically."
+    },
+    "l18-ppa-lds": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.0389,
+     "latency_s": 2.7,
+     "answer": "None of the provided pages state any liquidated damages in the Microsoft PPA for late commercial operation. The pages confirm a 20-year PPA and a first-power target of 2028. The Frontier Grid brief (tier 4) lists 'PPA conditions precedent, remedies and phase acceptance tests' as unknown. It also says liquidated-damages protections are not disclosed, though that remark is about turbine and equipment supply, not the PPA."
+    },
+    "l12-nh3-slip": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 0.0,
+      "citation_correct": 0.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.06736,
+     "latency_s": 13.1,
+     "answer": "The application proposes an ammonia (NH3) slip BACT limit of 5 ppmvd at 15% O2 for the simple-cycle GE 7HA and Solar T350 turbines.[1][2] The same proposed limit of 5 ppmvd at 15% O2 applies to the combined-cycle GE 7HA turbines.[3][4] That is tighter than the TCEQ Tier I BACT requirement of 7-10 ppmvd at 15% O2, which is met by controlling ammonia injection to minimize slip.[1] These are proposed limits from the BACT tables, and the tables do not mention the 29 Solar T130 turbines, which were added to the project in a December 22, 2025 update.[5]"
+    }
+   }
+  },
+  {
+   "id": "answer-lens/v1",
+   "label": "Lens v1",
+   "split": "lens",
+   "note": "Permit guided retrieval: the latest draft's matching conditions and redline comment pages.",
+   "summary": {
+    "answer_accuracy": {
+     "value": 0.9375,
+     "n": 16,
+     "ci95": 0.11861011497760214
+    },
+    "citation_accuracy": {
+     "value": 1.0,
+     "n": 15,
+     "ci95": 0.0
+    },
+    "refusal_recall": {
+     "value": 1.0,
+     "n": 2,
+     "ci95": 0.0
+    },
+    "false_refusal_rate": {
+     "value": 0.0625,
+     "n": 16,
+     "ci95": 0.11861011497760214
+    },
+    "cost_usd_total": 0.8849,
+    "cost_usd_per_question": 0.0492,
+    "latency_s_median": 5.8,
+    "wall_clock_s": 22.5
+   },
+   "cases": {
+    "l04-startup-combined": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04193,
+     "latency_s": 4.5,
+     "answer": "Under the draft permit's special conditions, a planned startup for combined cycle operation may not exceed 70 minutes per startup.[1][2] By comparison, planned startups for simple cycle operation are limited to 60 minutes per startup, and planned shutdowns may not exceed 60 minutes per shutdown.[2]"
+    },
+    "l03-startup-simple": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04413,
+     "latency_s": 5.8,
+     "answer": "Under the draft permit's special conditions, a planned startup for simple cycle operation may not exceed 60 minutes per startup.[1] For comparison, planned startups for combined cycle operation are capped at 70 minutes per startup.[1] A planned startup begins when fuel is introduced and a combustion flame is established and recorded by the plant's control system. It ends when the turbine is in Environmental Compliance Mode, ammonia injection is in service, and startup emissions have purged through the continuous emissions monitoring system.[2]"
+    },
+    "l02-nox-combined": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.06248,
+     "latency_s": 6.7,
+     "answer": "In the draft permit's special conditions, the two combined cycle GE 7HA.02 turbines (7HACC1 and 7HACC2) have a nitrogen oxide (NOx) limit of 2.0 ppmvd at 15% oxygen, measured as a 24-hour rolling average.[1] This limit does not apply during planned maintenance, startup, and shutdown (MSS) periods.[1] NOx emissions during transitional load operations, meaning a ramp rate greater than 32 MW per minute for no more than 60 minutes per event, may also be excluded from the averaging-time limit if certain conditions are met.[2] The limit matches the BACT level proposed in the application, 2 ppmvd at 15% O2 for the combined-cycle 7HA turbines.[3]"
+    },
+    "l01-nox-simple-7ha": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05445,
+     "latency_s": 7.2,
+     "answer": "Under the draft permit's special conditions, the three simple cycle GE 7HA.02 turbines (EPNs 7HASC1, 7HASC2 and 7HASC3) have a NOx limit of 2.5 ppmvd at 15% O2 on a 3-hour rolling average.[1] This limit does not apply during planned maintenance, startup and shutdown periods.[1] NOx emissions during transitional load operations, defined as a ramp rate greater than 32 MW per minute for no more than 60 minutes per event, may also be excluded from the averaging limit if certain conditions are met.[2] The October 2025 application proposed the same 2.5 ppmvd@15%O2 BACT limit for simple cycle operation and noted it is below the federal NSPS Subpart KKKK standard of 15 ppmvd@15% O2.[3]"
+    },
+    "l05-sulfur-solar": {
+     "status": "withheld",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.05733,
+     "latency_s": 9.1,
+     "answer": "A draft answer failed the page check, so it is not shown."
+    },
+    "l06-sulfur-ge": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.06724,
+     "latency_s": 9.4,
+     "answer": "The draft permit limits the GE 7HA.02 turbines (EPNs 7HACC1, 7HACC2, 7HASC1, 7HASC2, and 7HASC3) to pipeline-quality, sweet natural gas with no more than 0.5 grains of total sulfur per 100 dry standard cubic feet.[1] The same 0.5 gr S/100 dscf limit also applies to the Black Start Generators (EPNs BSGEN1 and BSGEN2).[1] The October 2025 application had proposed a looser BACT limit for the combined-cycle turbines: 5 gr/100 scf fuel sulfur on an hourly basis and 1 gr/100 scf on an annual basis.[2] In the draft permit, a 5.0 hourly and 1.0 12-month rolling limit appears only for the Auxiliary Boiler, not the GE turbines.[1]"
+    },
+    "l08-avo-frequency": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04155,
+     "latency_s": 5.1,
+     "answer": "Under the draft permit's special conditions, audio, olfactory, and visual (AVO) checks for leaks from piping, valves, pumps, and compressors in contact with ammonia must be made at least once every 12-hour shift.[1] If a leak is found, plant personnel must act immediately, but no later than one hour after detection, by isolating the leak, starting repair or replacement, or using a leak collection/containment system.[1] The date and time of each inspection must be noted in the operator's log or equivalent, and the permit holder must keep records of AVO checks.[1][2] The application describes this as following the 28AVO Program from the June 2018 TCEQ Technical Guidance Package for Equipment Leak Fugitives.[3]"
+    },
+    "l09-stack-sampling": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04801,
+     "latency_s": 4.5,
+     "answer": "Under the draft permit, stack sampling must occur within 60 days after a turbine or boiler reaches the maximum operating rate at which it will be operated, but no later than 180 days after initial start-up of the unit.[1] The TCEQ Executive Director may also require sampling at other times, and requests for more time go to the appropriate regional office.[1] Before sampling, the appropriate TCEQ Regional Office must be notified not less than 45 days in advance.[1] Separately, performance testing must occur within 180 days following startup or upon completion of the required stack sampling, whichever occurs first.[2]"
+    },
+    "l10-sampling-notice": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04018,
+     "latency_s": 4.2,
+     "answer": "Under the draft special conditions for Project Kilby, the appropriate TCEQ Regional Office must be notified not less than 45 days prior to sampling.[1] The notice must include items such as the proposed date for a pretest meeting, the date sampling will occur, the name of the sampling firm, the equipment and method to be used, and any proposed deviations from standard procedures.[1] Separately, the regional office must be notified at least 30 days before any required relative accuracy test audit (RATA) of the continuous emissions monitors.[2]"
+    },
+    "l07-turbines-44-46": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05728,
+     "latency_s": 8.8,
+     "answer": "A reviewer comment on the redlined draft permit says the turbine count was \"Updated from 44 to 46\" and lists what the 46 include: 2 combined-cycle GE 7HA.02 units, 3 simple-cycle GE 7HA.02 units, 12 Solar T350 units and 29 Solar T130 units.[1] The change was marked \"Accepted\", and the later draft special condition authorizes 46 natural gas fired combustion generators.[1][2] The comment gives this breakdown of units but does not say why 44 had been written before.[1] For context, the October 2025 application proposed 17 combustion turbines (2 combined-cycle and 3 simple-cycle GE 7HA.02 units plus 12 Solar Titan 350 units), and it did not list the 29 Solar Titan 130 units.[3][4]"
+    },
+    "l11-leak-repair": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04373,
+     "latency_s": 5.2,
+     "answer": "Under the draft permit's rules for piping, valves, pumps and compressors in natural gas and diesel service, a leaking component must be repaired as soon as practicable, but no later than 15 days after the leak is found.[1] If the repair would require a unit shutdown, it may be delayed until the next scheduled shutdown, and the component must be tagged in the meantime.[1] For components in contact with ammonia, the rule is stricter: immediately, but no later than one hour after a leak is detected, staff must isolate it, start repair or replacement, or contain it.[2] For equipment containing greenhouse gases such as the SF6 circuit breakers, action is required as soon as practicable after a leak is detected, with no fixed number of days given.[3]"
+    },
+    "l15-wholly-owned": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03509,
+     "latency_s": 4.4,
+     "answer": "In its June 22, 2026 announcement, Chevron described Energy Forge One LLC as a wholly owned subsidiary that had signed the agreement with Microsoft.[1] The same release said Chevron and Engine No. 1 had been collaborating on the development, known as Project Kilby.[1] Press coverage described the plant itself as being developed through a 50-50 joint venture between Joulent and Chevron, but Energy Forge One was still identified as a Chevron subsidiary.[2]"
+    },
+    "l16-joulent-share": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03136,
+     "latency_s": 4.0,
+     "answer": "Joulent holds a 50% ownership interest in Kilby, which it describes as its first project; it formalized this interest alongside a strategic investment from National Grid announced on July 1, 2026.[1][2] Semafor likewise describes Project Kilby as a joint venture between Chevron and Joulent.[3] Joulent says it developed Kilby through ongoing collaboration with GE Vernova and Energy Forge, a subsidiary of Chevron Power Solutions.[1]"
+    },
+    "l18-ppa-lds": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03878,
+     "latency_s": 2.2,
+     "answer": "The provided pages do not state any liquidated damages in the Microsoft power purchase agreement for late commercial operation. They confirm a 20-year PPA with Microsoft. The Frontier Grid brief lists 'PPA conditions precedent, remedies and phase acceptance tests' as unknown. It also says liquidated-damages protections are not disclosed, though that remark refers to turbine and equipment supply rather than the PPA."
+    },
+    "l17-epc-contractor": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.04225,
+     "latency_s": 3.9,
+     "answer": "None of the provided pages name the EPC contractor selected for Kilby. A July 10, 2026 press article (P1) says Joulent hadn't yet announced the EPC contractor and was finalizing a contract with \"a brand name.\" A July 28, 2026 analysis brief (P8) says only that National Grid states EPC capacity is reserved. The TCEQ permit pages (P2, P4) refer to an EPC contractor without naming one."
+    },
+    "l12-nh3-slip": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05622,
+     "latency_s": 9.9,
+     "answer": "The draft permit sets an ammonia (NH3) limit of 5.0 ppmvd at 15% O2 on a 3-hour rolling average for every turbine group: the combined-cycle GE 7HA.02 units, the simple-cycle GE 7HA.02 units, and the Solar T350 and T130 units.[1] During transitional load periods, the averaging time for the CO and NH3 limits becomes a rolling 24 hours.[2] This matches the October 2025 application, which proposed a BACT limit of 5 ppmvd at 15% O2 for both the simple-cycle and combined-cycle turbines, below the TCEQ Tier I BACT range of 7-10 ppmvd.[3][4] The permit requires an NH3 CEMS on the turbine stacks, or an approved alternative that calculates ammonia slip from NOx CEMS readings.[5][6]"
+    },
+    "l13-ramp-threshold": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05254,
+     "latency_s": 8.5,
+     "answer": "In the draft permit's special conditions, transitional load operations are defined as a combustion turbine (CTG) ramp rate greater than 32 MW per minute, with each event limited to no more than 60 minutes.[1] During these periods, NOx emissions may be excluded from the averaging-time concentration limit only if certain conditions are met. One condition is that the turbine ramp rate exceeds 32 MW/minute during at least one hour of the 3-hour or 24-hour period.[1] Emissions during transitional load operations still may not exceed the maintenance, startup and shutdown (MSS) hourly emission rates for that turbine in the maximum allowable emission rates table (MAERT).[1]"
+    },
+    "l14-nh3-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.07038,
+     "latency_s": 11.2,
+     "answer": "In the marked-up draft special conditions, the ammonia (NH3) limit for the turbines is 5.0 ppmvd at 15% O2 on a 3-hour rolling average, and a reviewer comment says a value was \"Updated from 2.0 to 5.0 per Table 3-2 in the application,\" which TCEQ accepted.[1] The page does not say exactly which table row that comment is attached to, so it is an inference that it refers to the ammonia limit.[1] Energy Forge One also proposed excluding CO and NH3, in addition to NOx, during transitional load operations, and pointed to a permit TCEQ had previously issued for a different project, GW Ranch.[2] TCEQ responded with a revised edit that added a new part E, under which the averaging period for the CO and NH3 limits becomes rolling 24 hours during transitional load periods.[2][3]"
+    }
+   }
+  },
+  {
+   "id": "answer-lens/v2",
+   "label": "Lens v2",
+   "split": "lens",
+   "note": "Digits in model codes on a page (T350) may back a sentence's number (Titan 350).",
+   "summary": {
+    "answer_accuracy": {
+     "value": 0.9375,
+     "n": 16,
+     "ci95": 0.11861011497760214
+    },
+    "citation_accuracy": {
+     "value": 1.0,
+     "n": 15,
+     "ci95": 0.0
+    },
+    "refusal_recall": {
+     "value": 1.0,
+     "n": 2,
+     "ci95": 0.0
+    },
+    "false_refusal_rate": {
+     "value": 0.0625,
+     "n": 16,
+     "ci95": 0.11861011497760214
+    },
+    "cost_usd_total": 0.8887,
+    "cost_usd_per_question": 0.0494,
+    "latency_s_median": 5.7,
+    "wall_clock_s": 20.8
+   },
+   "cases": {
+    "l04-startup-combined": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04187,
+     "latency_s": 4.9,
+     "answer": "Under the draft permit's special conditions, a planned startup for combined cycle operation may not exceed 70 minutes per startup.[1][2] For comparison, planned startups for simple cycle operation are limited to 60 minutes, and planned shutdowns are also capped at 60 minutes each.[2]"
+    },
+    "l03-startup-simple": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04481,
+     "latency_s": 6.1,
+     "answer": "Under the draft permit's special conditions, a planned startup for simple cycle operation may not exceed 60 minutes per startup.[1] A planned startup begins when fuel is introduced and a combustion flame has been established in the turbine and recorded by the plant's control system.[2] It ends when the turbine is in Environmental Compliance Mode, ammonia injection is in service, and startup emissions have purged through the continuous emissions monitoring system.[2] By comparison, planned startups for combined cycle operation are allowed up to 70 minutes.[2][1]"
+    },
+    "l02-nox-combined": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0625,
+     "latency_s": 6.2,
+     "answer": "In the draft permit's special conditions, the two combined cycle GE 7HA.02 turbines (7HACC1 and 7HACC2) have a nitrogen oxide (NOx) limit of 2.0 ppmvd at 15% oxygen, measured as a 24-hour rolling average.[1] This limit does not apply during planned maintenance, startup, and shutdown (MSS).[1] NOx emissions during transitional load operations, defined as a ramp rate greater than 32 MW per minute and lasting no more than 60 minutes per event, may also be excluded from the averaging-time limit if certain conditions are met.[2] This matches the BACT limit proposed in the application, which was 2 ppmvd at 15% O2 for the combined-cycle 7HA turbines.[3]"
+    },
+    "l01-nox-simple-7ha": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05419,
+     "latency_s": 7.3,
+     "answer": "Under the draft permit's special conditions, the three simple cycle GE 7HA.02 turbines (EPNs 7HASC1, 7HASC2, 7HASC3) have a NOx limit of 2.5 ppmvd at 15% O2 on a 3-hr rolling average.[1] This limit does not apply during planned maintenance, startup, and shutdown (MSS) periods.[1] NOx emissions during transitional load operations, meaning ramp rates above 32 MW per minute for no more than 60 minutes per event, may also be excluded if certain conditions are met.[2] The application had proposed the same 2.5 ppmvd@15%O2 BACT limit for these turbines, which is well below the federal NSPS Subpart KKKK standard of 15 ppmvd@15% O2.[3]"
+    },
+    "l05-sulfur-solar": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05761,
+     "latency_s": 9.4,
+     "answer": "Under the draft permit's special conditions, fuel for the Solar Titan 350 and Titan 130 turbines may contain no more than 1.2 grains of total sulfur per 100 dry standard cubic feet.[1] The fuel must be pipeline-quality, sweet natural gas.[1] The natural gas must be sampled at least every 6 months for total sulfur, and fuel supplier test results may be used to meet this requirement.[1] The October 2025 application's BACT analysis for simple-cycle turbines proposed a different limit: 5 gr/100 scf on an hourly basis and 1 gr/100 scf on an annual basis.[2] The 1.2 gr limit in the later draft permit is the value that appears in the permit conditions.[1]"
+    },
+    "l06-sulfur-ge": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.06738,
+     "latency_s": 10.2,
+     "answer": "The draft permit limits the fuel for the GE 7HA.02 turbines (both the combined-cycle and simple-cycle units) to pipeline-quality, sweet natural gas with no more than 0.5 grains of total sulfur per 100 dry standard cubic feet.[1] The same 0.5 gr S/100 dscf limit also applies to the Black Start Generators.[1] This is stricter than the BACT limit proposed for the combined-cycle turbines in the October 2025 application, which was 5 gr/100 scf on an hourly basis and 1 gr/100 scf on an annual basis.[2] In the draft permit, the 5.0 hourly and 1.0 twelve-month limits apply to the Auxiliary Boiler instead.[1]"
+    },
+    "l08-avo-frequency": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03923,
+     "latency_s": 4.6,
+     "answer": "Under the draft permit's special conditions, audio, olfactory, and visual (AVO) checks for leaks from piping, valves, pumps, and compressors in contact with ammonia must be made at least once every 12-hour shift.[1] If a leak is found, plant personnel must act immediately, but no later than one hour after detection, by isolating the leak, starting repair or replacement, or using a leak collection/containment system.[1] The date and time of each inspection must be noted in the operator's log or equivalent, and records of AVO checks must be kept as part of the permit's recordkeeping requirements.[1][2]"
+    },
+    "l09-stack-sampling": {
+     "status": "withheld",
+     "grade": {
+      "answer_correct": 0.0,
+      "declined": 1.0
+     },
+     "cost_usd": 0.04841,
+     "latency_s": 4.8,
+     "answer": "A draft answer failed the page check, so it is not shown."
+    },
+    "l10-sampling-notice": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04072,
+     "latency_s": 4.2,
+     "answer": "Under the draft special conditions for Project Kilby's permits, the appropriate TCEQ Regional Office must be notified not less than 45 days before stack sampling.[1] The notice must include items such as the proposed pretest meeting date, the sampling date, the sampling firm, the equipment and methods to be used, any proposed deviations, and how worst-case emissions will be determined.[1] Separately, the regional office must be notified at least 30 days before any required relative accuracy test audit (RATA) of the continuous emissions monitors.[2]"
+    },
+    "l07-turbines-44-46": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05614,
+     "latency_s": 8.1,
+     "answer": "In the redlined draft permit, the count of natural gas fired turbines was changed from 44 to 46, and the reviewer's comment explains the new total by listing the turbine groups it covers: 2 combined cycle 7HA.02, 3 simple cycle 7HA.02, 12 Solar T350 and 29 Solar T130.[1] The change was accepted, and the clean version of the draft permit authorizes 46 turbines.[1][2] The pages do not say why the earlier figure of 44 was used or what it left out.[1] For context, the application as filed in October 2025 proposed only 17 turbines and did not list any Solar Titan 130 units, while the draft permit adds 29 Titan 130 turbines.[3][4]"
+    },
+    "l11-leak-repair": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04563,
+     "latency_s": 5.7,
+     "answer": "Under the draft special conditions for piping, valves, pumps and compressors, a leaking component found by visual inspection must be repaired as soon as practicable, but no later than 15 days after the leak is found.[1] If the repair would require a unit shutdown, it may wait until the next scheduled shutdown, but the component must be tagged, and TCEQ may require an earlier shutdown based on the number and severity of tagged leaks.[1] For equipment in contact with ammonia, the rule is stricter: immediately, but no later than one hour after detecting a leak, personnel must isolate it, start repair or replacement, or use a leak collection/containment system.[2] For leaks from equipment containing greenhouse gases, such as the SF6 circuit breakers, the draft permit requires action as soon as practicable after the leak is detected and sets no fixed deadline.[3]"
+    },
+    "l13-ramp-threshold": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05356,
+     "latency_s": 4.7,
+     "answer": "Under the draft permit's special conditions, transitional load operations are defined as a combustion turbine (CTG) ramp rate greater than 32 MW per minute, with each event not to exceed 60 minutes.[1] NOx emissions during these periods may be excluded from the averaging-time concentration limit only if the qualifying concentration occurs in a 3-hour or 24-hour period where the ramp rate exceeds 32 MW/minute for at least one hour, and the emissions stay within the MSS hourly emission rates in the MAERT.[1] During transitional load periods, the averaging time for the CO and NH3 concentration limits becomes rolling 24 hours.[1]"
+    },
+    "l15-wholly-owned": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03477,
+     "latency_s": 4.2,
+     "answer": "In its June 22, 2026 announcement, Chevron described Energy Forge One LLC as a wholly owned subsidiary of Chevron.[1] The same release said Chevron and Engine No. 1 had been collaborating on the development, known as Project Kilby.[1] Press coverage described the project itself as a 50-50 joint venture between Joulent and Chevron, while still calling Energy Forge One a Chevron subsidiary.[2]"
+    },
+    "l16-joulent-share": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03118,
+     "latency_s": 3.4,
+     "answer": "Joulent has formalized a 50% ownership interest in Kilby, which it describes as its first project.[1] Joulent formalized this stake in connection with a $1.75 billion strategic minority investment in the company by National Grid, announced on July 1, 2026.[1][2] Press coverage describes Project Kilby as a joint venture between Chevron and Joulent.[3]"
+    },
+    "l12-nh3-slip": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05876,
+     "latency_s": 7.0,
+     "answer": "The draft permit limits ammonia (NH3) to 5.0 ppmvd at 15% O2 on a 3-hr rolling average for every turbine group: the combined-cycle GE 7HA.02 units, the simple-cycle GE 7HA.02 units, the Solar T350 units and the Solar T130 units.[1] This limit does not apply during planned maintenance, startup and shutdown, and during transitional load periods the averaging time for NH3 becomes rolling 24 hours.[1][2] The October 2025 application had proposed the same BACT limit of 5 ppmvd at 15% O2 for both the simple-cycle 7HA and T350 turbines and the combined-cycle 7HA turbines, below the TCEQ Tier I BACT range of 7-10 ppmvd.[3][4] Compliance is tracked with an NH3 continuous emissions monitoring system, although the permit also allows approved alternatives such as calculating slip from NOx CEMS readings.[5][6]"
+    },
+    "l18-ppa-lds": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03762,
+     "latency_s": 2.2,
+     "answer": "The provided pages do not state any liquidated damages in the Microsoft power purchase agreement for late commercial operation. They confirm a 20-year PPA and list remedies and liquidated-damages protections among items that are not public or are unknown, but they give no terms."
+    },
+    "l14-nh3-change": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.06954,
+     "latency_s": 9.5,
+     "answer": "In the marked-up draft special conditions, a comment notes a limit was \"updated from 2.0 to 5.0 per Table 3-2 in the application,\" and TCEQ replied that the change was accepted, though the comment text itself does not name the pollutant.[1] The resulting table sets ammonia (NH3) at 5.0 ppmvd at 15% O2 on a 3-hour rolling average for the combined cycle GE 7HA.02 turbines, as well as for the simple cycle GE and Solar turbines.[1][2] Energy Forge One also proposed excluding CO and NH3, not just NOx, during rapid load changes, citing ramp-related ammonia slip and a previously issued TCEQ permit for a different project (GW Ranch).[3] TCEQ responded with a revised edit and added a new part E, which makes the averaging period for the CO and NH3 limits rolling 24 hours during transitional load periods.[3][4]"
+    },
+    "l17-epc-contractor": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.04481,
+     "latency_s": 5.7,
+     "answer": "None of the provided pages names the EPC contractor for Kilby. A Latitude Media article published 2026-07-10 says Joulent had not yet announced the contractor and was finalizing a contract with an unnamed \"brand name\" firm. A Frontier Grid brief dated 2026-07-28 reports National Grid's statement that EPC capacity is reserved, but it does not identify the firm. The TCEQ permit pages refer only to \"the EPC contractor\" without naming it."
+    }
+   }
+  },
+  {
+   "id": "answer-lens-heldout/v1",
+   "label": "Lens held out",
+   "split": "lens-heldout",
+   "note": "6 lens questions written with the lens set, run once after v2.",
+   "summary": {
+    "answer_accuracy": {
+     "value": 1.0,
+     "n": 5,
+     "ci95": 0.0
+    },
+    "citation_accuracy": {
+     "value": 1.0,
+     "n": 5,
+     "ci95": 0.0
+    },
+    "refusal_recall": {
+     "value": 1.0,
+     "n": 1,
+     "ci95": 0.0
+    },
+    "false_refusal_rate": {
+     "value": 0.0,
+     "n": 5,
+     "ci95": 0.0
+    },
+    "cost_usd_total": 0.2683,
+    "cost_usd_per_question": 0.0447,
+    "latency_s_median": 4.8,
+    "wall_clock_s": 10.1
+   },
+   "cases": {
+    "lh05-rata-notice": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.0399,
+     "latency_s": 3.9,
+     "answer": "Under the draft permit's special conditions for Project Kilby, the appropriate TCEQ Regional Office must be notified at least 30 days before any required relative accuracy test audit (RATA).[1] The stated purpose of this notice is to give the Regional Office the chance to observe the testing.[1]"
+    },
+    "lh03-shutdown": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.03421,
+     "latency_s": 4.3,
+     "answer": "Under the draft permit's special conditions, a planned shutdown may not last more than 60 minutes per shutdown.[1] A planned shutdown starts when signals show the combustion turbine is no longer in Environmental Compliance Mode and ammonia injection is no longer in service for an intended shutdown, and it ends when a signal is received that the turbine has flamed out.[1]"
+    },
+    "lh06-heat-rate": {
+     "status": "not_in_documents",
+     "grade": {
+      "declined": 1.0
+     },
+     "cost_usd": 0.03635,
+     "latency_s": 4.3,
+     "answer": "None of the provided pages state a heat rate guarantee from GE Vernova or describe the terms of its turbine supply agreement. The Frontier Grid brief (P5) notes that public disclosures do not cover 'guaranteed performance' for the GE Vernova turbines."
+    },
+    "lh04-gas-sampling": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05642,
+     "latency_s": 4.8,
+     "answer": "Under the draft permit's special conditions, the natural gas must be sampled at least every 6 months to determine its total sulfur and net heating value.[1] Test results from the fuel supplier may be used to satisfy this requirement.[1] Separately, for the initial compliance testing, fuel sampling using the methods of 40 CFR \u00a7 60.4415a may be conducted instead of stack sampling for SO2, with compliance based on 100 percent conversion of fuel sulfur to SO2.[2]"
+    },
+    "lh01-co-simple-7ha": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.04782,
+     "latency_s": 7.2,
+     "answer": "The draft permit's special conditions limit carbon monoxide (CO) from the three simple cycle GE 7HA.02 turbines (EPNs 7HASC1, 7HASC2 and 7HASC3) to 3.5 ppmvd at 15% O2 on a 3-hr rolling average.[1] This concentration limit does not apply during planned maintenance, startup and shutdown (MSS).[1] During transitional load periods, the averaging time for the CO limit becomes a rolling 24 hours.[2]"
+    },
+    "lh02-nox-t130": {
+     "status": "answered",
+     "grade": {
+      "answer_correct": 1.0,
+      "citation_correct": 1.0,
+      "declined": 0.0
+     },
+     "cost_usd": 0.05358,
+     "latency_s": 10.1,
+     "answer": "Under the draft permit's Special Condition 6, the 29 Solar Titan 130 turbines (EPNs T130SC1 through T130SC29), which run in simple cycle mode, have a NOx limit of 2.7 ppmvd at 15% O2 on a 3-hour rolling average.[1] This limit does not apply during planned maintenance, startup and shutdown (MSS) periods.[1] NOx emissions during transitional load operations, meaning a ramp rate greater than 32 MW per minute for no more than 60 minutes per event, may also be excluded from the averaging limit if certain conditions are met.[2] The October 2025 application as filed listed only 17 turbines and did not include the Titan 130 units; they appear in the later technically complete permit file.[3][1]"
     }
    }
   }

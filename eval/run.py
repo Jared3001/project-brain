@@ -36,6 +36,12 @@ from brain.registry import ROOT
 
 CASES = ROOT / "eval" / "cases.yaml"
 OUT = ROOT / ".claude" / "hillclimb" / "answer"
+SETS = {  # name: (cases file, output folder under .claude/hillclimb/)
+    "tuning": ("cases.yaml", "answer"),
+    "heldout": ("heldout.yaml", "answer-heldout"),
+    "lens": ("lens.yaml", "answer-lens"),
+    "lens-heldout": ("lens-heldout.yaml", "answer-lens-heldout"),
+}
 
 
 def load_cases(path: Path | None = None) -> list[dict]:
@@ -210,10 +216,10 @@ def main() -> int:
     ap.add_argument("--only", default="")
     ap.add_argument("--variant", default="baseline")
     ap.add_argument("--workers", type=int, default=4)
-    ap.add_argument("--set", default="tuning", choices=["tuning", "heldout"],
-                    help="heldout runs eval/heldout.yaml into .claude/hillclimb/answer-heldout/")
+    ap.add_argument("--set", default="tuning", choices=list(SETS),
+                    help="heldout runs eval/heldout.yaml into .claude/hillclimb/answer-heldout/; lens and lens-heldout cover the lens pages")
     args = ap.parse_args()
-    path = ROOT / "eval" / "heldout.yaml" if args.set == "heldout" else CASES
+    path = ROOT / "eval" / SETS[args.set][0]
     if args.check:
         return 1 if check_labels(path) else 0
     if args.selftest:
@@ -223,7 +229,7 @@ def main() -> int:
     if args.only:
         wanted = [w.strip() for w in args.only.split(",")]
         cases = [c for c in cases if any(c["id"].startswith(w) for w in wanted)]
-    out = (OUT.parent / "answer-heldout" if args.set == "heldout" else OUT) / args.variant
+    out = OUT.parent / SETS[args.set][1] / args.variant
     (out / "traces").mkdir(parents=True, exist_ok=True)
     done = set()
     results = out / "results.jsonl"

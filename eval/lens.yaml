@@ -1,0 +1,98 @@
+# Lens eval set, written 2026-11-23 for the EPC/permitting, consistency and
+# deadlines pages, before any retrieval change for them.
+#
+# Same format and grading as cases.yaml. These are the questions the new pages
+# suggest, so the first run measures Ask as it was when those pages shipped.
+
+cases:
+  - id: l01-nox-simple-7ha
+    kind: answerable
+    question: What NOx limit applies to the simple cycle GE 7HA.02 turbines?
+    facts: [["2.5"]]
+    docs: [tceq-application-2026-tc]
+    trap: The combined cycle units are 2.0 ppmvd; the Solar units 2.7.
+  - id: l02-nox-combined
+    kind: answerable
+    question: What is the NOx concentration limit for the combined cycle turbines in the draft permit?
+    facts: [["2.0"]]
+    docs: [tceq-application-2026-tc]
+  - id: l03-startup-simple
+    kind: answerable
+    question: How long can a simple cycle startup last under the draft permit?
+    facts: [["60"]]
+    docs: [tceq-application-2026-tc]
+  - id: l04-startup-combined
+    kind: answerable
+    question: How many minutes may a combined cycle startup last under the draft permit?
+    facts: [["70"]]
+    docs: [tceq-application-2026-tc]
+  - id: l05-sulfur-solar
+    kind: answerable
+    question: What sulfur limit applies to fuel for the Solar turbines?
+    facts: [["1.2"]]
+    docs: [tceq-application-2026-tc]
+  - id: l06-sulfur-ge
+    kind: answerable
+    question: What is the fuel sulfur limit for the GE 7HA.02 turbines?
+    facts: [["0.5"]]
+    docs: [tceq-application-2026-tc]
+  - id: l07-turbines-44-46
+    kind: change
+    question: Why did the turbine count in the draft permit change from 44 to 46?
+    facts: [["44"], ["46"]]
+    docs: [tceq-application-2026-tc]
+  - id: l08-avo-frequency
+    kind: answerable
+    question: How often must AVO checks for ammonia leaks be made under the draft permit?
+    facts: [["12-hour", "12 hour", "once per shift", "every shift"]]
+    docs: [tceq-application-2026-tc]
+    trap: The applicant first proposed daily checks, citing an Entergy permit.
+  - id: l09-stack-sampling
+    kind: answerable
+    question: How soon after initial startup must stack sampling be done?
+    facts: [["180"]]
+    docs: [tceq-application-2026-tc]
+  - id: l10-sampling-notice
+    kind: answerable
+    question: How much notice must TCEQ's regional office get before stack sampling?
+    facts: [["45"]]
+    docs: [tceq-application-2026-tc]
+  - id: l11-leak-repair
+    kind: answerable
+    question: How quickly must a leaking component be repaired?
+    facts: [["15"]]
+    docs: [tceq-application-2026-tc]
+  - id: l12-nh3-slip
+    kind: answerable
+    question: What ammonia slip limit applies to the turbines?
+    facts: [["5.0"]]
+    docs: [tceq-application-2026-tc]
+  - id: l13-ramp-threshold
+    kind: answerable
+    question: Above what ramp rate does the transitional load provision apply?
+    facts: [["32"]]
+    docs: [tceq-application-2026-tc]
+  - id: l14-nh3-change
+    kind: change
+    question: How did the ammonia limit change during the draft permit negotiation?
+    facts: [["2.0"], ["5.0"]]
+    docs: [tceq-application-2026-tc]
+  - id: l15-wholly-owned
+    kind: answerable
+    question: How did Chevron describe its ownership of Energy Forge One when it announced the Microsoft deal?
+    facts: [["wholly owned"]]
+    docs: [chevron-release]
+  - id: l16-joulent-share
+    kind: answerable
+    question: What ownership interest does Joulent hold in Kilby?
+    facts: [["50"]]
+    docs: [joulent-release, latitude, powereng, frontier-grid]
+  - id: l17-epc-contractor
+    kind: unanswerable
+    question: Which EPC contractor was selected to build Kilby?
+    absent: ["Bechtel", "Zachry", "Burns & McDonnell", "Black & Veatch"]
+    trap: Sources say EPC capacity is reserved but never name the firm. Kiewit appears only in a Joulent staff bio.
+  - id: l18-ppa-lds
+    kind: unanswerable
+    question: What liquidated damages does the Microsoft PPA set if commercial operation is late?
+    absent: ["liquidated damages"]

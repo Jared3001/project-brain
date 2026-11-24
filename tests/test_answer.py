@@ -91,3 +91,9 @@ def test_capacity_change_question_gets_both_capacity_filings():
 def test_disagreement_question_keeps_company_and_press_figures():
     docs = {h.doc_id for h in retrieve("Why do the capacity numbers disagree?")}
     assert "chevron-release-2026-06-22" in docs and "tceq-application-2025-10" in docs
+
+
+def test_model_codes_on_a_page_allow_their_digits():
+    from brain.answer import model_numbers
+    assert model_numbers("Solar Turbines T350 Turbines (EPNs T130SC1)") == {"350"}
+    assert "130" not in model_numbers("T130SC1 through T130SC29")   # emission point ids are not model codes
