@@ -1,0 +1,54 @@
+{% macro cite(f) -%}
+<a class="chip" href="{{ url_for('source', doc_id=f.doc_id, page_no=f.page_no, q=f.quote) }}#q"
+   title="{{ f.doc.title }}">{{ f.chip }}</a>
+{%- endmacro %}
+
+{% macro pcite(doc_id, page_no, quote, label=None) -%}
+<a class="chip" href="{{ url_for('source', doc_id=doc_id, page_no=page_no, q=quote) }}#q"
+   title="TCEQ permit file, page {{ page_no }}">{{ label or ('Permit file, p. ' ~ page_no) }}</a>
+{%- endmacro %}
+
+{% macro outcome(t) -%}
+<span class="pill {{ t.outcome }}">{{ {'accepted': 'TCEQ accepted', 'countered': 'TCEQ countered', 'open': 'no reply in file'}[t.outcome] }}</span>
+{%- endmacro %}
+
+{% macro thread_msgs(t, doc_id) -%}
+<div class="msg"><div class="who">{{ t.root.author }} <span>{{ t.root.org }}</span></div>
+{% if t.root.text|length > 360 %}<details style="margin:0;font-size:14px"><summary style="color:var(--ink)">{{ t.root.text[:300].rsplit(' ', 1)[0] }}&hellip; <span class="mini">more</span></summary>{{ t.root.text }}</details>{% else %}{{ t.root.text }}{% endif %}</div>
+{% for r in t.replies %}
+<div class="msg reply"><div class="who">{{ r.author }} <span>{{ r.org }}</span></div>{{ r.text }}</div>
+{% endfor %}
+<div class="mini" style="margin-top:6px">Margin comment in {{ t.version.label }}, {{ pcite(doc_id, t.root.page_no, t.root.text.split()[:8]|join(' ')) }}</div>
+{%- endmacro %}
+
+{% macro field_row(rec, f) -%}
+<section class="field">
+  <div>
+    <div class="label">{{ rec.label }}</div>
+    <span class="status {{ rec.status }}">{{ rec.status.replace('_', ' ') }}</span>
+  </div>
+  <div>
+    {% for c in f.current %}
+    <div class="value">
+      <span class="v">{{ c.display }}</span>{{ cite(c) }}
+      {% if c.basis %}<div class="basis">{{ c.basis }}{% if c.since and c.since != c.as_of %} &middot; since {{ c.since|month }}{% else %} &middot; {{ c.as_of|month }}{% endif %}</div>{% endif %}
+    </div>
+    {% else %}
+    <div class="value basis">No quotable statement in the sources searched.</div>
+    {% endfor %}
+    {% if rec.status == 'conflict' %}<p class="note">Sources disagree and none is picked: {{ rec.note }}</p>{% endif %}
+    {% if f.history %}
+    <details>
+      <summary>{{ f.history|length }} earlier value{{ 's' if f.history|length != 1 }}</summary>
+      <ul>
+      {% for h in f.history %}
+        <li><span class="was">{{ h.display }}</span>
+          ({% if h.since == h.until %}{{ h.since|month }}{% else %}{{ h.since|month }} to {{ h.until|month }}{% endif %}){{ cite(h) }}
+          {% if h.basis %}<div class="basis">{{ h.basis }}</div>{% endif %}</li>
+      {% endfor %}
+      </ul>
+    </details>
+    {% endif %}
+  </div>
+</section>
+{%- endmacro %}

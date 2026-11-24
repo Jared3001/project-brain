@@ -2,7 +2,6 @@
 {% block title %}{{ doc.title }}, {{ page.locator }}{% endblock %}
 {% block wrapclass %}{% if embed %} embed{% endif %}{% endblock %}
 {% block body %}
-{% if not embed %}<p><a href="{{ url_for('card') }}">&larr; Record</a></p>{% endif %}
 <div class="src-head">
   <div class="basis">{{ kind }} &middot; tier {{ doc.tier }} &middot; {{ doc.publisher }} &middot; {{ doc.published|month }}</div>
   <h1>{{ doc.title }}</h1>

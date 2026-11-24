@@ -1,6 +1,12 @@
 """Read only web view of the project record and its sources.
 
-  /                      the record card
+  /                      home: pick a role, see what the brain can answer for it
+  /record                the record card
+  /epc                   the EPC and permitting lens: what the draft permit binds the plant to
+  /permit, /permit/<n>   the draft permit's special conditions, their changes and negotiation
+  /consistency           what each source says about the same topic, and where they disagree
+  /commitments           dated milestones with status, and the clocks the draft permit starts
+  /watch                 the watcher agent: latest live check and digests of what moved
   /source/<doc>/<page>   the cited page with the quote highlighted
 """
 
@@ -80,7 +86,50 @@ def month(iso: str) -> str:
     return d.strftime("%b %-d, %Y")
 
 
+LANES = [
+    {"key": "epc", "title": "EPC and engineering", "who": "Owner's engineer, design leads, commissioning",
+     "coverage": "partial", "links": [("epc", "EPC and permitting lens"), ("permit_index", "Draft permit"), ("commitments", "Permit clocks")],
+     "asks": ["What NOx limit applies to the simple cycle GE 7HA.02 turbines?", "How long can a simple cycle startup last under the draft permit?"],
+     "missing": "RFIs, deviations, vendor delivery dates, drawing revisions"},
+    {"key": "permit", "title": "Permitting and environmental", "who": "Air permitting, environmental compliance",
+     "coverage": "good", "links": [("permit_index", "Draft permit, condition by condition"), ("commitments", "Deadlines"), ("changes", "What changed")],
+     "asks": ["Why did the turbine count change from 44 to 46?", "What CO2e emissions does the permit file report?"],
+     "missing": "Modeling files, agency calls, survey reports"},
+    {"key": "ercot", "title": "Interconnection", "who": "ERCOT queue, transmission, grid strategy",
+     "coverage": "partial", "links": [("commitments", "Projected CODs"), ("changes", "Queue changes"), ("consistency", "Off grid vs grid requests")],
+     "asks": ["Where does the plant connect to the grid?", "How big is the battery and has it changed?"],
+     "missing": "Study reports, interconnection agreement drafts, PUCT filings"},
+    {"key": "comms", "title": "Communications, legal, leadership", "who": "CEO, IR and comms, legal, partner management",
+     "coverage": "partial", "links": [("consistency", "Consistency check"), ("commitments", "Deadlines"), ("card", "Project record")],
+     "asks": ["Why do the capacity numbers disagree?", "When is first power expected?"],
+     "missing": "Board decisions, JV consent rights, contract notice windows"},
+    {"key": "commercial", "title": "Commercial and finance", "who": "Offtake, project finance, business development",
+     "coverage": "internal", "links": [("consistency", "Ownership and capacity claims"), ("card", "Project record")],
+     "asks": ["What is the PPA term?", "Who are the turbine suppliers?"],
+     "missing": "The PPA, financial model, lender reports, term sheets"},
+    {"key": "ops", "title": "Plant operations", "who": "O&M, controls, HSE",
+     "coverage": "partial", "links": [("commitments", "Recurring permit obligations"), ("permit_index", "Monitoring conditions")],
+     "asks": ["What emission controls are required on the combustion turbines?", "What sulfur limit applies to fuel for the Solar turbines?"],
+     "missing": "LTSA, CMMS history, commissioning records, OEM manuals"},
+]
+
+
 @app.route("/")
+def home():
+    con = db()
+    run = con.execute("SELECT * FROM ingest_runs ORDER BY ran_at DESC LIMIT 1").fetchone()
+    n_docs = con.execute("SELECT count(*) FROM documents").fetchone()[0]
+    from brain import claims as C
+    from brain import commitments as M
+    import datetime as dt
+    fs = C.findings()
+    items = M.dated(dt.date.today())
+    alerts = [f for f in fs if f.verdict in ("disagree", "tension")][:3]
+    due = [i for i in items if i.status in ("past_due", "at_risk")]
+    return render_template("home.html", lanes=LANES, n_docs=n_docs, n_pages=run["n_pages"], alerts=alerts, due=due)
+
+
+@app.route("/record")
 def card():
     con = db()
     docs = {r["id"]: r for r in con.execute("SELECT * FROM documents")}
@@ -330,10 +379,12 @@ def eval_view():
             ("False refusals", s["false_refusal_rate"], "answerable questions that were declined or withheld (lower is better)"),
         ]
     heldout = next(r for r in runs if r["split"] == "heldout")
-    latest_tuning = [r for r in runs if r["split"] == "tuning"][-1]
+    latest_of = {r["split"]: r for r in runs}   # the last run listed for each split
     table = []
     for cid, c in data["cases"].items():
-        run = heldout if c["split"] == "heldout" else latest_tuning
+        run = latest_of.get(c["split"])
+        if run is None:
+            continue
         res = run["cases"].get(cid)
         if not res:
             continue
@@ -347,6 +398,173 @@ def eval_view():
         table.append({**c, **res, "verdict": verdict, "run": run["label"], "history": history})
     total_cost = sum(r["summary"]["cost_usd_total"] for r in runs)
     return render_template("eval.html", runs=runs, heldout=heldout, table=table, pct=_pct, total_cost=total_cost)
+
+
+# ---- EPC and permitting lens ----------------------------------------------------
+
+EPC_QUESTIONS = [
+    "What NOx limit applies to the simple cycle GE 7HA.02 turbines?",
+    "How long can a simple cycle startup last under the draft permit?",
+    "What sulfur limit applies to fuel for the Solar turbines?",
+    "Why did the turbine count change from 44 to 46?",
+    "What emission controls are required on the combustion turbines?",
+    "Where does the plant connect to the grid?",
+]
+
+# Questions an EPC team asks every week that the public record cannot answer.
+NEEDS_INTERNAL = [
+    ("Which design basis deviations has the EPC requested, and which did we approve?", "Deviation and waiver log, design basis memo"),
+    ("What did GE Vernova commit to for delivery of each 7HA.02 unit, and has any date slipped against the P6 need date?", "Turbine supply agreement, expediting reports, Primavera P6"),
+    ("Which switchyard RFIs are open, and who owns them?", "Procore or Aconex RFI log"),
+    ("Which single line diagram revision is current, and what changed from the last one?", "Document control register, drawing revisions"),
+    ("Does the GSU factory test report match the impedance we specified?", "Transformer specs, factory acceptance test reports"),
+    ("Has the EPC given timely notice of delay under the contract, and what are the LD caps?", "EPC contract, notice and correspondence log"),
+]
+
+EPC_RECORD_FIELDS = ["turbine_fleet", "capacity_mw", "interconnection_point", "battery_storage_mw",
+                     "air_permit_status", "permit_milestones", "nox_controls", "water_source"]
+
+
+def _facts_for(names: list[str]) -> list[tuple[dict, dict]]:
+    con = db()
+    docs = {r["id"]: r for r in con.execute("SELECT * FROM documents")}
+    records = {r["field"]: dict(r) for r in con.execute("SELECT * FROM record")}
+    facts = defaultdict(lambda: {"current": [], "history": []})
+    for f in con.execute("SELECT * FROM facts ORDER BY tier, as_of"):
+        f = dict(f)
+        if f["field"] not in names:
+            continue
+        f["value"] = json.loads(f["value"])
+        f["doc"] = docs[f["doc_id"]]
+        f["chip"] = chip(f["doc"], f["locator"])
+        facts[f["field"]][f["role"]].append(f)
+    return [(records[n], facts[n]) for n in names if n in records]
+
+
+def _lead_quote(text: str, words: int = 10) -> str:
+    return " ".join(text.split()[:words])
+
+
+@app.route("/epc")
+def epc():
+    from brain import permit as P
+    basis = P.design_basis()
+    eq = basis["equipment"]
+    total_units = sum(v.extra["count"] for v in eq)
+    total_mw = sum(v.extra["count"] * float(v.extra["mw"].replace(",", "")) for v in eq)
+    groups = []
+    for v in basis["limits"]:
+        if not groups or groups[-1]["name"] != v.extra["group"]:
+            groups.append({"name": v.extra["group"], "cells": {}})
+        groups[-1]["cells"][v.extra["pollutant"]] = v
+    changed = [n for n, c in P.changed_numbers().items() if c]
+    return render_template(
+        "epc.html", basis=basis, total_units=total_units, total_mw=total_mw, limit_groups=groups,
+        threads=P.threads(), changed=changed, first=P.first(), latest=P.latest(), versions=P.versions(),
+        record=_facts_for(EPC_RECORD_FIELDS), questions=EPC_QUESTIONS, needs=NEEDS_INTERNAL,
+        doc_id=P.DOC_ID, topic_label=P.topic_label, cond_quote=lambda n: _lead_quote(P.latest().conditions[n].text))
+
+
+@app.route("/permit")
+def permit_index():
+    from brain import permit as P
+    latest = P.latest()
+    changed = P.changed_numbers()
+    by_cond = defaultdict(list)
+    for t in P.threads():
+        for n in t.conditions:
+            by_cond[n].append(t)
+    topic = request.args.get("topic", "")
+    keys = [k for k, *_ in P.TOPICS] + ["other"]
+    sections = []
+    for k in keys:
+        rows = [c for c in latest.conditions.values() if c.topic == k]
+        if rows and (not topic or topic == k):
+            sections.append((k, P.topic_label(k), k in P.epc_topics(), rows))
+    return render_template("permit.html", latest=latest, first=P.first(), versions=P.versions(), sections=sections,
+                           changed=changed, by_cond=by_cond, topic=topic, topics=[(k, P.topic_label(k)) for k in keys],
+                           doc_id=P.DOC_ID, lead=_lead_quote)
+
+
+@app.route("/permit/<int:number>")
+def permit_condition(number: int):
+    from brain import permit as P
+    latest = P.latest()
+    cond = latest.conditions.get(number)
+    if cond is None:
+        abort(404)
+    nums = sorted(latest.conditions)
+    i = nums.index(number)
+    return render_template("permit_condition.html", c=cond, latest=latest, first=P.first(), net=P.net_change(number),
+                           history=P.history(number), threads=P.threads_for(number), doc_id=P.DOC_ID, lead=_lead_quote,
+                           topic_label=P.topic_label, prev=nums[i - 1] if i else None, next=nums[i + 1] if i + 1 < len(nums) else None)
+
+
+@app.route("/consistency")
+def consistency():
+    from brain import claims as C
+    con = db()
+    docs = {r["id"]: r for r in con.execute("SELECT * FROM documents")}
+    locs = {}
+    found, misses = C.claims()
+    for c in found:
+        loc = con.execute("SELECT locator FROM pages WHERE doc_id=? AND page_no=?", (c.doc_id, c.page_no)).fetchone()
+        locs[(c.doc_id, c.page_no)] = chip(docs[c.doc_id], loc["locator"] if loc else f"p. {c.page_no}")
+    fs = C.findings()
+    counts = defaultdict(int)
+    for f in fs:
+        counts[f.verdict] += 1
+    return render_template("consistency.html", findings=fs, counts=counts, locs=locs, misses=misses,
+                           n_sources=len({c.doc_id for c in found}), n_claims=len(found))
+
+
+@app.route("/commitments")
+def commitments():
+    import datetime as dt
+    from brain import commitments as M
+    from brain import permit as P
+    today = dt.date.today()
+    items = M.dated(today)
+    con = db()
+    docs = {r["id"]: r for r in con.execute("SELECT * FROM documents")}
+    chips = {}
+    for i in items:
+        loc = con.execute("SELECT locator FROM pages WHERE doc_id=? AND page_no=?", (i.doc_id, i.page_no)).fetchone()
+        chips[i.key] = chip(docs[i.doc_id], loc["locator"] if loc else f"p. {i.page_no}")
+    trig, misses = M.triggered()
+    groups = [(g, [t for t in trig if t.group == g]) for g in M.GROUPS]
+    counts = defaultdict(int)
+    for i in items:
+        counts[i.status] += 1
+    nxt = next((i for i in items if i.days >= 0), None)
+    return render_template("commitments.html", items=items, chips=chips, groups=groups, misses=misses, today=today,
+                           counts=counts, nxt=nxt, doc_id=P.DOC_ID, latest=P.latest(), n_trig=len(trig))
+
+
+WATCH_DIR = Path(__file__).resolve().parent.parent / "data" / "watch"
+
+
+def _digests() -> list[dict]:
+    out = []
+    for p in sorted(WATCH_DIR.glob("digest-*.json"), reverse=True):
+        try:
+            out.append(json.loads(p.read_text()))
+        except ValueError:
+            continue
+    return out
+
+
+@app.route("/watch")
+def watch():
+    ds = _digests()
+    live = next((d for d in ds if not d["mode"].startswith("replay")), None)
+    replay = next((d for d in ds if d["mode"].startswith("replay") and d.get("summary")), None) or \
+        next((d for d in ds if d["mode"].startswith("replay")), None)
+    runs = []
+    log = WATCH_DIR / "runs.jsonl"
+    if log.exists():
+        runs = [json.loads(l) for l in log.read_text().splitlines() if l.strip()][-12:][::-1]
+    return render_template("watch.html", live=live, replay=replay, runs=runs)
 
 
 @app.route("/healthz")

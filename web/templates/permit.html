@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% from "_macros.html" import pcite, outcome %}
+{% block title %}Draft permit conditions, Project Kilby{% endblock %}
+{% block wrapclass %} wide{% endblock %}
+{% block body %}
+<header class="hero">
+  <div class="eyebrow">TCEQ permit 181895 &middot; draft special conditions</div>
+  <h1>Draft permit, condition by condition</h1>
+  <p class="lede">The latest clean draft in the permit file ({{ latest.label }}), grouped by what each condition governs. Each condition shows whether it changed since TCEQ's first draft and whether it was negotiated in the redlines.</p>
+</header>
+
+<div class="cards" style="margin-top:18px">
+  <div class="card">
+    <div class="eyebrow" style="color:var(--muted)">Drafts in the file</div>
+    <ul class="timeline" style="margin-top:6px">
+      {% for v in versions %}
+      <li><span>{{ v.thread_date.strftime('%b %-d, %Y') if v.thread_date else 'undated' }}</span>
+        <span>{{ v.label.split(',')[0] }} &middot; {% if v.redline %}redline, {{ v.comments|length }} margin comments{% else %}clean{% endif %}
+          &middot; {{ pcite(doc_id, v.first_page, lead(v.conditions[1].text, 8), 'pp. ' ~ v.first_page ~ '–' ~ v.last_page) }}</span></li>
+      {% endfor %}
+    </ul>
+    <p class="mini">Dated by the email thread each copy was filed under. Changes are compared between clean drafts; redline copies carry tracked change residue.</p>
+  </div>
+</div>
+
+<div class="filters">
+  <a class="{{ 'on' if not topic }}" href="{{ url_for('permit_index') }}">All</a>
+  {% for k, label in topics %}<a class="{{ 'on' if topic == k }}" href="{{ url_for('permit_index', topic=k) }}">{{ label }}</a>{% endfor %}
+</div>
+
+{% for key, label, epc, rows in sections %}
+<section class="sec" style="margin-top:22px">
+  <h2>{{ label }}{% if epc %} <span class="pill epc" style="margin-left:6px">design constraint</span>{% endif %}</h2>
+  {% for c in rows %}
+  <div class="crow">
+    <div class="n">SC {{ c.number }}</div>
+    <div><a class="t" href="{{ url_for('permit_condition', number=c.number) }}">{{ c.summary }}</a>
+      {% if c.section %}<div class="mini">{{ c.section }}</div>{% endif %}</div>
+    <div class="flags">
+      {% if changed.get(c.number) %}<span class="pill changed">changed</span>{% endif %}
+      {% for t in by_cond.get(c.number, []) %}{{ outcome(t) }}{% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endfor %}
+{% endblock %}

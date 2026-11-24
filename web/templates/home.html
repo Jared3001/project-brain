@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Project Brain, Kilby{% endblock %}
+{% block wrapclass %} wide{% endblock %}
+{% set COV = {'good': 'Well covered by the public record', 'partial': 'Partly covered', 'internal': 'Mostly needs internal documents'} %}
+{% block body %}
+<header class="hero">
+  <div class="eyebrow">Project Kilby &middot; {{ n_docs }} public documents, {{ n_pages }} pages</div>
+  <h1>One place to find what the project knows and has decided</h1>
+  <p class="lede">A company brain for a gigawatt gas plant, built on the public record: TCEQ permit filings, ERCOT queue reports, company releases and press. Every answer cites the page it came from, and where sources disagree, it says so.</p>
+  <form class="homeask" action="{{ url_for('ask_view') }}" method="get">
+    <input name="q" placeholder="Ask anything about Kilby, e.g. When is first power expected?" aria-label="Question" autocomplete="off">
+    <button type="submit">Ask</button>
+  </form>
+</header>
+
+{% if alerts or due %}
+<section class="sec">
+  <h2>Needs attention</h2>
+  <div class="alerts">
+    {% for f in alerts %}
+    <a class="alert" href="{{ url_for('consistency') }}#{{ f.topic }}"><span class="pill {{ f.verdict }}">{{ 'Disagree' if f.verdict == 'disagree' else 'Tension' }}</span><span><strong>{{ f.label }}:</strong> {{ f.headline }}</span></a>
+    {% endfor %}
+    {% for i in due %}
+    <a class="alert" href="{{ url_for('commitments') }}"><span class="pill {{ i.status }}">{{ 'Past estimate' if i.status == 'past_due' else 'At risk' }}</span><span><strong>{{ i.label }}</strong> &middot; {{ i.date.strftime('%b %-d, %Y') if i.precision == 'day' else 'end of ' ~ i.date.year }}</span></a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="sec">
+  <h2>What do you work on?</h2>
+  <p class="sub">Each team asks different questions of the same documents. Pick yours.</p>
+  <div class="lanes">
+    {% for l in lanes %}
+    <div class="card lane" id="{{ l.key }}">
+      <div><span class="cov {{ l.coverage }}">{{ COV[l.coverage] }}</span></div>
+      <h3>{{ l.title }}</h3>
+      <div class="who">{{ l.who }}</div>
+      <div class="links">{% for ep, label in l.links %}<a href="{{ url_for(ep) }}">{{ label }}</a>{% endfor %}</div>
+      <div class="asks">{% for q in l.asks %}<a href="{{ url_for('ask_view', q=q) }}">{{ q }}</a>{% endfor %}</div>
+      <div class="mini">Would connect next: {{ l.missing }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<footer>
+  A reading of the public record, not the developer's internal plans or numbers. Values are extracted by anchored rules and checked against their pages; answers are checked in code before they are shown. <a href="{{ url_for('eval_view') }}">How well it answers</a>.
+</footer>
+{% endblock %}

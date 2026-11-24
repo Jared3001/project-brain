@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Watcher, Project Kilby{% endblock %}
+{% block wrapclass %} wide{% endblock %}
+{% macro digest(d) %}
+  <div class="mini">{{ d.ran_at[:16].replace('T', ' ') }} &middot; {{ d.mode }} &middot; checked {{ d.checked|join(', ') }}{% if d.cost_usd %} &middot; ${{ '%.3f'|format(d.cost_usd) }}{% endif %}</div>
+  {% if d.problems %}<p class="note">{{ d.problems|join('; ') }}</p>{% endif %}
+  {% if not d.new %}<p>Nothing new in the sources since the last snapshot.</p>{% else %}
+    <h2>New in the sources</h2>
+    <ul class="why">{% for n in d.new %}<li>{{ n.source }} <span class="mini">({{ n.published }})</span></li>{% endfor %}</ul>
+    {% if d.summary %}<div class="card" style="margin:10px 0"><div class="eyebrow" style="margin-bottom:4px">Summary, numbers checked against the diff</div>{{ d.summary }}</div>{% endif %}
+    {% set x = d.diff or {} %}
+    {% if x.record %}
+    <h2>Record values that moved</h2>
+    <div class="card">
+      {% for r in x.record %}
+      <div class="crow" style="grid-template-columns:200px 1fr">
+        <div class="n" style="font-weight:600">{{ r.label }}</div>
+        <div>
+          {% for a in r.added %}<div><ins>{{ a.display }}</ins> <a class="chip" href="{{ url_for('source', doc_id=a.doc_id, page_no=a.page_no, q=a.quote) }}#q">{{ a.doc_id }}, p. {{ a.page_no }}</a></div>{% endfor %}
+          {% for g in r.gone %}<div><del>{{ g }}</del></div>{% endfor %}
+          {% if r.status[0] != r.status[1] %}<div class="mini">status {{ r.status[0] }} &rarr; {{ r.status[1] }}</div>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if x.verdicts %}
+    <h2>Consistency check</h2>
+    <ul class="why">{% for v in x.verdicts %}<li><strong>{{ v.label }}:</strong> {% if v.before and v.before.verdict == v.after.verdict %}still {{ v.after.verdict }}, now &ldquo;{{ v.after.headline }}&rdquo; (was &ldquo;{{ v.before.headline }}&rdquo;){% else %}{{ v.before.verdict if v.before else 'not checked' }} &rarr; <span class="pill {{ v.after.verdict }}">{{ v.after.verdict }}</span> {{ v.after.headline }}{% endif %}</li>{% endfor %}</ul>
+    {% endif %}
+    {% if x.deadlines %}
+    <h2>Deadlines</h2>
+    <ul class="why">{% for t in x.deadlines %}<li><strong>{{ t.label }}</strong>: {{ (t.before or 'new').replace('_', ' ') }} &rarr; <span class="pill {{ t.after.status }}">{{ t.after.status.replace('_', ' ') }}</span> <span class="mini">{{ t.after.date }}</span></li>{% endfor %}</ul>
+    {% endif %}
+    {% if not (x.record or x.verdicts or x.deadlines) %}<p>New documents arrived, but no record value, consistency verdict or deadline status changed.</p>{% endif %}
+  {% endif %}
+{% endmacro %}
+{% block body %}
+<header class="hero">
+  <div class="eyebrow">Agent &middot; watcher</div>
+  <h1>What moved in the public record</h1>
+  <p class="lede">A scheduled agent checks ERCOT's monthly queue report and TCEQ's live pending permit list. When something is new, it rebuilds the record in a separate copy, compares it with what this site shows, and writes a digest: record values that moved, consistency verdicts that changed, deadlines whose status changed. It never writes the live database; a person promotes a reviewed copy.</p>
+</header>
+
+<section class="sec">
+  <h2>Latest live check</h2>
+  {% if live %}<div class="card">{{ digest(live) }}</div>{% else %}<p class="mini">No live check has run yet.</p>{% endif %}
+</section>
+
+{% if replay %}
+<section class="sec">
+  <h2>Example digest: a run on {{ replay.mode.split('as of ')[-1] }}</h2>
+  <p class="sub">What the watcher would have reported if it had run on that day, replayed from the documents published since. This is the kind of digest a team would get each month.</p>
+  <div>{{ digest(replay) }}</div>
+</section>
+{% endif %}
+
+<section class="sec">
+  <h2>Run log</h2>
+  <div class="card tablewrap">
+    <table class="spec">
+      <thead><tr><th>When</th><th>Mode</th><th class="num">New</th><th>Changed</th><th class="num">Cost</th><th>Problems</th></tr></thead>
+      <tbody>{% for r in runs %}<tr><td class="mini">{{ r.ran_at[:16].replace('T', ' ') }}</td><td>{{ r.mode }}</td><td class="num">{{ r.n_new }}</td><td>{{ 'yes' if r.changed else 'no' }}</td><td class="num">${{ '%.3f'|format(r.cost_usd) }}</td><td class="mini">{{ r.problems|join('; ') or '' }}</td></tr>{% endfor %}</tbody>
+    </table>
+  </div>
+  <p class="mini">Guard rails: the live database is only ever read and copied; the written summary is one model call with a $0.15 cap, kept only if every number in it appears in the diff; every run is logged, including runs that found nothing.</p>
+</section>
+{% endblock %}

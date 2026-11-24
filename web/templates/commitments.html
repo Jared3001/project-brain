@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% from "_macros.html" import pcite %}
+{% block title %}Commitments and deadlines, Project Kilby{% endblock %}
+{% block wrapclass %} wide{% endblock %}
+{% set STATUS = {'done': 'Done', 'past_due': 'Past the estimate', 'at_risk': 'At risk', 'due_soon': 'Due within 90 days', 'upcoming': 'Upcoming'} %}
+{% block body %}
+<header class="hero">
+  <div class="eyebrow">Lens &middot; development, permitting, interconnection, operations</div>
+  <h1>Commitments and deadlines</h1>
+  <p class="lede">Every dated promise and milestone in the record, with where it stands today ({{ today.strftime('%b %-d, %Y') }}), and the clocks the draft permit starts once the plant is built. Each line opens the page it came from.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">{{ counts.past_due }}</div><div class="l">past a stated estimate</div></div>
+    <div class="stat"><div class="n">{{ counts.at_risk }}</div><div class="l">at risk per a later source</div></div>
+    <div class="stat"><div class="n">{% if nxt %}{{ nxt.days }} days{% else %}&ndash;{% endif %}</div><div class="l">to the next milestone{% if nxt %}: {{ nxt.label }}{% endif %}</div></div>
+    <div class="stat"><div class="n">{{ n_trig }}</div><div class="l">obligations the draft permit starts at startup or on a schedule</div></div>
+  </div>
+</header>
+
+<section class="sec">
+  <h2>Timeline</h2>
+  <p class="sub">Past events, estimates and targets in date order. A year-only target is placed at the end of that year. Statuses come from plain rules: an estimate whose date has passed with no change on the latest TCEQ status snapshot is past the estimate; a target a later source says may slip is at risk.</p>
+  <div class="card">
+    <ol class="tl">
+    {% set ns = namespace(shown=false) %}
+    {% for i in items %}
+      {% if not ns.shown and i.days >= 0 %}{% set ns.shown = true %}
+      <li class="today"><div class="when"><b>Today</b>{{ today.strftime('%b %-d, %Y') }}</div><div class="dot"><i></i></div><div class="what">You are here</div></li>
+      {% endif %}
+      <li class="{{ i.status }}">
+        <div class="when"><b>{% if i.precision == 'year' %}{{ i.date.year }}{% else %}{{ i.date.strftime('%b %-d') }}{% endif %}</b>{% if i.precision == 'day' %}{{ i.date.year }}{% else %}by year end{% endif %}</div>
+        <div class="dot"><i></i></div>
+        <div class="what">
+          <span class="t">{{ i.label }}</span> <span class="pill {{ i.status }}">{{ STATUS[i.status] }}</span>
+          <span class="party">{{ i.role }}</span>
+          {% if i.note %}<div class="mini">{{ i.note }}</div>{% endif %}
+          <div class="mini">{{ i.source }}, stated {{ i.stated|month }}
+            {% if i.days > 0 %}&middot; in {{ i.days }} days{% elif i.days < 0 and i.status != 'done' %}&middot; {{ -i.days }} days ago{% endif %}
+            <a class="chip" href="{{ url_for('source', doc_id=i.doc_id, page_no=i.page_no, q=i.quote) }}#q">{{ chips[i.key] }}</a></div>
+        </div>
+      </li>
+    {% endfor %}
+    </ol>
+  </div>
+  <p class="mini">The earliest ERCOT block (Nov 2027) is dated before the public "first power in 2028" target. See the <a href="{{ url_for('consistency') }}">consistency check</a>.</p>
+</section>
+
+<section class="sec">
+  <h2>Clocks the draft permit starts</h2>
+  <p class="sub">From the special conditions in {{ latest.label }}. None has started: they run from initial startup, from a test, from a leak, or on a fixed schedule once the plant operates. This is the handoff list from construction to operations.</p>
+  <div class="cards" style="grid-template-columns:1fr">
+  {% for g, rows in groups %}{% if rows %}
+    <div class="card">
+      <div class="eyebrow" style="color:var(--muted);margin-bottom:4px">{{ g }}</div>
+      {% for t in rows %}
+      <div class="ob">
+        <div class="win">{{ t.window }}</div>
+        <div>{{ t.obligation }} <span class="party">{{ t.role }}</span></div>
+        <div style="white-space:nowrap"><a href="{{ url_for('permit_condition', number=t.condition) }}" class="mini">SC {{ t.condition }}</a> {{ pcite(doc_id, t.page_no, t.quote, 'p. ' ~ t.page_no) }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  {% endif %}{% endfor %}
+  </div>
+  {% if misses %}<p class="note">Patterns that no longer match: {{ misses|join('; ') }}</p>{% endif %}
+</section>
+
+<section class="sec">
+  <div class="locked">
+    <strong>Needs internal documents.</strong> The deadlines that matter most week to week are not public:
+    <ul style="margin:6px 0 0;padding-left:18px">
+      <li>Notice windows in the EPC, turbine supply, gas supply and PPA contracts, and the liquidated damages behind them</li>
+      <li>Conditions precedent to financial close, and who owns each</li>
+      <li>Vendor delivery dates against the P6 need dates</li>
+      <li>JETI reporting dates and county abatement obligations</li>
+    </ul>
+  </div>
+</section>
+{% endblock %}

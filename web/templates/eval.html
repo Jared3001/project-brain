@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Eval, Project Kilby{% endblock %}
 {% block body %}
-<p><a href="{{ url_for('card') }}">&larr; Record</a> &middot; <a href="{{ url_for('ask_view') }}">Ask</a> &middot; <a href="{{ url_for('changes') }}">What changed</a></p>
 <header class="top">
   <h1>How well it answers</h1>
   <p>Every question below was run through the same Ask path as the live page and graded in code: no model grades another model. The three scores are kept apart and never averaged, because a system can look accurate by refusing too much, or look helpful by guessing.</p>
@@ -27,7 +26,7 @@
   {% for r in runs %}
   <tr>
     <td><strong>{{ r.label }}</strong><div class="basis">{{ r.note }}</div></td>
-    <td>{{ r.cases|length }} {{ 'held out' if r.split == 'heldout' else 'tuning' }}</td>
+    <td>{{ r.cases|length }} {{ {'heldout': 'held out', 'tuning': 'tuning', 'lens': 'lens', 'lens-heldout': 'lens held out'}[r.split] }}</td>
     {% for name, m, help in r.rows %}<td>{{ pct(m.value) }}{% if m.ci95 %}<div class="basis">&plusmn;{{ (m.ci95 * 100)|round|int }}</div>{% endif %}</td>{% endfor %}
     <td>${{ '%.3f'|format(r.summary.cost_usd_per_question) }}<div class="basis">median {{ r.summary.latency_s_median }}s</div></td>
   </tr>
@@ -37,19 +36,21 @@
 </div>
 <ul class="basis caveats">
   <li>v1 and v2 fixed problems found by reading the tuning set's failures, so their scores on that set are optimistic. The held out run is the honest number for the current code.</li>
+  <li>The lens set covers the draft permit, consistency and deadlines pages. Its fixes came from reading the lens baseline's failures; the 6 lens held out questions were written at the same time, committed first, and run once after the fixes.</li>
+  <li>v3 reran the original 42 after the lens changes: one decoy (construction cost) was answered with a heavily hedged, unconfirmed $7B headline, and one draft was withheld for a missing citation. Both differ from v2 only by run to run variation; retrieval for them did not change.</li>
   <li>One run per question: differences of a few points between runs are within the model's run to run variation.</li>
   <li>"Withheld" means a draft cited a quote or number that was not on its page, so the code refused to show it. It counts as declined, never as correct.</li>
   <li>All eval runs together cost ${{ '%.2f'|format(total_cost) }} at Claude Opus 5.5 prices.</li>
 </ul>
 
 <h2>Every question</h2>
-<p class="basis">Latest run for each question: v2 for the tuning set, the held out run for the rest. Expected facts are what the grader looks for; any listed alternative counts.</p>
+<p class="basis">Latest run for each question: v3 for the tuning set, v2 for the lens set, and the held out runs for the rest. Expected facts are what the grader looks for; any listed alternative counts.</p>
 {% for c in table %}
 <details class="case">
   <summary>
     <span class="verdict {{ c.verdict }}">{{ c.verdict }}</span>
     <span class="q">{{ c.question }}</span>
-    <span class="tierlab">{{ c.kind }}{% if c.split == 'heldout' %} &middot; held out{% endif %}</span>
+    <span class="tierlab">{{ c.kind }}{% if c.split != 'tuning' %} &middot; {{ c.split.replace('-', ' ').replace('heldout', 'held out') }}{% endif %}</span>
   </summary>
   <div class="case-body">
     <div class="basis">Expected: {{ c.expect }}{% if c.trap %} &middot; Trap: {{ c.trap }}{% endif %}</div>

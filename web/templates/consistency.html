@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Consistency check, Project Kilby{% endblock %}
+{% block wrapclass %} wide{% endblock %}
+{% set VERDICT = {'disagree': 'Sources disagree', 'tension': 'In tension', 'changed': 'Changed over time', 'consistent': 'Consistent', 'single': 'One source only'} %}
+{% block body %}
+<header class="hero">
+  <div class="eyebrow">Lens &middot; communications, legal, leadership</div>
+  <h1>Consistency check</h1>
+  <p class="lede">What each source says about the same thing: the regulator's filings, the ERCOT queue, Chevron, Joulent, the press and analysts. Before anyone states a number in public, this shows which figure has which backing, and where the record disagrees with itself.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">{{ findings|length }}</div><div class="l">topics checked</div></div>
+    <div class="stat"><div class="n">{{ counts.disagree }}</div><div class="l">where sources disagree</div></div>
+    <div class="stat"><div class="n">{{ counts.tension + counts.changed }}</div><div class="l">in tension or changed over time</div></div>
+    <div class="stat"><div class="n">{{ n_claims }}</div><div class="l">claims from {{ n_sources }} documents</div></div>
+  </div>
+</header>
+
+{% for f in findings %}
+<section class="sec finding" id="{{ f.topic }}">
+  <div class="head">
+    <span class="topic">{{ f.label }}</span>
+    <span class="pill {{ f.verdict }}">{{ VERDICT[f.verdict] }}</span>
+  </div>
+  <h3>{{ f.headline }}</h3>
+  {% if f.detail %}<ul class="why">{% for d in f.detail %}<li>{{ d }}</li>{% endfor %}</ul>{% endif %}
+  <div class="card tablewrap">
+    <table class="spec">
+      <thead><tr><th style="width:110px">Date</th><th style="width:210px">Source</th><th>What it says</th><th style="width:200px">Page</th></tr></thead>
+      <tbody>
+      {% for c in f.claims %}
+        <tr>
+          <td class="mini">{{ c.date|month }}</td>
+          <td>{{ c.source }}<span class="party">{{ c.party }}</span></td>
+          <td><span class="big" style="white-space:normal">{{ c.display }}</span>{% if c.computed %} <span class="pill single">computed</span>{% endif %}
+            <div class="q">&ldquo;{{ c.quote|truncate(160) }}&rdquo;</div>
+            {% if c.note %}<div class="mini">{{ c.note }}</div>{% endif %}</td>
+          <td><a class="chip" href="{{ url_for('source', doc_id=c.doc_id, page_no=c.page_no, q=c.quote) }}#q">{{ locs[(c.doc_id, c.page_no)] }}</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endfor %}
+
+{% if misses %}<p class="note">Patterns that no longer match their document: {{ misses|join('; ') }}</p>{% endif %}
+
+<footer>
+  Each claim is read with a pattern anchored on its document's wording, or taken from a fact the record already verified, and its quote is checked against the cited page. Verdicts come from plain rules: numbers more than 3% apart disagree; dates compare by year, and by day where a source gives one; statements that change after a dated event read as a change, not a contradiction. Press is quoted one line at a time and linked to the original.
+</footer>
+{% endblock %}

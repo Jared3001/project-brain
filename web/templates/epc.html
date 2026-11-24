@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% from "_macros.html" import cite, pcite, outcome, thread_msgs, field_row %}
+{% block title %}EPC and permitting, Project Kilby{% endblock %}
+{% block wrapclass %} wide{% endblock %}
+{% block body %}
+<header class="hero">
+  <div class="eyebrow">Lens &middot; EPC and permitting</div>
+  <h1>What the draft air permit binds the plant to</h1>
+  <p class="lede">For the owner's engineer, the EPC's design leads and the permitting lead: the equipment the permit authorizes, the limits the design has to meet, and how each condition was negotiated with TCEQ. Every value opens the page it was read from.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">{{ total_units }}</div><div class="l">combustion turbines authorized</div></div>
+    <div class="stat"><div class="n">{{ '{:,.0f}'.format(total_mw) }} MW</div><div class="l">nominal, summed from the permit's unit ratings</div></div>
+    <div class="stat"><div class="n">{{ latest.conditions|length }}</div><div class="l">special conditions in {{ latest.label }}</div></div>
+    <div class="stat"><div class="n">{{ changed|length }}</div><div class="l">changed since TCEQ's first draft ({{ first.thread_date.strftime('%b %-d') }})</div></div>
+    <div class="stat"><div class="n">{{ threads|length }}</div><div class="l">negotiated points in the redlines</div></div>
+  </div>
+</header>
+
+<section class="sec">
+  <h2>Equipment the permit authorizes</h2>
+  <p class="sub">Special Condition 5 of {{ latest.label }}. Ratings are at 59 &deg;F, 13.25 psia and the stated site elevation. The total is a sum of these ratings, not a figure from the permit.</p>
+  <div class="card tablewrap">
+    <table class="spec">
+      <thead><tr><th>Unit group</th><th class="num">Units</th><th class="num">MW each</th><th class="num">Heat input, MMBtu/hr each</th><th class="num">MW total</th><th>Source</th></tr></thead>
+      <tbody>
+      {% for v in basis.equipment %}
+        <tr>
+          <td><span class="big">{{ v.extra.model }}</span><span class="avg">{{ v.extra.mode }} cycle</span></td>
+          <td class="num big">{{ v.extra.count }}</td>
+          <td class="num">{{ v.extra.mw }}</td>
+          <td class="num">{{ v.extra.heat }}</td>
+          <td class="num">{{ '{:,.1f}'.format(v.extra.count * (v.extra.mw|replace(',', '')|float)) }}</td>
+          <td>{{ pcite(doc_id, v.page_no, v.quote) }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+      <tfoot><tr><td>Total</td><td class="num">{{ total_units }}</td><td></td><td></td><td class="num">{{ '{:,.1f}'.format(total_mw) }}</td><td class="mini">computed</td></tr></tfoot>
+    </table>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>Limits the design has to meet</h2>
+  <p class="sub">Concentrations in ppmvd at 15% O<sub>2</sub>, outside planned maintenance, startup and shutdown (Special Condition 6). These drive SCR and oxidation catalyst sizing, CEMS scope and the controls sequence.</p>
+  <div class="two">
+    <div class="card tablewrap">
+      <table class="spec">
+        <thead><tr><th>Turbines</th><th class="num">NO<sub>x</sub></th><th class="num">CO</th><th class="num">NH<sub>3</sub> slip</th></tr></thead>
+        <tbody>
+        {% for g in limit_groups %}
+          <tr>
+            <td>{{ g.name }}</td>
+            {% for pol in ['NOx', 'CO', 'NH3'] %}{% set v = g.cells.get(pol) %}
+            <td class="num">{% if v %}<a href="{{ url_for('source', doc_id=doc_id, page_no=v.page_no, q=v.quote) }}#q" style="text-decoration:none;color:inherit"><span class="big">{{ v.extra.ppm }}</span></a><span class="avg">{{ v.extra.avg.replace('-hr rolling average', ' hr rolling') }}</span>{% else %}&ndash;{% endif %}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <div class="mini" style="margin-top:8px">Click a number to open the page it was read from.</div>
+    </div>
+    <div class="card">
+      <table class="spec">
+        <thead><tr><th>Operating limit</th><th class="num">Value</th><th></th></tr></thead>
+        <tbody>
+        {% for v in basis.mss %}
+          <tr><td>{{ v.label }}</td><td class="num big">{{ v.display }}</td><td>{{ pcite(doc_id, v.page_no, v.quote, 'p. ' ~ v.page_no) }}</td></tr>
+        {% endfor %}
+        {% for v in basis.fuel %}
+          <tr><td>Fuel sulfur, {{ v.label }}</td><td class="num big">{{ v.display.replace(' gr S/100 dscf', '') }}<span class="avg">gr S/100 dscf</span></td><td>{{ pcite(doc_id, v.page_no, v.quote, 'p. ' ~ v.page_no) }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <div class="mini" style="margin-top:8px">Ramps above the transitional load threshold may be excluded from the NO<sub>x</sub> averaging limit, within the MSS hourly rates. See <a href="{{ url_for('permit_condition', number=6) }}">Condition 6</a>.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>How the permit was negotiated</h2>
+  <p class="sub">The permit file holds {{ versions|length }} copies of the draft special conditions, traded between TCEQ and the applicant's consultant from {{ first.thread_date.strftime('%b %-d') }} to {{ latest.thread_date.strftime('%b %-d, %Y') }}. The redline copies carry margin comments: each point below is the applicant's ask and TCEQ's reply, as filed. Which condition a comment belongs to is inferred from its page and wording.</p>
+  <div class="card">
+    {% for t in threads %}
+    <div class="thread">
+      <div class="num">{% for n in t.conditions %}<a href="{{ url_for('permit_condition', number=n) }}">SC {{ n }}</a>{% endfor %}<div style="margin-top:6px">{{ outcome(t) }}</div></div>
+      <div>{{ thread_msgs(t, doc_id) }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  <p class="mini" style="margin-top:8px"><a href="{{ url_for('permit_index') }}">All {{ latest.conditions|length }} conditions, with what changed in each &rarr;</a></p>
+</section>
+
+<section class="sec">
+  <div class="two">
+    <div>
+      <h2>Ask as an engineer</h2>
+      <p class="sub" style="margin-bottom:12px">Answers cite pages, and every number is checked against the page before it is shown.</p>
+      <ul class="qlist">{% for q in questions %}<li><a href="{{ url_for('ask_view', q=q) }}">{{ q }}</a></li>{% endfor %}</ul>
+    </div>
+    <div>
+      <h2>Needs internal documents</h2>
+      <p class="sub" style="margin-bottom:12px">What an EPC team asks every week that no public filing answers. These are the first sources a company brain would connect.</p>
+      <ul class="locked" style="list-style:none">
+        {% for q, src in needs %}<li>{{ q }}<span class="needs">Needs: {{ src }}</span></li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <h2>From the project record</h2>
+  <p class="sub">The record card fields an engineer checks first. Conflicts between sources stay visible.</p>
+  {% for rec, f in record %}{{ field_row(rec, f) }}{% endfor %}
+</section>
+
+<footer>
+  Read from the TCEQ permit file (permit 181895, PSDTX1684, GHGPSDTX260) and the ERCOT queue reports. This is the public record, not the developer's internal design basis.
+</footer>
+{% endblock %}

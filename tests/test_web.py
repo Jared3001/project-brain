@@ -75,5 +75,5 @@ def test_eval_page_shows_runs_and_every_question(client):
     page = client.get("/eval").data.decode()
     for label in ("Baseline", "v1", "v2", "Held out"):
         assert label in page
-    assert page.count('class="case"') == 63
+    assert page.count('class="case"') == 87
     assert "[answered]" not in page

@@ -4,7 +4,6 @@
 <a class="chip" href="{{ url_for('source', doc_id=f.doc_id, page_no=f.page_no, q=f.quote) }}#q" title="{{ f.doc.title }}">{{ f.chip }}</a>
 {%- endmacro %}
 {% block body %}
-<p><a href="{{ url_for('card') }}">&larr; Record</a></p>
 <header class="top">
   <h1>What changed</h1>
   <p>Every value that moved between filings of the same source, newest first. A change is dated by the first document that shows the new value; the old value's last appearance bounds when it happened.</p>
