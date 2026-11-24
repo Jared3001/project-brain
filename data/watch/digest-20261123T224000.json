@@ -1,0 +1,14 @@
+{
+ "ran_at": "2026-11-23T22:40:00",
+ "mode": "live",
+ "checked": [
+  "ERCOT GIS report list",
+  "TCEQ pending permit list"
+ ],
+ "new": [],
+ "problems": [],
+ "diff": null,
+ "candidate": null,
+ "cost_usd": 0.0,
+ "seconds": 1.1
+}

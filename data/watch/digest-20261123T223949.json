@@ -1,0 +1,427 @@
+{
+ "ran_at": "2026-11-23T22:39:49",
+ "mode": "replay as of 2026-07-15",
+ "checked": [
+  "corpus documents published after 2026-07-15"
+ ],
+ "new": [
+  {
+   "source": "Frontier Grid: Project Kilby fuel-backed power readiness brief",
+   "published": "2026-07-28",
+   "doc_id": "frontier-grid-2026-07-28"
+  },
+  {
+   "source": "ERCOT Generation Interconnection Status report, July 2026",
+   "published": "2026-08-03",
+   "doc_id": "ercot-gis-2026-07"
+  },
+  {
+   "source": "TCEQ permit file at technical completeness: application, 12/22/2025 update, draft permit, correspondence",
+   "published": "2026-08-06",
+   "doc_id": "tceq-application-2026-tc"
+  },
+  {
+   "source": "TCEQ pending NSR permit list (Wayback Machine snapshot), 2026-08-06",
+   "published": "2026-08-06",
+   "doc_id": "tceq-pending-2026-08-06"
+  },
+  {
+   "source": "Joulent: About Us",
+   "published": "2026-08-10",
+   "doc_id": "joulent-about"
+  },
+  {
+   "source": "Joulent: Power Stack",
+   "published": "2026-08-10",
+   "doc_id": "joulent-power-stack"
+  },
+  {
+   "source": "ERCOT Generation Interconnection Status report, August 2026",
+   "published": "2026-09-01",
+   "doc_id": "ercot-gis-2026-08"
+  },
+  {
+   "source": "TCEQ pending NSR permit list (Wayback Machine snapshot), 2026-09-13",
+   "published": "2026-09-13",
+   "doc_id": "tceq-pending-2026-09-13"
+  },
+  {
+   "source": "ERCOT Generation Interconnection Status report, September 2026",
+   "published": "2026-10-01",
+   "doc_id": "ercot-gis-2026-09"
+  },
+  {
+   "source": "Semafor: Texas politics could delay investment decision for huge Chevron data center",
+   "published": "2026-10-01",
+   "doc_id": "semafor-2026-10-01"
+  },
+  {
+   "source": "TCEQ pending NSR permit list (Wayback Machine snapshot), 2026-10-30",
+   "published": "2026-10-30",
+   "doc_id": "tceq-pending-2026-10-30"
+  },
+  {
+   "source": "ERCOT Generation Interconnection Status report, October 2026",
+   "published": "2026-11-02",
+   "doc_id": "ercot-gis-2026-10"
+  },
+  {
+   "source": "Compute Atlas: Kilby Power Plant",
+   "published": "2026-11-19",
+   "doc_id": "compute-atlas"
+  }
+ ],
+ "problems": [],
+ "diff": {
+  "record": [
+   {
+    "field": "capacity_mw",
+    "label": "Generating capacity",
+    "added": [
+     {
+      "display": "2,869 MW",
+      "doc_id": "tceq-application-2026-tc",
+      "page_no": 30,
+      "quote": "nominal power generation capacity will be approximately 2,869 megawatts (MW) at site conditions",
+      "as_of": "2025-12-22"
+     },
+     {
+      "display": "nearly 3 GW",
+      "doc_id": "semafor-2026-10-01",
+      "page_no": 1,
+      "quote": "nearly 3 gigawatts",
+      "as_of": "2026-10-01"
+     }
+    ],
+    "gone": [
+     "2,595 MW"
+    ],
+    "status": [
+     "conflict",
+     "conflict"
+    ]
+   },
+   {
+    "field": "turbine_fleet",
+    "label": "Turbines (model x count)",
+    "added": [
+     {
+      "display": "46 turbines: 2 x GE 7HA.02 combined cycle (555.7 MW each); 3 x GE 7HA.02 simple cycle (330.3 MW each); 12 x Solar Titan 350 (T350) simple cycle (31.1 MW each); 29 x Solar Titan 130 (T130) simple cycle (13.55 MW each)",
+      "doc_id": "tceq-application-2026-tc",
+      "page_no": 30,
+      "quote": "The 46 turbines and expected output are as follows: \u2022 2 GE 7HA.02 combined-cycle turbines (EPNs 7HACC1, 7HACC2, CAP1, and CAP1_1), each with a net output of 555.7 MW; \u2022 3 GE 7HA.02 simple-cycle turbines (EPNs 7HASC1 \u2013 7HASC3, CAP2, CAP2_1), each with a net output of 330.3 MW; \u2022 12 Solar Titan 350 (T350) simple-cycle turbines (EPNs T350SC1 \u2013 T350SC12, CAP3, CAP3_1), each with a net output of 31.1 MW; and \u2022 29 Solar Titan 130 (T130) simple-cycle turbines (EPNs T130SC1 \u2013 T350SC29, CAP4, CAP4_1), each with a net output of 13.55 MW",
+      "as_of": "2025-12-22"
+     }
+    ],
+    "gone": [
+     "17 turbines: 2 x GE 7HA.02 combined cycle; 3 x GE 7HA.02 simple cycle; 12 x Solar Titan 350 (T350) simple cycle"
+    ],
+    "status": [
+     "found",
+     "found"
+    ]
+   },
+   {
+    "field": "battery_storage_mw",
+    "label": "Battery storage",
+    "added": [
+     {
+      "display": "330 MW",
+      "doc_id": "ercot-gis-2026-10",
+      "page_no": 1,
+      "quote": "Project Name: Kilby1 Part 2 Tier1 BESS ... Capacity (MW): 330",
+      "as_of": "2026-11-02"
+     }
+    ],
+    "gone": [
+     "560 MW"
+    ],
+    "status": [
+     "found",
+     "found"
+    ]
+   },
+   {
+    "field": "sponsors",
+    "label": "Sponsors / partners",
+    "added": [
+     {
+      "display": "Chevron and Joulent, joint venture",
+      "doc_id": "semafor-2026-10-01",
+      "page_no": 1,
+      "quote": "a joint venture between Chevron and the newly formed energy project developer Joulent",
+      "as_of": "2026-10-01"
+     }
+    ],
+    "gone": [],
+    "status": [
+     "found",
+     "found"
+    ]
+   },
+   {
+    "field": "queue_entries",
+    "label": "ERCOT queue entries",
+    "added": [
+     {
+      "display": "28INR0460 Kilby1 Part 5 Solar: cancelled 2026-07-06 (500 MW Solar)",
+      "doc_id": "ercot-gis-2026-07",
+      "page_no": 2,
+      "quote": "INR: 28INR0460 ... Project Name: Kilby1 Part 5 Solar ... Cancel Date: 2026-07-06",
+      "as_of": "2026-08-03"
+     },
+     {
+      "display": "28INR0457 Kilby1 Part 2 Tier1 BESS: 330 MW OTH/BA, COD 2028-01-21, SS Completed, FIS Started, No IA",
+      "doc_id": "ercot-gis-2026-10",
+      "page_no": 1,
+      "quote": "INR: 28INR0457 ... Project Name: Kilby1 Part 2 Tier1 BESS",
+      "as_of": "2026-11-02"
+     },
+     {
+      "display": "29INR0199 Kilby1 Part 6 Large Block Combined Cycle: 1056 MW GAS/GT, COD 2029-07-19, SS Completed, FIS Started, No IA",
+      "doc_id": "ercot-gis-2026-10",
+      "page_no": 1,
+      "quote": "INR: 29INR0199 ... Project Name: Kilby1 Part 6 Large Block Combined Cycle",
+      "as_of": "2026-11-02"
+     }
+    ],
+    "gone": [
+     "28INR0457 Kilby1 Part 2 Tier1 BESS: 560 MW OTH/BA, COD 2028-01-21, SS Completed, FIS Started, No IA",
+     "29INR0199 Kilby1 Part 6 Large Block Combined Cycle: 1056 MW GAS/CC, COD 2029-07-19, SS Completed, FIS Started, No IA"
+    ],
+    "status": [
+     "found",
+     "found"
+    ]
+   },
+   {
+    "field": "fid_status",
+    "label": "Final investment decision",
+    "added": [
+     {
+      "display": "Could be delayed by Texas state politics",
+      "doc_id": "semafor-2026-10-01",
+      "page_no": 1,
+      "quote": "Texas state politics could delay the final investment decision",
+      "as_of": "2026-10-01"
+     }
+    ],
+    "gone": [],
+    "status": [
+     "found",
+     "found"
+    ]
+   },
+   {
+    "field": "air_permit_status",
+    "label": "Air permit status",
+    "added": [
+     {
+      "display": "Technically Complete Application",
+      "doc_id": "tceq-pending-2026-10-30",
+      "page_no": 1,
+      "quote": "Technically Complete Application",
+      "as_of": "2026-10-30"
+     }
+    ],
+    "gone": [
+     "Administrative Complete Application"
+    ],
+    "status": [
+     "found",
+     "found"
+    ]
+   },
+   {
+    "field": "permit_milestones",
+    "label": "Permit milestones",
+    "added": [
+     {
+      "display": "December 9, 2025: TCEQ notice of deficiency",
+      "doc_id": "tceq-application-2026-tc",
+      "page_no": 681,
+      "quote": "respond to your Notice of Deficiency (NOD) letter dated December 9, 2025",
+      "as_of": "2025-12-09"
+     },
+     {
+      "display": "December 22, 2025: application updated, 29 Solar Titan 130 turbines added",
+      "doc_id": "tceq-application-2026-tc",
+      "page_no": 30,
+      "quote": "added to the project scope during an update on December 22, 2025",
+      "as_of": "2025-12-22"
+     },
+     {
+      "display": "4/15/2026: technically complete (TCEQ estimate on the RBLC form)",
+      "doc_id": "tceq-application-2026-tc",
+      "page_no": 30,
+      "quote": "Technically Complete Date 4/15/2026",
+      "as_of": "2026-04-15"
+     },
+     {
+      "display": "10/15/2026: estimated final issuance (TCEQ estimate)",
+      "doc_id": "tceq-application-2026-tc",
+      "page_no": 30,
+      "quote": "Estimated Final Issuance Date 10/15/2026",
+      "as_of": "2026-10-15"
+     }
+    ],
+    "gone": [],
+    "status": [
+     "found",
+     "found"
+    ]
+   },
+   {
+    "field": "co2e_tpy",
+    "label": "CO2e emissions",
+    "added": [
+     {
+      "display": "13,890,275.01 tons/yr",
+      "doc_id": "tceq-application-2026-tc",
+      "page_no": 32,
+      "quote": "GHG as CO2e 13,890,275.01",
+      "as_of": "2026-04-10"
+     }
+    ],
+    "gone": [
+     "11,564,704.59 tons/yr"
+    ],
+    "status": [
+     "conflict",
+     "found"
+    ]
+   }
+  ],
+  "verdicts": [
+   {
+    "topic": "capacity",
+    "label": "Generating capacity",
+    "before": {
+     "label": "Generating capacity",
+     "verdict": "disagree",
+     "headline": "Sources give 3 different figures"
+    },
+    "after": {
+     "label": "Generating capacity",
+     "verdict": "disagree",
+     "headline": "Sources give 4 different figures"
+    }
+   },
+   {
+    "topic": "co2",
+    "label": "CO2 emissions",
+    "before": {
+     "label": "CO2 emissions",
+     "verdict": "consistent",
+     "headline": "All sources say about 11,564,705 tons a year"
+    },
+    "after": {
+     "label": "CO2 emissions",
+     "verdict": "consistent",
+     "headline": "Press and the permit filing agree"
+    }
+   },
+   {
+    "topic": "water",
+    "label": "Water source",
+    "before": {
+     "label": "Water source",
+     "verdict": "single",
+     "headline": "Only Chevron says this"
+    },
+    "after": {
+     "label": "Water source",
+     "verdict": "consistent",
+     "headline": "Sources agree"
+    }
+   }
+  ],
+  "deadlines": [
+   {
+    "key": "permit:2025-12-09",
+    "label": "Air permit: TCEQ notice of deficiency",
+    "before": null,
+    "after": {
+     "label": "Air permit: TCEQ notice of deficiency",
+     "status": "done",
+     "date": "2025-12-09",
+     "doc_id": "tceq-application-2026-tc",
+     "page_no": 681,
+     "quote": "respond to your Notice of Deficiency (NOD) letter dated December 9, 2025"
+    }
+   },
+   {
+    "key": "permit:2025-12-22",
+    "label": "Air permit: Application updated, 29 Solar Titan 130 turbines added",
+    "before": null,
+    "after": {
+     "label": "Air permit: Application updated, 29 Solar Titan 130 turbines added",
+     "status": "done",
+     "date": "2025-12-22",
+     "doc_id": "tceq-application-2026-tc",
+     "page_no": 30,
+     "quote": "added to the project scope during an update on December 22, 2025"
+    }
+   },
+   {
+    "key": "permit:2026-04-15",
+    "label": "Air permit: Technically complete",
+    "before": null,
+    "after": {
+     "label": "Air permit: Technically complete",
+     "status": "done",
+     "date": "2026-04-15",
+     "doc_id": "tceq-application-2026-tc",
+     "page_no": 30,
+     "quote": "Technically Complete Date 4/15/2026"
+    }
+   },
+   {
+    "key": "permit:2026-10-15",
+    "label": "Air permit: Estimated final issuance",
+    "before": null,
+    "after": {
+     "label": "Air permit: Estimated final issuance",
+     "status": "past_due",
+     "date": "2026-10-15",
+     "doc_id": "tceq-application-2026-tc",
+     "page_no": 30,
+     "quote": "Estimated Final Issuance Date 10/15/2026"
+    }
+   },
+   {
+    "key": "fid",
+    "label": "Final investment decision",
+    "before": "upcoming",
+    "after": {
+     "label": "Final investment decision",
+     "status": "at_risk",
+     "date": "2026-12-31",
+     "doc_id": "chevron-release-2026-06-22",
+     "page_no": 2,
+     "quote": "Final Investment Decision (FID), which is expected by the end of 2026"
+    }
+   }
+  ],
+  "new_docs": [
+   "compute-atlas",
+   "ercot-gis-2026-07",
+   "ercot-gis-2026-08",
+   "ercot-gis-2026-09",
+   "ercot-gis-2026-10",
+   "frontier-grid-2026-07-28",
+   "joulent-about",
+   "joulent-power-stack",
+   "semafor-2026-10-01",
+   "tceq-application-2026-tc",
+   "tceq-pending-2026-08-06",
+   "tceq-pending-2026-09-13",
+   "tceq-pending-2026-10-30"
+  ]
+ },
+ "candidate": null,
+ "cost_usd": 0.0364,
+ "summary": "The air permit application now covers 46 turbines after a December 22, 2025 update added 29 Solar Titan 130 units, raising stated capacity to 2,869 MW and CO2e to 13,890,275.01 tons/yr from 11,564,704.59, and sources now give four different capacity figures. The permit application is listed as technically complete, but TCEQ's estimated final issuance date of 10/15/2026 has passed, while in ERCOT's queue the Kilby1 battery entry shrank from 560 MW to 330 MW and the 500 MW Part 5 Solar entry was cancelled on 2026-07-06. Semafor reports that the project is a Chevron and Joulent joint venture and that Texas state politics could delay the final investment decision expected by the end of 2026, putting that milestone at risk.",
+ "summary_note": "kept",
+ "seconds": 10.2
+}
